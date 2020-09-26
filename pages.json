@@ -1,0 +1,101 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "supnuevo",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		},
+		{
+			"path": "pages/price/modifyPrice",
+			"style": {
+				"navigationBarTitleText": "supnuevo",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		},
+		{
+			"path": "pages/sale/sale",
+			"style": {
+				"navigationBarTitleText": "supnuevo",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		},
+		{
+			"path": "pages/stock/stock",
+			"style": {
+				"navigationBarTitleText": "supnuevo",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "supnuevo",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		},
+		{
+			"path": "pages/notice/notice",
+			"style": {
+				"navigationBarTitleText": "supnuevo",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3a6eff",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/price/modifyPrice",
+				"iconPath": "static/image/tabBar/tab-cate.png",
+				"selectedIconPath": "static/image/tabBar/tab-cate-current.png",
+				"text": "改价"
+			},
+			{
+				"pagePath": "pages/sale/sale",
+				"iconPath": "static/image/tabBar/news.png",
+				"selectedIconPath": "static/image/tabBar/newsactive.png",
+				"text": "收银"
+			},
+			{
+				"pagePath": "pages/stock/stock",
+				"iconPath": "static/image/tabBar/news.png",
+				"selectedIconPath": "static/image/tabBar/newsactive.png",
+				"text": "进货"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/image/tabBar/me.png",
+				"selectedIconPath": "static/image/tabBar/meactive.png",
+				"text": "我的"
+			},
+			{
+				"pagePath": "pages/notice/notice",
+				"iconPath": "static/image/tabBar/me.png",
+				"selectedIconPath": "static/image/tabBar/meactive.png",
+				"text": "公告"
+			}
+		]
+	}
+}

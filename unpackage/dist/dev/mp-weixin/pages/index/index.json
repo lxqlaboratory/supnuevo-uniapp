@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "supnuevo",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#3a6eff",
+  "backgroundColor": "#3a6eff",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/price/modifyPrice",
+    "pages/sale/sale",
+    "pages/stock/stock",
+    "pages/my/my",
+    "pages/notice/notice"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3a6eff",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/price/modifyPrice",
+        "iconPath": "static/image/tabBar/tab-cate.png",
+        "selectedIconPath": "static/image/tabBar/tab-cate-current.png",
+        "text": "改价"
+      },
+      {
+        "pagePath": "pages/sale/sale",
+        "iconPath": "static/image/tabBar/news.png",
+        "selectedIconPath": "static/image/tabBar/newsactive.png",
+        "text": "收银"
+      },
+      {
+        "pagePath": "pages/stock/stock",
+        "iconPath": "static/image/tabBar/news.png",
+        "selectedIconPath": "static/image/tabBar/newsactive.png",
+        "text": "进货"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/image/tabBar/me.png",
+        "selectedIconPath": "static/image/tabBar/meactive.png",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/notice/notice",
+        "iconPath": "static/image/tabBar/me.png",
+        "selectedIconPath": "static/image/tabBar/meactive.png",
+        "text": "公告"
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "uni-popup-dialog": "/components/uni-popup/uni-popup-dialog"
+  },
+  "sitemapLocation": "sitemap.json"
+}
