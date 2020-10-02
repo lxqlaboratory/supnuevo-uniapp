@@ -12,10 +12,10 @@
 
 			<view>
 				<view class="form-input">
-					<input v-model='loginName' type="text"  placeholder="用户名" />
+					<input v-model='loginName' type="text" placeholder="用户名" />
 				</view>
 				<view class="form-input">
-					<input v-model='password'  placeholder="密码" password="true" />
+					<input v-model='password' placeholder="密码" password="true" />
 				</view>
 				<button type="warn" size="default" form-type="submit" @click="formSubmit">登录</button>
 				<button class="bind-button" type="warn" size="default" @click="formBind">绑定账号登录</button>
@@ -29,7 +29,7 @@
 	} from '@/api/login.js'
 
 	export default {
-		
+
 		data() {
 			return {
 				loginName: '',
@@ -75,7 +75,6 @@
 								uni.switchTab({
 									url: '../menu/menu'
 								})
-
 							} else {
 								uni.showModal({
 									title: '提示',
@@ -103,15 +102,16 @@
 					password: this.password
 				}).then(res => {
 					getApp().globalData.vueSessionId = res.sessionId
+					getApp().globalData.merchantId = res.merchantId
 					console.log(res)
 					if (res.reCode == '0') {
 						uni.setStorageSync('userName', that.loginName);
 						uni.setStorageSync('userPsw', that.password);
-						if (res.dataMap.userInfo.canUse == true) {
-							uni.switchTab({
-								url: '../menu/menu'
-							})
-						} 
+
+						uni.switchTab({
+							url: '../price/modifyPrice'
+						})
+
 
 
 					} else {

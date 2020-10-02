@@ -1936,9 +1936,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 17:
-/*!**************************************************************************!*\
-  !*** /Users/lli/Documents/HBuilderProjects/supnuevo-uniapp/api/login.js ***!
-  \**************************************************************************/
+/*!*******************************************!*\
+  !*** D:/vue/supnuevo-uniapp/api/login.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1956,9 +1956,9 @@ function login(data) {
 /***/ }),
 
 /***/ 18:
-/*!*******************************************************************************!*\
-  !*** /Users/lli/Documents/HBuilderProjects/supnuevo-uniapp/common/request.js ***!
-  \*******************************************************************************/
+/*!************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/common/request.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1969,8 +1969,8 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/request/index.js *
 // 切换baseUrl 
 var config = {
   // baseUrl: 'https://wxgradms.sdu.edu.cn/func',
-  // baseUrl: 'http://localhost:8080/func',
-  baseUrl: 'http://192.168.1.102:8080/func',
+  baseUrl: 'http://localhost:8080/func',
+  // baseUrl: 'http://192.168.1.102:8080/func',
   header: { "Content-Type": "application/json" },
 
   cancelReject: {
@@ -1984,11 +1984,11 @@ var config = {
 
 
 var reqInterceptor = /*#__PURE__*/function () {var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(options) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-            // if(options.url != 'http://localhost:8080/func/auth/webLogin')
-            // if(options.url != 'https://wxgradms.sdu.edu.cn/func/auth/webLogin')
-            if (options.url != 'http://192.168.1.102:8080/func/auth/webLogin')
-            {options.header = { "Content-Type": "application/json",
-                "Cookie": "JSESSIONID=" + getApp().globalData.vueSessionId };}return _context.abrupt("return",
+            if (options.url != 'http://localhost:8080/func/auth/webLogin')
+              // if(options.url != 'https://wxgradms.sdu.edu.cn/func/auth/webLogin')
+              // if(options.url != 'http://192.168.1.102:8080/func/auth/webLogin')
+              {options.header = { "Content-Type": "application/json",
+                  "Cookie": "JSESSIONID=" + getApp().globalData.vueSessionId };}return _context.abrupt("return",
             options);case 2:case "end":return _context.stop();}}}, _callee);}));return function reqInterceptor(_x) {return _ref.apply(this, arguments);};}();
 
 
@@ -8840,9 +8840,9 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 22:
-/*!******************************************************************************!*\
-  !*** /Users/lli/Documents/HBuilderProjects/supnuevo-uniapp/request/index.js ***!
-  \******************************************************************************/
+/*!***********************************************!*\
+  !*** D:/vue/supnuevo-uniapp/request/index.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8971,9 +8971,9 @@ Request = /*#__PURE__*/function () {
 /***/ }),
 
 /***/ 23:
-/*!*******************************************************************************!*\
-  !*** /Users/lli/Documents/HBuilderProjects/supnuevo-uniapp/request/common.js ***!
-  \*******************************************************************************/
+/*!************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/request/common.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9077,10 +9077,37 @@ module.exports = g;
 
 /***/ }),
 
+/***/ 32:
+/*!********************************************!*\
+  !*** D:/vue/supnuevo-uniapp/api/change.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function getQueryDataListByInputStringMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getQueryDataListByInputStringMobile',
+    method: 'POST',
+    data: data });
+
+}
+function getSupnuevoBuyerPriceFormByCodigoMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoBuyerPriceFormByCodigoMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
 /***/ 4:
-/*!************************************************************************!*\
-  !*** /Users/lli/Documents/HBuilderProjects/supnuevo-uniapp/pages.json ***!
-  \************************************************************************/
+/*!*****************************************!*\
+  !*** D:/vue/supnuevo-uniapp/pages.json ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9088,15 +9115,15 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 61:
-/*!*******************************************************************************************!*\
-  !*** /Users/lli/Documents/HBuilderProjects/supnuevo-uniapp/components/uni-popup/popup.js ***!
-  \*******************************************************************************************/
+/***/ 64:
+/*!************************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 62));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 65));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -9123,10 +9150,10 @@ var config = {
 
 /***/ }),
 
-/***/ 62:
-/*!*********************************************************************************************!*\
-  !*** /Users/lli/Documents/HBuilderProjects/supnuevo-uniapp/components/uni-popup/message.js ***!
-  \*********************************************************************************************/
+/***/ 65:
+/*!**************************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9151,6 +9178,148 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         this.childrenMsg.close();
       }
     } } };exports.default = _default;
+
+/***/ }),
+
+/***/ 94:
+/*!************************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  "pulldown": "\uE588",
+  "refreshempty": "\uE461",
+  "back": "\uE471",
+  "forward": "\uE470",
+  "more": "\uE507",
+  "more-filled": "\uE537",
+  "scan": "\uE612",
+  "qq": "\uE264",
+  "weibo": "\uE260",
+  "weixin": "\uE261",
+  "pengyouquan": "\uE262",
+  "loop": "\uE565",
+  "refresh": "\uE407",
+  "refresh-filled": "\uE437",
+  "arrowthindown": "\uE585",
+  "arrowthinleft": "\uE586",
+  "arrowthinright": "\uE587",
+  "arrowthinup": "\uE584",
+  "undo-filled": "\uE7D6",
+  "undo": "\uE406",
+  "redo": "\uE405",
+  "redo-filled": "\uE7D9",
+  "bars": "\uE563",
+  "chatboxes": "\uE203",
+  "camera": "\uE301",
+  "chatboxes-filled": "\uE233",
+  "camera-filled": "\uE7EF",
+  "cart-filled": "\uE7F4",
+  "cart": "\uE7F5",
+  "checkbox-filled": "\uE442",
+  "checkbox": "\uE7FA",
+  "arrowleft": "\uE582",
+  "arrowdown": "\uE581",
+  "arrowright": "\uE583",
+  "smallcircle-filled": "\uE801",
+  "arrowup": "\uE580",
+  "circle": "\uE411",
+  "eye-filled": "\uE568",
+  "eye-slash-filled": "\uE822",
+  "eye-slash": "\uE823",
+  "eye": "\uE824",
+  "flag-filled": "\uE825",
+  "flag": "\uE508",
+  "gear-filled": "\uE532",
+  "reload": "\uE462",
+  "gear": "\uE502",
+  "hand-thumbsdown-filled": "\uE83B",
+  "hand-thumbsdown": "\uE83C",
+  "hand-thumbsup-filled": "\uE83D",
+  "heart-filled": "\uE83E",
+  "hand-thumbsup": "\uE83F",
+  "heart": "\uE840",
+  "home": "\uE500",
+  "info": "\uE504",
+  "home-filled": "\uE530",
+  "info-filled": "\uE534",
+  "circle-filled": "\uE441",
+  "chat-filled": "\uE847",
+  "chat": "\uE263",
+  "mail-open-filled": "\uE84D",
+  "email-filled": "\uE231",
+  "mail-open": "\uE84E",
+  "email": "\uE201",
+  "checkmarkempty": "\uE472",
+  "list": "\uE562",
+  "locked-filled": "\uE856",
+  "locked": "\uE506",
+  "map-filled": "\uE85C",
+  "map-pin": "\uE85E",
+  "map-pin-ellipse": "\uE864",
+  "map": "\uE364",
+  "minus-filled": "\uE440",
+  "mic-filled": "\uE332",
+  "minus": "\uE410",
+  "micoff": "\uE360",
+  "mic": "\uE302",
+  "clear": "\uE434",
+  "smallcircle": "\uE868",
+  "close": "\uE404",
+  "closeempty": "\uE460",
+  "paperclip": "\uE567",
+  "paperplane": "\uE503",
+  "paperplane-filled": "\uE86E",
+  "person-filled": "\uE131",
+  "contact-filled": "\uE130",
+  "person": "\uE101",
+  "contact": "\uE100",
+  "images-filled": "\uE87A",
+  "phone": "\uE200",
+  "images": "\uE87B",
+  "image": "\uE363",
+  "image-filled": "\uE877",
+  "location-filled": "\uE333",
+  "location": "\uE303",
+  "plus-filled": "\uE439",
+  "plus": "\uE409",
+  "plusempty": "\uE468",
+  "help-filled": "\uE535",
+  "help": "\uE505",
+  "navigate-filled": "\uE884",
+  "navigate": "\uE501",
+  "mic-slash-filled": "\uE892",
+  "search": "\uE466",
+  "settings": "\uE560",
+  "sound": "\uE590",
+  "sound-filled": "\uE8A1",
+  "spinner-cycle": "\uE465",
+  "download-filled": "\uE8A4",
+  "personadd-filled": "\uE132",
+  "videocam-filled": "\uE8AF",
+  "personadd": "\uE102",
+  "upload": "\uE402",
+  "upload-filled": "\uE8B1",
+  "starhalf": "\uE463",
+  "star-filled": "\uE438",
+  "star": "\uE408",
+  "trash": "\uE401",
+  "phone-filled": "\uE230",
+  "compose": "\uE400",
+  "videocam": "\uE300",
+  "trash-filled": "\uE8DC",
+  "download": "\uE403",
+  "chatbubble-filled": "\uE232",
+  "chatbubble": "\uE202",
+  "cloud-download": "\uE8E4",
+  "cloud-upload-filled": "\uE8E5",
+  "cloud-upload": "\uE8E6",
+  "cloud-download-filled": "\uE8E9",
+  "headphones": "\uE8BF",
+  "shop": "\uE609" };exports.default = _default;
 
 /***/ })
 

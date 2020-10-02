@@ -1,0 +1,161 @@
+
+.priceinput {
+	margin-top: 5px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	border-width: 3px;
+	border: solid;
+	border-color: #999999;
+}
+.input1 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-flex: 8;
+	-webkit-flex: 8;
+	        flex: 8;
+	height: 35px;
+	padding-left: 10;
+	padding-right: 10;
+	padding-top: 6;
+	padding-bottom: 6;
+	background-color: #FFFFFF;
+	color: #333333;
+}
+.priceButton {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-right: 8px;
+}
+.container {
+	position: fixed;
+	height: 100%;
+	bottom: 0;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+}
+.change-price {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	height: 45px;
+	background-color: #EEEEEE;
+	margin-top: 5px;
+	margin-bottom: 5rpx;
+	-webkit-border-radius: 8px;
+	        border-radius: 8px;
+	border: solid 1px;
+}
+.change {
+	width: 33%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	margin-right: 1rpx;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	border-right:solid 1px;
+}
+.change1{
+	width: 33%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	margin-right: 1rpx;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.change-text {
+	font-size: 17px;
+	color: '#444'
+}
+.unmean {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	height: 45px;
+	-webkit-border-radius: 8px;
+	        border-radius: 8px;
+	border: solid 1px;
+	background-color: #007AFF;
+}
+.unmeanprice {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.shopInfo {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	height: 45px;
+	margin-top: 3px;
+	border: solid 0.5px #4CD964;
+}
+.Inshop {
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	background-color: #007AFF;
+	height: 45px;
+	width: 40%;
+}
+

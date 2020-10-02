@@ -4,8 +4,8 @@ import Request from '@/request/index.js'
 // 切换baseUrl 
 const config = {
     // baseUrl: 'https://wxgradms.sdu.edu.cn/func',
-      // baseUrl: 'http://localhost:8080/func',
-	  baseUrl: 'http://192.168.1.102:8080/func',
+      baseUrl: 'http://localhost:8080/func',
+	  // baseUrl: 'http://192.168.1.102:8080/func',
 	header: {"Content-Type": "application/json",
 	},
 	cancelReject: {
@@ -19,9 +19,9 @@ const config = {
 }
 
 const reqInterceptor = async (options) => {
-	 // if(options.url != 'http://localhost:8080/func/auth/webLogin')
+	 if(options.url != 'http://localhost:8080/func/auth/webLogin')
 	// if(options.url != 'https://wxgradms.sdu.edu.cn/func/auth/webLogin')
-	if(options.url != 'http://192.168.1.102:8080/func/auth/webLogin')
+	// if(options.url != 'http://192.168.1.102:8080/func/auth/webLogin')
 	{options.header= {"Content-Type": "application/json",
 	"Cookie":"JSESSIONID="+getApp().globalData.vueSessionId}}
 	return options
