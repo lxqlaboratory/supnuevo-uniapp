@@ -5,6 +5,7 @@
 			userType: '',
 			personId: '',
 			canAchievement: '',
+			merchantId: ''
 		},
 		onLaunch: function() {
 			console.log('App Launch')
