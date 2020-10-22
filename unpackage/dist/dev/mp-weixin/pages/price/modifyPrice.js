@@ -414,7 +414,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
     false), _ref;
 
   },
-  onShow: function onShow() {
+  onShow: function onShow() {var _this = this;
     this.pricedicount.IVAprice1 = getApp().globalData.IVAprice1;
     this.pricedicount.IVAprice2 = getApp().globalData.IVAprice2;
     this.pricedicount.IVAprice3 = getApp().globalData.IVAprice3;
@@ -424,10 +424,84 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
     this.pricedicount.profitprice2 = getApp().globalData.profitprice2;
     this.pricedicount.profitprice3 = getApp().globalData.profitprice3;
     this.pricedicount.profitprice4 = getApp().globalData.profitprice4;
+    if (this.codigo !== null && this.codigo !== undefined && this.codigo !== '') {
+      var merchantId = getApp().globalData.merchantId;
+      (0, _change.getSupnuevoBuyerPriceFormByCodigoMobile)({
+        codigo: this.codigo,
+        supnuevoMerchantId: merchantId }).
+      then(function (res) {
+        if (res.re == -2) {
+          uni.navigateTo({
+            url: '../index/index' });
+
+        }
+
+        if (res.errMessage !== null && res.errMessage !== undefined) {
+          var errMsg = res.errMessage.toString();
+          uni.showModal({
+            title: "提示",
+            content: errMsg,
+            showCancel: false });
+
+          return;
+        } else {
+          console.log(res);
+          var goodInfo = res.object;
+          if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null &&
+          goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
+            goodInfo.goodName = goodInfo.nombre + ',' +
+            goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
+          } else
+          {
+            goodInfo.goodName = goodInfo.nombre;
+          }
+
+          var printType = goodInfo.printType;
+          for (var i = 0; i < printType.length; i++) {
+            var j = i + 1;
+            var type = "type" + j;
+            _this.printType[type] = printType.charAt(i);
+            if (i === 0 && printType.charAt(i) !== 1) {
+              _this.printType[type] = 1;
+            }
+          }
+          var newPrintType = _this.printType;
+          goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
+
+          _this.goods.codeNum = 0;
+          var goods = _this.goods;
+
+          if (goodInfo.priceShow == 0) {
+            goodInfo.priceShow = "";
+          }
+          var referencePrice = goodInfo.minPrice;
+          if (referencePrice == null || referencePrice == 0.0)
+          _this.referencePriceButton = true;else
+          if (referencePrice !== null && referencePrice !== undefined) {
+            _this.setStatereferencePrice = referencePrice, _this.referencePriceButton = false;
+          }
+          _this.selectedCodeInfo = goodInfo;
+          _this.codigo = goodInfo.codigo;
+          _this.priceShow = goodInfo.priceShow,
+          _this.printType = newPrintType,
+          _this.goods = goods,
+          _this.hasCodigo = true,
+          _this.Gsuggestlevel = goodInfo.suggestLevel,
+          _this.gengxingaijiaInput = goodInfo.priceShow,
+          _this.commodityId = goodInfo.commodityId,
+          _this.attachDataUrl1 = goodInfo.attachDataUrl1,
+          _this.attachDataUrl2 = goodInfo.attachDataUrl2,
+          _this.attachDataUrl3 = goodInfo.attachDataUrl3,
+          _this.attachDataUrl4 = goodInfo.attachDataUrl4,
+          _this.attachDataUrl = goodInfo.attachDataUrl;
+
+        }
+      });
+    }
 
   },
   methods: {
-    bindPickerChange: function bindPickerChange(e) {var _this = this;
+    bindPickerChange: function bindPickerChange(e) {var _this2 = this;
       this.index = e.target.value;
       if (this.index == 2) {
         uni.navigateTo({
@@ -456,30 +530,30 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                 var o = { 'value': '', 'label': '' };
                 o.label = res.taxArr[i].label;
                 o.value = res.taxArr[i].value;
-                _this.taxArr.push(o);
+                _this2.taxArr.push(o);
               }
               for (var i = 0; i < res.sizeArr.length; i++) {
                 var o = { 'value': '', 'label': '' };
                 o.label = res.sizeArr[i].label;
                 o.value = res.sizeArr[i].value;
-                _this.sizeArr.push(o);
+                _this2.sizeArr.push(o);
               }
-              if (_this.selectedCodeInfo.codigo != undefined && _this.selectedCodeInfo.codigo != null && _this.selectedCodeInfo.codigo != '') {
+              if (_this2.selectedCodeInfo.codigo != undefined && _this2.selectedCodeInfo.codigo != null && _this2.selectedCodeInfo.codigo != '') {
 
                 var form = {
                   merchantId: merchantId,
-                  selectedCodeInfo: _this.selectedCodeInfo,
-                  taxArr: _this.taxArr,
-                  sizeArr: _this.sizeArr,
+                  selectedCodeInfo: _this2.selectedCodeInfo,
+                  taxArr: _this2.taxArr,
+                  sizeArr: _this2.sizeArr,
                   // onCodigoSelect: this.onCodigoSelect.bind(this),
                   // setHasCodigo: this.setHasCodigo.bind(this),
                   // reset: this.reset.bind(this),
-                  commodityId: _this.commodityId,
-                  attachDataUrl: _this.attachDataUrl,
-                  attachDataUrl1: _this.attachDataUrl1,
-                  attachDataUrl2: _this.attachDataUrl2,
-                  attachDataUrl3: _this.attachDataUrl3,
-                  attachDataUrl4: _this.attachDataUrl4 };
+                  commodityId: _this2.commodityId,
+                  attachDataUrl: _this2.attachDataUrl,
+                  attachDataUrl1: _this2.attachDataUrl1,
+                  attachDataUrl2: _this2.attachDataUrl2,
+                  attachDataUrl3: _this2.attachDataUrl3,
+                  attachDataUrl4: _this2.attachDataUrl4 };
 
 
 
@@ -499,7 +573,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
       this.goods.codeNum = codeNum;
       this.queryGoodsCode(codeNum.toString());
     },
-    onCodigoSelect: function onCodigoSelect(key, item) {var _this2 = this;
+    onCodigoSelect: function onCodigoSelect(key, item) {var _this3 = this;
       console.log(item.value);
       var merchantId = getApp().globalData.merchantId;
       var codigo = item.value;
@@ -537,45 +611,45 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
           for (var i = 0; i < printType.length; i++) {
             var j = i + 1;
             var type = "type" + j;
-            _this2.printType[type] = printType.charAt(i);
+            _this3.printType[type] = printType.charAt(i);
             if (i === 0 && printType.charAt(i) !== 1) {
-              _this2.printType[type] = 1;
+              _this3.printType[type] = 1;
             }
           }
-          var newPrintType = _this2.printType;
+          var newPrintType = _this3.printType;
           goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
 
-          _this2.goods.codeNum = 0;
-          var goods = _this2.goods;
+          _this3.goods.codeNum = 0;
+          var goods = _this3.goods;
 
           if (goodInfo.priceShow == 0) {
             goodInfo.priceShow = "";
           }
           var referencePrice = goodInfo.minPrice;
           if (referencePrice == null || referencePrice == 0.0)
-          _this2.referencePriceButton = true;else
+          _this3.referencePriceButton = true;else
           if (referencePrice !== null && referencePrice !== undefined) {
-            _this2.setStatereferencePrice = referencePrice, _this2.referencePriceButton = false;
+            _this3.setStatereferencePrice = referencePrice, _this3.referencePriceButton = false;
           }
-          _this2.selectedCodeInfo = goodInfo;
-          _this2.codigo = goodInfo.codigo;
-          _this2.priceShow = goodInfo.priceShow,
-          _this2.printType = newPrintType,
-          _this2.goods = goods,
-          _this2.hasCodigo = true,
-          _this2.Gsuggestlevel = goodInfo.suggestLevel,
-          _this2.gengxingaijiaInput = goodInfo.priceShow,
-          _this2.commodityId = goodInfo.commodityId,
-          _this2.attachDataUrl1 = goodInfo.attachDataUrl1,
-          _this2.attachDataUrl2 = goodInfo.attachDataUrl2,
-          _this2.attachDataUrl3 = goodInfo.attachDataUrl3,
-          _this2.attachDataUrl4 = goodInfo.attachDataUrl4,
-          _this2.attachDataUrl = goodInfo.attachDataUrl;
+          _this3.selectedCodeInfo = goodInfo;
+          _this3.codigo = goodInfo.codigo;
+          _this3.priceShow = goodInfo.priceShow,
+          _this3.printType = newPrintType,
+          _this3.goods = goods,
+          _this3.hasCodigo = true,
+          _this3.Gsuggestlevel = goodInfo.suggestLevel,
+          _this3.gengxingaijiaInput = goodInfo.priceShow,
+          _this3.commodityId = goodInfo.commodityId,
+          _this3.attachDataUrl1 = goodInfo.attachDataUrl1,
+          _this3.attachDataUrl2 = goodInfo.attachDataUrl2,
+          _this3.attachDataUrl3 = goodInfo.attachDataUrl3,
+          _this3.attachDataUrl4 = goodInfo.attachDataUrl4,
+          _this3.attachDataUrl = goodInfo.attachDataUrl;
 
         }
       });
     },
-    queryGoodsCode: function queryGoodsCode(codeNum) {var _this3 = this;
+    queryGoodsCode: function queryGoodsCode(codeNum) {var _this4 = this;
       if (codeNum.length >= 4) {
         var merchantId = getApp().globalData.merchantId;
         this.searchListFinal = [];
@@ -590,7 +664,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
 
           }
           var errorMsg = res.message;
-          _this3.reset();
+          _this4.reset();
           if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
             console.log(742);
             uni.showModal({
@@ -604,17 +678,17 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                 var searchItem = { key: null, value: '' };
                 searchItem.key = i;
                 searchItem.value = res.array[i].codigo;
-                _this3.searchListFinal.push(searchItem);
+                _this4.searchListFinal.push(searchItem);
               }
-              _this3.codesModalVisible = true;
-              _this3.referencePrice = null;
-              _this3.referencePriceButton = true;
+              _this4.codesModalVisible = true;
+              _this4.referencePrice = null;
+              _this4.referencePriceButton = true;
             } else
             {
               console.log(res.object.commodityId);
               var code = { codigo: res.object.codigo, commodityId: res.object.commodityId, referencePrice: null, referencePriceButton: true };
-              _this3.onCodigoSelect(code);
-              console.log(_this3.codigo);
+              _this4.onCodigoSelect(code);
+              console.log(_this4.codigo);
             }
           }
         }).catch(function (err) {
@@ -710,7 +784,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
         return false;
       }
     },
-    savePrice: function savePrice() {var _this4 = this;
+    savePrice: function savePrice() {var _this5 = this;
       if (this.priceShow !== null && this.priceShow !== undefined) {
         if (this.codigo == null || this.codigo == undefined || this.codigo == '') {
           uni.showModal({
@@ -766,12 +840,12 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
               content: message,
               showCancel: false });
 
-            _this4.reset();
+            _this5.reset();
           }
         });
       }
     },
-    saveRelPrice: function saveRelPrice() {var _this5 = this;
+    saveRelPrice: function saveRelPrice() {var _this6 = this;
       if (this.priceShow !== null && this.priceShow !== undefined) {
         var priceShow = this.priceShow.toString();
         var commodityId = this.selectedCodeInfo.commodityId;
@@ -800,7 +874,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                 content: message,
                 showCancel: false });
 
-              _this5.reset();
+              _this6.reset();
             }
           });
         } else {

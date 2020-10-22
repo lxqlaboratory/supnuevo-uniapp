@@ -144,7 +144,8 @@
 <script>
 	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	import {
-		getSupnuevoScaleInfoListMobile
+		getSupnuevoScaleInfoListMobile,
+		saveOrUpdateSupnuevoCommonCommodityMobile
 	} from '@/api/change.js'
 	export default {
 		components: {
@@ -157,7 +158,7 @@
 				taxButtons:[],
 				selectTax:'',
 				sizeUnitButtons:[],
-				scaleUnitButtons:[],
+				scaleUnitButtons:[], 
 				 index1: 0,
 				 index2: 0,
 				  index3: 0,
@@ -196,8 +197,10 @@
 			 }
 			 for (var i = 0 ; i < this.form.taxArr.length ; i++){
 			 	this.taxButtons.push(this.form.taxArr[i].label)
-				if (this.form.taxArr[i].value == this.form.selectedCodeInfo.taxId)
-					 this.selectTax = this.form.taxArr[i].label
+				if (this.form.taxArr[i].value == this.form.selectedCodeInfo.taxId){
+					 this.selectTax = (this.form.taxArr[i].label)
+				}
+					
 			 }
 			 // for (var i = 0 ; i < this.form.taxArr.length ; i++){
 			 // 	this.scaleUnitButtons.push(this.form.taxArr[i].label)
@@ -298,14 +301,14 @@
 						})
 						return false;
 					}
-					
+					var selectTax = parseInt(this.selectTax)
 					this.selectedCodeInfo.setSizeValue = this.selectedCodeInfo.setSizeValue+''
 					saveOrUpdateSupnuevoCommonCommodityMobile({
-						taxId: this.selectTax,
+						taxId: selectTax,
 						supnuevoMerchantId: this.merchantId,
 						codigo: this.selectedCodeInfo.codigo,
 						commodityName: this.selectedCodeInfo.commodityName,
-					    nombre: this.state.selectedCodeInfo.nombre.toUpperCase(),
+					    nombre: this.selectedCodeInfo.nombre.toUpperCase(),
 						sizeValue: this.selectedCodeInfo.setSizeValue,
 						sizeUnited: this.selectedCodeInfo.sizeUnit,
 	                    scaleUnited: this.selectedCodeInfo.scaleUnit
@@ -315,7 +318,7 @@
 						   if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
 								uni.showModal({
 									title: "提示",
-									content: "errorMsg",
+									content: errorMsg,
 									showCancel: false,
 								})
 								
@@ -323,91 +326,19 @@
 						if (message !== null && message !== undefined && message !== "") {
 								uni.showModal({
 									title: "提示",
-									content: "message",
+									content: message,
+									success:function(){
+										uni.navigateBack({
+											delta:1
+										})
+									},
 									showCancel: false,
 								})
-								this.onCodigoSelect(this.selectedCodeInfo.codigo)
 								
 							}
 							
 					})
 					}
-			},
-			onCodigoSelect(key, item){
-				console.log(item.value)
-				const merchantId = getApp().globalData.merchantId;
-				var codigo = item.value;
-				getSupnuevoBuyerPriceFormByCodigoMobile({
-					codigo: codigo,
-					supnuevoMerchantId: merchantId
-				}).then(res => {
-					if(res.re == -2){
-					    uni.navigateTo({
-					    	url:'../index/index'
-					    })
-					}
-					
-					 if (res.errMessage !== null && res.errMessage !== undefined) {
-					    var errMsg = res.errMessage.toString();
-					     uni.showModal({
-					     	title: "提示",
-					     	content: errMsg,
-					     	showCancel: false,
-					     }) 
-						 return;
-					}else {
-						 console.log(res)
-						var goodInfo = res.object;
-						if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null
-							&& goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
-							goodInfo.goodName = goodInfo.nombre + ',' +
-							goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
-						}
-						else {
-							goodInfo.goodName = goodInfo.nombre;
-						}
-						
-						var printType = goodInfo.printType;
-						for (var i = 0; i < printType.length; i++) {
-							var j = i + 1;
-							var type = "type" + j;
-							this.printType[type] = printType.charAt(i);
-							if (i === 0 && printType.charAt(i) !== 1) {
-								this.printType[type] = 1;
-							}
-							}
-							var newPrintType = this.printType;
-							goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
-			
-							this.goods.codeNum = 0;
-							var goods = this.goods;
-						
-							if (goodInfo.priceShow == 0) {
-								goodInfo.priceShow = "";
-							}
-							var referencePrice = goodInfo.minPrice;
-							if(referencePrice==null || referencePrice==0.0)
-								this.referencePriceButton = true;
-							else if (referencePrice !== null && referencePrice !== undefined) {
-								this.setStatereferencePrice = referencePrice, this.referencePriceButton = false
-							}			
-							this.selectedCodeInfo = goodInfo;
-							this.codigo = goodInfo.codigo;
-							this.priceShow = goodInfo.priceShow,
-							this.printType = newPrintType, 
-							this.goods = goods, 
-							this.hasCodigo = true,
-							this.Gsuggestlevel = goodInfo.suggestLevel,
-							this.gengxingaijiaInput = goodInfo.priceShow,
-							this.commodityId = goodInfo.commodityId,
-							this.attachDataUrl1 = goodInfo.attachDataUrl1,
-							this.attachDataUrl2 = goodInfo.attachDataUrl2,
-							this.attachDataUrl3 = goodInfo.attachDataUrl3,
-							this.attachDataUrl4 = goodInfo.attachDataUrl4,
-							this.attachDataUrl = goodInfo.attachDataUrl
-			
-					}
-				})
 			},
 			scroll: function(e) {
 				console.log(e)

@@ -282,6 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 129));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
+
 {
   components: {
     wybLoading: wybLoading },
@@ -332,8 +333,10 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = fu
     }
     for (var i = 0; i < this.form.taxArr.length; i++) {
       this.taxButtons.push(this.form.taxArr[i].label);
-      if (this.form.taxArr[i].value == this.form.selectedCodeInfo.taxId)
-      this.selectTax = this.form.taxArr[i].label;
+      if (this.form.taxArr[i].value == this.form.selectedCodeInfo.taxId) {
+        this.selectTax = this.form.taxArr[i].label;
+      }
+
     }
     // for (var i = 0 ; i < this.form.taxArr.length ; i++){
     // 	this.scaleUnitButtons.push(this.form.taxArr[i].label)
@@ -375,7 +378,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = fu
       this.index3 = e.target.value;
       this.selectTax = this.taxButtons[this.index3];
     },
-    MaintainSubmit: function MaintainSubmit() {var _this2 = this;
+    MaintainSubmit: function MaintainSubmit() {
       console.log(98765431);
       if (this.selectedCodeInfo != undefined && this.selectedCodeInfo != null) {
         if (this.selectedCodeInfo.codigo === null || this.selectedCodeInfo.codigo === undefined || this.selectedCodeInfo.codigo === '') {
@@ -434,14 +437,14 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = fu
 
           return false;
         }
-
+        var selectTax = parseInt(this.selectTax);
         this.selectedCodeInfo.setSizeValue = this.selectedCodeInfo.setSizeValue + '';
-        saveOrUpdateSupnuevoCommonCommodityMobile({
-          taxId: this.selectTax,
+        (0, _change.saveOrUpdateSupnuevoCommonCommodityMobile)({
+          taxId: selectTax,
           supnuevoMerchantId: this.merchantId,
           codigo: this.selectedCodeInfo.codigo,
           commodityName: this.selectedCodeInfo.commodityName,
-          nombre: this.state.selectedCodeInfo.nombre.toUpperCase(),
+          nombre: this.selectedCodeInfo.nombre.toUpperCase(),
           sizeValue: this.selectedCodeInfo.setSizeValue,
           sizeUnited: this.selectedCodeInfo.sizeUnit,
           scaleUnited: this.selectedCodeInfo.scaleUnit }).
@@ -451,7 +454,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = fu
           if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
             uni.showModal({
               title: "提示",
-              content: "errorMsg",
+              content: errorMsg,
               showCancel: false });
 
 
@@ -459,91 +462,19 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = fu
           if (message !== null && message !== undefined && message !== "") {
             uni.showModal({
               title: "提示",
-              content: "message",
+              content: message,
+              success: function success() {
+                uni.navigateBack({
+                  delta: 1 });
+
+              },
               showCancel: false });
 
-            _this2.onCodigoSelect(_this2.selectedCodeInfo.codigo);
 
           }
 
         });
       }
-    },
-    onCodigoSelect: function onCodigoSelect(key, item) {var _this3 = this;
-      console.log(item.value);
-      var merchantId = getApp().globalData.merchantId;
-      var codigo = item.value;
-      getSupnuevoBuyerPriceFormByCodigoMobile({
-        codigo: codigo,
-        supnuevoMerchantId: merchantId }).
-      then(function (res) {
-        if (res.re == -2) {
-          uni.navigateTo({
-            url: '../index/index' });
-
-        }
-
-        if (res.errMessage !== null && res.errMessage !== undefined) {
-          var errMsg = res.errMessage.toString();
-          uni.showModal({
-            title: "提示",
-            content: errMsg,
-            showCancel: false });
-
-          return;
-        } else {
-          console.log(res);
-          var goodInfo = res.object;
-          if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null &&
-          goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
-            goodInfo.goodName = goodInfo.nombre + ',' +
-            goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
-          } else
-          {
-            goodInfo.goodName = goodInfo.nombre;
-          }
-
-          var printType = goodInfo.printType;
-          for (var i = 0; i < printType.length; i++) {
-            var j = i + 1;
-            var type = "type" + j;
-            _this3.printType[type] = printType.charAt(i);
-            if (i === 0 && printType.charAt(i) !== 1) {
-              _this3.printType[type] = 1;
-            }
-          }
-          var newPrintType = _this3.printType;
-          goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
-
-          _this3.goods.codeNum = 0;
-          var goods = _this3.goods;
-
-          if (goodInfo.priceShow == 0) {
-            goodInfo.priceShow = "";
-          }
-          var referencePrice = goodInfo.minPrice;
-          if (referencePrice == null || referencePrice == 0.0)
-          _this3.referencePriceButton = true;else
-          if (referencePrice !== null && referencePrice !== undefined) {
-            _this3.setStatereferencePrice = referencePrice, _this3.referencePriceButton = false;
-          }
-          _this3.selectedCodeInfo = goodInfo;
-          _this3.codigo = goodInfo.codigo;
-          _this3.priceShow = goodInfo.priceShow,
-          _this3.printType = newPrintType,
-          _this3.goods = goods,
-          _this3.hasCodigo = true,
-          _this3.Gsuggestlevel = goodInfo.suggestLevel,
-          _this3.gengxingaijiaInput = goodInfo.priceShow,
-          _this3.commodityId = goodInfo.commodityId,
-          _this3.attachDataUrl1 = goodInfo.attachDataUrl1,
-          _this3.attachDataUrl2 = goodInfo.attachDataUrl2,
-          _this3.attachDataUrl3 = goodInfo.attachDataUrl3,
-          _this3.attachDataUrl4 = goodInfo.attachDataUrl4,
-          _this3.attachDataUrl = goodInfo.attachDataUrl;
-
-        }
-      });
     },
     scroll: function scroll(e) {
       console.log(e);

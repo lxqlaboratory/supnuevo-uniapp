@@ -288,7 +288,81 @@
 			this.pricedicount.profitprice2 = getApp().globalData.profitprice2
 			this.pricedicount.profitprice3 = getApp().globalData.profitprice3
 			this.pricedicount.profitprice4 = getApp().globalData.profitprice4
-			
+			if (this.codigo !== null && this.codigo !== undefined && this.codigo !== ''){
+				const merchantId = getApp().globalData.merchantId;
+				getSupnuevoBuyerPriceFormByCodigoMobile({
+					codigo: this.codigo,
+					supnuevoMerchantId: merchantId
+				}).then(res => {
+					if(res.re == -2){
+					    uni.navigateTo({
+					    	url:'../index/index'
+					    })
+					}
+					
+					 if (res.errMessage !== null && res.errMessage !== undefined) {
+					    var errMsg = res.errMessage.toString();
+					     uni.showModal({
+					     	title: "提示",
+					     	content: errMsg,
+					     	showCancel: false,
+					     }) 
+						 return;
+					}else {
+						 console.log(res)
+						var goodInfo = res.object;
+						if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null
+							&& goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
+							goodInfo.goodName = goodInfo.nombre + ',' +
+							goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
+						}
+						else {
+							goodInfo.goodName = goodInfo.nombre;
+						}
+						
+						var printType = goodInfo.printType;
+						for (var i = 0; i < printType.length; i++) {
+							var j = i + 1;
+							var type = "type" + j;
+							this.printType[type] = printType.charAt(i);
+							if (i === 0 && printType.charAt(i) !== 1) {
+								this.printType[type] = 1;
+							}
+							}
+							var newPrintType = this.printType;
+							goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
+							
+							this.goods.codeNum = 0;
+							var goods = this.goods;
+						
+							if (goodInfo.priceShow == 0) {
+								goodInfo.priceShow = "";
+							}
+							var referencePrice = goodInfo.minPrice;
+							if(referencePrice==null || referencePrice==0.0)
+								this.referencePriceButton = true;
+							else if (referencePrice !== null && referencePrice !== undefined) {
+								this.setStatereferencePrice = referencePrice, this.referencePriceButton = false
+							}			
+							this.selectedCodeInfo = goodInfo;
+							this.codigo = goodInfo.codigo;
+							this.priceShow = goodInfo.priceShow,
+							this.printType = newPrintType, 
+							this.goods = goods, 
+							this.hasCodigo = true,
+							this.Gsuggestlevel = goodInfo.suggestLevel,
+							this.gengxingaijiaInput = goodInfo.priceShow,
+							this.commodityId = goodInfo.commodityId,
+							this.attachDataUrl1 = goodInfo.attachDataUrl1,
+							this.attachDataUrl2 = goodInfo.attachDataUrl2,
+							this.attachDataUrl3 = goodInfo.attachDataUrl3,
+							this.attachDataUrl4 = goodInfo.attachDataUrl4,
+							this.attachDataUrl = goodInfo.attachDataUrl
+				
+					}
+				})
+			}
+				
 		},
 		methods: {
 			bindPickerChange: function(e) {

@@ -54,3 +54,11 @@ export function getSupnuevoScaleInfoListMobile(data) {
 		data: data
 	})
 }
+
+export function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
+	return request.request({
+		url: '/commodity/saveOrUpdateSupnuevoCommonCommodityMobile',
+		method: 'POST',
+		data: data
+	})
+}
