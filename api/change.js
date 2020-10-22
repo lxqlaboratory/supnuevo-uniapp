@@ -14,3 +14,43 @@ export function getSupnuevoBuyerPriceFormByCodigoMobile(data) {
 		data: data
 	})
 }
+
+export function saveOrUpdateSupnuevoBuyerCommodityPriceMobile(data) {
+	return request.request({
+		url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile(data) {
+	return request.request({
+		url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSupnuevoCommodityTaxInfoListMobile(data) {
+	return request.request({
+		url: '/commodity/getSupnuevoCommodityTaxInfoListMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function setCalculationStorageMobile(data) {
+	return request.request({
+		url: '/commodity/setCalculationStorageMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSupnuevoScaleInfoListMobile(data) {
+	return request.request({
+		url: '/commodity/getSupnuevoScaleInfoListMobile',
+		method: 'POST',
+		data: data
+	})
+}

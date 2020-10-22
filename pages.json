@@ -54,7 +54,27 @@
 				"backgroundColor": "#3a6eff"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/price/MaintainCommInfo",
+            "style" : {"navigationBarTitleText": "修改商品",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+				}
+        } 
+		,{
+            "path" : "pages/price/compute",
+            "style" : {
+				"navigationBarTitleText": "设置计算键",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"}
+        }
+        ,{
+            "path" : "pages/price/AddCommInfo",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

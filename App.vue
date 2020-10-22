@@ -1,11 +1,25 @@
 <script>
 	export default {
 		globalData: {
+			root:'',
 			vueSessionId: '',
 			userType: '',
 			personId: '',
 			canAchievement: '',
-			merchantId: ''
+			merchantId: '',
+			priceModifyState: '',
+			announcement: '',
+			weightService: {},
+			commodityClassList: [],
+			IVAprice1: '',
+			IVAprice2: '',
+			IVAprice3: '',
+			IVAprice4: '',
+			doubleORper: '',//1是浮点制，2是百分制
+			profitprice1: '',
+			profitprice2: '',
+			profitprice3: '',
+			profitprice4: ''
 		},
 		onLaunch: function() {
 			console.log('App Launch')
@@ -21,4 +35,6 @@
 
 <style>
 	/*每个页面公共css */
+	@import "static/colorui/weui-extend.css";
+	@import "static/colorui/icon.css";
 </style>

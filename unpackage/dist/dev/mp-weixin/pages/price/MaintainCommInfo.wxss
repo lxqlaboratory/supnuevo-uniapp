@@ -1,0 +1,134 @@
+
+.InGood2image {
+		height: 100%;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-flex: 5.5;
+		-webkit-flex: 5.5;
+		        flex: 5.5;
+		vertical-align:middle ;
+}
+.uni-input {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		        flex: 1;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+}
+.icon-right {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		        flex: 1;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		width: 27px;
+		height: 27px;
+}
+.GoodInfo {
+		height: 45px;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: row;
+		        flex-direction: row;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		border: 1px solid #AAAAAA ;
+		background-color: #CCE6FF;
+}
+.InGood1 {
+		height: 100%;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-flex: 3.5;
+		-webkit-flex: 3.5;
+		        flex: 3.5;
+}
+.InGood2 {
+		height: 100%;
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		        justify-content: center;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-flex: 5.5;
+		-webkit-flex: 5.5;
+		        flex: 5.5;
+}
+@font-face {
+	  font-family: 'myIcon';
+	  src: url('https://at.alicdn.com/t/font_720567_dnwdc9tepfd.ttf') format('truetype');
+}
+.uni-common-mt{
+		margin-top:30rpx;
+}
+.uni-padding-wrap{
+		width:100%;
+		padding:0 30rpx;
+}
+.scroll-view_H {
+		white-space: nowrap;
+		width: 100%;
+}
+.uni-bg-red{
+	background:#F76260; color:#FFF;
+}
+.uni-bg-green{
+	background:#09BB07; color:#FFF;
+}
+.uni-bg-blue{
+	background:#007AFF; color:#FFF;
+}
+.scroll-view-item {
+		height: 300rpx;
+		line-height: 300rpx;
+		text-align: center;
+		font-size: 36rpx;
+}
+.scroll-view-item_H {
+		display: inline-block;
+		width: 100%;
+		height: 300rpx;
+		line-height: 300rpx;
+		text-align: center;
+		font-size: 36rpx;
+}
+

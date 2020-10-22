@@ -7,3 +7,11 @@ export function login(data) {
 		data: data
 	})
 }
+
+export function getMerchantInitInfoMobile(data) {
+	return request.request({
+		url: '/merchant/getMerchantInitInfoMobile',
+		method: 'POST',
+		data: data
+	})
+}

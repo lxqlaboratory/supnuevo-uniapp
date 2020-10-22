@@ -25,7 +25,8 @@
 </template>
 <script>
 	import {
-		login
+		login,
+		getMerchantInitInfoMobile
 	} from '@/api/login.js'
 
 	export default {
@@ -37,7 +38,7 @@
 				errorContent: ''
 			}
 		},
-		mounted() {
+		mounted () { 
 			let that = this;
 			//页面加载完成，获取本地存储的用户名及密码
 			const userName = uni.getStorageSync('userName');
@@ -95,29 +96,180 @@
 					}
 				})
 			},
+			getSession(ob){
+				 // if (ob !== null)
+				 //        return {
+				 //            type: types.AUTH_ACCESS__ACK,
+				 //            supnuevoMerchantId: ob.supnuevoMerchantId,
+				 //            merchantStates: ob.merchantStates,
+				 //            auth: true,
+				 //            validate: true,
+				 //            username: ob.username,
+				 //            password: ob.password,
+				 //            unionId: ob.unionId,
+				 //            unionMemberType:ob.unionMemberType,
+				 //            shopName:ob.shopName,
+				 //            root:ob.root,
+				 //            unionNum:ob.unionNum
+				 //        };
+				 //    else
+				 //        return {
+				 //            type: types.AUTH_ACCESS__ACK,
+				 //            auth: false
+				 //        }
+			},
 			formSubmit() {
+				console.log(1111111)
 				var that = this;
 				login({
 					loginName: this.loginName,
 					password: this.password
 				}).then(res => {
-					getApp().globalData.vueSessionId = res.sessionId
-					getApp().globalData.merchantId = res.merchantId
+					var reCode = res.reCode;
+					console.log(22222)
 					console.log(res)
-					if (res.reCode == '0') {
+					getApp().globalData.vueSessionId = res.sessionId
+					
+					// getApp().globalData.merchantId = res.merchantId
+					// getApp().globalData.IVAprice1 = res.IVAprice1
+					// console.log(getApp().globalData.merchantId)
+					getMerchantInitInfoMobile ().then(res => {
+						console.log(res)
+						getApp().globalData.root = res.data.root
+						getApp().globalData.merchantId = res.data.merchantId
+						var errorMsg = res.message;
+						 if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+							// var ob = getSession(null);
+							// dispatch(clearTimerAction());
+						// 	if (cb)
+						// 		cb(errorMsg);
+						 }else {
+                            var priceModifyState = res.data.priceModifyState;
+                            var csVersion = res.data.csVersion;
+                            if(csVersion!=null && csVersion!='' && csVersion!=undefined)
+                                csVersion = parseFloat(csVersion)
+								}
+                            if (priceModifyState === 0 || priceModifyState === 2) {
+                                priceModifyState = 0;
+								uni.showModal({
+									title: "提示",
+									content: '改价未开启，不能使用',
+									showCancel: false,
+								})
+                            } else if (priceModifyState === 1) {
+                               priceModifyState = 1
+								uni.showModal({
+									title: "提示",
+									content: '客户端版本不符，请更新客户端程序到第五版本',
+									showCancel: false,
+								})
+                            } else {
+                                if (csVersion < 5) {
+                                    uni.showModal({
+                                    	title: "提示",
+                                    	content: '电脑客户端程序版本低，请升级客户端版本',
+                                    	showCancel: false,
+                                      })
+									  
+                                            //     text: 'OK', onPress: () => {
+                                            //     resolve({priceModifyState: 2});
+                                            //     dispatch(setSessionId(sessionId));
+                                            //     dispatch(setAnnouncement(json.data.helpContent));
+                                            //     dispatch(setCommodityClassList(json.data.commodityClassList));
+                                            //     dispatch(setWeightService(json.data.weightService));
+                                            //     dispatch(getSession({
+                                            //             username: json.data.username,
+                                            //             merchantStates: json.data.merchantStates,
+                                            //             supnuevoMerchantId: json.data.merchantId,
+                                            //             merchantType: json.data.merchantType,
+                                            //             password: password,
+                                            //             unionId: json.data.unionId,
+                                            //             unionMemberType:json.data.unionMemberType,
+                                            //             shopName:json.data.shopName,
+                                            //             root:json.data.root ,
+                                            //             unionNum:json.data.unionNum
+                                            //         }
+                                            //     ));
+                                            //     dispatch(setJisuanPrice(json.data.addPriceMap));
+                                            //     if (json.data.FlashFrequency == null) {
+                                            //         dispatch(setScanTimerAction(2))
+                                            //     } else {
+                                            //         dispatch(setScanTimerAction(json.data.FlashFrequency))
+                                            //     }
+                                            //     PreferenceStore.put('username', username);
+                                            //     PreferenceStore.put('password', password);
+
+                                            //     dispatch(clearTimerAction());
+                                            // }
+                                     }
+
+                                 else{
+									 console.log(666666)
+									 getApp().globalData.priceModifyState = 2
+      //                               dispatch(setSessionId(sessionId));
+									getApp().globalData.PriceMap = res.data.addPriceMap
+									getApp().globalData.announcement = res.data.helpContent
+									getApp().globalData.weightService = res.data.weightService
+									getApp().globalData.IVAprice2 = res.data.addPriceMap.AddIva1
+									getApp().globalData.IVAprice3 = res.data.addPriceMap.AddIva2
+									getApp().globalData.IVAprice4 = res.data.addPriceMap.AddIva3
+									getApp().globalData.IVAprice1 = res.data.addPriceMap.AddIva0
+									getApp().globalData.doubleORper = res.data.addPriceMap.AddMode
+									getApp().globalData.profitprice1 = res.data.addPriceMap.AddProfit0
+									getApp().globalData.profitprice2= res.data.addPriceMap.AddProfit1
+									getApp().globalData.profitprice3 = res.data.addPriceMap.AddProfit2
+									getApp().globalData.profitprice4 = res.data.addPriceMap.AddProfit3 
+									console.log(res.data.addPriceMap)
+									console.log(getApp().globalData.doubleORper)  
+									// console.log(res.data.addPriceMap)
+      //                               dispatch(setWeightService(res.data.weightService));
+      //                               dispatch(getSession({
+      //                                       username: json.data.username,
+      //                                       merchantStates: json.data.merchantStates,
+      //                                       supnuevoMerchantId: json.data.merchantId,
+      //                                       merchantType: json.data.merchantType,
+      //                                       password: password,
+      //                                       unionId: json.data.unionId,
+      //                                       unionMemberType:json.data.unionMemberType,
+      //                                       shopName:json.data.shopName,
+      //                                       root:json.data.root,
+      //                                       unionNum:json.data.unionNum
+      //                                   }
+      //                               ));
+      //                               dispatch(setJisuanPrice(json.data.addPriceMap));
+      //                               if (json.data.FlashFrequency == null) {
+      //                                   dispatch(setScanTimerAction(2))
+      //                               } else {
+      //                                   dispatch(setScanTimerAction(json.data.FlashFrequency))
+      //                               }
+      //                               PreferenceStore.put('username', username);
+      //                               PreferenceStore.put('password', password);
+
+      //                               dispatch(clearTimerAction());
+      //                           }
+                             }
+
+                        }
+					
+					
+					if (reCode == '0') {
 						uni.setStorageSync('userName', that.loginName);
 						uni.setStorageSync('userPsw', that.password);
-
+					
 						uni.switchTab({
 							url: '../price/modifyPrice'
 						})
-
-
-
 					} else {
 						this.errorContent = res.errorMessageList[1]
 						this.$refs.popup.open()
-					}
+					}					
+					}).catch(err => {
+					this.errorContent = '登录验证错误'
+					this.$refs.popup.open()
+					})
+						
+					
+
 
 				}).catch(err => {
 					this.errorContent = '登录验证错误'
