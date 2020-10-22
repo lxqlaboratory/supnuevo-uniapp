@@ -1,0 +1,30 @@
+
+.p-list {
+	background-color: rgba(9, 9, 9, 0.3);
+
+	bottom: 0rpx;
+	width: 100%;
+	height: 140rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.l-item {
+	margin-left: 7rpx;
+	color: #ff0000;
+	height: 160rpx;
+	width: 118rpx;
+}
+.i-img {
+	margin-top: 20rpx;
+	width: 80px;
+	height: 100px;
+}
+.i-icon {
+	position: relative;
+	top: -110rpx;
+	left: 80rpx;
+	width: 30rpx;
+	height: 30rpx;
+}
+

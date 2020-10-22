@@ -60,8 +60,12 @@
 						</view>
 						<view class="InGood2image">
 							 <picker @change="sizeUnitButtonsChange" :value="index1" :range="sizeUnitButtons">
-									<view class="uni-input">{{selectedCodeInfo.sizeUnit}}</view>
-									<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
+								 <view class="" style="display: flex;">
+								 	<view class="uni-input" style="flex: 1;">{{selectedCodeInfo.sizeUnit}}</view>
+									<view class="" style="flex: 1;">
+										<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
+									</view>
+								 </view>							
 							 </picker>
 						</view>
 						 
@@ -73,12 +77,22 @@
 						</view>
 						<view class="InGood2image">
 							<view  v-if="scaleUnitButtons.length<=0"  @click="scaleclick">
-								<view class="uni-input">{{selectedCodeInfo.scaleUnit}}</view>
-								<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
+								<view class="" style="display: flex;">
+									<view class="uni-input">{{selectedCodeInfo.scaleUnit}}</view>
+									<view class="" style="flex: 1;">
+										<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
+									</view>
+								</view>
 							</view>
 							 <picker @change="scaleUnitButtonsChange" v-if="scaleUnitButtons.length>0" :value="index2" :range="scaleUnitButtons">
-									<view class="uni-input">{{selectedCodeInfo.scaleUnit}}</view> 
-									<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
+									<view class="" style="display: flex;">
+										<view class="uni-input" style="flex: 1;">{{selectedCodeInfo.scaleUnit}}</view>
+										<view class="" style="flex: 1;">
+											<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
+										</view>
+									</view>
+										
+										
 							 </picker>
 						</view>	 
 					</view>
@@ -89,8 +103,12 @@
 						</view>
 						<view class="InGood2">
 							 <picker @change="taxButtonsChange" :value="index3" :range="taxButtons">
-									<view class="uni-input">{{selectTax}}</view> 
-									<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
+								 <view class="" style="display: flex;">
+								 	<view class="uni-input" style="flex: 9;">{{selectTax}}</view> 
+									<view class=""  style="flex: 1;">
+										<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
+									</view>
+								 </view>				
 							 </picker>
 						</view>
 					</view>
@@ -120,9 +138,18 @@
 							</view>	 
 					</view>
 					
-					<view class="" style="background-color: #CCE6FF; border: 1px solid #AAAAAA ;background-color: #CCE6FF;height: 280px;">
+					<view class="" style="background-color: #CCE6FF; border: 1px solid #AAAAAA ;background-color: #CCE6FF;height: 260px;">
 						<view class="" style="padding-top: 10px;text-align: center;">
 							<text style="font-size: 15px; ">备选图像</text>
+						</view>
+						<cover-view class="p-list">
+							<cover-view class="l-item" v-for="(item, index) in photoArr" :key="index">
+								<cover-image class="i-img" :src="item" mode="scaleToFill"></cover-image>
+								<cover-image @click="deletePhoto(index)" class="i-icon" src="../../static/image/images/delete.png" mode="scaleToFill"></cover-image>
+							</cover-view>
+						</cover-view>
+						<view class="" style="margin-top: 10px;text-align:center">
+							<button type="primary" @click="uploadFoodImg" size="mini">上传备选图像</button>
 						</view>
 					</view>
 					
@@ -130,10 +157,7 @@
 						<form @submit="MaintainSubmit" >
 							<button type="primary" form-type="submit">确认</button>
 						</form>
-					</view>
-					
-						
-					
+					</view>				
 				</scroll-view>
 			</view>	
 		  
@@ -147,6 +171,7 @@
 		getSupnuevoScaleInfoListMobile,
 		saveOrUpdateSupnuevoCommonCommodityMobile
 	} from '@/api/change.js'
+	var that = null;
 	export default {
 		components: {
 		        wybLoading
@@ -159,6 +184,7 @@
 				selectTax:'',
 				sizeUnitButtons:[],
 				scaleUnitButtons:[], 
+				photoArr: [],
 				 index1: 0,
 				 index2: 0,
 				  index3: 0,
@@ -192,6 +218,7 @@
 			 this.picUrl4 = this.form.attachDataUrl4
 			 this.selectedCodeInfo = this.form.selectedCodeInfo
 			 this.merchantId = this.form.merchantId
+			 that = this;
 			 for (var i = 0 ; i < this.form.sizeArr.length ; i++){
 				this.sizeUnitButtons.push(this.form.sizeArr[i].label)
 			 }
@@ -340,6 +367,28 @@
 					})
 					}
 			},
+			deletePhoto(index) {
+				that.photoArr.splice(index, 1);
+			},
+			uploadFoodImg() {
+				if (that.photoArr.length > that.photoArrCapacity) {
+					that.tips('超出限制咯~');
+					return 0;
+				}
+				uni.chooseImage({
+					count: that.photoArrCapacity - that.photoArr.length,
+					success(res) {
+						console.log('res ==>', res);
+						res.tempFilePaths.forEach(item => {
+							// 正式环境下调用此方法上传图片
+							// that.uploadImg(item).then(result => {
+							// 	that.photoArr.push(result.data);
+							// });
+							that.photoArr.push(item);
+						});
+					}
+				});
+			},
 			scroll: function(e) {
 				console.log(e)
 				this.old.scrollTop = e.detail.scrollTop
@@ -405,6 +454,34 @@
 		display: flex;
 		flex: 5.5;
 	}
+	.p-list {
+		margin-top: 20px;
+		background-color: rgba(9, 9, 9, 0.3);
+		bottom: 0rpx;
+		width: 100%;
+		height: 150px;
+		display: flex;
+	} 
+	.l-item {
+		margin-left: 7rpx;
+		color: #ff0000;
+		height: 120px;
+		width: 90px;
+	}
+	.i-img {
+		margin-top: 20rpx;
+		width: 85px;
+		height: 115px;
+	}
+	.i-icon {
+		position: relative;
+		top: -115px;
+		left: 130rpx;
+		width: 35rpx;
+		height: 35rpx;
+	}
+	
+	
 	@font-face {
 	  font-family: 'myIcon';
 	  src: url('https://at.alicdn.com/t/font_720567_dnwdc9tepfd.ttf') format('truetype');
