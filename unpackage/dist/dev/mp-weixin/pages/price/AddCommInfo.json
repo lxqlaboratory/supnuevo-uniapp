@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "添加商品",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#3a6eff",
+  "backgroundColor": "#3a6eff",
+  "usingComponents": {
+    "wyb-loading": "/components/wyb-loading/wyb-loading"
+  }
 }

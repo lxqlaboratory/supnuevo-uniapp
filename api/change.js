@@ -62,3 +62,12 @@ export function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
 		data: data
 	})
 }
+
+uploadAttachData
+export function uploadAttachData(data) {
+	return request.request({
+		url: '/comm/uploadAttachData',
+		method: 'POST',
+		data: data
+	})
+}

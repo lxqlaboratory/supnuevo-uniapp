@@ -1935,7 +1935,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 125:
+/***/ 134:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
   \************************************************************/
@@ -9235,7 +9235,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function getQueryDataListByInputStringMobile(data) {
   return _request.default.request({
@@ -9300,6 +9300,15 @@ function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
 
 }
 
+uploadAttachData;
+function uploadAttachData(data) {
+  return _request.default.request({
+    url: '/comm/uploadAttachData',
+    method: 'POST',
+    data: data });
+
+}
+
 /***/ }),
 
 /***/ 4:
@@ -9313,7 +9322,7 @@ function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
 
 /***/ }),
 
-/***/ 88:
+/***/ 90:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
   \************************************************************/
@@ -9321,7 +9330,7 @@ function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 89));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 91));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -9348,7 +9357,7 @@ var config = {
 
 /***/ }),
 
-/***/ 89:
+/***/ 91:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
   \**************************************************************/

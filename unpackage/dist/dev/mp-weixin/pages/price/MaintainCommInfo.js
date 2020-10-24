@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 106))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 101))
   }
 }
 var render = function() {
@@ -303,7 +303,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 106));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+
+var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 101));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+
 
 
 
@@ -315,12 +317,14 @@ var that = null;var _default =
   data: function data() {
     return {
       root: '',
+      commodityId: '',
       scaleArr: [],
       taxButtons: [],
       selectTax: '',
       sizeUnitButtons: [],
       scaleUnitButtons: [],
       photoArr: [],
+      photoArrCapacity: 4,
       index1: 0,
       index2: 0,
       index3: 0,
@@ -331,7 +335,6 @@ var that = null;var _default =
       picUrl3: '',
       picUrl4: '',
       form: {},
-
       title: '',
       merchantId: '',
       selectedCodeInfo: {},
@@ -345,13 +348,23 @@ var that = null;var _default =
     this.$refs.loading.showLoading();
     this.root = getApp().globalData.root;
     this.form = JSON.parse(decodeURIComponent(option.form));
+    this.commodityId = this.form.commodityId;
     console.log(this.form);
     console.log(this.root);
     this.bigPicUrl = this.form.attachDataUrl1;
+    console.log(this.bigPicUrl);
     this.picUrl1 = this.form.attachDataUrl1;
+    if (this.picUrl1 !== null && this.picUrl1 !== undefined && this.picUrl1 !== '')
+    this.photoArr[0] = this.head + this.picUrl1;
     this.picUrl2 = this.form.attachDataUrl2;
+    if (this.picUrl2 !== null && this.picUrl2 !== undefined && this.picUrl2 !== '')
+    this.photoArr[1] = this.head + this.picUrl2;
     this.picUrl3 = this.form.attachDataUrl3;
+    if (this.picUrl3 !== null && this.picUrl3 !== undefined && this.picUrl3 !== '')
+    this.photoArr[2] = this.head + this.picUrl3;
     this.picUrl4 = this.form.attachDataUrl4;
+    if (this.picUrl4 !== null && this.picUrl4 !== undefined && this.picUrl4 !== '')
+    this.photoArr[3] = this.head + this.picUrl4;
     this.selectedCodeInfo = this.form.selectedCodeInfo;
     this.merchantId = this.form.merchantId;
     that = this;
@@ -408,7 +421,8 @@ var that = null;var _default =
     MaintainSubmit: function MaintainSubmit() {
       console.log(98765431);
       if (this.selectedCodeInfo != undefined && this.selectedCodeInfo != null) {
-        if (this.selectedCodeInfo.codigo === null || this.selectedCodeInfo.codigo === undefined || this.selectedCodeInfo.codigo === '') {
+        if (this.selectedCodeInfo.codigo === null || this.selectedCodeInfo.codigo === undefined || this.selectedCodeInfo.codigo ===
+        '') {
           uni.showModal({
             title: "提示",
             content: "商品条码不能为空",
@@ -420,7 +434,8 @@ var that = null;var _default =
         //     alert("商品税类不能为空");
         //     return false;
         // }
-        if (this.selectedCodeInfo.nombre === null || this.selectedCodeInfo.nombre === undefined || this.selectedCodeInfo.nombre === '') {
+        if (this.selectedCodeInfo.nombre === null || this.selectedCodeInfo.nombre === undefined || this.selectedCodeInfo.nombre ===
+        '') {
 
           uni.showModal({
             title: "提示",
@@ -429,7 +444,8 @@ var that = null;var _default =
 
           return false;
         }
-        if (this.selectedCodeInfo.nombre !== null || this.selectedCodeInfo.nombre !== undefined || this.selectedCodeInfo.nombre !== '') {
+        if (this.selectedCodeInfo.nombre !== null || this.selectedCodeInfo.nombre !== undefined || this.selectedCodeInfo.nombre !==
+        '') {
           if (this.selectedCodeInfo.nombre.length < 10) {
             uni.showModal({
               title: "提示",
@@ -440,7 +456,8 @@ var that = null;var _default =
           }
         }
 
-        if (this.selectedCodeInfo.setSizeValue === null || this.selectedCodeInfo.setSizeValue === undefined || this.selectedCodeInfo.setSizeValue === '') {
+        if (this.selectedCodeInfo.setSizeValue === null || this.selectedCodeInfo.setSizeValue === undefined || this.selectedCodeInfo.
+        setSizeValue === '') {
           uni.showModal({
             title: "提示",
             content: "商品含量不能为空",
@@ -448,7 +465,8 @@ var that = null;var _default =
 
           return false;
         }
-        if (this.selectedCodeInfo.sizeUnit === null || this.selectedCodeInfo.sizeUnit === undefined || this.selectedCodeInfo.sizeUnit === '') {
+        if (this.selectedCodeInfo.sizeUnit === null || this.selectedCodeInfo.sizeUnit === undefined || this.selectedCodeInfo.
+        sizeUnit === '') {
           uni.showModal({
             title: "提示",
             content: "含量单位不能为空",
@@ -456,7 +474,8 @@ var that = null;var _default =
 
           return false;
         }
-        if (this.selectedCodeInfo.scaleUnit === null || this.selectedCodeInfo.scaleUnit === undefined || this.selectedCodeInfo.scaleUnit === '') {
+        if (this.selectedCodeInfo.scaleUnit === null || this.selectedCodeInfo.scaleUnit === undefined || this.selectedCodeInfo.
+        scaleUnit === '') {
           uni.showModal({
             title: "提示",
             content: "比价单位不能为空",
@@ -507,23 +526,84 @@ var that = null;var _default =
       that.photoArr.splice(index, 1);
     },
     uploadFoodImg: function uploadFoodImg() {
-      if (that.photoArr.length > that.photoArrCapacity) {
-        that.tips('超出限制咯~');
+      var base64 = null;
+      if (that.photoArr.length >= that.photoArrCapacity) {
+        uni.showModal({
+          title: "提示",
+          content: "超出限制咯~",
+          showCancel: false });
+
         return 0;
       }
       uni.chooseImage({
         count: that.photoArrCapacity - that.photoArr.length,
         success: function success(res) {
-          console.log('res ==>', res);
-          res.tempFilePaths.forEach(function (item) {
-            // 正式环境下调用此方法上传图片
-            // that.uploadImg(item).then(result => {
-            // 	that.photoArr.push(result.data);
-            // });
-            that.photoArr.push(item);
-          });
+          console.log(res.tempFilePaths[0]);
+          uni.request({
+            url: res.tempFilePaths[0],
+            method: 'GET',
+            responseType: 'arraybuffer',
+            success: function success(ress) {
+              console.log(ress.data);
+              base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
+              // base64 = 'data:image/jpeg;base64,' + base64; 
+              //不加上这串字符，在页面无法显示的哦
+              that.uploadImg(base64);
+            } });
+
+          // res.tempFilePaths.forEach(item => {
+          // 	// 正式环境下调用此方法上传图片
+          // 	// that.uploadImg(item).then(result => {
+          // 	// 	that.photoArr.push(result.data);
+          // 	// });
+          // 	that.photoArr.push(item);
+
+          // });
         } });
 
+    },
+    uploadImg: function uploadImg(base64) {
+      console.log(111111111111);
+      (0, _change.uploadAttachData)({
+        ownerId: that.commodityId,
+        fileData: base64,
+        beanName: "supnuevoCommonCommodityProcessRmi",
+        folder: "supnuevo/commodity",
+        fileName: that.selectedCodeInfo.codigo + '/' + that.photoArr.length + 1 + ".jpg",
+        remark: "supnuevo",
+        attachType: "90",
+        imageWidth: 480,
+        imageHeight: 640,
+        paras: {
+          merchantId: that.merchantId,
+          index: that.photoArr.length + 1 } }).
+
+      then(function (res) {
+        console.log(res);
+        var errorMsg = res.errorMsg;
+        if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+          uni.showModal({
+            title: "提示",
+            content: errorMsg,
+            showCancel: false });
+
+        } else {
+          uni.showModal({
+            title: "提示",
+            content: "图片上传成功",
+            showCancel: false });
+
+          that.photoArr[that.photoArr.length] = that.head + res.urlAddress;
+          // this.onCodigoSelect();
+        }
+      }).catch(function (err) {
+        uni.showModal({
+          title: "提示",
+          content: err,
+          showCancel: false });
+
+      });
+      console.log(that.commodityId);
     },
     scroll: function scroll(e) {
       console.log(e);

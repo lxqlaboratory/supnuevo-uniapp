@@ -1,162 +1,165 @@
 
 .InGood2image {
-		height: 100%;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		        justify-content: center;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		        align-items: center;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-flex: 5.5;
-		-webkit-flex: 5.5;
-		        flex: 5.5;
-		vertical-align:middle ;
+	height: 100%;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-flex: 5.5;
+	-webkit-flex: 5.5;
+	        flex: 5.5;
+	vertical-align: middle;
 }
 .uni-input {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-flex: 1;
-		-webkit-flex: 1;
-		        flex: 1;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		        align-items: center;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		        justify-content: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
 }
 .icon-right {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-flex: 1;
-		-webkit-flex: 1;
-		        flex: 1;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		        align-items: center;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		        justify-content: center;
-		width: 27px;
-		height: 27px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	width: 27px;
+	height: 27px;
 }
 .GoodInfo {
-		height: 45px;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-orient: horizontal;
-		-webkit-box-direction: normal;
-		-webkit-flex-direction: row;
-		        flex-direction: row;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		        justify-content: center;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		        align-items: center;
-		border: 1px solid #AAAAAA ;
-		background-color: #CCE6FF;
+	height: 45px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	border: 1px solid #AAAAAA;
+	background-color: #CCE6FF;
 }
 .InGood1 {
-		height: 100%;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		        justify-content: center;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		        align-items: center;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-flex: 3.5;
-		-webkit-flex: 3.5;
-		        flex: 3.5;
+	height: 100%;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-flex: 3.5;
+	-webkit-flex: 3.5;
+	        flex: 3.5;
 }
 .InGood2 {
-		height: 100%;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		        justify-content: center;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		        align-items: center;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-flex: 5.5;
-		-webkit-flex: 5.5;
-		        flex: 5.5;
+	height: 100%;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-flex: 5.5;
+	-webkit-flex: 5.5;
+	        flex: 5.5;
 }
 .p-list {
-		margin-top: 20px;
-		background-color: rgba(9, 9, 9, 0.3);
-		bottom: 0rpx;
-		width: 100%;
-		height: 150px;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
+	margin-top: 20px;
+	background-color: rgba(9, 9, 9, 0.3);
+	bottom: 0rpx;
+	width: 100%;
+	height: 150px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
 }
 .l-item {
-		margin-left: 7rpx;
-		color: #ff0000;
-		height: 120px;
-		width: 90px;
+	margin-left: 7rpx;
+	color: #ff0000;
+	height: 120px;
+	width: 90px;
 }
 .i-img {
-		margin-top: 20rpx;
-		width: 85px;
-		height: 115px;
+	margin-top: 20rpx;
+	width: 85px;
+	height: 115px;
 }
 .i-icon {
-		position: relative;
-		top: -115px;
-		left: 130rpx;
-		width: 35rpx;
-		height: 35rpx;
+	position: relative;
+	top: -115px;
+	left: 130rpx;
+	width: 35rpx;
+	height: 35rpx;
 }
 @font-face {
-	  font-family: 'myIcon';
-	  src: url('https://at.alicdn.com/t/font_720567_dnwdc9tepfd.ttf') format('truetype');
+	font-family: 'myIcon';
+	src: url('https://at.alicdn.com/t/font_720567_dnwdc9tepfd.ttf') format('truetype');
 }
-.uni-common-mt{
-		margin-top:30rpx;
+.uni-common-mt {
+	margin-top: 30rpx;
 }
-.uni-padding-wrap{
-		width:100%;
-		padding:0 30rpx;
+.uni-padding-wrap {
+	width: 100%;
+	padding: 0 30rpx;
 }
 .scroll-view_H {
-		white-space: nowrap;
-		width: 100%;
+	white-space: nowrap;
+	width: 100%;
 }
-.uni-bg-red{
-	background:#F76260; color:#FFF;
+.uni-bg-red {
+	background: #F76260;
+	color: #FFF;
 }
-.uni-bg-green{
-	background:#09BB07; color:#FFF;
+.uni-bg-green {
+	background: #09BB07;
+	color: #FFF;
 }
-.uni-bg-blue{
-	background:#007AFF; color:#FFF;
+.uni-bg-blue {
+	background: #007AFF;
+	color: #FFF;
 }
 .scroll-view-item {
-		height: 300rpx;
-		line-height: 300rpx;
-		text-align: center;
-		font-size: 36rpx;
+	height: 300rpx;
+	line-height: 300rpx;
+	text-align: center;
+	font-size: 36rpx;
 }
 .scroll-view-item_H {
-		display: inline-block;
-		width: 100%;
-		height: 300rpx;
-		line-height: 300rpx;
-		text-align: center;
-		font-size: 36rpx;
+	display: inline-block;
+	width: 100%;
+	height: 300rpx;
+	line-height: 300rpx;
+	text-align: center;
+	font-size: 36rpx;
 }
 

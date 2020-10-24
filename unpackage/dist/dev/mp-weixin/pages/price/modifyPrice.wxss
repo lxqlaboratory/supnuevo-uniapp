@@ -40,7 +40,7 @@
   -webkit-align-items: center;
           align-items: center;
   border-width: 3px;
-  border: solid;
+  border: 1px solid;
   border-color: #999999;
 }
 .input1 {

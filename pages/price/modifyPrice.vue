@@ -1,6 +1,7 @@
 <template>
 
 	<view class="container">
+		<wyb-loading ref="loading"/>
 		<view class="zaiui-head-search-box" style="background-color: #0081FF;">
 			<view class="zaiui-flex-tab ">
 				<view class="flex text-white">
@@ -22,10 +23,10 @@
 		</view>
 		
 		<view class="priceinput">
-			<taogewan-combox-remote class="input1" placeholder="请输入商品条码尾数" emptyTips=" " :candidates="searchListFinal" @input="changecode" @select="onCodigoSelect"/>
+			<taogewan-combox-remote class="input1" :placeholder="goods.codeNum"  emptyTips=" " :candidates="searchListFinal" @input="changecode" @select="onCodigoSelect"/>
 			<!-- <input class="input1" type="text" :value="goods.codeNum" placeholder="请输入商品条码尾数" placeholder-style="color:#aaa;" @change="changecode"/> -->
-			<button type="primary" class="priceButton" @click="startCamera">扫码</button>
-			<button type="primary" class="priceButton" @click="selectNum">查询</button>
+			<button type="primary" class="priceButton" @click="startCamera" style="background-color: #3D4145;border-radius: 8px;">扫码</button>
+			<button type="primary" class="priceButton" @click="selectNum" style="background-color: #3D4145;border-radius: 8px;">查询</button>
 		</view>
 		
 		<view class="change-price">
@@ -214,6 +215,7 @@
 		getSupnuevoCommodityTaxInfoListMobile
 	} from '@/api/change.js'
 	import taogewanComboxRemote from '@/components/taogewan-combox-remote/taogewan-combox-remote.vue'
+	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	export default {
 		props: {
 			show: {
@@ -222,7 +224,8 @@
 			},
 		},   	
 		components: {
-				taogewanComboxRemote 
+				taogewanComboxRemote,
+				wybLoading
 		},
 		data() {
 			return {
@@ -231,14 +234,13 @@
 				array: ['维护商品信息', '价格偏差表', '计算键设置', '扫码间隔时间'],
 				index: 0,
 				goods: {
-					codeNum: ''
+					codeNum: '请输入商品条码尾数'
 				},
 				selectedCodeInfo: {},
 				codigo: '',
 				codesModalVisible: false,
 				referencePriceButton: true,
 				referencePrice: null,//参考价
-				commodityId: null,
 				attachDataUrl1:null,
 				attachDataUrl2:null,
 				attachDataUrl3:null,
@@ -365,6 +367,28 @@
 				
 		},
 		methods: {
+			startCamera(){
+				var that = this;
+				uni.scanCode({
+					success:function(res){
+						
+						that.goods.codeNum = res.result;
+						console.log('条码内容：' + that.goods.codeNum);
+						uni.showModal({
+							title: "提示",
+							content: "扫码成功！！",
+							showCancel: false,
+						})
+					},
+					fail:function(res){
+						uni.showModal({
+							title: "提示",
+							content: "扫码失败！！",
+							showCancel: false,
+						})
+					},
+				})
+			},
 			bindPickerChange: function(e) {
 			            this.index = e.target.value
 						if (this.index == 2){
@@ -373,9 +397,46 @@
 							})
 						}else if(this.index == 0){
 							if (!this.hasCodigo){
-								uni.navigateTo({
-									url: './AddCommInfo'
-								})
+								var merchantId = getApp().globalData.merchantId
+								getSupnuevoCommodityTaxInfoListMobile({
+									merchantId: merchantId
+								}).then(res => {
+									var errorMsg = res.errorMsg;
+									if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+										uni.showModal({
+											title: "提示",
+											content: errorMsg,
+											showCancel: false,
+										})
+									 }else {
+										 for (var i = 0; i < res.taxArr.length; i++){
+											var o = {'value': '', 'label': ''};
+											o.label = res.taxArr[i].label;
+											o.value = res.taxArr[i].value;
+											this.taxArr.push(o);
+										 }
+										 if (res.sizeArr === undefined)
+											res.sizeArr = [];
+										 for (var i = 0; i < res.sizeArr.length; i++) {
+											var o = {'value': '', 'label': ''};
+											o.label = res.sizeArr[i].label;
+											o.value = res.sizeArr[i].value;
+											this.sizeArr.push(o);
+										}
+										
+										let form = {
+											merchantId: merchantId,
+											selectedCodeInfo : this.selectedCodeInfo,
+											taxArr :this.taxArr,
+											sizeArr : this.sizeArr,
+										}
+										uni.navigateTo({
+											url: './AddCommInfo?form='+encodeURIComponent(JSON.stringify(form))
+										})
+										
+									 }
+								})							
+								
 							}else {
 								var merchantId = getApp().globalData.merchantId
 								getSupnuevoCommodityTaxInfoListMobile({
@@ -419,9 +480,6 @@
 														attachDataUrl3 : this.attachDataUrl3,
 														attachDataUrl4 : this.attachDataUrl4
 													}
-														
-								
-													
 														uni.navigateTo({ 
 															url: './MaintainCommInfo?form='+encodeURIComponent(JSON.stringify(form))
 														})
@@ -515,6 +573,7 @@
 			},
 			 queryGoodsCode (codeNum) {
 					if (codeNum.length>=4){
+					this.$refs.loading.showLoading()
 					var merchantId = getApp().globalData.merchantId;
 					this.searchListFinal = [];
 			        getQueryDataListByInputStringMobile({
@@ -549,15 +608,85 @@
 								this.referencePriceButton = true;
 			                }
 			                else {
-								console.log(res.object.commodityId)
-			                    var code = {codigo: res.object.codigo, commodityId: res.object.commodityId, referencePrice: null,referencePriceButton:true}
-								this.onCodigoSelect(code);
-								console.log(this.codigo)
+								var merchantId = getApp().globalData.merchantId
+								getSupnuevoBuyerPriceFormByCodigoMobile({
+									codigo: res.object.codigo,
+									supnuevoMerchantId: merchantId
+								}).then(res => {
+									if(res.re == -2){
+									    uni.navigateTo({
+									    	url:'../index/index'
+									    })
+									}
+									
+									 if (res.errMessage !== null && res.errMessage !== undefined) {
+									    var errMsg = res.errMessage.toString();
+									     uni.showModal({
+									     	title: "提示",
+									     	content: errMsg,
+									     	showCancel: false,
+									     }) 
+										 return;
+									}else {
+										 console.log(res)
+										var goodInfo = res.object;
+										if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null
+											&& goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
+											goodInfo.goodName = goodInfo.nombre + ',' +
+											goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
+										}
+										else {
+											goodInfo.goodName = goodInfo.nombre;
+										}
+										
+										var printType = goodInfo.printType;
+										for (var i = 0; i < printType.length; i++) {
+											var j = i + 1;
+											var type = "type" + j;
+											this.printType[type] = printType.charAt(i);
+											if (i === 0 && printType.charAt(i) !== 1) {
+												this.printType[type] = 1;
+											}
+											}
+											var newPrintType = this.printType;
+											goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
+											
+											this.goods.codeNum = 0;
+											var goods = this.goods;
+										
+											if (goodInfo.priceShow == 0) {
+												goodInfo.priceShow = "";
+											}
+											var referencePrice = goodInfo.minPrice;
+											if(referencePrice==null || referencePrice==0.0)
+												this.referencePriceButton = true;
+											else if (referencePrice !== null && referencePrice !== undefined) {
+												this.setStatereferencePrice = referencePrice, this.referencePriceButton = false
+											}			
+											this.selectedCodeInfo = goodInfo;
+											this.codigo = goodInfo.codigo;
+											this.priceShow = goodInfo.priceShow,
+											this.printType = newPrintType, 
+											this.goods = goods, 
+											this.hasCodigo = true,
+											this.Gsuggestlevel = goodInfo.suggestLevel,
+											this.gengxingaijiaInput = goodInfo.priceShow,
+											this.commodityId = goodInfo.commodityId,
+											this.attachDataUrl1 = goodInfo.attachDataUrl1,
+											this.attachDataUrl2 = goodInfo.attachDataUrl2,
+											this.attachDataUrl3 = goodInfo.attachDataUrl3,
+											this.attachDataUrl4 = goodInfo.attachDataUrl4,
+											this.attachDataUrl = goodInfo.attachDataUrl
+								
+									}
+								})
+								
 			                }
 			            }
 			        }).catch(err => {
 			           
 			        });}
+					 this.$refs.loading.hideLoading() // 隐藏
 			    },
 				selectNum (){
 					if (this.goods.codeNum !== undefined && this.goods.codeNum !== null){
@@ -768,7 +897,7 @@
 		justify-content: center;
 		align-items: center;
 		border-width: 3px;
-		border: solid;
+		border: 1px solid ;
 		border-color: #999999;
 	}
 	
