@@ -135,7 +135,7 @@
 							<text style="font-size: 20px;">商品图像</text>
 						</view>
 						<view class="">
-							<image :src="head + bigPicUrl" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
+							<image :src="bigPicUrl" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
 						</view>
 					</view>
 
@@ -145,7 +145,7 @@
 						</view>
 						<cover-view class="p-list">
 							<cover-view class="l-item" v-for="(item, index) in photoArr" :key="index">
-								<cover-image class="i-img" :src="item" mode="scaleToFill" @click=""></cover-image>
+								<cover-image class="i-img" :src="item" mode="scaleToFill" @click="changeBigurl(index)"></cover-image>
 								<cover-image @click="deletePhoto(index)" class="i-icon" src="../../static/image/images/delete.png" mode="scaleToFill"></cover-image>
 							</cover-view>
 						</cover-view>
@@ -171,7 +171,9 @@
 	import {
 		getSupnuevoScaleInfoListMobile,
 		saveOrUpdateSupnuevoCommonCommodityMobile,
-		uploadAttachData
+		uploadAttachData,
+		changeSupnuevoCommonCommodityImage,
+		deleteSupnuevoCommonCommodityImage
 	} from '@/api/change.js'
 	var that = null;
 	export default {
@@ -208,6 +210,8 @@
 				}
 			}
 		},
+		onShow() {
+		},
 		onLoad(option) {
 			this.$refs.loading.showLoading()
 			this.root = getApp().globalData.root
@@ -215,7 +219,7 @@
 			this.commodityId = this.form.commodityId
 			console.log(this.form)
 			console.log(this.root)
-			this.bigPicUrl = this.form.attachDataUrl1
+			this.bigPicUrl = this.head + this.form.attachDataUrl1
 			console.log(this.bigPicUrl)
 			this.picUrl1 = this.form.attachDataUrl1
 			if (this.picUrl1 !== null && this.picUrl1 !== undefined && this.picUrl1 !== '')
@@ -387,6 +391,45 @@
 				}
 			},
 			deletePhoto(index) {
+				deleteSupnuevoCommonCommodityImage({
+					merchantId: this.merchantId,
+					commodityId: this.commodityId,
+					index: index+1,
+					isAdmin: "",
+				}).then(res => {
+					console.log(res)
+					var errorMsg = res.errorMsg;
+					if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+						uni.showModal({
+							title: "提示",
+							content: errorMsg,
+							showCancel: false,
+						})
+					}else{
+						if (res.data != null && res.data != undefined && res.data != "") {
+							uni.showModal({
+								title: "提示",
+								content: res.data,
+								showCancel: false,
+							})
+						} else {
+							uni.showModal({
+								title: "提示",
+								content: "删除成功",
+								showCancel: false,
+							})
+							if (index == 0) {
+								this.bigPicUrl = null
+							}
+						}
+					}
+				}).catch(err => {
+					uni.showModal({
+						title: "提示",
+						content: err,
+						showCancel: false,
+					})
+				})
 				that.photoArr.splice(index, 1);
 			},
 			uploadFoodImg() {
@@ -427,7 +470,6 @@
 				});
 			},
 			uploadImg(base64){
-				console.log(111111111111)
 				uploadAttachData({
 					ownerId: that.commodityId,
 					fileData: base64,
@@ -457,7 +499,10 @@
 							content: "图片上传成功",
 							showCancel: false,
 						})
-						that.photoArr[that.photoArr.length] = that.head + res.urlAddress
+						if (that.photoArr.length === 0)
+							that.bigPicUrl = that.head +res.urlAddress
+						that.photoArr.push(that.head + res.urlAddress);
+					
 						// this.onCodigoSelect();
 					}
 				}).catch(err => {
@@ -468,6 +513,43 @@
 					})
 				})
 				console.log(that.commodityId)
+			},
+			changeBigurl(index){
+				this.bigPicUrl = this.photoArr[index] 
+				let temp = null
+				if (index !== 0){
+					temp = this.photoArr[index] 
+					this.photoArr[index] = this.photoArr[0] 
+					this.photoArr[0]  = temp
+					changeSupnuevoCommonCommodityImage({
+						merchantId: this.merchantId,
+						commodityId: this.commodityId,
+						index: index+1,
+					}).then(res => {
+						console.log(res)
+						var errorMsg = res.errorMsg;
+						if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+							uni.showModal({
+								title: "提示",
+								content: errorMsg,
+								showCancel: false,
+							})
+						} else {
+							uni.showModal({
+								title: "提示",
+								content: "设置成功！",
+								showCancel: false,
+							})
+							}
+					}).catch(err => {
+					uni.showModal({
+						title: "提示",
+						content: err,
+						showCancel: false,
+					})
+					})
+				}
+				
 			},
 			scroll: function(e) {
 				console.log(e)

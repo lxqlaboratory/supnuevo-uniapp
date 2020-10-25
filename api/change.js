@@ -63,7 +63,6 @@ export function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
 	})
 }
 
-uploadAttachData
 export function uploadAttachData(data) {
 	return request.request({
 		url: '/comm/uploadAttachData',
@@ -71,3 +70,20 @@ export function uploadAttachData(data) {
 		data: data
 	})
 }
+
+export function changeSupnuevoCommonCommodityImage(data) {
+	return request.request({
+		url: '/commodity/changeSupnuevoCommonCommodityImage',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function deleteSupnuevoCommonCommodityImage(data) {
+	return request.request({
+		url: '/commodity/deleteSupnuevoCommonCommodityImage',
+		method: 'POST',
+		data: data
+	})
+}
+

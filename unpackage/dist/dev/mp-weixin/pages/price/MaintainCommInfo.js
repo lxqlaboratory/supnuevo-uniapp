@@ -309,6 +309,8 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = fu
 
 
 
+
+
 var that = null;var _default =
 {
   components: {
@@ -344,6 +346,8 @@ var that = null;var _default =
 
 
   },
+  onShow: function onShow() {
+  },
   onLoad: function onLoad(option) {
     this.$refs.loading.showLoading();
     this.root = getApp().globalData.root;
@@ -351,7 +355,7 @@ var that = null;var _default =
     this.commodityId = this.form.commodityId;
     console.log(this.form);
     console.log(this.root);
-    this.bigPicUrl = this.form.attachDataUrl1;
+    this.bigPicUrl = this.head + this.form.attachDataUrl1;
     console.log(this.bigPicUrl);
     this.picUrl1 = this.form.attachDataUrl1;
     if (this.picUrl1 !== null && this.picUrl1 !== undefined && this.picUrl1 !== '')
@@ -522,7 +526,46 @@ var that = null;var _default =
         });
       }
     },
-    deletePhoto: function deletePhoto(index) {
+    deletePhoto: function deletePhoto(index) {var _this2 = this;
+      (0, _change.deleteSupnuevoCommonCommodityImage)({
+        merchantId: this.merchantId,
+        commodityId: this.commodityId,
+        index: index + 1,
+        isAdmin: "" }).
+      then(function (res) {
+        console.log(res);
+        var errorMsg = res.errorMsg;
+        if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+          uni.showModal({
+            title: "提示",
+            content: errorMsg,
+            showCancel: false });
+
+        } else {
+          if (res.data != null && res.data != undefined && res.data != "") {
+            uni.showModal({
+              title: "提示",
+              content: res.data,
+              showCancel: false });
+
+          } else {
+            uni.showModal({
+              title: "提示",
+              content: "删除成功",
+              showCancel: false });
+
+            if (index == 0) {
+              _this2.bigPicUrl = null;
+            }
+          }
+        }
+      }).catch(function (err) {
+        uni.showModal({
+          title: "提示",
+          content: err,
+          showCancel: false });
+
+      });
       that.photoArr.splice(index, 1);
     },
     uploadFoodImg: function uploadFoodImg() {
@@ -563,7 +606,6 @@ var that = null;var _default =
 
     },
     uploadImg: function uploadImg(base64) {
-      console.log(111111111111);
       (0, _change.uploadAttachData)({
         ownerId: that.commodityId,
         fileData: base64,
@@ -593,7 +635,10 @@ var that = null;var _default =
             content: "图片上传成功",
             showCancel: false });
 
-          that.photoArr[that.photoArr.length] = that.head + res.urlAddress;
+          if (that.photoArr.length === 0)
+          that.bigPicUrl = that.head + res.urlAddress;
+          that.photoArr.push(that.head + res.urlAddress);
+
           // this.onCodigoSelect();
         }
       }).catch(function (err) {
@@ -604,6 +649,43 @@ var that = null;var _default =
 
       });
       console.log(that.commodityId);
+    },
+    changeBigurl: function changeBigurl(index) {
+      this.bigPicUrl = this.photoArr[index];
+      var temp = null;
+      if (index !== 0) {
+        temp = this.photoArr[index];
+        this.photoArr[index] = this.photoArr[0];
+        this.photoArr[0] = temp;
+        (0, _change.changeSupnuevoCommonCommodityImage)({
+          merchantId: this.merchantId,
+          commodityId: this.commodityId,
+          index: index + 1 }).
+        then(function (res) {
+          console.log(res);
+          var errorMsg = res.errorMsg;
+          if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+            uni.showModal({
+              title: "提示",
+              content: errorMsg,
+              showCancel: false });
+
+          } else {
+            uni.showModal({
+              title: "提示",
+              content: "设置成功！",
+              showCancel: false });
+
+          }
+        }).catch(function (err) {
+          uni.showModal({
+            title: "提示",
+            content: err,
+            showCancel: false });
+
+        });
+      }
+
     },
     scroll: function scroll(e) {
       console.log(e);

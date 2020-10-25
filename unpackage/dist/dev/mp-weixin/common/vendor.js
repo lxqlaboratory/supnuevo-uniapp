@@ -9235,7 +9235,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;exports.changeSupnuevoCommonCommodityImage = changeSupnuevoCommonCommodityImage;exports.deleteSupnuevoCommonCommodityImage = deleteSupnuevoCommonCommodityImage;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function getQueryDataListByInputStringMobile(data) {
   return _request.default.request({
@@ -9300,10 +9300,25 @@ function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
 
 }
 
-uploadAttachData;
 function uploadAttachData(data) {
   return _request.default.request({
     url: '/comm/uploadAttachData',
+    method: 'POST',
+    data: data });
+
+}
+
+function changeSupnuevoCommonCommodityImage(data) {
+  return _request.default.request({
+    url: '/commodity/changeSupnuevoCommonCommodityImage',
+    method: 'POST',
+    data: data });
+
+}
+
+function deleteSupnuevoCommonCommodityImage(data) {
+  return _request.default.request({
+    url: '/commodity/deleteSupnuevoCommonCommodityImage',
     method: 'POST',
     data: data });
 
