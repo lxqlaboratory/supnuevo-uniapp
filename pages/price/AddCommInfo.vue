@@ -104,21 +104,22 @@
 						</view>
 					</view>
 					
-					<view class="GoodInfo" v-if="!root">
-						<view class="InGood1">
-							<text>商品税类：</text>
+					<view class="" style="height: 280px;border: 1px solid #AAAAAA ;background-color: #CCE6FF;" v-if="photoArr[0] === null || photoArr[0] === '' ">
+						<view class="" style="padding-top: 10px;text-align: center;">
+							<text style="font-size: 20px;">商品图像</text>
 						</view>
-						<view class="InGood2">
-							<text>{{selectTax}}</text>
-						</view>
+						<image src="../../static/image/images/timg.jpg" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
 					</view>
 					
-					<view class="" style="height: 280px;border: 1px solid #AAAAAA ;background-color: #CCE6FF;">
-							<view class="" style="padding-top: 10px;text-align: center;">
-								<text style="font-size: 20px;">商品图像</text>
-							</view>
-							 <image src="../../static/image/images/timg.jpg" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
-					</view>
+					<!-- <view class="" style="background-color: #CCE6FF; border: 1px solid #AAAAAA ;background-color: #CCE6FF;height: 280px;"
+					 v-else-if="photoArr[0] != null && photoArr[0] != '' ">
+						<view class="" style="padding-top: 10px;text-align: center;">
+							<text style="font-size: 20px;">商品图像</text>
+						</view>
+						<view class="">
+							<image :src="photoArr[0]" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
+						</view>
+					</view> -->
 					
 					<view class="" style="background-color: #CCE6FF; border: 1px solid #AAAAAA ;background-color: #CCE6FF;height: 260px;">
 						<view class="" style="padding-top: 10px;text-align: center;">
@@ -126,7 +127,7 @@
 						</view>
 						<cover-view class="p-list">
 							<cover-view class="l-item" v-for="(item, index) in photoArr" :key="index">
-								<cover-image class="i-img" :src="item" mode="scaleToFill"></cover-image>
+								<cover-image class="i-img" :src="item" mode="scaleToFill" @click="changeBigurl(index)"></cover-image>
 								<cover-image @click="deletePhoto(index)" class="i-icon" src="../../static/image/images/delete.png" mode="scaleToFill"></cover-image>
 							</cover-view>
 						</cover-view>
@@ -272,26 +273,166 @@
 				this.newGoodInfo.selectTax = this.taxButtons[this.index3]
 			},
 			deletePhoto(index) {
-				that.photoArr.splice(index, 1);
+				this.$refs.loading.showLoading()
+				deleteSupnuevoCommonCommodityImage({
+					merchantId: this.merchantId,
+					commodityId: this.commodityId,
+					index: index+1,
+					isAdmin: "",
+				}).then(res => {
+					console.log(res)
+					var errorMsg = res.errorMsg;
+					if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+						uni.showModal({
+							title: "提示",
+							content: errorMsg,
+							showCancel: false,
+						})
+					}else{
+						if (res.data != null && res.data != undefined && res.data != "") {
+							uni.showModal({
+								title: "提示",
+								content: res.data,
+								showCancel: false,
+							})
+						} else {
+							uni.showModal({
+								title: "提示",
+								content: "删除成功",
+								showCancel: false,
+							})
+							if (index == 0) {
+								this.photoArr[0] = null
+							}
+							that.photoArr.splice(index, 1);
+							this.$refs.loading.hideLoading() // 隐藏
+						}
+					}
+				}).catch(err => {
+					uni.showModal({
+						title: "提示",
+						content: err,
+						showCancel: false,
+					})
+				})
+				
 			},
 			uploadFoodImg() {
-				if (that.photoArr.length > that.photoArrCapacity) {
-					that.tips('超出限制咯~');
+				this.$refs.loading.showLoading()
+				let base64 = null
+				if (that.photoArr.length >= that.photoArrCapacity) {
+					uni.showModal({
+						title: "提示",
+						content: "超出限制咯~",
+						showCancel: false,
+					})
 					return 0;
 				}
 				uni.chooseImage({
 					count: that.photoArrCapacity - that.photoArr.length,
 					success(res) {
-						console.log('res ==>', res);
-						res.tempFilePaths.forEach(item => {
-							// 正式环境下调用此方法上传图片
-							// that.uploadImg(item).then(result => {
-							// 	that.photoArr.push(result.data);
-							// });
-							that.photoArr.push(item);
-						});
+						console.log(res.tempFilePaths[0]);
+						uni.request({
+							url: res.tempFilePaths[0],
+							method: 'GET',
+							responseType: 'arraybuffer',
+							success: ress => {
+								console.log(ress.data)
+								base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
+								// base64 = 'data:image/jpeg;base64,' + base64; 
+								//不加上这串字符，在页面无法显示的哦
+								that.uploadImg(base64)
+							}
+						})
+						// res.tempFilePaths.forEach(item => {
+						// 	// 正式环境下调用此方法上传图片
+						// 	// that.uploadImg(item).then(result => {
+						// 	// 	that.photoArr.push(result.data);
+						// 	// });
+						// 	that.photoArr.push(item);
+			
+						// });
 					}
 				});
+			},
+			uploadImg(base64){
+				uploadAttachData({
+					ownerId: that.commodityId,
+					fileData: base64,
+					beanName: "supnuevoCommonCommodityProcessRmi",
+					folder: "supnuevo/commodity",
+					fileName: that.selectedCodeInfo.codigo + '/' + that.photoArr.length+1 + ".jpg",
+					remark: "supnuevo",
+					attachType: "90",
+					imageWidth: 480,
+					imageHeight: 640,
+					paras: {
+						merchantId: that.merchantId,
+						index: that.photoArr.length+1
+					}
+				}).then(res => {
+					console.log(res)
+					var errorMsg = res.errorMsg;
+					if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+						uni.showModal({
+							title: "提示",
+							content: errorMsg,
+							showCancel: false,
+						})
+					} else {
+						uni.showModal({
+							title: "提示",
+							content: "图片上传成功",
+							showCancel: false,
+						})
+						that.photoArr.push(that.head + res.urlAddress);
+						this.$refs.loading.hideLoading() // 隐藏
+						// this.onCodigoSelect();
+					}
+				}).catch(err => {
+					uni.showModal({
+						title: "提示",
+						content: err,
+						showCancel: false,
+					})
+				})
+				console.log(that.commodityId)
+			},
+			changeBigurl(index){
+				let temp = null
+				if (index !== 0){
+					temp = this.photoArr[index] 
+					this.photoArr[index] = this.photoArr[0] 
+					this.photoArr[0]  = temp
+					changeSupnuevoCommonCommodityImage({
+						merchantId: this.merchantId,
+						commodityId: this.commodityId,
+						index: index+1,
+					}).then(res => {
+						console.log(res)
+						var errorMsg = res.errorMsg;
+						if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+							uni.showModal({
+								title: "提示",
+								content: errorMsg,
+								showCancel: false,
+							})
+						} else {
+							uni.showModal({
+								title: "提示",
+								content: "设置成功！",
+								showCancel: false,
+							})
+							}
+					}).catch(err => {
+					uni.showModal({
+						title: "提示",
+						content: err,
+						showCancel: false,
+					})
+					})
+				}
+				
 			},
 			MaintainSubmit(){
 				 if (this.newGoodInfo != undefined && this.newGoodInfo != null) {

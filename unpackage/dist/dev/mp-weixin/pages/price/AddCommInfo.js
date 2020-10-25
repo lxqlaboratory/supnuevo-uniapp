@@ -286,6 +286,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _change = __webpack_require__(/*! @/api/change.js */ 32); //
 //
 //
@@ -435,12 +436,152 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32); //
 //
 //
 //
+//
 var that = null;var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 101));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { root: '', taxArr: [], sizeArr: [], scaleArr: [], photoArr: [], photoArrCapacity: 4, head: "https://supnuevo.s3.sa-east-1.amazonaws.com/", picUrl1: '', picUrl2: '', picUrl3: '', picUrl4: '', merchantId: '', sizeUnitButtons: [], scaleUnitButtons: [], taxButtons: [], form: {}, newGoodInfo: { codigo: '', nombre: '', commodityName: '', setSizeValue: '', sizeUnit: '', scaleUnit: '', selectTax: '', taxId: null }, index1: 0, index2: 0, index3: 0 };}, components: { wybLoading: wybLoading }, onLoad: function onLoad(option) {this.$refs.loading.showLoading();that = this;this.root = getApp().globalData.root;this.form = JSON.parse(decodeURIComponent(option.form));this.taxArr = this.form.taxArr;this.sizeArr = this.form.sizeArr;this.merchantId = this.form.merchantId;for (var i = 0; i < this.sizeArr.length; i++) {this.sizeUnitButtons.push(this.sizeArr[i].label);}for (var i = 0; i < this.taxArr.length; i++) {this.taxButtons.push(this.taxArr[i].label);if (this.taxArr[i].value == this.form.selectedCodeInfo.taxId) {this.selectTax = this.form.taxArr[i].label;}}this.$refs.loading.hideLoading(); // 隐藏
-  }, methods: { scaleclick: function scaleclick() {if (this.scaleUnitButtons.length <= 0) {uni.showModal({ title: "提示", content: "请先选择含量单位", showCancel: false });}}, scaleUnitButtonsChange: function scaleUnitButtonsChange(e) {this.index2 = e.target.value;this.newGoodInfo.scaleUnit = this.scaleUnitButtons[this.index2];}, startCamera: function startCamera() {var that = this;uni.scanCode({ success: function success(res) {that.newGoodInfo.codigo = res.result;console.log('条码内容：' + that.newGoodInfo.codigo);uni.showModal({ title: "提示", content: "扫码成功！！", showCancel: false });}, fail: function fail(res) {uni.showModal({ title: "提示", content: "扫码失败！！", showCancel: false });} });}, sizeUnitButtonsChange: function sizeUnitButtonsChange(e) {var _this = this;this.index1 = e.target.value;this.newGoodInfo.sizeUnit = this.sizeUnitButtons[this.index1];var sizeUnit = this.newGoodInfo.sizeUnit;(0, _change.getSupnuevoScaleInfoListMobile)({ sizeUnit: this.newGoodInfo.sizeUnit, merchantId: this.merchantId }).then(function (res) {for (var i = 0; i < res.scaleArr.length; i++) {_this.scaleArr.push(res.scaleArr[i]);}for (var i = 0; i < _this.scaleArr.length; i++) {_this.scaleUnitButtons.push(_this.scaleArr[i].label);}});}, taxButtonsChange: function taxButtonsChange(e) {this.index3 = e.target.value;this.newGoodInfo.selectTax = this.taxButtons[this.index3];}, deletePhoto: function deletePhoto(index) {that.photoArr.splice(index, 1);}, uploadFoodImg: function uploadFoodImg() {if (that.photoArr.length > that.photoArrCapacity) {that.tips('超出限制咯~');return 0;}uni.chooseImage({ count: that.photoArrCapacity - that.photoArr.length, success: function success(res) {console.log('res ==>', res);res.tempFilePaths.forEach(function (item) {// 正式环境下调用此方法上传图片
-            // that.uploadImg(item).then(result => {
-            // 	that.photoArr.push(result.data);
-            // });
-            that.photoArr.push(item);});} });}, MaintainSubmit: function MaintainSubmit() {if (this.newGoodInfo != undefined && this.newGoodInfo != null) {if (this.checkGoodsBaseInfo() !== false) {(0, _change.saveOrUpdateSupnuevoCommonCommodityMobile)({ taxId: this.newGoodInfo.taxId, supnuevoMerchantId: this.merchantId, codigo: this.newGoodInfo.codigo, nombre: this.newGoodInfo.nombre, commodityName: this.newGoodInfo.commodityName, sizeValue: this.newGoodInfo.setSizeValue, sizeUnited: this.newGoodInfo.sizeUnit, scaleUnited: this.newGoodInfo.scaleUnit }).
+  }, methods: { scaleclick: function scaleclick() {if (this.scaleUnitButtons.length <= 0) {uni.showModal({ title: "提示", content: "请先选择含量单位", showCancel: false });}}, scaleUnitButtonsChange: function scaleUnitButtonsChange(e) {this.index2 = e.target.value;this.newGoodInfo.scaleUnit = this.scaleUnitButtons[this.index2];}, startCamera: function startCamera() {var that = this;uni.scanCode({ success: function success(res) {that.newGoodInfo.codigo = res.result;console.log('条码内容：' + that.newGoodInfo.codigo);uni.showModal({ title: "提示", content: "扫码成功！！", showCancel: false });}, fail: function fail(res) {uni.showModal({ title: "提示", content: "扫码失败！！", showCancel: false });} });}, sizeUnitButtonsChange: function sizeUnitButtonsChange(e) {var _this = this;this.index1 = e.target.value;this.newGoodInfo.sizeUnit = this.sizeUnitButtons[this.index1];var sizeUnit = this.newGoodInfo.sizeUnit;(0, _change.getSupnuevoScaleInfoListMobile)({ sizeUnit: this.newGoodInfo.sizeUnit, merchantId: this.merchantId }).then(function (res) {for (var i = 0; i < res.scaleArr.length; i++) {_this.scaleArr.push(res.scaleArr[i]);}for (var i = 0; i < _this.scaleArr.length; i++) {_this.scaleUnitButtons.push(_this.scaleArr[i].label);}});}, taxButtonsChange: function taxButtonsChange(e) {this.index3 = e.target.value;this.newGoodInfo.selectTax = this.taxButtons[this.index3];}, deletePhoto: function deletePhoto(index) {var _this2 = this;this.$refs.loading.showLoading();(0, _change.deleteSupnuevoCommonCommodityImage)({ merchantId: this.merchantId, commodityId: this.commodityId, index: index + 1, isAdmin: "" }).then(function (res) {console.log(res);var errorMsg = res.errorMsg;if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {uni.showModal({ title: "提示", content: errorMsg, showCancel: false });} else {if (res.data != null && res.data != undefined && res.data != "") {uni.showModal({ title: "提示", content: res.data, showCancel: false });} else {uni.showModal({ title: "提示", content: "删除成功", showCancel: false });if (index == 0) {_this2.photoArr[0] = null;
+            }
+            that.photoArr.splice(index, 1);
+            _this2.$refs.loading.hideLoading(); // 隐藏
+          }
+        }
+      }).catch(function (err) {
+        uni.showModal({
+          title: "提示",
+          content: err,
+          showCancel: false });
+
+      });
+
+    },
+    uploadFoodImg: function uploadFoodImg() {
+      this.$refs.loading.showLoading();
+      var base64 = null;
+      if (that.photoArr.length >= that.photoArrCapacity) {
+        uni.showModal({
+          title: "提示",
+          content: "超出限制咯~",
+          showCancel: false });
+
+        return 0;
+      }
+      uni.chooseImage({
+        count: that.photoArrCapacity - that.photoArr.length,
+        success: function success(res) {
+          console.log(res.tempFilePaths[0]);
+          uni.request({
+            url: res.tempFilePaths[0],
+            method: 'GET',
+            responseType: 'arraybuffer',
+            success: function success(ress) {
+              console.log(ress.data);
+              base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
+              // base64 = 'data:image/jpeg;base64,' + base64; 
+              //不加上这串字符，在页面无法显示的哦
+              that.uploadImg(base64);
+            } });
+
+          // res.tempFilePaths.forEach(item => {
+          // 	// 正式环境下调用此方法上传图片
+          // 	// that.uploadImg(item).then(result => {
+          // 	// 	that.photoArr.push(result.data);
+          // 	// });
+          // 	that.photoArr.push(item);
+
+          // });
+        } });
+
+    },
+    uploadImg: function uploadImg(base64) {var _this3 = this;
+      (0, _change.uploadAttachData)({
+        ownerId: that.commodityId,
+        fileData: base64,
+        beanName: "supnuevoCommonCommodityProcessRmi",
+        folder: "supnuevo/commodity",
+        fileName: that.selectedCodeInfo.codigo + '/' + that.photoArr.length + 1 + ".jpg",
+        remark: "supnuevo",
+        attachType: "90",
+        imageWidth: 480,
+        imageHeight: 640,
+        paras: {
+          merchantId: that.merchantId,
+          index: that.photoArr.length + 1 } }).
+
+      then(function (res) {
+        console.log(res);
+        var errorMsg = res.errorMsg;
+        if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+          uni.showModal({
+            title: "提示",
+            content: errorMsg,
+            showCancel: false });
+
+        } else {
+          uni.showModal({
+            title: "提示",
+            content: "图片上传成功",
+            showCancel: false });
+
+          that.photoArr.push(that.head + res.urlAddress);
+          _this3.$refs.loading.hideLoading(); // 隐藏
+          // this.onCodigoSelect();
+        }
+      }).catch(function (err) {
+        uni.showModal({
+          title: "提示",
+          content: err,
+          showCancel: false });
+
+      });
+      console.log(that.commodityId);
+    },
+    changeBigurl: function changeBigurl(index) {
+      var temp = null;
+      if (index !== 0) {
+        temp = this.photoArr[index];
+        this.photoArr[index] = this.photoArr[0];
+        this.photoArr[0] = temp;
+        (0, _change.changeSupnuevoCommonCommodityImage)({
+          merchantId: this.merchantId,
+          commodityId: this.commodityId,
+          index: index + 1 }).
+        then(function (res) {
+          console.log(res);
+          var errorMsg = res.errorMsg;
+          if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+            uni.showModal({
+              title: "提示",
+              content: errorMsg,
+              showCancel: false });
+
+          } else {
+            uni.showModal({
+              title: "提示",
+              content: "设置成功！",
+              showCancel: false });
+
+          }
+        }).catch(function (err) {
+          uni.showModal({
+            title: "提示",
+            content: err,
+            showCancel: false });
+
+        });
+      }
+
+    },
+    MaintainSubmit: function MaintainSubmit() {
+      if (this.newGoodInfo != undefined && this.newGoodInfo != null) {
+        if (this.checkGoodsBaseInfo() !== false) {
+          (0, _change.saveOrUpdateSupnuevoCommonCommodityMobile)({
+            taxId: this.newGoodInfo.taxId,
+            supnuevoMerchantId: this.merchantId,
+            codigo: this.newGoodInfo.codigo,
+            nombre: this.newGoodInfo.nombre,
+            commodityName: this.newGoodInfo.commodityName,
+            sizeValue: this.newGoodInfo.setSizeValue,
+            sizeUnited: this.newGoodInfo.sizeUnit,
+            scaleUnited: this.newGoodInfo.scaleUnit }).
           then(function (res) {
             var errorMsg = res.errorMsg;
             var message = res.message;
