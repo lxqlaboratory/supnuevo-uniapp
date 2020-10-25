@@ -152,7 +152,10 @@
 	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	import {
 		getSupnuevoScaleInfoListMobile,
-		saveOrUpdateSupnuevoCommonCommodityMobile
+		saveOrUpdateSupnuevoCommonCommodityMobile,
+		uploadAttachData,
+		changeSupnuevoCommonCommodityImage,
+		deleteSupnuevoCommonCommodityImage
 	} from '@/api/change.js'
 	export default {
 		data() {
@@ -162,6 +165,12 @@
 				sizeArr: [],
 				scaleArr: [],
 				photoArr: [],
+				photoArrCapacity: 4,
+				head: "https://supnuevo.s3.sa-east-1.amazonaws.com/",
+				picUrl1: '',
+				picUrl2: '',
+				picUrl3: '',
+				picUrl4: '',
 				merchantId: '',
 				sizeUnitButtons: [],
 				scaleUnitButtons: [],

@@ -122,7 +122,7 @@
 						</view>
 					</view>
 
-					<view class="" style="height: 280px;border: 1px solid #AAAAAA ;background-color: #CCE6FF;" v-if="bigPicUrl === null || bigPicUrl === '' ">
+					<view class="" style="height: 280px;border: 1px solid #AAAAAA ;background-color: #CCE6FF;" v-if="photoArr[0] === null || photoArr[0] === '' ">
 						<view class="" style="padding-top: 10px;text-align: center;">
 							<text style="font-size: 20px;">商品图像</text>
 						</view>
@@ -130,12 +130,12 @@
 					</view>
 
 					<view class="" style="background-color: #CCE6FF; border: 1px solid #AAAAAA ;background-color: #CCE6FF;height: 280px;"
-					 v-else-if="bigPicUrl != null && bigPicUrl != '' ">
+					 v-else-if="photoArr[0] != null && photoArr[0] != '' ">
 						<view class="" style="padding-top: 10px;text-align: center;">
 							<text style="font-size: 20px;">商品图像</text>
 						</view>
 						<view class="">
-							<image :src="bigPicUrl" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
+							<image :src="photoArr[0]" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
 						</view>
 					</view>
 
@@ -194,7 +194,6 @@
 				index1: 0,
 				index2: 0,
 				index3: 0,
-				bigPicUrl: '',
 				head: "https://supnuevo.s3.sa-east-1.amazonaws.com/",
 				picUrl1: '',
 				picUrl2: '',
@@ -219,20 +218,19 @@
 			this.commodityId = this.form.commodityId
 			console.log(this.form)
 			console.log(this.root)
-			this.bigPicUrl = this.head + this.form.attachDataUrl1
-			console.log(this.bigPicUrl)
 			this.picUrl1 = this.form.attachDataUrl1
+			var index = 0 ;
 			if (this.picUrl1 !== null && this.picUrl1 !== undefined && this.picUrl1 !== '')
-				this.photoArr[0] = this.head + this.picUrl1
+				this.photoArr[index++] = this.head + this.picUrl1
 			this.picUrl2 = this.form.attachDataUrl2
 			if (this.picUrl2 !== null && this.picUrl2 !== undefined && this.picUrl2 !== '')
-				this.photoArr[1] = this.head + this.picUrl2
+				this.photoArr[index++] = this.head + this.picUrl2
 			this.picUrl3 = this.form.attachDataUrl3
 			if (this.picUrl3 !== null && this.picUrl3 !== undefined && this.picUrl3 !== '')
-				this.photoArr[2] = this.head + this.picUrl3
+				this.photoArr[index++] = this.head + this.picUrl3
 			this.picUrl4 = this.form.attachDataUrl4
 			if (this.picUrl4 !== null && this.picUrl4 !== undefined && this.picUrl4 !== '')
-				this.photoArr[3] = this.head + this.picUrl4
+				this.photoArr[index++] = this.head + this.picUrl4
 			this.selectedCodeInfo = this.form.selectedCodeInfo
 			this.merchantId = this.form.merchantId
 			that = this;
@@ -391,6 +389,7 @@
 				}
 			},
 			deletePhoto(index) {
+				this.$refs.loading.showLoading()
 				deleteSupnuevoCommonCommodityImage({
 					merchantId: this.merchantId,
 					commodityId: this.commodityId,
@@ -419,8 +418,10 @@
 								showCancel: false,
 							})
 							if (index == 0) {
-								this.bigPicUrl = null
+								this.photoArr[0] = null
 							}
+							that.photoArr.splice(index, 1);
+							this.$refs.loading.hideLoading() // 隐藏
 						}
 					}
 				}).catch(err => {
@@ -430,9 +431,10 @@
 						showCancel: false,
 					})
 				})
-				that.photoArr.splice(index, 1);
+				
 			},
 			uploadFoodImg() {
+				this.$refs.loading.showLoading()
 				let base64 = null
 				if (that.photoArr.length >= that.photoArrCapacity) {
 					uni.showModal({
@@ -499,10 +501,8 @@
 							content: "图片上传成功",
 							showCancel: false,
 						})
-						if (that.photoArr.length === 0)
-							that.bigPicUrl = that.head +res.urlAddress
 						that.photoArr.push(that.head + res.urlAddress);
-					
+						this.$refs.loading.hideLoading() // 隐藏
 						// this.onCodigoSelect();
 					}
 				}).catch(err => {
@@ -515,7 +515,6 @@
 				console.log(that.commodityId)
 			},
 			changeBigurl(index){
-				this.bigPicUrl = this.photoArr[index] 
 				let temp = null
 				if (index !== 0){
 					temp = this.photoArr[index] 

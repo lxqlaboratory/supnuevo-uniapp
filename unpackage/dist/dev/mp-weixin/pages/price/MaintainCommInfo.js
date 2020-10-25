@@ -330,7 +330,6 @@ var that = null;var _default =
       index1: 0,
       index2: 0,
       index3: 0,
-      bigPicUrl: '',
       head: "https://supnuevo.s3.sa-east-1.amazonaws.com/",
       picUrl1: '',
       picUrl2: '',
@@ -355,20 +354,19 @@ var that = null;var _default =
     this.commodityId = this.form.commodityId;
     console.log(this.form);
     console.log(this.root);
-    this.bigPicUrl = this.head + this.form.attachDataUrl1;
-    console.log(this.bigPicUrl);
     this.picUrl1 = this.form.attachDataUrl1;
+    var index = 0;
     if (this.picUrl1 !== null && this.picUrl1 !== undefined && this.picUrl1 !== '')
-    this.photoArr[0] = this.head + this.picUrl1;
+    this.photoArr[index++] = this.head + this.picUrl1;
     this.picUrl2 = this.form.attachDataUrl2;
     if (this.picUrl2 !== null && this.picUrl2 !== undefined && this.picUrl2 !== '')
-    this.photoArr[1] = this.head + this.picUrl2;
+    this.photoArr[index++] = this.head + this.picUrl2;
     this.picUrl3 = this.form.attachDataUrl3;
     if (this.picUrl3 !== null && this.picUrl3 !== undefined && this.picUrl3 !== '')
-    this.photoArr[2] = this.head + this.picUrl3;
+    this.photoArr[index++] = this.head + this.picUrl3;
     this.picUrl4 = this.form.attachDataUrl4;
     if (this.picUrl4 !== null && this.picUrl4 !== undefined && this.picUrl4 !== '')
-    this.photoArr[3] = this.head + this.picUrl4;
+    this.photoArr[index++] = this.head + this.picUrl4;
     this.selectedCodeInfo = this.form.selectedCodeInfo;
     this.merchantId = this.form.merchantId;
     that = this;
@@ -527,6 +525,7 @@ var that = null;var _default =
       }
     },
     deletePhoto: function deletePhoto(index) {var _this2 = this;
+      this.$refs.loading.showLoading();
       (0, _change.deleteSupnuevoCommonCommodityImage)({
         merchantId: this.merchantId,
         commodityId: this.commodityId,
@@ -555,8 +554,10 @@ var that = null;var _default =
               showCancel: false });
 
             if (index == 0) {
-              _this2.bigPicUrl = null;
+              _this2.photoArr[0] = null;
             }
+            that.photoArr.splice(index, 1);
+            _this2.$refs.loading.hideLoading(); // 隐藏
           }
         }
       }).catch(function (err) {
@@ -566,9 +567,10 @@ var that = null;var _default =
           showCancel: false });
 
       });
-      that.photoArr.splice(index, 1);
+
     },
     uploadFoodImg: function uploadFoodImg() {
+      this.$refs.loading.showLoading();
       var base64 = null;
       if (that.photoArr.length >= that.photoArrCapacity) {
         uni.showModal({
@@ -605,7 +607,7 @@ var that = null;var _default =
         } });
 
     },
-    uploadImg: function uploadImg(base64) {
+    uploadImg: function uploadImg(base64) {var _this3 = this;
       (0, _change.uploadAttachData)({
         ownerId: that.commodityId,
         fileData: base64,
@@ -635,10 +637,8 @@ var that = null;var _default =
             content: "图片上传成功",
             showCancel: false });
 
-          if (that.photoArr.length === 0)
-          that.bigPicUrl = that.head + res.urlAddress;
           that.photoArr.push(that.head + res.urlAddress);
-
+          _this3.$refs.loading.hideLoading(); // 隐藏
           // this.onCodigoSelect();
         }
       }).catch(function (err) {
@@ -651,7 +651,6 @@ var that = null;var _default =
       console.log(that.commodityId);
     },
     changeBigurl: function changeBigurl(index) {
-      this.bigPicUrl = this.photoArr[index];
       var temp = null;
       if (index !== 0) {
         temp = this.photoArr[index];
