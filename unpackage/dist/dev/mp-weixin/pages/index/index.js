@@ -260,14 +260,12 @@ var _default = { data: function data() {return { loginName: '', password: '', er
       //        }
     },
     formSubmit: function formSubmit() {var _this = this;
-      console.log(1111111);
       var that = this;
       (0, _login.login)({
         loginName: this.loginName,
         password: this.password }).
       then(function (res) {
         var reCode = res.reCode;
-        console.log(22222);
         console.log(res);
         getApp().globalData.vueSessionId = res.sessionId;
 
@@ -345,7 +343,6 @@ var _default = { data: function data() {return { loginName: '', password: '', er
             } else
 
             {
-              console.log(666666);
               getApp().globalData.priceModifyState = 2;
               //                               dispatch(setSessionId(sessionId));
               getApp().globalData.PriceMap = res.data.addPriceMap;

@@ -311,6 +311,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = fu
 
 
 
+
 var that = null;var _default =
 {
   components: {
@@ -421,7 +422,6 @@ var that = null;var _default =
       this.selectTax = this.taxButtons[this.index3];
     },
     MaintainSubmit: function MaintainSubmit() {
-      console.log(98765431);
       if (this.selectedCodeInfo != undefined && this.selectedCodeInfo != null) {
         if (this.selectedCodeInfo.codigo === null || this.selectedCodeInfo.codigo === undefined || this.selectedCodeInfo.codigo ===
         '') {
@@ -526,46 +526,62 @@ var that = null;var _default =
     },
     deletePhoto: function deletePhoto(index) {var _this2 = this;
       this.$refs.loading.showLoading();
-      (0, _change.deleteSupnuevoCommonCommodityImage)({
-        merchantId: this.merchantId,
-        commodityId: this.commodityId,
-        index: index + 1,
-        isAdmin: "" }).
+      var flag = 0;
+      (0, _change.getSupnuevoBuyerPriceFormByCodigoMobile)({
+        codigo: this.selectedCodeInfo.codigo,
+        supnuevoMerchantId: this.merchantId }).
       then(function (res) {
-        console.log(res);
-        var errorMsg = res.errorMsg;
-        if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-          uni.showModal({
-            title: "提示",
-            content: errorMsg,
-            showCancel: false });
+        var goods = res.object;
+        if (_this2.head + goods.attachDataUrl1 === _this2.photoArr[index])
+        flag = 1;else
 
-        } else {
-          if (res.data != null && res.data != undefined && res.data != "") {
+        if (_this2.head + goods.attachDataUrl2 === _this2.photoArr[index])
+        flag = 2;else
+
+        if (_this2.head + goods.attachDataUrl3 === _this2.photoArr[index])
+        flag = 3;else
+
+        if (_this2.head + goods.attachDataUrl4 === _this2.photoArr[index])
+        flag = 4;
+
+        (0, _change.deleteSupnuevoCommonCommodityImage)({
+          merchantId: _this2.merchantId,
+          commodityId: _this2.commodityId,
+          index: flag,
+          isAdmin: "" }).
+        then(function (res) {
+          console.log(res);
+          var errorMsg = res.errorMsg;
+          if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
             uni.showModal({
               title: "提示",
-              content: res.data,
+              content: errorMsg,
               showCancel: false });
 
           } else {
-            uni.showModal({
-              title: "提示",
-              content: "删除成功",
-              showCancel: false });
+            if (res.data != null && res.data != undefined && res.data != "") {
+              uni.showModal({
+                title: "提示",
+                content: res.data,
+                showCancel: false });
 
-            if (index == 0) {
-              _this2.photoArr[0] = null;
+            } else {
+              uni.showModal({
+                title: "提示",
+                content: "删除成功",
+                showCancel: false });
+
+              that.photoArr.splice(index, 1);
+              _this2.$refs.loading.hideLoading(); // 隐藏
             }
-            that.photoArr.splice(index, 1);
-            _this2.$refs.loading.hideLoading(); // 隐藏
           }
-        }
-      }).catch(function (err) {
-        uni.showModal({
-          title: "提示",
-          content: err,
-          showCancel: false });
+        }).catch(function (err) {
+          uni.showModal({
+            title: "提示",
+            content: err,
+            showCancel: false });
 
+        });
       });
 
     },
@@ -608,58 +624,39 @@ var that = null;var _default =
 
     },
     uploadImg: function uploadImg(base64) {var _this3 = this;
-      (0, _change.uploadAttachData)({
-        ownerId: that.commodityId,
-        fileData: base64,
-        beanName: "supnuevoCommonCommodityProcessRmi",
-        folder: "supnuevo/commodity",
-        fileName: that.selectedCodeInfo.codigo + '/' + that.photoArr.length + 1 + ".jpg",
-        remark: "supnuevo",
-        attachType: "90",
-        imageWidth: 480,
-        imageHeight: 640,
-        paras: {
-          merchantId: that.merchantId,
-          index: that.photoArr.length + 1 } }).
-
+      var flag;
+      (0, _change.getSupnuevoBuyerPriceFormByCodigoMobile)({
+        codigo: this.selectedCodeInfo.codigo,
+        supnuevoMerchantId: this.merchantId }).
       then(function (res) {
-        console.log(res);
-        var errorMsg = res.errorMsg;
-        if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-          uni.showModal({
-            title: "提示",
-            content: errorMsg,
-            showCancel: false });
+        var goods = res.object;
+        console.log(goods);
+        if (goods.attachDataUrl1 === null || goods.attachDataUrl1 === undefined)
+        flag = 1;else
 
-        } else {
-          uni.showModal({
-            title: "提示",
-            content: "图片上传成功",
-            showCancel: false });
+        if (goods.attachDataUrl2 === null || goods.attachDataUrl2 === undefined)
+        flag = 2;else
 
-          that.photoArr.push(that.head + res.urlAddress);
-          _this3.$refs.loading.hideLoading(); // 隐藏
-          // this.onCodigoSelect();
-        }
-      }).catch(function (err) {
-        uni.showModal({
-          title: "提示",
-          content: err,
-          showCancel: false });
+        if (goods.attachDataUrl3 === null || goods.attachDataUrl3 === undefined)
+        flag = 3;else
 
-      });
-      console.log(that.commodityId);
-    },
-    changeBigurl: function changeBigurl(index) {
-      var temp = null;
-      if (index !== 0) {
-        temp = this.photoArr[index];
-        this.photoArr[index] = this.photoArr[0];
-        this.photoArr[0] = temp;
-        (0, _change.changeSupnuevoCommonCommodityImage)({
-          merchantId: this.merchantId,
-          commodityId: this.commodityId,
-          index: index + 1 }).
+        if (goods.attachDataUrl4 === null || goods.attachDataUrl4 === undefined)
+        flag = 4;
+        console.log(flag);
+        (0, _change.uploadAttachData)({
+          ownerId: that.commodityId,
+          fileData: base64,
+          beanName: "supnuevoCommonCommodityProcessRmi",
+          folder: "supnuevo/commodity",
+          fileName: that.selectedCodeInfo.codigo + '/' + flag + ".jpg",
+          remark: "supnuevo",
+          attachType: "90",
+          imageWidth: 480,
+          imageHeight: 640,
+          paras: {
+            merchantId: that.merchantId,
+            index: flag } }).
+
         then(function (res) {
           console.log(res);
           var errorMsg = res.errorMsg;
@@ -672,9 +669,11 @@ var that = null;var _default =
           } else {
             uni.showModal({
               title: "提示",
-              content: "设置成功！",
+              content: "图片上传成功",
               showCancel: false });
 
+            that.photoArr.push(that.head + res.urlAddress);
+            _this3.$refs.loading.hideLoading(); // 隐藏
           }
         }).catch(function (err) {
           uni.showModal({
@@ -682,6 +681,58 @@ var that = null;var _default =
             content: err,
             showCancel: false });
 
+        });
+      });
+    },
+    changeBigurl: function changeBigurl(index) {var _this4 = this;
+      var temp = null;
+      if (index !== 0) {
+        (0, _change.getSupnuevoBuyerPriceFormByCodigoMobile)({
+          codigo: this.selectedCodeInfo.codigo,
+          supnuevoMerchantId: this.merchantId }).
+        then(function (res) {
+          var flag = 0;
+          var goods = res.object;
+          console.log(goods);
+          if (_this4.head + goods.attachDataUrl2 === _this4.photoArr[index])
+          flag = 2;else
+
+          if (_this4.head + goods.attachDataUrl3 === _this4.photoArr[index])
+          flag = 3;else
+
+          if (_this4.head + goods.attachDataUrl4 === _this4.photoArr[index])
+          flag = 4;
+          (0, _change.changeSupnuevoCommonCommodityImage)({
+            merchantId: _this4.merchantId,
+            commodityId: _this4.commodityId,
+            index: flag }).
+          then(function (res) {
+            console.log(res);
+            var errorMsg = res.errorMsg;
+            if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+              uni.showModal({
+                title: "提示",
+                content: errorMsg,
+                showCancel: false });
+
+            } else {
+              uni.showModal({
+                title: "提示",
+                content: "设置成功！",
+                showCancel: false });
+
+              temp = _this4.photoArr[index];
+              _this4.photoArr[index] = _this4.photoArr[0];
+              _this4.photoArr[0] = temp;
+              _this4.picUrl1 = _this4.photoArr[0];
+            }
+          }).catch(function (err) {
+            uni.showModal({
+              title: "提示",
+              content: err,
+              showCancel: false });
+
+          });
         });
       }
 

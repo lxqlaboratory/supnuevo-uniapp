@@ -119,14 +119,12 @@
 				 //        }
 			},
 			formSubmit() {
-				console.log(1111111)
 				var that = this;
 				login({
 					loginName: this.loginName,
 					password: this.password
 				}).then(res => {
 					var reCode = res.reCode;
-					console.log(22222)
 					console.log(res)
 					getApp().globalData.vueSessionId = res.sessionId
 					
@@ -204,7 +202,6 @@
                                      }
 
                                  else{
-									 console.log(666666)
 									 getApp().globalData.priceModifyState = 2
       //                               dispatch(setSessionId(sessionId));
 									getApp().globalData.PriceMap = res.data.addPriceMap

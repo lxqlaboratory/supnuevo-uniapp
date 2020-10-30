@@ -122,7 +122,7 @@
 						</view>
 					</view>
 
-					<view class="" style="height: 280px;border: 1px solid #AAAAAA ;background-color: #CCE6FF;" v-if="photoArr[0] === null || photoArr[0] === '' ">
+					<view class="" style="height: 280px;border: 1px solid #AAAAAA ;background-color: #CCE6FF;" v-if="photoArr[0] === null || photoArr[0] === '' || photoArr[0] === undefined">
 						<view class="" style="padding-top: 10px;text-align: center;">
 							<text style="font-size: 20px;">商品图像</text>
 						</view>
@@ -130,7 +130,7 @@
 					</view>
 
 					<view class="" style="background-color: #CCE6FF; border: 1px solid #AAAAAA ;background-color: #CCE6FF;height: 280px;"
-					 v-else-if="photoArr[0] != null && photoArr[0] != '' ">
+					 v-else-if="photoArr[0] != null && photoArr[0] != '' && photoArr[0] != undefined">
 						<view class="" style="padding-top: 10px;text-align: center;">
 							<text style="font-size: 20px;">商品图像</text>
 						</view>
@@ -173,7 +173,8 @@
 		saveOrUpdateSupnuevoCommonCommodityMobile,
 		uploadAttachData,
 		changeSupnuevoCommonCommodityImage,
-		deleteSupnuevoCommonCommodityImage
+		deleteSupnuevoCommonCommodityImage,
+		getSupnuevoBuyerPriceFormByCodigoMobile
 	} from '@/api/change.js'
 	var that = null;
 	export default {
@@ -285,7 +286,6 @@
 				this.selectTax = this.taxButtons[this.index3]
 			},
 			MaintainSubmit() {
-				console.log(98765431)
 				if (this.selectedCodeInfo != undefined && this.selectedCodeInfo != null) {
 					if (this.selectedCodeInfo.codigo === null || this.selectedCodeInfo.codigo === undefined || this.selectedCodeInfo.codigo ===
 						'') {
@@ -390,47 +390,63 @@
 			},
 			deletePhoto(index) {
 				this.$refs.loading.showLoading()
-				deleteSupnuevoCommonCommodityImage({
-					merchantId: this.merchantId,
-					commodityId: this.commodityId,
-					index: index+1,
-					isAdmin: "",
+				var flag = 0;
+				getSupnuevoBuyerPriceFormByCodigoMobile({
+					codigo: this.selectedCodeInfo.codigo,
+					supnuevoMerchantId: this.merchantId
 				}).then(res => {
-					console.log(res)
-					var errorMsg = res.errorMsg;
-					if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+					let goods = res.object;
+					if ((this.head + goods.attachDataUrl1) === this.photoArr[index])
+						flag = 1;
+					else 
+					if ((this.head + goods.attachDataUrl2) === this.photoArr[index])
+						flag = 2;
+					else 
+					if ((this.head + goods.attachDataUrl3) === this.photoArr[index])
+						flag = 3;
+					else
+					if ((this.head + goods.attachDataUrl4) === this.photoArr[index])
+						flag = 4;
+						
+					deleteSupnuevoCommonCommodityImage({
+						merchantId: this.merchantId,
+						commodityId: this.commodityId,
+						index: flag,
+						isAdmin: "",
+					}).then(res => {
+						console.log(res)
+						var errorMsg = res.errorMsg;
+						if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+							uni.showModal({
+								title: "提示",
+								content: errorMsg,
+								showCancel: false,
+							})
+						}else{
+							if (res.data != null && res.data != undefined && res.data != "") {
+								uni.showModal({
+									title: "提示",
+									content: res.data,
+									showCancel: false,
+								})
+							} else {
+								uni.showModal({
+									title: "提示",
+									content: "删除成功",
+									showCancel: false,
+								})
+								that.photoArr.splice(index, 1);
+								this.$refs.loading.hideLoading() // 隐藏
+							}
+						}
+					}).catch(err => {
 						uni.showModal({
 							title: "提示",
-							content: errorMsg,
+							content: err,
 							showCancel: false,
 						})
-					}else{
-						if (res.data != null && res.data != undefined && res.data != "") {
-							uni.showModal({
-								title: "提示",
-								content: res.data,
-								showCancel: false,
-							})
-						} else {
-							uni.showModal({
-								title: "提示",
-								content: "删除成功",
-								showCancel: false,
-							})
-							if (index == 0) {
-								this.photoArr[0] = null
-							}
-							that.photoArr.splice(index, 1);
-							this.$refs.loading.hideLoading() // 隐藏
-						}
-					}
-				}).catch(err => {
-					uni.showModal({
-						title: "提示",
-						content: err,
-						showCancel: false,
-					})
-				})
+					})	
+					})	
 				
 			},
 			uploadFoodImg() {
@@ -472,58 +488,39 @@
 				});
 			},
 			uploadImg(base64){
-				uploadAttachData({
-					ownerId: that.commodityId,
-					fileData: base64,
-					beanName: "supnuevoCommonCommodityProcessRmi",
-					folder: "supnuevo/commodity",
-					fileName: that.selectedCodeInfo.codigo + '/' + that.photoArr.length+1 + ".jpg",
-					remark: "supnuevo",
-					attachType: "90",
-					imageWidth: 480,
-					imageHeight: 640,
-					paras: {
-						merchantId: that.merchantId,
-						index: that.photoArr.length+1
-					}
+				var flag;
+				getSupnuevoBuyerPriceFormByCodigoMobile({
+					codigo: this.selectedCodeInfo.codigo,
+					supnuevoMerchantId: this.merchantId
 				}).then(res => {
-					console.log(res)
-					var errorMsg = res.errorMsg;
-					if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-						uni.showModal({
-							title: "提示",
-							content: errorMsg,
-							showCancel: false,
-						})
-					} else {
-						uni.showModal({
-							title: "提示",
-							content: "图片上传成功",
-							showCancel: false,
-						})
-						that.photoArr.push(that.head + res.urlAddress);
-						this.$refs.loading.hideLoading() // 隐藏
-						// this.onCodigoSelect();
-					}
-				}).catch(err => {
-					uni.showModal({
-						title: "提示",
-						content: err,
-						showCancel: false,
-					})
-				})
-				console.log(that.commodityId)
-			},
-			changeBigurl(index){
-				let temp = null
-				if (index !== 0){
-					temp = this.photoArr[index] 
-					this.photoArr[index] = this.photoArr[0] 
-					this.photoArr[0]  = temp
-					changeSupnuevoCommonCommodityImage({
-						merchantId: this.merchantId,
-						commodityId: this.commodityId,
-						index: index+1,
+					let goods = res.object;
+					console.log(goods)
+					if (goods.attachDataUrl1 === null || goods.attachDataUrl1 === undefined)
+						flag = 1;
+					else
+					if (goods.attachDataUrl2 === null|| goods.attachDataUrl2 === undefined)
+						flag = 2;
+					else
+					if (goods.attachDataUrl3 === null|| goods.attachDataUrl3 === undefined)
+						flag = 3;
+					else
+					if (goods.attachDataUrl4 === null|| goods.attachDataUrl4 === undefined)
+						flag = 4;
+					console.log(flag)
+					uploadAttachData({
+						ownerId: that.commodityId,
+						fileData: base64,
+						beanName: "supnuevoCommonCommodityProcessRmi",
+						folder: "supnuevo/commodity",
+						fileName: that.selectedCodeInfo.codigo + '/' + flag + ".jpg",
+						remark: "supnuevo",
+						attachType: "90",
+						imageWidth: 480,
+						imageHeight: 640,
+						paras: {
+							merchantId: that.merchantId,
+							index: flag
+						}
 					}).then(res => {
 						console.log(res)
 						var errorMsg = res.errorMsg;
@@ -536,19 +533,73 @@
 						} else {
 							uni.showModal({
 								title: "提示",
-								content: "设置成功！",
+								content: "图片上传成功",
 								showCancel: false,
 							})
-							}
+							that.photoArr.push(that.head + res.urlAddress);
+							this.$refs.loading.hideLoading() // 隐藏
+						}
 					}).catch(err => {
-					uni.showModal({
-						title: "提示",
-						content: err,
-						showCancel: false,
+						uni.showModal({
+							title: "提示",
+							content: err,
+							showCancel: false,
+						})
 					})
-					})
-				}
-				
+				})			
+			},
+			changeBigurl(index){
+				let temp = null			
+				if (index !== 0){
+					getSupnuevoBuyerPriceFormByCodigoMobile({
+						codigo: this.selectedCodeInfo.codigo,
+						supnuevoMerchantId: this.merchantId
+					}).then(res => {
+						var flag = 0;
+						let goods = res.object;
+						console.log(goods)
+						if ((this.head + goods.attachDataUrl2) === this.photoArr[index])
+							flag = 2;
+						else
+						if ((this.head + goods.attachDataUrl3) === this.photoArr[index])
+							flag = 3; 
+						else
+						if ((this.head + goods.attachDataUrl4) === this.photoArr[index])
+							flag = 4;
+						changeSupnuevoCommonCommodityImage({
+								merchantId: this.merchantId,
+								commodityId: this.commodityId,
+								index: flag,
+							}).then(res => {
+								console.log(res)
+								var errorMsg = res.errorMsg;
+								if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+									uni.showModal({
+										title: "提示",
+										content: errorMsg,
+										showCancel: false,
+									})
+								} else {
+									uni.showModal({
+										title: "提示",
+										content: "设置成功！",
+										showCancel: false,
+									})
+									temp = this.photoArr[index]
+									this.photoArr[index] = this.photoArr[0] 
+									this.photoArr[0]  = temp
+									this.picUrl1 = this.photoArr[0] 
+									}
+							}).catch(err => {
+							uni.showModal({
+								title: "提示",
+								content: err,
+								showCancel: false,
+							})
+							})
+						})
+					}
+					
 			},
 			scroll: function(e) {
 				console.log(e)
