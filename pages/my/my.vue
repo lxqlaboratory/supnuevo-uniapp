@@ -1,24 +1,11 @@
 <template>
 	<view class="">
-		<view class="" style="display: flex;">
-			<view class="" style="flex: 1;">
-				1234
-			</view>
-			<view class="" style="flex: 1;">
-				1234
-			</view>
-		</view>
 		<view class="">
-			<button type="default" @click="uploadFoodImg">上传</button>
+			<view class="">
+				<image src="../../static/image/cart.png" mode="aspectFit" style="width: 100%"></image>
+			</view>	
 		</view>
-		<cover-view class="p-list">
-			<cover-view class="l-item" v-for="(item, index) in photoArr" :key="index">
-				<cover-image class="i-img" :src="item" mode="scaleToFill"></cover-image>
-				<cover-image @click="deletePhoto(index)" class="i-icon" src="../../static/image/images/delete.png" mode="scaleToFill"></cover-image>
-			</cover-view>
-		</cover-view>
 	</view>
-	
 </template>
 
 <script>

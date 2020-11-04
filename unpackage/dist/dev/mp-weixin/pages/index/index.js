@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uniPopup: function() {
-    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 85))
+    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 93))
   }
 }
 var render = function() {
@@ -357,6 +357,7 @@ var _default = { data: function data() {return { loginName: '', password: '', er
               getApp().globalData.profitprice2 = res.data.addPriceMap.AddProfit1;
               getApp().globalData.profitprice3 = res.data.addPriceMap.AddProfit2;
               getApp().globalData.profitprice4 = res.data.addPriceMap.AddProfit3;
+              getApp().globalData.username = res.data.username;
               console.log(res.data.addPriceMap);
               console.log(getApp().globalData.doubleORper);
               // console.log(res.data.addPriceMap)

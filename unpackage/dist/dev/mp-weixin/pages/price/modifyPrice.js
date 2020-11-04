@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 101))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 109))
   },
   taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 108))
+    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 116))
   }
 }
 var render = function() {
@@ -346,7 +346,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _change = __webpack_require__(/*! @/api/change.js */ 32);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 108));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 101));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _change = __webpack_require__(/*! @/api/change.js */ 32);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 116));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 109));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -368,6 +368,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
 
   data: function data() {var _ref;
     return _ref = {
+      username: '',
       taxArr: [],
       sizeArr: [],
       array: ['维护商品信息', '价格偏差表', '计算键设置', '扫码间隔时间'],
@@ -420,6 +421,8 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
 
   },
   onShow: function onShow() {var _this = this;
+    this.username = getApp().globalData.username;
+    this.pricedicount.IVAprice1 = getApp().globalData.IVAprice1;
     this.pricedicount.IVAprice1 = getApp().globalData.IVAprice1;
     this.pricedicount.IVAprice2 = getApp().globalData.IVAprice2;
     this.pricedicount.IVAprice3 = getApp().globalData.IVAprice3;
@@ -429,6 +432,9 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
     this.pricedicount.profitprice2 = getApp().globalData.profitprice2;
     this.pricedicount.profitprice3 = getApp().globalData.profitprice3;
     this.pricedicount.profitprice4 = getApp().globalData.profitprice4;
+    uni.setNavigationBarTitle({
+      title: 'supnuevo-' + this.username });
+
     if (this.codigo !== null && this.codigo !== undefined && this.codigo !== '') {
       var merchantId = getApp().globalData.merchantId;
       (0, _change.getSupnuevoBuyerPriceFormByCodigoMobile)({
@@ -976,6 +982,54 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
           }
         });
       }
+    },
+    navigate_priceGroupChange: function navigate_priceGroupChange() {
+      var selectGoodInfo = this.selectedCodeInfo;
+      var codigo = this.selectedCodeInfo.codigo;
+      var price = this.priceShow;
+      if (codigo == null || codigo == undefined || codigo == "" || codigo.length < 8 || codigo.length > 13) {
+        uni.showModal({
+          title: "提示",
+          content: "条码错误！！",
+          showCancel: false });
+
+        return;
+      } else
+      if (selectGoodInfo == null || selectGoodInfo == undefined || selectGoodInfo == "") {
+        uni.showModal({
+          title: "提示",
+          content: "请输入条码！！",
+          showCancel: false });
+
+        return;
+      } else
+      if (price == undefined || price == null || price == "") {
+        uni.showModal({
+          title: "提示",
+          content: "请先输入价格！！",
+          showCancel: false });
+
+        return;
+      } else
+      if (!this.isNumber(price)) {
+        uni.showModal({
+          title: "提示",
+          content: "请输入正确的价格！！",
+          showCancel: false });
+
+        return;
+      } else {
+        var form = {
+          merchantId: getApp().globalData.merchantId,
+          price: price,
+          goodInfo: selectGoodInfo,
+          codigo: selectGoodInfo.codigo };
+
+        uni.navigateTo({
+          url: './Group?form=' + encodeURIComponent(JSON.stringify(form)) });
+
+      }
+
     },
     saveRelPrice: function saveRelPrice() {var _this6 = this;
       if (this.priceShow !== null && this.priceShow !== undefined) {

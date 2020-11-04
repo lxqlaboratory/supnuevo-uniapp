@@ -2,6 +2,7 @@
 	export default {
 		globalData: {
 			root:'',
+			username:'',
 			vueSessionId: '',
 			userType: '',
 			personId: '',

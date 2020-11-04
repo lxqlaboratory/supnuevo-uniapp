@@ -1935,7 +1935,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 134:
+/***/ 142:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
   \************************************************************/
@@ -9235,7 +9235,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;exports.changeSupnuevoCommonCommodityImage = changeSupnuevoCommonCommodityImage;exports.deleteSupnuevoCommonCommodityImage = deleteSupnuevoCommonCommodityImage;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.getSupnuevoBuyerCommodityPriceFormListOfGroupMobile = getSupnuevoBuyerCommodityPriceFormListOfGroupMobile;exports.updateSupnuevoBuyerCommodityPriceGroupMobile = updateSupnuevoBuyerCommodityPriceGroupMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;exports.changeSupnuevoCommonCommodityImage = changeSupnuevoCommonCommodityImage;exports.deleteSupnuevoCommonCommodityImage = deleteSupnuevoCommonCommodityImage;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function getQueryDataListByInputStringMobile(data) {
   return _request.default.request({
@@ -9255,6 +9255,22 @@ function getSupnuevoBuyerPriceFormByCodigoMobile(data) {
 function saveOrUpdateSupnuevoBuyerCommodityPriceMobile(data) {
   return _request.default.request({
     url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerCommodityPriceFormListOfGroupMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoBuyerCommodityPriceFormListOfGroupMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerCommodityPriceGroupMobile(data) {
+  return _request.default.request({
+    url: '/commodity/updateSupnuevoBuyerCommodityPriceGroupMobile',
     method: 'POST',
     data: data });
 
@@ -9337,7 +9353,7 @@ function deleteSupnuevoCommonCommodityImage(data) {
 
 /***/ }),
 
-/***/ 90:
+/***/ 98:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
   \************************************************************/
@@ -9345,7 +9361,7 @@ function deleteSupnuevoCommonCommodityImage(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 91));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 99));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -9372,7 +9388,7 @@ var config = {
 
 /***/ }),
 
-/***/ 91:
+/***/ 99:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
   \**************************************************************/

@@ -57,7 +57,7 @@
 			<view class="Inshop">
 				<text>商品条码:</text>
 			</view>
-			<view class="">
+			<view class="Inshop1">
 				<text>{{codigo}}</text>
 			</view>
 		</view>
@@ -65,7 +65,7 @@
 			<view class="Inshop">
 				<text>商品名称:</text>
 			</view>
-			<view class="">
+			<view class="Inshop1">
 				<text>{{selectedCodeInfo.goodName}}</text>
 			</view>
 		</view>
@@ -73,7 +73,7 @@
 			<view class="Inshop">
 				<text>商品名称:</text>
 			</view>
-			<view class="">
+			<view class="Inshop1">
 				<text>{{selectedCodeInfo.goodName}}</text>
 			</view>
 		</view>
@@ -81,7 +81,7 @@
 			<view class="Inshop">
 				<text>更新改价:</text>
 			</view>
-			<view class="">
+			<view class="Inshop1">
 				<input type="text" v-model="priceShow" />
 			</view>
 		</view>
@@ -229,6 +229,7 @@
 		},
 		data() {
 			return {
+				username:'',
 				taxArr: [],
 				sizeArr: [],
 				array: ['维护商品信息', '价格偏差表', '计算键设置', '扫码间隔时间'],
@@ -281,6 +282,8 @@
 			}
 		},
 		onShow(){
+			this.username = getApp().globalData.username
+			this.pricedicount.IVAprice1 = getApp().globalData.IVAprice1
 			this.pricedicount.IVAprice1 = getApp().globalData.IVAprice1
 			this.pricedicount.IVAprice2 = getApp().globalData.IVAprice2
 			this.pricedicount.IVAprice3 = getApp().globalData.IVAprice3 
@@ -290,6 +293,9 @@
 			this.pricedicount.profitprice2 = getApp().globalData.profitprice2
 			this.pricedicount.profitprice3 = getApp().globalData.profitprice3
 			this.pricedicount.profitprice4 = getApp().globalData.profitprice4
+			uni.setNavigationBarTitle({
+			    title: 'supnuevo-'+this.username
+			});
 			if (this.codigo !== null && this.codigo !== undefined && this.codigo !== ''){
 				const merchantId = getApp().globalData.merchantId;
 				getSupnuevoBuyerPriceFormByCodigoMobile({
@@ -838,6 +844,54 @@
 						})
 						}
 				},
+				navigate_priceGroupChange(){
+					var selectGoodInfo = this.selectedCodeInfo;
+					let codigo = this.selectedCodeInfo.codigo;
+					let price = this.priceShow;
+					if (codigo==null || codigo == undefined || codigo== "" || codigo.length < 8 || codigo.length > 13){
+						uni.showModal({
+							title: "提示",
+							content: "条码错误！！",
+							showCancel: false,
+						})
+						return;
+					} else
+					 if(selectGoodInfo==null || selectGoodInfo == undefined || selectGoodInfo == ""){
+						uni.showModal({
+							title: "提示",
+							content: "请输入条码！！",
+							showCancel: false,
+						})
+						return ;
+					}else
+					 if (price == undefined || price == null || price == "") {
+						uni.showModal({
+							title: "提示",
+							content: "请先输入价格！！",
+							showCancel: false,
+						})
+						return;
+					}else
+					if(!this.isNumber(price)){
+						uni.showModal({
+							title: "提示",
+							content: "请输入正确的价格！！",
+							showCancel: false,
+						})
+						return;
+					}else {
+						let form = {
+							merchantId: getApp().globalData.merchantId,
+							price: price,
+							goodInfo: selectGoodInfo,
+							codigo: selectGoodInfo.codigo,
+						}
+						uni.navigateTo({
+							url:'./Group?form='+encodeURIComponent(JSON.stringify(form))
+						})
+					}
+					
+				},
 				saveRelPrice(){
 					if (this.priceShow !== null && this.priceShow !== undefined){
 					var priceShow = this.priceShow.toString();
@@ -983,11 +1037,18 @@
 		border: solid 0.5px #4CD964;
 	}
 	.Inshop {
+		display: flex;
+		flex: 4;
 		justify-content: center;
 		align-items: center;
 		background-color: #C0C0C0;
 		height: 45px;
-		width: 40%;
+	}
+	.Inshop1 {
+		display: flex;
+		flex: 6;
+		align-items: center;
+		height: 45px;
 	}
 	.discount {
 		margin-top: 15px;

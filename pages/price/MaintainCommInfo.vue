@@ -183,6 +183,7 @@
 		},
 		data() {
 			return {
+				username:'',
 				root: '',
 				commodityId: '',
 				scaleArr: [],
@@ -214,6 +215,10 @@
 		},
 		onLoad(option) {
 			this.$refs.loading.showLoading()
+			this.username = getApp().globalData.username
+			uni.setNavigationBarTitle({
+			    title: 'supnuevo-'+this.username
+			});
 			this.root = getApp().globalData.root
 			this.form = JSON.parse(decodeURIComponent(option.form));
 			this.commodityId = this.form.commodityId

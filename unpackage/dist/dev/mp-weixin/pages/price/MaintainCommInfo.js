@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 101))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 109))
   }
 }
 var render = function() {
@@ -304,7 +304,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 101));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var _change = __webpack_require__(/*! @/api/change.js */ 32);var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 109));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
 
 
@@ -319,6 +319,7 @@ var that = null;var _default =
 
   data: function data() {
     return {
+      username: '',
       root: '',
       commodityId: '',
       scaleArr: [],
@@ -350,6 +351,10 @@ var that = null;var _default =
   },
   onLoad: function onLoad(option) {
     this.$refs.loading.showLoading();
+    this.username = getApp().globalData.username;
+    uni.setNavigationBarTitle({
+      title: 'supnuevo-' + this.username });
+
     this.root = getApp().globalData.root;
     this.form = JSON.parse(decodeURIComponent(option.form));
     this.commodityId = this.form.commodityId;

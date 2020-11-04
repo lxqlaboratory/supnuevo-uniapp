@@ -162,6 +162,7 @@
 	export default {
 		data() {
 			return {
+				username:'',
 				root:'',
 				taxArr: [],
 				sizeArr: [],
@@ -216,6 +217,10 @@
 				}
 								
 			}
+			this.username = getApp().globalData.username
+			uni.setNavigationBarTitle({
+			    title: 'supnuevo-'+this.username
+			});
 			this.$refs.loading.hideLoading() // 隐藏
 		},
 		methods: {

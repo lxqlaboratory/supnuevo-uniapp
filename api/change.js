@@ -23,6 +23,22 @@ export function saveOrUpdateSupnuevoBuyerCommodityPriceMobile(data) {
 	})
 }
 
+export function getSupnuevoBuyerCommodityPriceFormListOfGroupMobile(data) {
+	return request.request({
+		url: '/commodity/getSupnuevoBuyerCommodityPriceFormListOfGroupMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function updateSupnuevoBuyerCommodityPriceGroupMobile(data) {
+	return request.request({
+		url: '/commodity/updateSupnuevoBuyerCommodityPriceGroupMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
 export function saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile(data) {
 	return request.request({
 		url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile',

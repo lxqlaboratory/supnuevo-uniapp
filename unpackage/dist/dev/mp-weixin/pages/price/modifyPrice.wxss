@@ -173,6 +173,12 @@
   border: solid 0.5px #4CD964;
 }
 .Inshop {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 4;
+  -webkit-flex: 4;
+          flex: 4;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
           justify-content: center;
@@ -181,7 +187,18 @@
           align-items: center;
   background-color: #C0C0C0;
   height: 45px;
-  width: 40%;
+}
+.Inshop1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 6;
+  -webkit-flex: 6;
+          flex: 6;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 45px;
 }
 .discount {
   margin-top: 15px;

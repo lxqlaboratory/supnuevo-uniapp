@@ -96,6 +96,7 @@
 export default {
 	data(){
 		return{
+			username:'',
 			check: true,
 		pricedicount : {
 			IVAprice1: '',
@@ -128,6 +129,10 @@ export default {
 			this.radioItems3[1].checked = true;
 			this.radioItems3[0].checked = false;
 		}
+		this.username = getApp().globalData.username
+		uni.setNavigationBarTitle({
+		    title: 'supnuevo-'+this.username
+		});
 	},
 	methods: {
 		changename_990338: function (value) {

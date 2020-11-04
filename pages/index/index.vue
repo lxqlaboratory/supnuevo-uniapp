@@ -216,6 +216,7 @@
 									getApp().globalData.profitprice2= res.data.addPriceMap.AddProfit1
 									getApp().globalData.profitprice3 = res.data.addPriceMap.AddProfit2
 									getApp().globalData.profitprice4 = res.data.addPriceMap.AddProfit3 
+									getApp().globalData.username = res.data.username
 									console.log(res.data.addPriceMap)
 									console.log(getApp().globalData.doubleORper)  
 									// console.log(res.data.addPriceMap)
