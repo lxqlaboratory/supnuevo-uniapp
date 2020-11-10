@@ -88,6 +88,114 @@
 				"backgroundColor": "#3a6eff"
 			}
         }
+		,{
+		    "path" : "pages/my/myUnion",
+		    "style" : {
+				"navigationBarTitleText": "我的超市联盟",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/unionRule",
+		    "style" : {
+				"navigationBarTitleText": "本联盟规定",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/commodityCategory",
+		    "style" : {
+				"navigationBarTitleText": "我们的商品种类",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/commodityPrice",
+		    "style" : {
+				"navigationBarTitleText": "我们的商品价格",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/pricePromotion",
+		    "style" : {
+				"navigationBarTitleText": "我们的促销策略",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/PricePublicity",
+		    "style" : {
+				"navigationBarTitleText": "我们的促销宣传单",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/MemberList",
+		    "style" : {
+				"navigationBarTitleText": "我们的成员",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/unionOrder",
+		    "style" : {
+				"navigationBarTitleText": "我的超市联盟订单",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/LackCommodity",
+		    "style" : {
+				"navigationBarTitleText": "缺货商品",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/IncompleteCommodity",
+		    "style" : {
+				"navigationBarTitleText": "信息不完整商品",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/CodigoRelation",
+		    "style" : {
+				"navigationBarTitleText": "条码级联",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
+		    "path" : "pages/my/ModifyTime",
+		    "style" : {
+				"navigationBarTitleText": "商品改价时间",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

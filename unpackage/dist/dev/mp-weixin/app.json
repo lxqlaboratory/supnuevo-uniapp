@@ -9,7 +9,19 @@
     "pages/price/MaintainCommInfo",
     "pages/price/compute",
     "pages/price/AddCommInfo",
-    "pages/price/Group"
+    "pages/price/Group",
+    "pages/my/myUnion",
+    "pages/my/unionRule",
+    "pages/my/commodityCategory",
+    "pages/my/commodityPrice",
+    "pages/my/pricePromotion",
+    "pages/my/PricePublicity",
+    "pages/my/MemberList",
+    "pages/my/unionOrder",
+    "pages/my/LackCommodity",
+    "pages/my/IncompleteCommodity",
+    "pages/my/CodigoRelation",
+    "pages/my/ModifyTime"
   ],
   "subPackages": [],
   "window": {
@@ -60,5 +72,5 @@
     "uni-popup": "/components/uni-popup/uni-popup",
     "uni-popup-dialog": "/components/uni-popup/uni-popup-dialog"
   },
-  "sitemapLocation": "sitemap14.json"
+  "sitemapLocation": "sitemap22.json"
 }

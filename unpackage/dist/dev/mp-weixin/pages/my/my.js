@@ -140,43 +140,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-var that = null;var _default =
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default =
 {
   data: function data() {
     return {
-      photoArr: [],
-      photoArrCapacity: 6 };
+      unionMemberType: '' };
 
   },
-  onLoad: function onLoad(parameters) {
-    that = this;
-    // uni.showLoading({
-    // 	mask: true,
-    // 	title: '相机加载中……'
-    // });
+  onLoad: function onLoad() {
+    this.unionMemberType = getApp().globalData.unionMemberType;
   },
   methods: {
-    deletePhoto: function deletePhoto(index) {
-      that.photoArr.splice(index, 1);
-    },
-    uploadFoodImg: function uploadFoodImg() {
-      if (that.photoArr.length > that.photoArrCapacity) {
-        that.tips('超出限制咯~');
-        return 0;
-      }
-      uni.chooseImage({
-        count: that.photoArrCapacity - that.photoArr.length,
-        success: function success(res) {
-          console.log('res ==>', res);
-          res.tempFilePaths.forEach(function (item) {
-            // 正式环境下调用此方法上传图片
-            // that.uploadImg(item).then(result => {
-            // 	that.photoArr.push(result.data);
-            // });
-            that.photoArr.push(item);
-          });
-        } });
+    navigateMyUnion: function navigateMyUnion() {
+      uni.navigateTo({
+        url: './myUnion' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "本联盟规定",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#3a6eff",
+  "backgroundColor": "#3a6eff",
+  "usingComponents": {
+    "choose": "/components/choose",
+    "wyb-loading": "/components/wyb-loading/wyb-loading"
+  }
+}

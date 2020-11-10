@@ -3,7 +3,9 @@
 		globalData: {
 			root:'',
 			username:'',
+			unionMemberType:'',
 			vueSessionId: '',
+			unionId:'',
 			userType: '',
 			personId: '',
 			canAchievement: '',
@@ -38,4 +40,5 @@
 	/*每个页面公共css */
 	@import "static/colorui/weui-extend.css";
 	@import "static/colorui/icon.css";
+	/* @import "static/colorui/uni.css"; */
 </style>

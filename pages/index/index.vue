@@ -217,8 +217,8 @@
 									getApp().globalData.profitprice3 = res.data.addPriceMap.AddProfit2
 									getApp().globalData.profitprice4 = res.data.addPriceMap.AddProfit3 
 									getApp().globalData.username = res.data.username
-									console.log(res.data.addPriceMap)
-									console.log(getApp().globalData.doubleORper)  
+									getApp().globalData.unionMemberType = res.data.unionMemberType
+									getApp().globalData.unionId = res.data.unionId
 									// console.log(res.data.addPriceMap)
       //                               dispatch(setWeightService(res.data.weightService));
       //                               dispatch(getSession({

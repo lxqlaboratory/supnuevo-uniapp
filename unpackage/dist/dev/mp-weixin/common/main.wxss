@@ -35,6 +35,8 @@
 
 
 
+
+
 /*每个页面公共css */
 view,
 scroll-view,
@@ -2968,4 +2970,5 @@ form .weui-cell .weui-form-item {
 .cuIcon-btn:before {
 	content: "\e601";
 }
+/* @import "static/colorui/uni.css"; */
 
