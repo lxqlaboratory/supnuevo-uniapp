@@ -1,0 +1,19 @@
+
+.uni-padding-wrap{
+	width:100%;
+	padding:0 30rpx;
+}
+.scroll-Y{
+	height: 724px;
+}
+.scroll-view-item {
+	height: 300rpx;
+	line-height: 300rpx;
+	text-align: center;
+	font-size: 36rpx;
+}
+.fontstyle{
+	font-size: 19px;
+	margin: 8px;
+}
+

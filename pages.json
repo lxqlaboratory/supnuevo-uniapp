@@ -195,7 +195,26 @@
 				"navigationBarBackgroundColor": "#3a6eff",
 				"backgroundColor": "#3a6eff"
 			}
+		},
+		{
+		    "path" : "pages/my/CommoditybytaxId",
+		    "style" : {
+				"navigationBarTitleText": "supnuevo",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		},
+		{
+		    "path" : "pages/my/CommodityDetail",
+		    "style" : {
+				"navigationBarTitleText": "supnuevo",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
 		}
+		
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

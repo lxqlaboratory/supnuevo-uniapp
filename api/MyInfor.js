@@ -31,3 +31,35 @@ export function updateSupnuevoBuyerUnion(data) {
 		data: data
 	})
 }
+
+export function getSupnuevoBuyerUnionPriceTaxFormList(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionPriceTaxFormList',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function updateSupnuevoBuyerUnionPriceRatio(data) {
+	return request.request({
+		url: '/union/updateSupnuevoBuyerUnionPriceRatio',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSupnuevoBuyerUnionPriceFormListByTaxId(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionPriceFormListByTaxId',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function updateSupnuevoBuyerUnionPriceRatio1(data) {
+	return request.request({
+		url: '/union/updateSupnuevoBuyerUnionPriceRatio1',
+		method: 'POST',
+		data: data
+	})
+}
