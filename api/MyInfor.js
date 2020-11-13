@@ -63,3 +63,43 @@ export function updateSupnuevoBuyerUnionPriceRatio1(data) {
 		data: data
 	})
 }
+
+export function getSupnuevoBuyerUnionPriceClassList(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionPriceClassList',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function setUnionCurrentMerchantCount(data) {
+	return request.request({
+		url: '/union/setUnionCurrentMerchantCount',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSupnuevoBuyerUnionPriceListByPriceCount(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionPriceListByPriceCount',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function setAllCommodityIsAlive(data) {
+	return request.request({
+		url: '/union/setAllCommodityIsAlive',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function setSupnuevoBuyerUnionCommodityIsAlive(data) {
+	return request.request({
+		url: '/union/setSupnuevoBuyerUnionCommodityIsAlive',
+		method: 'POST',
+		data: data
+	})
+}

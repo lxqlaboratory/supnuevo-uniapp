@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 188))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 206))
   },
   taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 195))
+    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 213))
   }
 }
 var render = function() {
@@ -346,7 +346,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _change = __webpack_require__(/*! @/api/change.js */ 32);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 195));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 188));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _change = __webpack_require__(/*! @/api/change.js */ 32);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 213));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 206));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -516,7 +516,6 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
       var that = this;
       uni.scanCode({
         success: function success(res) {
-
           that.goods.codeNum = res.result;
           console.log('条码内容：' + that.goods.codeNum);
           uni.showModal({
@@ -829,6 +828,10 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
             }
           }
         }).catch(function (err) {
+          uni.showModal({
+            title: "提示",
+            content: err,
+            showCancel: false });
 
         });}
       this.$refs.loading.hideLoading(); // 隐藏

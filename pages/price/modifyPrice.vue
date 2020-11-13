@@ -377,7 +377,6 @@
 				var that = this;
 				uni.scanCode({
 					success:function(res){
-						
 						that.goods.codeNum = res.result;
 						console.log('条码内容：' + that.goods.codeNum);
 						uni.showModal({
@@ -689,9 +688,13 @@
 								
 			                }
 			            }
-			        }).catch(err => {
-			           
-			        });}
+			        }).catch((err) => {
+				uni.showModal({
+					title: "提示",
+					content: err,
+					showCancel: false,
+				})
+			});	}
 					 this.$refs.loading.hideLoading() // 隐藏
 			    },
 				selectNum (){

@@ -5,7 +5,7 @@
 		</view>
 		
 		<view class="uni-padding-wrap">
-		<view v-if="unionMemberType !== 2">
+		<view v-if="unionMemberType === 2">
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll">
 				<view class="" v-for="(item,index) in allClass" :key="index"  style="display: flex;flex-direction: row; justify-content: center;align-items: center;margin-top: 15px;height: 40px;padding-bottom: 10px;border-bottom: 1px solid #1CBBB4;">
 					<view class="" style="display: flex;flex: 5;" @click="navigatorCommodity(item.taxId,item.taxName,item.ratio)">
@@ -15,7 +15,7 @@
 						<text>建议价 - </text>
 					</view>
 					<view class="" style="display: flex;">
-						<input type="text" :value="item.ratio*100" style="width: 27px;"/>%
+						<input type="text" v-model="item.ratio" style="width: 27px;"/>%
 					</view>
 					<view class="" style="display: flex;margin-left: 5px;">
 						<button type="primary" @click="updateSupnuevoBuyerUnionPriceRatio(item.taxId,item.ratio)" style="flex: 1.5; background-color: #007AFF;border-radius: 9px;margin-right: 10px;font-size: 13px;">修改</button>
@@ -24,14 +24,14 @@
 			</scroll-view>
 		</view>
 		
-		<view v-else-if="unionMemberType === 2">
+		<view v-else-if="unionMemberType !== 2">
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll">
 				<view class="" v-for="(item,index) in allClass" :key="index" @click="navigatorCommodity(item.taxId,item.taxName,item.ratio)" style="display: flex;flex-direction: row; justify-content: center;align-items: center;margin-top: 15px;height: 40px;padding-bottom: 10px;border-bottom: 1px solid #1CBBB4;">
 					<view class="" style="display: flex;flex: 5;">
 						<text>{{item.taxName}}</text>
 					</view>
 					<view class="" style="display: flex;">
-						<text>建议价 - {{item.ratio*100}}%</text>
+						<text>建议价 - {{item.ratio}}%</text>
 					</view>
 				</view>
 			</scroll-view>
@@ -58,7 +58,6 @@
 				old: {
 					scrollTop: 0
 				},
-				index: 0,
 			};
 		},
 		onShow() {
@@ -71,6 +70,9 @@
 				console.log(res)
 				if (res.re === 1){
 					this.allClass = res.data
+					for(var i = 0;i < this.allClass.length ; i++){
+						this.allClass[i].ratio = this.allClass[i].ratio*100
+					}
 				}
 			}).catch((err) => {
 				uni.showModal({
@@ -96,6 +98,7 @@
 				})
 			},
 			updateSupnuevoBuyerUnionPriceRatio(taxId,ratio){
+				console.log(ratio)
 				if (ratio === 0){
 					uni.showModal({
 						title: "提示",
@@ -103,7 +106,6 @@
 						showCancel: false,
 					})
 				}else{
-					ratio = ratio.toString();
 					updateSupnuevoBuyerUnionPriceRatio({
 						unionId: this.unionId,
 						taxId: taxId,

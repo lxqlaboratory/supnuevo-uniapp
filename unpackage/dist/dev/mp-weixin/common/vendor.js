@@ -1963,72 +1963,6 @@ function getMerchantInitInfoMobile(data) {
 
 /***/ }),
 
-/***/ 177:
-/*!************************************************************!*\
-  !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 178));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-// 定义 type 类型:弹出类型：top/bottom/center
-var config = {
-  // 顶部弹出
-  top: 'top',
-  // 底部弹出
-  bottom: 'bottom',
-  // 居中弹出
-  center: 'center',
-  // 消息提示
-  message: 'top',
-  // 对话框
-  dialog: 'center',
-  // 分享
-  share: 'bottom' };var _default =
-
-
-{
-  data: function data() {
-    return {
-      config: config };
-
-  },
-  mixins: [_message.default] };exports.default = _default;
-
-/***/ }),
-
-/***/ 178:
-/*!**************************************************************!*\
-  !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  created: function created() {
-    if (this.type === 'message') {
-      // 不显示遮罩
-      this.maskShow = false;
-      // 获取子组件对象
-      this.childrenMsg = null;
-    }
-  },
-  methods: {
-    customOpen: function customOpen() {
-      if (this.childrenMsg) {
-        this.childrenMsg.open();
-      }
-    },
-    customClose: function customClose() {
-      if (this.childrenMsg) {
-        this.childrenMsg.close();
-      }
-    } } };exports.default = _default;
-
-/***/ }),
-
 /***/ 18:
 /*!************************************************!*\
   !*** D:/vue/supnuevo-uniapp/common/request.js ***!
@@ -2086,6 +2020,72 @@ req;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! regenerator-runtime */ 20);
+
+/***/ }),
+
+/***/ 195:
+/*!************************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 196));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 定义 type 类型:弹出类型：top/bottom/center
+var config = {
+  // 顶部弹出
+  top: 'top',
+  // 底部弹出
+  bottom: 'bottom',
+  // 居中弹出
+  center: 'center',
+  // 消息提示
+  message: 'top',
+  // 对话框
+  dialog: 'center',
+  // 分享
+  share: 'bottom' };var _default =
+
+
+{
+  data: function data() {
+    return {
+      config: config };
+
+  },
+  mixins: [_message.default] };exports.default = _default;
+
+/***/ }),
+
+/***/ 196:
+/*!**************************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  created: function created() {
+    if (this.type === 'message') {
+      // 不显示遮罩
+      this.maskShow = false;
+      // 获取子组件对象
+      this.childrenMsg = null;
+    }
+  },
+  methods: {
+    customOpen: function customOpen() {
+      if (this.childrenMsg) {
+        this.childrenMsg.open();
+      }
+    },
+    customClose: function customClose() {
+      if (this.childrenMsg) {
+        this.childrenMsg.close();
+      }
+    } } };exports.default = _default;
 
 /***/ }),
 
@@ -9044,7 +9044,83 @@ Request = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 228:
+/***/ 23:
+/*!************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/request/common.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.requestConfig = requestConfig;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function
+requestConfig(_x, _x2) {return _requestConfig.apply(this, arguments);}function _requestConfig() {_requestConfig = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(ins, options) {var header, baseUrl, config, _cg, _options, type;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+
+            // JSON.parse(JSON.stringify(options.header || ins.header))
+
+            header = Object.assign({}, options.header || ins.header);
+            baseUrl = options.baseUrl || ins.baseUrl;
+            // config
+            config = {
+              url: baseUrl + options.url,
+              header: header };
+
+            _cg = null;if (!
+            ins.requestInterceptor) {_context.next = 22;break;}_context.prev = 5;
+
+
+
+            _options = JSON.parse(JSON.stringify(Object.assign({}, options, config)));
+            // _cg is tha same object of _options
+            _context.next = 9;return ins.requestInterceptor(_options);case 9:_cg = _context.sent;_context.next = 15;break;case 12:_context.prev = 12;_context.t0 = _context["catch"](5);return _context.abrupt("return",
+
+
+            false);case 15:if (!(
+
+
+            !_cg || typeof _cg !== 'object')) {_context.next = 17;break;}return _context.abrupt("return",
+            false);case 17:if (!
+
+
+            _cg.mypReqToCancel) {_context.next = 19;break;}return _context.abrupt("return",
+            _cg);case 19:
+
+
+            config.url = _cg.url;
+            config.header = _cg.header;
+
+            if (_cg.failReject && typeof _cg.failReject === 'object') {
+              config.failReject = _cg.failReject;
+            }case 22:
+
+            type = options.type || "request";
+
+            if (type === "request") {
+              config["data"] = _cg.data || {};
+              config["method"] = _cg.method || "GET";
+              config["dataType"] = _cg.dataType || "json";
+              config["responseType"] = _cg.responseType || "text";
+            } else if (type === "upload") {
+              config['filePath'] = _cg.filePath;
+              config['name'] = _cg.name;
+              config["method"] = _cg.method || "POST";
+              config['formData'] = _cg.formData || {};
+
+              config["fileType"] = _cg.fileType || "image";
+
+              // config.header['Content-Type'] = 'multipart/form-data;charset=UTF-8'
+              delete config.header['Content-Type'];
+            }
+            console.log(config);return _context.abrupt("return",
+            config);case 26:case "end":return _context.stop();}}}, _callee, null, [[5, 12]]);}));return _requestConfig.apply(this, arguments);}
+
+
+function _isPromise(obj) {
+  return obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+}
+
+/***/ }),
+
+/***/ 246:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
   \************************************************************/
@@ -9183,82 +9259,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   "cloud-download-filled": "\uE8E9",
   "headphones": "\uE8BF",
   "shop": "\uE609" };exports.default = _default;
-
-/***/ }),
-
-/***/ 23:
-/*!************************************************!*\
-  !*** D:/vue/supnuevo-uniapp/request/common.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.requestConfig = requestConfig;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function
-requestConfig(_x, _x2) {return _requestConfig.apply(this, arguments);}function _requestConfig() {_requestConfig = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(ins, options) {var header, baseUrl, config, _cg, _options, type;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-
-            // JSON.parse(JSON.stringify(options.header || ins.header))
-
-            header = Object.assign({}, options.header || ins.header);
-            baseUrl = options.baseUrl || ins.baseUrl;
-            // config
-            config = {
-              url: baseUrl + options.url,
-              header: header };
-
-            _cg = null;if (!
-            ins.requestInterceptor) {_context.next = 22;break;}_context.prev = 5;
-
-
-
-            _options = JSON.parse(JSON.stringify(Object.assign({}, options, config)));
-            // _cg is tha same object of _options
-            _context.next = 9;return ins.requestInterceptor(_options);case 9:_cg = _context.sent;_context.next = 15;break;case 12:_context.prev = 12;_context.t0 = _context["catch"](5);return _context.abrupt("return",
-
-
-            false);case 15:if (!(
-
-
-            !_cg || typeof _cg !== 'object')) {_context.next = 17;break;}return _context.abrupt("return",
-            false);case 17:if (!
-
-
-            _cg.mypReqToCancel) {_context.next = 19;break;}return _context.abrupt("return",
-            _cg);case 19:
-
-
-            config.url = _cg.url;
-            config.header = _cg.header;
-
-            if (_cg.failReject && typeof _cg.failReject === 'object') {
-              config.failReject = _cg.failReject;
-            }case 22:
-
-            type = options.type || "request";
-
-            if (type === "request") {
-              config["data"] = _cg.data || {};
-              config["method"] = _cg.method || "GET";
-              config["dataType"] = _cg.dataType || "json";
-              config["responseType"] = _cg.responseType || "text";
-            } else if (type === "upload") {
-              config['filePath'] = _cg.filePath;
-              config['name'] = _cg.name;
-              config["method"] = _cg.method || "POST";
-              config['formData'] = _cg.formData || {};
-
-              config["fileType"] = _cg.fileType || "image";
-
-              // config.header['Content-Type'] = 'multipart/form-data;charset=UTF-8'
-              delete config.header['Content-Type'];
-            }
-            console.log(config);return _context.abrupt("return",
-            config);case 26:case "end":return _context.stop();}}}, _callee, null, [[5, 12]]);}));return _requestConfig.apply(this, arguments);}
-
-
-function _isPromise(obj) {
-  return obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
-}
 
 /***/ }),
 
@@ -9427,7 +9427,7 @@ function deleteSupnuevoCommonCommodityImage(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function updateSupnuevoBuyerUnionAllPriceInfo(data) {
   return _request.default.request({
@@ -9488,6 +9488,46 @@ function getSupnuevoBuyerUnionPriceFormListByTaxId(data) {
 function updateSupnuevoBuyerUnionPriceRatio1(data) {
   return _request.default.request({
     url: '/union/updateSupnuevoBuyerUnionPriceRatio1',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceClassList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceClassList',
+    method: 'POST',
+    data: data });
+
+}
+
+function setUnionCurrentMerchantCount(data) {
+  return _request.default.request({
+    url: '/union/setUnionCurrentMerchantCount',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceListByPriceCount(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceListByPriceCount',
+    method: 'POST',
+    data: data });
+
+}
+
+function setAllCommodityIsAlive(data) {
+  return _request.default.request({
+    url: '/union/setAllCommodityIsAlive',
+    method: 'POST',
+    data: data });
+
+}
+
+function setSupnuevoBuyerUnionCommodityIsAlive(data) {
+  return _request.default.request({
+    url: '/union/setSupnuevoBuyerUnionCommodityIsAlive',
     method: 'POST',
     data: data });
 
