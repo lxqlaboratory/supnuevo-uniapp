@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 206))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 220))
   },
   taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 213))
+    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 227))
   }
 }
 var render = function() {
@@ -229,7 +229,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 206));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 220));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -262,7 +264,9 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
     {
       codeNum: '请输入商品条码尾数' }), _defineProperty(_ref, "searchListFinal",
 
-    []), _ref;
+    []), _defineProperty(_ref, "codigo",
+    ''), _defineProperty(_ref, "flag",
+    ''), _ref;
 
   },
   components: {
@@ -276,7 +280,6 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
   methods: {
     scroll: function scroll(e) {
       console.log(e);
-      this.old.scrollTop = e.detail.scrollTop;
     },
     checkAlive: function checkAlive(isAlive, commodityId) {
       if (isAlive === 1) {
@@ -426,82 +429,38 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
     changecode: function changecode(keyword) {
       var codeNum = keyword;
       this.goods.codeNum = codeNum;
+      if (codeNum.length >= 4)
       this.queryGoodsCode(codeNum.toString());
     },
     onCodigoSelect: function onCodigoSelect(key, item) {var _this5 = this;
-      console.log(item.value);
+      console.log(item.commodityId);
       var merchantId = getApp().globalData.merchantId;
       var codigo = item.value;
-      getSupnuevoBuyerPriceFormByCodigoMobile({
+      (0, _MyInfor.getSupnuevoBuyerUnionPriceByCommodityId)({
         codigo: codigo,
-        supnuevoMerchantId: merchantId }).
+        commodityId: item.commodityId,
+        unionId: this.unionId }).
       then(function (res) {
+        console.log(res);
         if (res.re == -2) {
           uni.navigateTo({
             url: '../index/index' });
 
         }
-
-        if (res.errMessage !== null && res.errMessage !== undefined) {
-          var errMsg = res.errMessage.toString();
-          uni.showModal({
-            title: "提示",
-            content: errMsg,
-            showCancel: false });
-
-          return;
-        } else {
-          console.log(res);
-          var goodInfo = res.object;
-          if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null &&
-          goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
-            goodInfo.goodName = goodInfo.nombre + ',' +
-            goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
-          } else
-          {
-            goodInfo.goodName = goodInfo.nombre;
-          }
-
-          var printType = goodInfo.printType;
-          for (var i = 0; i < printType.length; i++) {
-            var j = i + 1;
-            var type = "type" + j;
-            _this5.printType[type] = printType.charAt(i);
-            if (i === 0 && printType.charAt(i) !== 1) {
-              _this5.printType[type] = 1;
-            }
-          }
-          var newPrintType = _this5.printType;
-          goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
-
-          _this5.goods.codeNum = 0;
-          var goods = _this5.goods;
-
-          if (goodInfo.priceShow == 0) {
-            goodInfo.priceShow = "";
-          }
-          var referencePrice = goodInfo.minPrice;
-          if (referencePrice == null || referencePrice == 0.0)
-          _this5.referencePriceButton = true;else
-          if (referencePrice !== null && referencePrice !== undefined) {
-            _this5.setStatereferencePrice = referencePrice, _this5.referencePriceButton = false;
-          }
-          _this5.selectedCodeInfo = goodInfo;
-          _this5.codigo = goodInfo.codigo;
-          _this5.priceShow = goodInfo.priceShow,
-          _this5.printType = newPrintType,
-          _this5.goods = goods,
-          _this5.hasCodigo = true,
-          _this5.Gsuggestlevel = goodInfo.suggestLevel,
-          _this5.gengxingaijiaInput = goodInfo.priceShow,
-          _this5.commodityId = goodInfo.commodityId,
-          _this5.attachDataUrl1 = goodInfo.attachDataUrl1,
-          _this5.attachDataUrl2 = goodInfo.attachDataUrl2,
-          _this5.attachDataUrl3 = goodInfo.attachDataUrl3,
-          _this5.attachDataUrl4 = goodInfo.attachDataUrl4,
-          _this5.attachDataUrl = goodInfo.attachDataUrl;
-
-        }
+        if (res.re === 1) {
+          for (var i = 0; i < _this5.goodsList.length; i++) {
+            if (_this5.goodsList[i].codigo === codigo) {
+              _this5.$nextTick(function () {
+                _this5.flag = "text" + i;
+                console.log(_this5.flag);
+              });
+              _this5.flag = ''; //不清空再次跳到锚点位置会不起作用
+              return;
+            }}
+          console.log("没有找到");
+        } else
+        return;
+      }).catch(function (err) {
       });
     },
     queryGoodsCode: function queryGoodsCode(codeNum) {var _this6 = this;
@@ -509,9 +468,10 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
         this.$refs.loading.showLoading();
         var merchantId = getApp().globalData.merchantId;
         this.searchListFinal = [];
-        getQueryDataListByInputStringMobile({
+        (0, _MyInfor.getUnionQueryDataListByInputString)({
           codigo: codeNum,
-          merchantId: merchantId }).
+          merchantId: merchantId,
+          merchantCount: this.selectedIdx }).
         then(function (res) {
           console.log(res);
           if (res.re == -2) {
@@ -520,99 +480,49 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
 
           }
           var errorMsg = res.message;
-          _this6.reset();
           if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-            console.log(742);
             uni.showModal({
               title: "提示",
-              content: '没有查到',
+              content: errorMsg,
               showCancel: false });
 
           } else {
-            if (res.array !== undefined && res.array !== null && res.array.length > 0) {
+            if (res.array !== undefined && res.array !== null && res.array.length > 1) {
               for (var i = 0; i < res.array.length; i++) {
-                var searchItem = { key: null, value: '' };
+                var searchItem = { key: null, value: '', commodityId: '' };
                 searchItem.key = i;
                 searchItem.value = res.array[i].codigo;
+                searchItem.commodityId = res.array[i].commodityId;
                 _this6.searchListFinal.push(searchItem);
               }
-              _this6.codesModalVisible = true;
-              _this6.referencePrice = null;
-              _this6.referencePriceButton = true;
             } else
-            {
+            if (res.array.length === 1) {
               var merchantId = getApp().globalData.merchantId;
-              getSupnuevoBuyerPriceFormByCodigoMobile({
-                codigo: res.object.codigo,
-                supnuevoMerchantId: merchantId }).
+              (0, _MyInfor.getSupnuevoBuyerUnionPriceByCommodityId)({
+                codigo: res.array[0].codigo,
+                commodityId: res.array[0].commodityId,
+                unionId: _this6.unionId }).
               then(function (res) {
+                console.log(res);
                 if (res.re == -2) {
                   uni.navigateTo({
                     url: '../index/index' });
 
                 }
-
-                if (res.errMessage !== null && res.errMessage !== undefined) {
-                  var errMsg = res.errMessage.toString();
-                  uni.showModal({
-                    title: "提示",
-                    content: errMsg,
-                    showCancel: false });
-
-                  return;
-                } else {
-                  console.log(res);
-                  var goodInfo = res.object;
-                  if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null &&
-                  goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
-                    goodInfo.goodName = goodInfo.nombre + ',' +
-                    goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
-                  } else
-                  {
-                    goodInfo.goodName = goodInfo.nombre;
-                  }
-
-                  var printType = goodInfo.printType;
-                  for (var i = 0; i < printType.length; i++) {
-                    var j = i + 1;
-                    var type = "type" + j;
-                    _this6.printType[type] = printType.charAt(i);
-                    if (i === 0 && printType.charAt(i) !== 1) {
-                      _this6.printType[type] = 1;
-                    }
-                  }
-                  var newPrintType = _this6.printType;
-                  goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
-
-                  _this6.goods.codeNum = 0;
-                  var goods = _this6.goods;
-
-                  if (goodInfo.priceShow == 0) {
-                    goodInfo.priceShow = "";
-                  }
-                  var referencePrice = goodInfo.minPrice;
-                  if (referencePrice == null || referencePrice == 0.0)
-                  _this6.referencePriceButton = true;else
-                  if (referencePrice !== null && referencePrice !== undefined) {
-                    _this6.setStatereferencePrice = referencePrice, _this6.referencePriceButton = false;
-                  }
-                  _this6.selectedCodeInfo = goodInfo;
-                  _this6.codigo = goodInfo.codigo;
-                  _this6.priceShow = goodInfo.priceShow,
-                  _this6.printType = newPrintType,
-                  _this6.goods = goods,
-                  _this6.hasCodigo = true,
-                  _this6.Gsuggestlevel = goodInfo.suggestLevel,
-                  _this6.gengxingaijiaInput = goodInfo.priceShow,
-                  _this6.commodityId = goodInfo.commodityId,
-                  _this6.attachDataUrl1 = goodInfo.attachDataUrl1,
-                  _this6.attachDataUrl2 = goodInfo.attachDataUrl2,
-                  _this6.attachDataUrl3 = goodInfo.attachDataUrl3,
-                  _this6.attachDataUrl4 = goodInfo.attachDataUrl4,
-                  _this6.attachDataUrl = goodInfo.attachDataUrl;
-                }
+                if (res.re === 1) {
+                  for (var i = 0; i < _this6.goodsList.length; i++) {
+                    if (_this6.goodsList[i].codigo === res.data.codigo) {
+                      _this6.$nextTick(function () {
+                        _this6.flag = "text" + i;
+                        console.log(_this6.flag);
+                      });
+                      _this6.flag = ''; //不清空再次跳到锚点位置会不起作用
+                      break;
+                    }}
+                } else
+                return;
+              }).catch(function (err) {
               });
-
             }
           }
         }).catch(function (err) {

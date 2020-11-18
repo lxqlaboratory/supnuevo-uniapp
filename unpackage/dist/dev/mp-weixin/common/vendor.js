@@ -904,7 +904,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -2020,72 +2020,6 @@ req;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! regenerator-runtime */ 20);
-
-/***/ }),
-
-/***/ 195:
-/*!************************************************************!*\
-  !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 196));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-// 定义 type 类型:弹出类型：top/bottom/center
-var config = {
-  // 顶部弹出
-  top: 'top',
-  // 底部弹出
-  bottom: 'bottom',
-  // 居中弹出
-  center: 'center',
-  // 消息提示
-  message: 'top',
-  // 对话框
-  dialog: 'center',
-  // 分享
-  share: 'bottom' };var _default =
-
-
-{
-  data: function data() {
-    return {
-      config: config };
-
-  },
-  mixins: [_message.default] };exports.default = _default;
-
-/***/ }),
-
-/***/ 196:
-/*!**************************************************************!*\
-  !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  created: function created() {
-    if (this.type === 'message') {
-      // 不显示遮罩
-      this.maskShow = false;
-      // 获取子组件对象
-      this.childrenMsg = null;
-    }
-  },
-  methods: {
-    customOpen: function customOpen() {
-      if (this.childrenMsg) {
-        this.childrenMsg.open();
-      }
-    },
-    customClose: function customClose() {
-      if (this.childrenMsg) {
-        this.childrenMsg.close();
-      }
-    } } };exports.default = _default;
 
 /***/ }),
 
@@ -7613,7 +7547,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7634,14 +7568,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7726,7 +7660,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8178,6 +8112,41 @@ if (hadRuntime) {
   }
 }
 
+
+/***/ }),
+
+/***/ 209:
+/*!************************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 210));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 定义 type 类型:弹出类型：top/bottom/center
+var config = {
+  // 顶部弹出
+  top: 'top',
+  // 底部弹出
+  bottom: 'bottom',
+  // 居中弹出
+  center: 'center',
+  // 消息提示
+  message: 'top',
+  // 对话框
+  dialog: 'center',
+  // 分享
+  share: 'bottom' };var _default =
+
+
+{
+  data: function data() {
+    return {
+      config: config };
+
+  },
+  mixins: [_message.default] };exports.default = _default;
 
 /***/ }),
 
@@ -8913,6 +8882,37 @@ if (hadRuntime) {
 
 /***/ }),
 
+/***/ 210:
+/*!**************************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  created: function created() {
+    if (this.type === 'message') {
+      // 不显示遮罩
+      this.maskShow = false;
+      // 获取子组件对象
+      this.childrenMsg = null;
+    }
+  },
+  methods: {
+    customOpen: function customOpen() {
+      if (this.childrenMsg) {
+        this.childrenMsg.open();
+      }
+    },
+    customClose: function customClose() {
+      if (this.childrenMsg) {
+        this.childrenMsg.close();
+      }
+    } } };exports.default = _default;
+
+/***/ }),
+
 /***/ 22:
 /*!***********************************************!*\
   !*** D:/vue/supnuevo-uniapp/request/index.js ***!
@@ -9120,7 +9120,7 @@ function _isPromise(obj) {
 
 /***/ }),
 
-/***/ 246:
+/***/ 260:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
   \************************************************************/
@@ -9427,7 +9427,7 @@ function deleteSupnuevoCommonCommodityImage(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function updateSupnuevoBuyerUnionAllPriceInfo(data) {
   return _request.default.request({
@@ -9528,6 +9528,38 @@ function setAllCommodityIsAlive(data) {
 function setSupnuevoBuyerUnionCommodityIsAlive(data) {
   return _request.default.request({
     url: '/union/setSupnuevoBuyerUnionCommodityIsAlive',
+    method: 'POST',
+    data: data });
+
+}
+
+function getUnionQueryDataListByInputString(data) {
+  return _request.default.request({
+    url: '/union/getUnionQueryDataListByInputString',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceByCommodityId(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceByCommodityId',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceDiscountInfoList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceDiscountInfoList',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerUnionPriceDiscountInfo(data) {
+  return _request.default.request({
+    url: '/union/updateSupnuevoBuyerUnionPriceDiscountInfo',
     method: 'POST',
     data: data });
 

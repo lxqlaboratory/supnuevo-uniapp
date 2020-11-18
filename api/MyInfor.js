@@ -103,3 +103,35 @@ export function setSupnuevoBuyerUnionCommodityIsAlive(data) {
 		data: data
 	})
 }
+
+export function getUnionQueryDataListByInputString(data) {
+	return request.request({
+		url: '/union/getUnionQueryDataListByInputString',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSupnuevoBuyerUnionPriceByCommodityId(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionPriceByCommodityId',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSupnuevoBuyerUnionPriceDiscountInfoList(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionPriceDiscountInfoList',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function updateSupnuevoBuyerUnionPriceDiscountInfo(data) {
+	return request.request({
+		url: '/union/updateSupnuevoBuyerUnionPriceDiscountInfo',
+		method: 'POST',
+		data: data
+	})
+}

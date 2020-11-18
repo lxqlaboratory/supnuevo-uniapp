@@ -56,10 +56,10 @@
 		<scroll-view scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType === 2" >
 			<view class="Inrow1" v-for="(item,index) in goodsList" :key="index" @click="checkAlive(item.isAlive,item.commodityId)">
 				<view class="" style="flex: 8;">
-					<view class="">
+					<view class="" style="margin-left: 10px;">
 						<text>{{index+1}}、codigo:&nbsp;&nbsp;{{item.codigo}}</text>
 					</view>
-					<view class="">
+					<view class="" style="margin-left: 10px;">
 						<text>descripcion:&nbsp;&nbsp;{{item.nombre}}</text>
 					</view>
 				</view>
@@ -70,13 +70,13 @@
 			</view>
 		</scroll-view>
 		
-		<scroll-view  scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType !== 2">
-			<view class="Inrow1" v-for="(item,index) in goodsList" :key="index">
+		<scroll-view  scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType !== 2" :scroll-into-view="flag">
+			<view class="Inrow1" v-for="(item,index) in goodsList" :key="index" :id='"text"+index'>
 				<view class="" style="flex: 8;">
-					<view class="">
+					<view class="" style="margin-left: 10px;">
 						<text>codigo:&nbsp;&nbsp;{{item.codigo}}</text>
 					</view>
-					<view class="">
+					<view class="" style="margin-left: 10px;">
 						<text>descripcion:&nbsp;&nbsp;{{item.nombre}}</text>
 					</view>
 				</view>
@@ -95,7 +95,9 @@
 		setUnionCurrentMerchantCount,
 		getSupnuevoBuyerUnionPriceListByPriceCount,
 		setAllCommodityIsAlive,
-		setSupnuevoBuyerUnionCommodityIsAlive
+		setSupnuevoBuyerUnionCommodityIsAlive,
+		getUnionQueryDataListByInputString,
+		getSupnuevoBuyerUnionPriceByCommodityId
 	} from '@/api/MyInfor.js'
 	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	export default {
@@ -124,6 +126,8 @@
 					codeNum: '请输入商品条码尾数'
 				},
 				searchListFinal: [],
+				codigo:'',
+				flag: '',
 			};
 		},
 		components: {
@@ -137,7 +141,6 @@
 		methods:{
 			scroll: function(e) {
 				console.log(e)
-				this.old.scrollTop = e.detail.scrollTop
 			},
 			checkAlive(isAlive,commodityId){
 				if(isAlive === 1){
@@ -287,92 +290,49 @@
 			changecode (keyword){
 				var codeNum = keyword
 				this.goods.codeNum = codeNum;
+				if (codeNum.length >= 4 )
 				this.queryGoodsCode(codeNum.toString());
 			},
 			onCodigoSelect(key, item){
-				console.log(item.value)
+				console.log(item.commodityId)
 				const merchantId = getApp().globalData.merchantId;
 				var codigo = item.value;
-				getSupnuevoBuyerPriceFormByCodigoMobile({
+				getSupnuevoBuyerUnionPriceByCommodityId({
 					codigo: codigo,
-					supnuevoMerchantId: merchantId
+					commodityId: item.commodityId,
+					unionId: this.unionId
 				}).then(res => {
+					console.log(res)
 					if(res.re == -2){
 					    uni.navigateTo({
 					    	url:'../index/index'
 					    })
 					}
-					
-					 if (res.errMessage !== null && res.errMessage !== undefined) {
-					    var errMsg = res.errMessage.toString();
-					     uni.showModal({
-					     	title: "提示",
-					     	content: errMsg,
-					     	showCancel: false,
-					     }) 
-						 return;
-					}else {
-						 console.log(res)
-						var goodInfo = res.object;
-						if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null
-							&& goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
-							goodInfo.goodName = goodInfo.nombre + ',' +
-							goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
-						}
-						else {
-							goodInfo.goodName = goodInfo.nombre;
-						}
-						
-						var printType = goodInfo.printType;
-						for (var i = 0; i < printType.length; i++) {
-							var j = i + 1;
-							var type = "type" + j;
-							this.printType[type] = printType.charAt(i);
-							if (i === 0 && printType.charAt(i) !== 1) {
-								this.printType[type] = 1;
+					if (res.re === 1) {
+						for (var i = 0;i < this.goodsList.length ; i++)
+							if(this.goodsList[i].codigo === codigo){
+								this.$nextTick(()=> {
+									this.flag = "text" + i
+									console.log(this.flag)
+								});
+								this.flag=''  //不清空再次跳到锚点位置会不起作用
+								return;
 							}
-							}
-							var newPrintType = this.printType;
-							goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
-			
-							this.goods.codeNum = 0;
-							var goods = this.goods;
-						
-							if (goodInfo.priceShow == 0) {
-								goodInfo.priceShow = "";
-							}
-							var referencePrice = goodInfo.minPrice;
-							if(referencePrice==null || referencePrice==0.0)
-								this.referencePriceButton = true;
-							else if (referencePrice !== null && referencePrice !== undefined) {
-								this.setStatereferencePrice = referencePrice, this.referencePriceButton = false
-							}			
-							this.selectedCodeInfo = goodInfo;
-							this.codigo = goodInfo.codigo;
-							this.priceShow = goodInfo.priceShow,
-							this.printType = newPrintType, 
-							this.goods = goods, 
-							this.hasCodigo = true,
-							this.Gsuggestlevel = goodInfo.suggestLevel,
-							this.gengxingaijiaInput = goodInfo.priceShow,
-							this.commodityId = goodInfo.commodityId,
-							this.attachDataUrl1 = goodInfo.attachDataUrl1,
-							this.attachDataUrl2 = goodInfo.attachDataUrl2,
-							this.attachDataUrl3 = goodInfo.attachDataUrl3,
-							this.attachDataUrl4 = goodInfo.attachDataUrl4,
-							this.attachDataUrl = goodInfo.attachDataUrl
-			
-					}
-				})
+							console.log("没有找到")
+					}else 
+					return;
+				}).catch((err) => {
+				});	
 			},
 			 queryGoodsCode (codeNum) {
 					if (codeNum.length>=4){
 					this.$refs.loading.showLoading()
 					var merchantId = getApp().globalData.merchantId;
 					this.searchListFinal = [];
-			        getQueryDataListByInputStringMobile({
+			        getUnionQueryDataListByInputString({
 						codigo: codeNum,
-						merchantId: merchantId
+						merchantId: merchantId,
+						merchantCount:this.selectedIdx,
 					}).then(res => {
 						console.log(res)
 			            if(res.re == -2){
@@ -381,107 +341,57 @@
 							})
 			            }
 			            var errorMsg = res.message;
-			            this.reset();
 			            if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-							console.log(742)
 							uni.showModal({
 								title: "提示",
-								content: '没有查到',
+								content: errorMsg,
 								showCancel: false,
 							})
 			            } else {
-			                if (res.array !== undefined && res.array !== null && res.array.length > 0) {
+			                if (res.array !== undefined && res.array !== null && res.array.length > 1) {
 								for (var i=0 ; i < res.array.length ; i++){
-									var searchItem={key:null,value:''}
+									var searchItem={key:null,value:'',commodityId:''}
 									searchItem.key = i
 									searchItem.value = res.array[i].codigo
+									searchItem.commodityId = res.array[i].commodityId
 									this.searchListFinal.push(searchItem)
 								}
-								this.codesModalVisible = true;
-								this.referencePrice = null;
-								this.referencePriceButton = true;
 			                }
-			                else {
+			                else if(res.array.length === 1) {
 								var merchantId = getApp().globalData.merchantId
-								getSupnuevoBuyerPriceFormByCodigoMobile({
-									codigo: res.object.codigo,
-									supnuevoMerchantId: merchantId
+								getSupnuevoBuyerUnionPriceByCommodityId({
+									codigo: res.array[0].codigo,
+									commodityId:res.array[0].commodityId,
+									unionId: this.unionId
 								}).then(res => {
+									console.log(res)
 									if(res.re == -2){
 									    uni.navigateTo({
 									    	url:'../index/index'
 									    })
 									}
-									
-									 if (res.errMessage !== null && res.errMessage !== undefined) {
-									    var errMsg = res.errMessage.toString();
-									     uni.showModal({
-									     	title: "提示",
-									     	content: errMsg,
-									     	showCancel: false,
-									     }) 
-										 return;
-									}else {
-										 console.log(res)
-										var goodInfo = res.object;
-										if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null
-											&& goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
-											goodInfo.goodName = goodInfo.nombre + ',' +
-											goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
-										}
-										else {
-											goodInfo.goodName = goodInfo.nombre;
-										}
-										
-										var printType = goodInfo.printType;
-										for (var i = 0; i < printType.length; i++) {
-											var j = i + 1;
-											var type = "type" + j;
-											this.printType[type] = printType.charAt(i);
-											if (i === 0 && printType.charAt(i) !== 1) {
-												this.printType[type] = 1;
+									if (res.re === 1) {
+										for (var i = 0;i < this.goodsList.length ; i++)
+											if(this.goodsList[i].codigo === res.data.codigo){
+												this.$nextTick(()=> {
+													this.flag = "text" + i
+													console.log(this.flag)
+												});
+												this.flag=''  //不清空再次跳到锚点位置会不起作用
+												break;
 											}
-											}
-											var newPrintType = this.printType;
-											goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
-											
-											this.goods.codeNum = 0;
-											var goods = this.goods;
-										
-											if (goodInfo.priceShow == 0) {
-												goodInfo.priceShow = "";
-											}
-											var referencePrice = goodInfo.minPrice;
-											if(referencePrice==null || referencePrice==0.0)
-												this.referencePriceButton = true;
-											else if (referencePrice !== null && referencePrice !== undefined) {
-												this.setStatereferencePrice = referencePrice, this.referencePriceButton = false
-											}			
-											this.selectedCodeInfo = goodInfo;
-											this.codigo = goodInfo.codigo;
-											this.priceShow = goodInfo.priceShow,
-											this.printType = newPrintType, 
-											this.goods = goods, 
-											this.hasCodigo = true,
-											this.Gsuggestlevel = goodInfo.suggestLevel,
-											this.gengxingaijiaInput = goodInfo.priceShow,
-											this.commodityId = goodInfo.commodityId,
-											this.attachDataUrl1 = goodInfo.attachDataUrl1,
-											this.attachDataUrl2 = goodInfo.attachDataUrl2,
-											this.attachDataUrl3 = goodInfo.attachDataUrl3,
-											this.attachDataUrl4 = goodInfo.attachDataUrl4,
-											this.attachDataUrl = goodInfo.attachDataUrl
-									}
-								})
-								
+									}else 
+									return;
+								}).catch((err) => {
+								});	
 			                }
 			            }
 			        }).catch((err) => {
-				uni.showModal({
-					title: "提示",
-					content: err,
-					showCancel: false,
-				})
+						uni.showModal({
+						title: "提示",
+						content: err,
+						showCancel: false,
+					})
 					});	}
 					 this.$refs.loading.hideLoading() // 隐藏
 			    },

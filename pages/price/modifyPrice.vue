@@ -250,7 +250,6 @@
 				hasCodigo: false,
 				priceShow: null,
 				inputPrice: null,
-				selectedCodeInfo: {},
 				printType: {type1: '1', type2: '0', type3: '0', type4: '0'},
 				commodityId: null,
 				referencePrice: null,//参考价

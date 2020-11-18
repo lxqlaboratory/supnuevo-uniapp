@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 206))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 220))
   },
   taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 213))
+    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 227))
   }
 }
 var render = function() {
@@ -346,7 +346,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _change = __webpack_require__(/*! @/api/change.js */ 32);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 213));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 206));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _change = __webpack_require__(/*! @/api/change.js */ 32);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 227));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 220));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -388,10 +388,9 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
       attachDataUrl: null,
       hasCodigo: false,
       priceShow: null,
-      inputPrice: null }, _defineProperty(_ref, "selectedCodeInfo",
-    {}), _defineProperty(_ref, "printType",
-    { type1: '1', type2: '0', type3: '0', type4: '0' }), _defineProperty(_ref, "commodityId",
-    null), _defineProperty(_ref, "referencePrice",
+      inputPrice: null,
+      printType: { type1: '1', type2: '0', type3: '0', type4: '0' },
+      commodityId: null }, _defineProperty(_ref, "referencePrice",
     null), _defineProperty(_ref, "gengxingaijiaInput",
     ""), _defineProperty(_ref, "referencePriceButton",
     true), _defineProperty(_ref, "Gsuggestlevel",
