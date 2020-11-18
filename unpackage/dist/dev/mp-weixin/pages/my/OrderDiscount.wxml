@@ -1,1 +1,1 @@
-<view class="_div"></view>
+<view><wyb-loading class="vue-ref" vue-id="0fe8807e-1" data-ref="loading" bind:__l="__l"></wyb-loading></view>

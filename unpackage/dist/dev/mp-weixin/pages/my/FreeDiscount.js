@@ -201,6 +201,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _change = __webpack_require__(/*! @/api/change.js */ 32);
 
 
@@ -271,12 +293,68 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99); //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 227));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 220));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { goods: { codeNum: '请输入商品条码尾数' }, selectedCodeInfo: {}, codigo: '', referencePriceButton: true, referencePrice: null, //参考价
-      attachDataUrl1: null, attachDataUrl2: null, attachDataUrl3: null, attachDataUrl4: null, attachDataUrl: null, hasCodigo: false, priceShow: null, inputPrice: null, searchListFinal: [], printType: { type1: '1', type2: '0', type3: '0', type4: '0' }, Gsuggestlevel: null, gengxingaijiaInput: '', commodityId: null, unionId: '', unionMemberType: '', commodityDiscountList: [], goodsList: [], discountCode: "请输入折扣编码", discountPrompt: "请输入折扣描述", priceId: '', commodityName: '', price: '' };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {var _this = this;this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;if (this.unionMemberType !== 2) {this.discountCode = '';this.discountPrompt = '';}(0, _MyInfor.getSupnuevoBuyerUnionPriceDiscountInfoList)({ unionId: this.unionId }).then(function (res) {console.log(res);if (res.re === 1) {_this.commodityDiscountList = res.data;}}).catch(function (err) {uni.showModal({ title: "提示", content: err, showCancel: false });
+      attachDataUrl1: null, attachDataUrl2: null, attachDataUrl3: null, attachDataUrl4: null, attachDataUrl: null, hasCodigo: false, priceShow: null, inputPrice: null, searchListFinal: [], printType: { type1: '1', type2: '0', type3: '0', type4: '0' }, Gsuggestlevel: null, gengxingaijiaInput: '', commodityId: null, unionId: '', unionMemberType: '', commodityDiscountList: [], goodsList: [], discountCode: "请输入折扣编码", discountPrompt: "请输入折扣描述", priceId: '', commodityName: '', price: '' };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {var _this = this;this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;if (this.unionMemberType !== 2) {this.discountCode = '';this.discountPrompt = '';}(0, _MyInfor.getSupnuevoBuyerUnionPriceDiscountInfoList)({ unionId: this.unionId }).then(function (res) {console.log(res);if (res.re === 1) {_this.commodityDiscountList = res.data;}}).catch(function (err) {uni.showModal({ title: "提示", content: err, showCancel: false });});}, methods: { onshowDiscount: function onshowDiscount(discountCode, discountPrompt, priceId, commodityName, price) {this.discountCode = discountCode;this.discountPrompt = discountPrompt;this.priceId = priceId;this.commodityName = commodityName;this.price = price;}, deleteSupnuevoBuyerUnionCommodityDiscount: function deleteSupnuevoBuyerUnionCommodityDiscount(priceId, discountPrompt) {var that = this;uni.showModal({ title: "提示", content: "是否删除该折扣", success: function success() {if (priceId == that.priceId) {that.priceId = '';that.discountPrompt = '';that.discountCode = '';}
+          (0, _MyInfor.updateSupnuevoBuyerUnionPriceDiscountInfo)({
+            unionId: that.unionId,
+            priceId: priceId,
+            discountCode: '00000000',
+            discountPrompt: discountPrompt }).
+          then(function (res) {
+            var errorMsg = res.errorMsg;
+            if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+              uni.showModal({
+                title: "提示",
+                content: errorMsg,
+                showCancel: false });
 
-    });
-  },
-  methods: {
+            } else {
+              uni.showModal({
+                title: "提示",
+                content: "删除成功",
+                showCancel: false });
+
+              (0, _MyInfor.getSupnuevoBuyerUnionPriceDiscountInfoList)({
+                unionId: that.unionId }).
+              then(function (res) {
+                console.log(res);
+                if (res.re === 1) {
+                  that.commodityDiscountList = res.data;
+                }
+              }).catch(function (err) {
+                uni.showModal({
+                  title: "提示",
+                  content: err,
+                  showCancel: false });
+
+              });
+            }
+          });
+        } });
+
+    },
     updateSupnuevoBuyerUnionPriceDiscountInfo: function updateSupnuevoBuyerUnionPriceDiscountInfo() {var _this2 = this;
       if (this.priceId === null || this.priceId === undefined || this.priceId === '') {
         uni.showModal({

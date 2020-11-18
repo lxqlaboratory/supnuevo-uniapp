@@ -36,7 +36,7 @@
 			</view>
 		</view>
 		
-		<view class="" v-if="unionMemberType !== 2">
+		<view class="" v-if="unionMemberType !== 2" style="margin-bottom: 20px;">
 			<view class="discount">
 				<view class="">
 					<text style="font-size: 18px;margin-right: 10px;">折扣编码</text>
@@ -55,8 +55,30 @@
 			</view>
 		</view>
 		
-		<view class="" v-if="unionMemberType === 2">
+		<view class="" v-if="unionMemberType === 2" style="margin-bottom: 20px;">
 			<button type="primary" @click="updateSupnuevoBuyerUnionPriceDiscountInfo" style="width: 200px;border-radius: 10px;height: 35px;margin-top: 30px;vertical-align: middle;text-align: center;line-height: 35px;">保存折扣</button>
+		</view>
+		
+		<view class="" v-for="(item,index) in commodityDiscountList" :key="index" @click="onshowDiscount(item.discountCode,item.discountPrompt,item.priceId,item.commodityName,item.price)" style="color: #939393;display: flex;flex-direction: row; flex-direction: row; 
+		align-items: center;border-top: 1px solid #939393;border-bottom: 1px solid #939393;">
+			<view class="" style="margin-left: 10px;flex: 8;margin-top: 10px;margin-bottom: 10px;">
+				<view class="">
+					<text>商品条码:&nbsp;&nbsp;{{item.codigo}}</text>
+				</view>
+				<view class="">
+					<text>折扣编码:&nbsp;&nbsp;{{item.discountCode}}</text>
+				</view>
+				<view class="">
+					<text>折扣描述:&nbsp;&nbsp;{{item.discountPrompt}}</text>
+				</view>
+				<view class="">
+					<text>价   格:&nbsp;&nbsp;{{item.price}}</text>
+				</view>
+			</view>
+			
+			<view class="" style="flex: 1;" v-if="" @click="deleteSupnuevoBuyerUnionCommodityDiscount(item.priceId,item.discountPrompt)">
+				<icon type="cancel" size="26"/>
+			</view>
 		</view>
 	</view>
 </template>
@@ -138,6 +160,62 @@
 				});	
 		},
 		methods: {
+			onshowDiscount(discountCode,discountPrompt,priceId,commodityName,price){
+				this.discountCode = discountCode;
+				this.discountPrompt = discountPrompt;
+				this.priceId = priceId;
+				this.commodityName =commodityName;
+				this.price = price
+			},
+			deleteSupnuevoBuyerUnionCommodityDiscount(priceId,discountPrompt){
+				var that = this;
+				uni.showModal({
+					title: "提示",
+					content: "是否删除该折扣",
+					success:function(){
+						if(priceId == that.priceId){
+							that.priceId = '';
+							that.discountPrompt = '';
+							that.discountCode = '';
+						}
+						updateSupnuevoBuyerUnionPriceDiscountInfo({
+							unionId: that.unionId,
+							priceId: priceId,
+							discountCode: '00000000',
+							discountPrompt: discountPrompt
+						}).then(res => {
+							 var errorMsg = res.errorMsg;
+							if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+								uni.showModal({
+									title: "提示",
+									content: errorMsg,
+									showCancel: false,
+								})
+							} else {
+								uni.showModal({
+									title: "提示",
+									content: "删除成功",
+									showCancel: false,
+								})
+								getSupnuevoBuyerUnionPriceDiscountInfoList({
+									unionId: that.unionId
+								}).then(res => {
+									console.log(res)
+									if(res.re === 1){
+										that.commodityDiscountList = res.data
+									}
+								}).catch((err) => {
+									uni.showModal({
+										title: "提示",
+										content: err,
+										showCancel: false,
+									})
+									});	
+							}
+						})
+					}
+				})
+			},
 			updateSupnuevoBuyerUnionPriceDiscountInfo(){
 				if (this.priceId === null || this.priceId === undefined || this.priceId === ''){
 					uni.showModal({

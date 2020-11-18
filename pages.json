@@ -217,7 +217,7 @@
 		{
 		    "path" : "pages/my/OrderDiscount",
 		    "style" : {
-				"navigationBarTitleText": "免量折扣",
+				"navigationBarTitleText": "总量百分比折扣",
 				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor": "#3a6eff",
 				"backgroundColor": "#3a6eff"
@@ -226,7 +226,7 @@
 		{
 		    "path" : "pages/my/FreeDiscount",
 		    "style" : {
-				"navigationBarTitleText": "总量百分比折扣",
+				"navigationBarTitleText": "免量折扣",
 				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor": "#3a6eff",
 				"backgroundColor": "#3a6eff"

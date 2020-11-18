@@ -135,3 +135,11 @@ export function updateSupnuevoBuyerUnionPriceDiscountInfo(data) {
 		data: data
 	})
 }
+
+export function getSupnuevoBuyerUnionOrderDiscountForm(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionOrderDiscountForm',
+		method: 'POST',
+		data: data
+	})
+}
