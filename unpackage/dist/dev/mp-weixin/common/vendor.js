@@ -9427,7 +9427,7 @@ function deleteSupnuevoCommonCommodityImage(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;exports.getSupnuevoBuyerUnionOrderDiscountForm = getSupnuevoBuyerUnionOrderDiscountForm;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;exports.getSupnuevoBuyerUnionOrderDiscountForm = getSupnuevoBuyerUnionOrderDiscountForm;exports.updateSupnuevoBuyerUnionOrderDiscount = updateSupnuevoBuyerUnionOrderDiscount;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function updateSupnuevoBuyerUnionAllPriceInfo(data) {
   return _request.default.request({
@@ -9568,6 +9568,14 @@ function updateSupnuevoBuyerUnionPriceDiscountInfo(data) {
 function getSupnuevoBuyerUnionOrderDiscountForm(data) {
   return _request.default.request({
     url: '/union/getSupnuevoBuyerUnionOrderDiscountForm',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerUnionOrderDiscount(data) {
+  return _request.default.request({
+    url: '/union/updateSupnuevoBuyerUnionOrderDiscount',
     method: 'POST',
     data: data });
 

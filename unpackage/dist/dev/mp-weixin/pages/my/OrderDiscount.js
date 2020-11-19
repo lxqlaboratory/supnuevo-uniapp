@@ -142,6 +142,88 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99); //
 //
 //
@@ -149,40 +231,123 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99); //
 //
 //
 //
-var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 227));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 220));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return {
-      discountName: '折扣名称',
-      discountId: null,
-      startDate: null,
-      endData: null,
-      total1: null,
-      scale1: null,
-      total2: null,
-      scale2: null,
-      total3: null,
-      scale3: null };
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 227));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 220));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { discountName: '折扣名称', discountId: '', startDate: '', endData: '', total1: '', scale1: '', total2: '', scale2: '', total3: '', scale3: '' };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;this.getSupnuevoBuyerUnionOrderDiscountOfUnion();}, methods: { saveSupnuevoBuyerUnionOrderDiscount: function saveSupnuevoBuyerUnionOrderDiscount() {var total1 = parseFloat(this.total1);var total2 = parseFloat(this.total2);var total3 = parseFloat(this.total3);var scale1 = parseFloat(this.scale1);var scale2 = parseFloat(this.scale2);var scale3 = parseFloat(this.scale3);if (total3 === 0) {if (total2 !== 0) {if (total1 <= total2) {uni.showModal({ title: "提示", content: "总价1须大于总价2", showCancel: false });return;}}} else {if (total2 <= total3) {uni.showModal({ title: "提示", content: "总价2须大于总价3", showCancel: false });return;} else {if (total2 !== 0) {if (total1 < total2) {uni.showModal({ title: "提示", content: "总价1须大于总价2", showCancel: false });return;}}}}if (scale1 <= scale2) {uni.showModal({ title: "提示", content: "折扣1须大于折扣2", showCancel: false });return;} else {if (scale2 <= scale3) {uni.showModal({ title: "提示", content: "折扣2须大于折扣3", showCancel: false });return;}}(0, _MyInfor.updateSupnuevoBuyerUnionOrderDiscount)({ unionId: this.unionId,
+        total1: total1,
+        scale1: scale1 / 100,
+        total2: total2,
+        scale2: scale2 / 100,
+        total3: total3,
+        scale3: scale3 / 100 }).
+      then(function (res) {
+        if (res.re === 1)
+        uni.showModal({
+          title: "提示",
+          content: "保存成功",
+          showCancel: false });
 
-  },
-  components: {
-    taogewanComboxRemote: taogewanComboxRemote,
-    wybLoading: wybLoading },
+      }).catch(function (err) {
+        uni.showModal({
+          title: "提示",
+          content: err,
+          showCancel: false });
 
-  onShow: function onShow() {
-    this.unionMemberType = getApp().globalData.unionMemberType;
-    this.unionId = getApp().globalData.unionId;
-    this.getSupnuevoBuyerUnionOrderDiscountOfUnion();
-  },
-  methods: {
+      });
+    },
     getSupnuevoBuyerUnionOrderDiscountOfUnion: function getSupnuevoBuyerUnionOrderDiscountOfUnion() {var _this = this;
       (0, _MyInfor.getSupnuevoBuyerUnionOrderDiscountForm)({
         unionId: this.unionId }).
       then(function (res) {
         console.log(res);
-        _this.total1 = res.total1 + "";
-        _this.scale1 = res.scale1 * 100 + "";
-        _this.total2 = res.total2 + "";
-        _this.scale2 = res.scale2 * 100 + "";
-        _this.total3 = res.total3 + "";
-        _this.scale3 = res.scale3 * 100 + "";
+        if (res.re === 1) {
+          _this.total1 = res.data.total1 + "";
+          _this.scale1 = res.data.scale1 * 100 + "";
+          _this.total2 = res.data.total2 + "";
+          _this.scale2 = res.data.scale2 * 100 + "";
+          _this.total3 = res.data.total3 + "";
+          _this.scale3 = res.data.scale3 * 100 + "";
+        }
       }).catch(function (err) {
         uni.showModal({
           title: "提示",
