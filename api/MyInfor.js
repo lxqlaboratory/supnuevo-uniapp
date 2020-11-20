@@ -151,3 +151,27 @@ export function updateSupnuevoBuyerUnionOrderDiscount(data) {
 		data: data
 	})
 }
+
+export function getSupnuevoBuyerUnionAdvertisementFormList(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionAdvertisementFormList',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function deleteSupnuevoBuyerUnionAdvertisement(data) {
+	return request.request({
+		url: '/union/deleteSupnuevoBuyerUnionAdvertisement',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function createSupnuevoBuyerUnionAdvertisement(data) {
+	return request.request({
+		url: '/union/createSupnuevoBuyerUnionAdvertisement',
+		method: 'POST',
+		data: data
+	})
+}

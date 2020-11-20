@@ -8115,41 +8115,6 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 209:
-/*!************************************************************!*\
-  !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 210));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-// 定义 type 类型:弹出类型：top/bottom/center
-var config = {
-  // 顶部弹出
-  top: 'top',
-  // 底部弹出
-  bottom: 'bottom',
-  // 居中弹出
-  center: 'center',
-  // 消息提示
-  message: 'top',
-  // 对话框
-  dialog: 'center',
-  // 分享
-  share: 'bottom' };var _default =
-
-
-{
-  data: function data() {
-    return {
-      config: config };
-
-  },
-  mixins: [_message.default] };exports.default = _default;
-
-/***/ }),
-
 /***/ 21:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
@@ -8882,7 +8847,42 @@ var config = {
 
 /***/ }),
 
-/***/ 210:
+/***/ 211:
+/*!************************************************************!*\
+  !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 212));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 定义 type 类型:弹出类型：top/bottom/center
+var config = {
+  // 顶部弹出
+  top: 'top',
+  // 底部弹出
+  bottom: 'bottom',
+  // 居中弹出
+  center: 'center',
+  // 消息提示
+  message: 'top',
+  // 对话框
+  dialog: 'center',
+  // 分享
+  share: 'bottom' };var _default =
+
+
+{
+  data: function data() {
+    return {
+      config: config };
+
+  },
+  mixins: [_message.default] };exports.default = _default;
+
+/***/ }),
+
+/***/ 212:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
   \**************************************************************/
@@ -9120,7 +9120,7 @@ function _isPromise(obj) {
 
 /***/ }),
 
-/***/ 260:
+/***/ 262:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
   \************************************************************/
@@ -9427,7 +9427,7 @@ function deleteSupnuevoCommonCommodityImage(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;exports.getSupnuevoBuyerUnionOrderDiscountForm = getSupnuevoBuyerUnionOrderDiscountForm;exports.updateSupnuevoBuyerUnionOrderDiscount = updateSupnuevoBuyerUnionOrderDiscount;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;exports.getSupnuevoBuyerUnionOrderDiscountForm = getSupnuevoBuyerUnionOrderDiscountForm;exports.updateSupnuevoBuyerUnionOrderDiscount = updateSupnuevoBuyerUnionOrderDiscount;exports.getSupnuevoBuyerUnionAdvertisementFormList = getSupnuevoBuyerUnionAdvertisementFormList;exports.deleteSupnuevoBuyerUnionAdvertisement = deleteSupnuevoBuyerUnionAdvertisement;exports.createSupnuevoBuyerUnionAdvertisement = createSupnuevoBuyerUnionAdvertisement;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function updateSupnuevoBuyerUnionAllPriceInfo(data) {
   return _request.default.request({
@@ -9576,6 +9576,30 @@ function getSupnuevoBuyerUnionOrderDiscountForm(data) {
 function updateSupnuevoBuyerUnionOrderDiscount(data) {
   return _request.default.request({
     url: '/union/updateSupnuevoBuyerUnionOrderDiscount',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionAdvertisementFormList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionAdvertisementFormList',
+    method: 'POST',
+    data: data });
+
+}
+
+function deleteSupnuevoBuyerUnionAdvertisement(data) {
+  return _request.default.request({
+    url: '/union/deleteSupnuevoBuyerUnionAdvertisement',
+    method: 'POST',
+    data: data });
+
+}
+
+function createSupnuevoBuyerUnionAdvertisement(data) {
+  return _request.default.request({
+    url: '/union/createSupnuevoBuyerUnionAdvertisement',
     method: 'POST',
     data: data });
 

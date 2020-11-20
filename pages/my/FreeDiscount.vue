@@ -76,7 +76,7 @@
 				</view>
 			</view>
 			
-			<view class="" style="flex: 1;" v-if="" @click="deleteSupnuevoBuyerUnionCommodityDiscount(item.priceId,item.discountPrompt)">
+			<view class="" style="flex: 1;" v-if="unionMemberType === 2" @click="deleteSupnuevoBuyerUnionCommodityDiscount(item.priceId,item.discountPrompt)">
 				<icon type="cancel" size="26"/>
 			</view>
 		</view>

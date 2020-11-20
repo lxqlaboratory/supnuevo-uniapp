@@ -42,8 +42,9 @@
 			<view class="" style="margin-top: 10px;width: 100%;display: flex;justify-content: center;align-items: center;" v-if="imgList[0] !== null &&imgList[0] !== undefined &&imgList[0] !== ''" @click="uploadFoodImg" >
 				<image :src="imgList[0]" style="width: 104px;height: 104px;"></image>
 			</view>
-			<choose :imgList="imgList" v-if="imgList[0] === null || imgList[0] === undefined || imgList[0] === ''"></choose>
-			
+			<view style="margin-top: 10px;width: 100%;display: flex;justify-content: center;align-items: center;">
+				<choose :imgList="imgList" v-if="imgList[0] === null || imgList[0] === undefined || imgList[0] === ''"></choose>
+			</view>
 			<view class="" style="border-top: solid #BEBEBE;margin-top: 10px;margin-bottom: 10px;">
 				<button type="primary" @click="updateSupnuevoBuyerUnion" style="margin-top: 10px;">保存修改</button>
 			</view>
