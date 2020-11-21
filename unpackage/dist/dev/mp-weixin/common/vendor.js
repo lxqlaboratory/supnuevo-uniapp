@@ -8847,7 +8847,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 211:
+/***/ 213:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
   \************************************************************/
@@ -8855,7 +8855,7 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 212));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 214));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -8882,7 +8882,7 @@ var config = {
 
 /***/ }),
 
-/***/ 212:
+/***/ 214:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
   \**************************************************************/
@@ -9120,7 +9120,7 @@ function _isPromise(obj) {
 
 /***/ }),
 
-/***/ 262:
+/***/ 264:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
   \************************************************************/
@@ -9427,7 +9427,7 @@ function deleteSupnuevoCommonCommodityImage(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;exports.getSupnuevoBuyerUnionOrderDiscountForm = getSupnuevoBuyerUnionOrderDiscountForm;exports.updateSupnuevoBuyerUnionOrderDiscount = updateSupnuevoBuyerUnionOrderDiscount;exports.getSupnuevoBuyerUnionAdvertisementFormList = getSupnuevoBuyerUnionAdvertisementFormList;exports.deleteSupnuevoBuyerUnionAdvertisement = deleteSupnuevoBuyerUnionAdvertisement;exports.createSupnuevoBuyerUnionAdvertisement = createSupnuevoBuyerUnionAdvertisement;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;exports.getSupnuevoBuyerUnionOrderDiscountForm = getSupnuevoBuyerUnionOrderDiscountForm;exports.updateSupnuevoBuyerUnionOrderDiscount = updateSupnuevoBuyerUnionOrderDiscount;exports.getSupnuevoBuyerUnionAdvertisementFormList = getSupnuevoBuyerUnionAdvertisementFormList;exports.deleteSupnuevoBuyerUnionAdvertisement = deleteSupnuevoBuyerUnionAdvertisement;exports.createSupnuevoBuyerUnionAdvertisement = createSupnuevoBuyerUnionAdvertisement;exports.getSupnuevoBuyerUnionMemberFormList = getSupnuevoBuyerUnionMemberFormList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function updateSupnuevoBuyerUnionAllPriceInfo(data) {
   return _request.default.request({
@@ -9600,6 +9600,14 @@ function deleteSupnuevoBuyerUnionAdvertisement(data) {
 function createSupnuevoBuyerUnionAdvertisement(data) {
   return _request.default.request({
     url: '/union/createSupnuevoBuyerUnionAdvertisement',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionMemberFormList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionMemberFormList',
     method: 'POST',
     data: data });
 

@@ -175,3 +175,11 @@ export function createSupnuevoBuyerUnionAdvertisement(data) {
 		data: data
 	})
 }
+
+export function getSupnuevoBuyerUnionMemberFormList(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerUnionMemberFormList',
+		method: 'POST',
+		data: data
+	})
+}
