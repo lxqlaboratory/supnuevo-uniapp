@@ -71,7 +71,7 @@
 				
 				<view class="" v-for="(item,index) in notDealList" :key="index" v-if="deliver === 0">
 					<view class="" v-if="item.order.deliveryType == 1">
-						<view class="" style="padding: 5px;background-color: #18B4ED;">
+						<view class="" style="padding: 5px;background-color: #18B4ED;margin-top: 5px;">
 							<text>订单编号:&nbsp;&nbsp;{{item.order.orderNum}}</text>
 						</view>
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;">
@@ -88,7 +88,7 @@
 				
 				<view class="" v-for="(item,index) in notDealList" :key="index" v-if="deliver === 1">
 					<view class="" v-if="item.order.deliveryType == 0">
-						<view class="" style="padding: 5px;background-color: #18B4ED;">
+						<view class="" style="padding: 5px;background-color: #18B4ED;margin-top: 5px;">
 							<text>订单编号:&nbsp;&nbsp;{{item.order.orderNum}}</text>
 						</view>
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;">
@@ -110,7 +110,7 @@
 				</view>
 				<view class="" v-for="(item,index) in dealList" :key="index" v-else>
 					<view class="" v-if="item.order.deliveryType == 0">
-						<view class="" style="padding: 5px;background-color: #18B4ED;">
+						<view class="" style="padding: 5px;background-color: #18B4ED;margin-top: 5px;">
 							<text>订单编号:&nbsp;&nbsp;{{item.order.orderNum}}</text>
 						</view>
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;">
@@ -131,7 +131,7 @@
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;margin-bottom: 15px;">
 							<text>送货时间&nbsp;&nbsp;&nbsp;&nbsp;{{item.order.wiseSaleTime}}</text>
 						</view>
-						<view class="" style="width: 90%;border: 1px solid #007AFF;border-radius: 10px;margin: auto;">
+						<view class="" style="width: 90%;border: 1px solid #007AFF;border-radius: 10px;margin: auto;margin-top: 5px;">
 							<view class="" style="text-align: center;padding: 5px;">
 								<text>订单内容</text>
 							</view>
@@ -190,7 +190,7 @@
 					</view>
 					
 					<view class="" v-if="item.order.deliveryType == 1">
-						<view class="" style="padding: 5px;background-color: #18B4ED;">
+						<view class="" style="padding: 5px;background-color: #18B4ED;margin-top: 5px;">
 							<text>订单编号:&nbsp;&nbsp;{{item.order.orderNum}}</text>
 						</view>
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;">
@@ -202,7 +202,7 @@
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;margin-bottom: 20px;">
 							<text>提货时间&nbsp;&nbsp;&nbsp;&nbsp;{{item.order.wiseSaleTime}}</text>
 						</view>
-						<view class="" style="width: 90%;border: 1px solid #007AFF;border-radius: 10px;margin: auto;">
+						<view class="" style="width: 90%;border: 1px solid #007AFF;border-radius: 10px;margin: auto;margin-top: 5px;">
 							<view class="" style="text-align: center;padding: 5px;">
 								<text>订单内容</text>
 							</view>
@@ -274,7 +274,7 @@
 				
 				<view class="" v-for="(item,index) in finishedList" :key="index" v-else>
 					<view class="" v-if="item.order.deliveryType == 0">
-						<view class="" style="padding: 5px;background-color: #18B4ED;">
+						<view class="" style="padding: 5px;background-color: #18B4ED;margin-top: 5px;">
 							<text>订单编号:&nbsp;&nbsp;{{item.order.orderNum}}</text>
 						</view>
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;">
@@ -292,7 +292,7 @@
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;">
 							<text>接货人&nbsp;&nbsp;&nbsp;&nbsp;{{item.order.receiverName}}</text>
 						</view>
-						<view class="" style="width: 90%;border: 1px solid #007AFF;border-radius: 10px;margin: auto;">
+						<view class="" style="width: 90%;border: 1px solid #007AFF;border-radius: 10px;margin: auto;margin-top: 5px;">
 							<view class="" style="text-align: center;padding: 5px;">
 								<text>订单内容</text>
 							</view>
@@ -347,7 +347,7 @@
 					</view>
 				
 					<view class="" v-if="item.order.deliveryType == 1">
-						<view class="" style="padding: 5px;background-color: #18B4ED;">
+						<view class="" style="padding: 5px;background-color: #18B4ED;margin-top: 5px;">
 							<text>订单编号:&nbsp;&nbsp;{{item.order.orderNum}}</text>
 						</view>
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;">
@@ -356,7 +356,7 @@
 						<view class="" style="padding: 10px;border-bottom: 1px solid #BBBBBB;">
 							<text>订单类型&nbsp;&nbsp;&nbsp;&nbsp;自提</text>
 						</view>
-						<view class="" style="width: 90%;border: 1px solid #007AFF;border-radius: 10px;margin: auto;">
+						<view class="" style="width: 90%;border: 1px solid #007AFF;border-radius: 10px;margin: auto;margin-top: 5px;">
 							<view class="" style="text-align: center;padding: 5px;">
 								<text>订单内容</text>
 							</view>
