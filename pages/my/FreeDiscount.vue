@@ -172,47 +172,55 @@
 				uni.showModal({
 					title: "提示",
 					content: "是否删除该折扣",
-					success:function(){
-						if(priceId == that.priceId){
-							that.priceId = '';
-							that.discountPrompt = '';
-							that.discountCode = '';
-						}
-						updateSupnuevoBuyerUnionPriceDiscountInfo({
-							unionId: that.unionId,
-							priceId: priceId,
-							discountCode: '00000000',
-							discountPrompt: discountPrompt
-						}).then(res => {
-							 var errorMsg = res.errorMsg;
-							if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-								uni.showModal({
-									title: "提示",
-									content: errorMsg,
-									showCancel: false,
-								})
-							} else {
-								uni.showModal({
-									title: "提示",
-									content: "删除成功",
-									showCancel: false,
-								})
-								getSupnuevoBuyerUnionPriceDiscountInfoList({
-									unionId: that.unionId
-								}).then(res => {
-									console.log(res)
-									if(res.re === 1){
-										that.commodityDiscountList = res.data
-									}
-								}).catch((err) => {
+					success:function(res){
+						if (res.confirm){
+							if(priceId == that.priceId){
+								that.priceId = '';
+								that.discountPrompt = '';
+								that.discountCode = '';
+							}
+							updateSupnuevoBuyerUnionPriceDiscountInfo({
+								unionId: that.unionId,
+								priceId: priceId,
+								discountCode: '00000000',
+								discountPrompt: discountPrompt
+							}).then(res => {
+								 var errorMsg = res.errorMsg;
+								if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
 									uni.showModal({
 										title: "提示",
-										content: err,
+										content: errorMsg,
 										showCancel: false,
 									})
-									});	
-							}
-						})
+								} else {
+									uni.showModal({
+										title: "提示",
+										content: "删除成功",
+										showCancel: false,
+									})
+									getSupnuevoBuyerUnionPriceDiscountInfoList({
+										unionId: that.unionId
+									}).then(res => {
+										console.log(res)
+										if(res.re === 1){
+											that.commodityDiscountList = res.data
+										}
+									}).catch((err) => {
+										uni.showModal({
+											title: "提示",
+											content: err,
+											showCancel: false,
+										})
+										});	
+								}
+							}).catch((err) => {
+										uni.showModal({
+											title: "提示",
+											content: err,
+											showCancel: false,
+										})
+										});	
+						}
 					}
 				})
 			},

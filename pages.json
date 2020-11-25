@@ -231,6 +231,16 @@
 				"navigationBarBackgroundColor": "#3a6eff",
 				"backgroundColor": "#3a6eff"
 			}
+		},
+		{
+			
+			"path" : "pages/my/OrderDetail",
+			"style" : {
+				"navigationBarTitleText": "订单信息",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
 		}
 		
 		

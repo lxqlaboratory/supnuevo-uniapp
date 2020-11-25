@@ -153,33 +153,35 @@
 				uni.showModal({
 					title: "提示",
 					content: "是否删除该广告",
-					success:function(){
-						deleteSupnuevoBuyerUnionAdvertisement({
-							unionId: that.unionId,
-							advertisementId: advertisementId
-						}).then(res => {
-							 var errorMsg = res.errorMsg;
-							if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+					success:function(res){
+						if (res.confirm){
+								deleteSupnuevoBuyerUnionAdvertisement({
+									unionId: that.unionId,
+									advertisementId: advertisementId
+								}).then(res => {
+									 var errorMsg = res.errorMsg;
+									if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+										uni.showModal({
+											title: "提示",
+											content: errorMsg,
+											showCancel: false,
+										})
+									} else {
+										uni.showModal({
+											title: "提示",
+											content: "删除成功",
+											showCancel: false,
+										})
+										that.getSupnuevoBuyerUnionAdvertisementFormList()
+									}
+								}).catch((err) => {
 								uni.showModal({
 									title: "提示",
-									content: errorMsg,
+									content: err,
 									showCancel: false,
 								})
-							} else {
-								uni.showModal({
-									title: "提示",
-									content: "删除成功",
-									showCancel: false,
-								})
-								that.getSupnuevoBuyerUnionAdvertisementFormList()
-							}
-						}).catch((err) => {
-						uni.showModal({
-							title: "提示",
-							content: err,
-							showCancel: false,
-						})
-						});	
+								});	
+						}
 					}
 				})
 			},

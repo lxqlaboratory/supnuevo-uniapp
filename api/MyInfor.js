@@ -183,3 +183,35 @@ export function getSupnuevoBuyerUnionMemberFormList(data) {
 		data: data
 	})
 }
+
+export function getSupnuevoCustomerOrderListOfDateByUnion(data) {
+	return request.request({
+		url: '/union/getSupnuevoCustomerOrderListOfDateByUnion',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSupnuevoCustomerOrderListOfUnionCanGrab(data) {
+	return request.request({
+		url: '/union/getSupnuevoCustomerOrderListOfUnionCanGrab',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function affirmCustomerOrder(data) {
+	return request.request({
+		url: '/customer/affirmCustomerOrder',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function finishCustomerOrder(data) {
+	return request.request({
+		url: '/customer/finishCustomerOrder',
+		method: 'POST',
+		data: data
+	})
+}

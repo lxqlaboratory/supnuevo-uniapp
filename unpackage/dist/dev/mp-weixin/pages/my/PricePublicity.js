@@ -222,7 +222,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32); //
 //
 //
 //
-var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 231));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 224));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { unionMemberType: '', advertisements: [], head: "https://supnuevo.s3.sa-east-1.amazonaws.com/" };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;this.getSupnuevoBuyerUnionAdvertisementFormList();}, methods: { uploadFoodImg: function uploadFoodImg(advertisementId, advertisementNum) {var base64 = null;var that = this;uni.chooseImage({ success: function success(res) {console.log(res.tempFilePaths[0]);uni.request({ url: res.tempFilePaths[0], method: 'GET', responseType: 'arraybuffer', success: function success(ress) {console.log(ress.data);base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
+var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 241));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 234));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { unionMemberType: '', advertisements: [], head: "https://supnuevo.s3.sa-east-1.amazonaws.com/" };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;this.getSupnuevoBuyerUnionAdvertisementFormList();}, methods: { uploadFoodImg: function uploadFoodImg(advertisementId, advertisementNum) {var base64 = null;var that = this;uni.chooseImage({ success: function success(res) {console.log(res.tempFilePaths[0]);uni.request({ url: res.tempFilePaths[0], method: 'GET', responseType: 'arraybuffer', success: function success(ress) {console.log(ress.data);base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
               // base64 = 'data:image/jpeg;base64,' + base64; 
               //不加上这串字符，在页面无法显示的哦
               if (advertisementId !== null && advertisementId !== undefined && advertisementId !== '') that.uploadImg(base64, advertisementId, advertisementNum);else that.uploadImg1(base64, advertisementNum);} }); // res.tempFilePaths.forEach(item => {
@@ -285,33 +285,35 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
       uni.showModal({
         title: "提示",
         content: "是否删除该广告",
-        success: function success() {
-          (0, _MyInfor.deleteSupnuevoBuyerUnionAdvertisement)({
-            unionId: that.unionId,
-            advertisementId: advertisementId }).
-          then(function (res) {
-            var errorMsg = res.errorMsg;
-            if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+        success: function success(res) {
+          if (res.confirm) {
+            (0, _MyInfor.deleteSupnuevoBuyerUnionAdvertisement)({
+              unionId: that.unionId,
+              advertisementId: advertisementId }).
+            then(function (res) {
+              var errorMsg = res.errorMsg;
+              if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+                uni.showModal({
+                  title: "提示",
+                  content: errorMsg,
+                  showCancel: false });
+
+              } else {
+                uni.showModal({
+                  title: "提示",
+                  content: "删除成功",
+                  showCancel: false });
+
+                that.getSupnuevoBuyerUnionAdvertisementFormList();
+              }
+            }).catch(function (err) {
               uni.showModal({
                 title: "提示",
-                content: errorMsg,
+                content: err,
                 showCancel: false });
 
-            } else {
-              uni.showModal({
-                title: "提示",
-                content: "删除成功",
-                showCancel: false });
-
-              that.getSupnuevoBuyerUnionAdvertisementFormList();
-            }
-          }).catch(function (err) {
-            uni.showModal({
-              title: "提示",
-              content: err,
-              showCancel: false });
-
-          });
+            });
+          }
         } });
 
     },
