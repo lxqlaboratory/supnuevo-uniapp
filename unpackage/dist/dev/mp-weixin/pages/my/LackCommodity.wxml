@@ -1,1 +1,1 @@
-<view class="_div"></view>
+<view><wyb-loading class="vue-ref" vue-id="3e358000-1" data-ref="loading" bind:__l="__l"></wyb-loading><block wx:for="{{commodityList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view><view style="padding:10px;border-bottom:2px solid #7C7C7C;width:90%;margin:auto;color:#939393;"><view><text>{{"|  "+item.codigo}}</text></view><view><text>{{"|  "+item.commoditName}}</text></view><view><text>{{"|  $"+item.price}}</text></view></view></view></block></view>

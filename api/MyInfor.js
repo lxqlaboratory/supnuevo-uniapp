@@ -215,3 +215,11 @@ export function finishCustomerOrder(data) {
 		data: data
 	})
 }
+
+export function getHashNotUnionCommodityListOfMerchant(data) {
+	return request.request({
+		url: '/union/getHashNotUnionCommodityListOfMerchant',
+		method: 'POST',
+		data: data
+	})
+}
