@@ -186,7 +186,8 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99); //
 //
 //
 var _default = { data: function data() {return { id: 0, // 使用 marker点击事件 需要填写id
-      title: 'map', latitude: 39.909, longitude: 116.39742, covers: [{ latitude: 39.909, longitude: 116.39742, iconPath: '../../../static/location.png' }, { latitude: 39.90, longitude: 116.39, iconPath: '../../../static/location.png' }], memberList: [], head: "https://supnuevo.s3.sa-east-1.amazonaws.com/" };}, methods: { getSupnuevoBuyerUnionMemberFormList: function getSupnuevoBuyerUnionMemberFormList() {var _this = this;(0, _MyInfor.getSupnuevoBuyerUnionMemberFormList)({ unionId: this.unionId }).then(function (res) {console.log(res);if (res.re === 1)
+      title: 'map', latitude: 39.909, longitude: 116.39742, covers: [{ latitude: 39.909, longitude: 116.39742, iconPath: '../../../static/location.png' }, { latitude: 39.90, longitude: 116.39, iconPath: '../../../static/location.png' }], memberList: [], head: "https://supnuevo.s3.sa-east-1.amazonaws.com/", unionId: '' };}, methods: { getSupnuevoBuyerUnionMemberFormList: function getSupnuevoBuyerUnionMemberFormList() {var _this = this;(0, _MyInfor.getSupnuevoBuyerUnionMemberFormList)({ unionId: this.unionId }).then(function (res) {console.log(res);
+        if (res.re === 1)
         _this.memberList = res.data;
       }).catch(function (err) {
         uni.showModal({
@@ -198,6 +199,7 @@ var _default = { data: function data() {return { id: 0, // 使用 marker点击�
     } },
 
   onShow: function onShow() {
+    this.unionId = getApp().globalData.unionId;
     this.getSupnuevoBuyerUnionMemberFormList();
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

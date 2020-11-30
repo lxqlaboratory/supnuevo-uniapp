@@ -26,7 +26,8 @@
     "pages/my/CommodityDetail",
     "pages/my/OrderDiscount",
     "pages/my/FreeDiscount",
-    "pages/my/OrderDetail"
+    "pages/my/OrderDetail",
+    "pages/stock/Unionlist"
   ],
   "subPackages": [],
   "window": {

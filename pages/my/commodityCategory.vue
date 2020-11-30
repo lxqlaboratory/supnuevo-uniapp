@@ -13,11 +13,11 @@
 					<text>商品数</text>
 				</view>
 			</view>
-			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll" v-if="unionMemberType === 2">
+			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll" v-if="unionMemberType == 2">
 				<view class="Inrow" v-for="(item,index) in priceClassList" :key="index" @click="setUnionCurrentMerchantCount(item.priceCount)">
 					<view class="" style="display: flex;flex: 3;justify-content: center;align-items: center;">
-						  <icon type="success" size="26" v-if="item.select === 1"/>
-						  <icon type="cancel" size="26" v-if="item.select !== 1"/>
+						  <icon type="success" size="26" v-if="item.select == 1"/>
+						  <icon type="cancel" size="26" v-if="item.select != 1"/>
 					</view>
 					<view class="" style="display: flex;flex: 3;justify-content: center;align-items: center;">
 						 <text>{{item.priceCount}}</text>
@@ -27,11 +27,11 @@
 					</view>
 				</view>
 			</scroll-view>
-			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll" v-if="unionMemberType !== 2">
+			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll" v-if="unionMemberType != 2">
 				<view class="Inrow" v-for="(item,index) in priceClassList" :key="index">
 					<view class="" style="display: flex;flex: 3;justify-content: center;align-items: center;">
-						  <icon type="success" size="26" v-if="item.select === 1"/>
-						  <icon type="cancel" size="26" v-if="item.select !== 1"/>
+						  <icon type="success" size="26" v-if="item.select == 1"/>
+						  <icon type="cancel" size="26" v-if="item.select != 1"/>
 					</view>
 					<view class="" style="display: flex;flex: 3;justify-content: center;align-items: center;">
 						 <text>{{item.priceCount}}</text>
@@ -49,12 +49,36 @@
 			<button type="primary" class="priceButton" @click="selectNum" style="background-color: #3D4145;border-radius: 8px;">查询</button>
 		</view>
 		
-		<view class="" style="margin-top: 10px;justify-content: center;align-items: center;display:flex;" v-if="unionMemberType === 2">
+		<view class="" style="margin-top: 10px;justify-content: center;align-items: center;display:flex;" v-if="unionMemberType == 2">
 			<button type="primary" size="mini" style="border-radius: 10px;background-color: #007AFF;" @click="setAllCommodityIsAlive">全部置为可用</button>
 		</view>
 		
-		<scroll-view scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType === 2" >
-			<view class="Inrow1" v-for="(item,index) in goodsList" :key="index" @click="checkAlive(item.isAlive,item.commodityId)">
+		<view class="list" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" v-if="unionMemberType == 2&&goodsList.length>=1900" style="margin-top: 10px;">
+			<sib-list ref="sibList" @isRefresh='isRefresh' @scrolltolowerFn="scrolltolowerFn">
+				<block class="" slot="sibScrollList">
+					<!-- <scroll-view scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll"  > -->
+						<view class="Inrow1" v-for="(item,index) in list" :key="index" @click="checkAlive(item.isAlive,item.commodityId)">
+							<view class="" style="flex: 8;">
+								<view class="" style="margin-left: 10px;">
+									<text>{{index+1}}、codigo:&nbsp;&nbsp;{{item.codigo}}</text>
+								</view>
+								<view class="" style="margin-left: 10px;">
+									<text>descripcion:&nbsp;&nbsp;{{item.nombre}}</text>
+								</view>
+							</view>
+							<view class="" style="flex: 1;">
+								<icon type="success" size="26" v-if="item.isAlive == 1"/>
+								<icon type="cancel" size="26" v-if="item.isAlive != 1"/>
+							</view>
+						</view>
+					<!-- </scroll-view> -->
+				</block>
+			</sib-list>
+		</view>
+		
+		
+		<scroll-view scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll"  v-if="unionMemberType == 2&&goodsList.length<1900" :scroll-into-view="flag">
+			<view class="Inrow1" v-for="(item,index) in goodsList" :key="index" @click="checkAlive(item.isAlive,item.commodityId)"  :id='"text"+index'>
 				<view class="" style="flex: 8;">
 					<view class="" style="margin-left: 10px;">
 						<text>{{index+1}}、codigo:&nbsp;&nbsp;{{item.codigo}}</text>
@@ -64,13 +88,15 @@
 					</view>
 				</view>
 				<view class="" style="flex: 1;">
-					<icon type="success" size="26" v-if="item.isAlive === 1"/>
-					<icon type="cancel" size="26" v-if="item.isAlive !== 1"/>
+					<icon type="success" size="26" v-if="item.isAlive == 1"/>
+					<icon type="cancel" size="26" v-if="item.isAlive != 1"/>
 				</view>
 			</view>
 		</scroll-view>
+				
 		
-		<scroll-view  scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType !== 2" :scroll-into-view="flag">
+		
+		<scroll-view  scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType != 2&&goodsList.length<1900" :scroll-into-view="flag">
 			<view class="Inrow1" v-for="(item,index) in goodsList" :key="index" :id='"text"+index'>
 				<view class="" style="flex: 8;">
 					<view class="" style="margin-left: 10px;">
@@ -81,11 +107,34 @@
 					</view>
 				</view>
 				<view class="" style="flex: 1;">
-					<icon type="success" size="26" v-if="item.isAlive === 1"/>
-					<icon type="cancel" size="26" v-if="item.isAlive !== 1"/>
+					<icon type="success" size="26" v-if="item.isAlive == 1"/>
+					<icon type="cancel" size="26" v-if="item.isAlive != 1"/>
 				</view>
 			</view>
 		</scroll-view>
+		
+		<view class="list" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" v-if="unionMemberType != 2&&goodsList.length>=1900" style="margin-top: 10px;">
+			<sib-list ref="sibList" @isRefresh='isRefresh' @scrolltolowerFn="scrolltolowerFn">
+				<block class="" slot="sibScrollList">
+					<!-- <scroll-view  scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType != 2&&goodsList.length<1900" :scroll-into-view="flag"> -->
+						<view class="Inrow1" v-for="(item,index) in list" :key="index" :id='"text"+index'>
+							<view class="" style="flex: 8;">
+								<view class="" style="margin-left: 10px;">
+									<text>codigo:&nbsp;&nbsp;{{item.codigo}}</text>
+								</view>
+								<view class="" style="margin-left: 10px;">
+									<text>descripcion:&nbsp;&nbsp;{{item.nombre}}</text>
+								</view>
+							</view>
+							<view class="" style="flex: 1;">
+								<icon type="success" size="26" v-if="item.isAlive == 1"/>
+								<icon type="cancel" size="26" v-if="item.isAlive != 1"/>
+							</view>
+						</view>
+					<!-- </scroll-view> -->
+				</block>
+			</sib-list>
+		</view>
 	</view>
 </template>
 
@@ -99,6 +148,7 @@
 		getUnionQueryDataListByInputString,
 		getSupnuevoBuyerUnionPriceByCommodityId
 	} from '@/api/MyInfor.js'
+	import sibList from '@/components/sib-list/sib-list1.vue'
 	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	export default {
 		data() {
@@ -128,10 +178,13 @@
 				searchListFinal: [],
 				codigo:'',
 				flag: '',
+				index: 50,
+				list: [],
 			};
 		},
 		components: {
-				wybLoading
+				wybLoading,
+				sibList
 		},
 		onShow(){
 			this.unionId = getApp().globalData.unionId;
@@ -223,6 +276,8 @@
 					console.log(res)
 					if (res.re === 1){
 						this.goodsList = res.data
+						for(var i = 0; i < this.index ;i++)
+							this.list[i] = this.goodsList[i]
 					}
 					this.$refs.loading.hideLoading() // 隐藏
 				}).catch((err) => {
@@ -309,16 +364,26 @@
 					    })
 					}
 					if (res.re === 1) {
-						for (var i = 0;i < this.goodsList.length ; i++)
-							if(this.goodsList[i].codigo === codigo){
-								this.$nextTick(()=> {
-									this.flag = "text" + i
-									console.log(this.flag)
-								});
-								this.flag=''  //不清空再次跳到锚点位置会不起作用
-								return;
+						if(this.goodsList.length<1900){
+								for (var i = 0;i < this.goodsList.length ; i++)
+									if(this.goodsList[i].codigo === codigo){
+										this.$nextTick(()=> {
+											this.flag = "text" + i
+											console.log(this.flag)
+										});
+										this.flag=''  //不清空再次跳到锚点位置会不起作用
+										return;
+									}
+									console.log("没有找到")
+							}else{
+								for (var i = 0;i < this.goodsList.length; i++){													
+									if(this.goodsList[i].codigo == codigo){
+										var goodsList = [];
+										goodsList[0] = this.goodsList[i]
+										this.goodsList = goodsList;
+									}
+								}
 							}
-							console.log("没有找到")
 					}else 
 					return;
 				}).catch((err) => {
@@ -364,6 +429,7 @@
 									commodityId:res.array[0].commodityId,
 									unionId: this.unionId
 								}).then(res => {
+									var codigo = res.data.codigo;
 									console.log(res)
 									if(res.re == -2){
 									    uni.navigateTo({
@@ -371,17 +437,28 @@
 									    })
 									}
 									if (res.re === 1) {
-										for (var i = 0;i < this.goodsList.length ; i++)
-											if(this.goodsList[i].codigo === res.data.codigo){
-												this.$nextTick(()=> {
-													this.flag = "text" + i
-													console.log(this.flag)
-												});
-												this.flag=''  //不清空再次跳到锚点位置会不起作用
-												break;
+										if(this.goodsList.length<1900){
+												for (var i = 0;i < this.goodsList.length ; i++)
+													if(this.goodsList[i].codigo === codigo){
+														this.$nextTick(()=> {
+															this.flag = "text" + i
+															console.log(this.flag)
+														});
+														this.flag=''  //不清空再次跳到锚点位置会不起作用
+														return;
+													}
+													console.log("没有找到")
+											}else{
+												for (var i = 0;i < this.goodsList.length; i++){													
+													if(this.goodsList[i].codigo == codigo){
+														var goodsList = [];
+														goodsList[0] = this.goodsList[i]
+														this.goodsList = goodsList;
+													}
+												}
 											}
-									}else 
-									return;
+										}else 
+										return;
 								}).catch((err) => {
 								});	
 			                }
@@ -435,6 +512,50 @@
 							})
 						},
 					})
+				},
+				touchstart: function(e) {
+					this.$refs.sibList.refreshStart(e);
+				},
+				touchmove: function(e) {
+					this.$refs.sibList.refreshMove(e);
+				},
+				touchend: function(e) {
+					this.$refs.sibList.refreshEnd(e);
+				},
+				isRefresh: function() {
+					const _this = this
+					setTimeout(() => {
+						uni.showToast({
+							icon: 'success',
+							title: '刷新成功,数据恢复初始值'
+						})
+						for(var i = 0; i < 50 ;i++)
+							_this.list[i] = _this.goodsList[i]
+						// 刷新结束调用
+						this.$refs.sibList.endAfter()
+					}, 1000)
+				},
+				scrolltolowerFn: function() {
+					if(this.index == this.goodsList.length)
+						return;
+					uni.showLoading({
+						title: '加载中...',
+						mask: true
+					})
+					// 模拟请求
+					const _this = this
+					setTimeout(() => {
+						// 请求成功
+						const newData = []
+						for(var i=0 ;i <= 50; i++){
+							newData[i] = this.goodsList[this.index++]
+							if (this.index == this.goodsList.length)
+								return;
+						}
+							
+						_this.list = _this.list.concat(newData)
+						uni.hideLoading()
+					}, 1000)
 				},
 		},
 	}

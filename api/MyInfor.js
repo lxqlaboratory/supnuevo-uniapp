@@ -223,3 +223,11 @@ export function getHashNotUnionCommodityListOfMerchant(data) {
 		data: data
 	})
 }
+
+export function getIncompleteCommodityCodigoList(data) {
+	return request.request({
+		url: '/union/getIncompleteCommodityCodigoList',
+		method: 'POST',
+		data: data
+	})
+}

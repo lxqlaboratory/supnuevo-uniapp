@@ -11,8 +11,8 @@
 				<text>折扣</text>
 			</view>
 		</view>
-		
-		<view class="" v-if="unionMemberType === 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
+		 
+		<view class="" v-if="unionMemberType == 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;text-align: center;">
 				<input type="text" v-model="total1" />
 			</view>
@@ -20,10 +20,10 @@
 				<text>-</text>
 			</view>
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="scale1" />
+				<input type="text" v-model="scale1" />%
 			</view>
 		</view>
-		<view class="" v-if="unionMemberType !== 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
+		<view class="" v-if="unionMemberType != 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;align-items: center;justify-content: center;">
 				<text>{{total1}}</text>
 			</view>
@@ -35,7 +35,7 @@
 			</view>
 		</view>
 		
-		<view class="" v-if="unionMemberType === 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
+		<view class="" v-if="unionMemberType == 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;text-align: center;">
 				<input type="text" v-model="total2" />
 			</view>
@@ -43,10 +43,10 @@
 				<text>-</text>
 			</view>
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="scale2" />
+				<input type="text" v-model="scale2" />%
 			</view>
 		</view>
-		<view class="" v-if="unionMemberType !== 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
+		<view class="" v-if="unionMemberType != 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;align-items: center;justify-content: center;">
 				<text>{{total2}}</text>
 			</view>
@@ -58,7 +58,7 @@
 			</view>
 		</view>
 		
-		<view class="" v-if="unionMemberType === 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
+		<view class="" v-if="unionMemberType == 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;text-align: center;">
 				<input type="text" v-model="total3" />
 			</view>
@@ -66,10 +66,10 @@
 				<text>-</text>
 			</view>
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="scale3" />
+				<input type="text" v-model="scale3" />%
 			</view>
 		</view>
-		<view class="" v-if="unionMemberType !== 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
+		<view class="" v-if="unionMemberType != 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;align-items: center;justify-content: center;">
 				<text>{{total3}}</text>
 			</view>
@@ -81,7 +81,7 @@
 			</view>
 		</view>
 		
-		<view class="" v-if="unionMemberType === 2" style="margin-bottom: 20px;">
+		<view class="" v-if="unionMemberType == 2" style="margin-bottom: 20px;">
 			<button type="primary" @click="saveSupnuevoBuyerUnionOrderDiscount" style="width: 200px;border-radius: 10px;height: 35px;margin-top: 30px;vertical-align: middle;text-align: center;line-height: 35px;background-color: #1989FA;color: #2C405A;">保存折扣</button>
 		</view>
 	</view>
@@ -107,6 +107,8 @@
 				scale2: '',
 				total3: '',
 				scale3: '',
+				unionMemberType: '',
+				unionId: '',
 			}
 		},
 		components: {

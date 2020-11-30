@@ -35,7 +35,7 @@
 			</view>
 		</view>
 		
-		<view class="" style="margin-top: 20px;" v-if="unionMemberType === 2">
+		<view class="" style="margin-top: 20px;" v-if="unionMemberType == 2">
 			<view class="" style="text-align: center;margin-top: 10px;">
 				<text style="font-size: 20px;">联盟头像</text>
 			</view>

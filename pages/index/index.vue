@@ -255,7 +255,7 @@
 						uni.setStorageSync('userPsw', that.password);
 					
 						uni.switchTab({
-							url: '../price/modifyPrice'
+							url: '../stock/stock'
 						})
 					} else {
 						this.errorContent = res.errorMessageList[1]

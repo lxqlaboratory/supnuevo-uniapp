@@ -8,7 +8,7 @@
 		</view>
 		
 		<view class="" v-for="(item,index) in memberList" :key="index" style="display: flex;flex-direction: row;">
-			<view class="" style="flex: 2;" v-if="item.urlAddress !== null && item.urlAddress !== '' && item.urlAddress !== undefined">
+			<view class="" style="flex: 2;" v-if="item.urlAddress != null && item.urlAddress != '' && item.urlAddress != undefined">
 				<image :src="head+item.urlAddress" mode="" style="width: 100px;height: 100px;"></image>
 			</view>
 			<view class="" v-else>
@@ -48,6 +48,7 @@
 	            }],
 				memberList: [],
 				head: "https://supnuevo.s3.sa-east-1.amazonaws.com/",
+				unionId: '',
 	        }
 	    },
 	    methods: {
@@ -68,6 +69,7 @@
 				},
 	    },
 		onShow() {
+			this.unionId = getApp().globalData.unionId;
 			this.getSupnuevoBuyerUnionMemberFormList();
 		},
 	}

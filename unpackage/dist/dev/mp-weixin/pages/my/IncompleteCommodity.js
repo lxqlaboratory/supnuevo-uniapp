@@ -90,7 +90,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  wybLoading: function() {
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 241))
+  },
+  sibList: function() {
+    return __webpack_require__.e(/*! import() | components/sib-list/sib-list */ "components/sib-list/sib-list").then(__webpack_require__.bind(null, /*! @/components/sib-list/sib-list.vue */ 262))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -125,11 +132,220 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/vue/supnuevo-uniapp/pages/my/IncompleteCommodity.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-//
-//
-//
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);
+
+
+var _change = __webpack_require__(/*! @/api/change.js */ 32);var sibList = function sibList() {__webpack_require__.e(/*! require.ensure | components/sib-list/sib-list */ "components/sib-list/sib-list").then((function () {return resolve(__webpack_require__(/*! @/components/sib-list/sib-list.vue */ 262));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 241));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+{
+  data: function data() {
+    return {
+      unionId: '',
+      commodityList: [],
+      list: [],
+      taxArr: [],
+      sizeArr: [],
+      index: 50,
+      attachDataUrl1: null,
+      attachDataUrl2: null,
+      attachDataUrl3: null,
+      attachDataUrl4: null,
+      attachDataUrl: null,
+      selectedCodeInfo: {},
+      commodityId: '' };
+
+  },
+  components: {
+    wybLoading: wybLoading,
+    sibList: sibList },
+
+  onShow: function onShow() {
+    this.$refs.loading.showLoading();
+    this.unionId = getApp().globalData.unionId;
+    this.getSupnuevoIncompleteCommodityList();
+    this.$refs.loading.hideLoading(); // 隐藏
+  },
+  methods: {
+    getSupnuevoIncompleteCommodityList: function getSupnuevoIncompleteCommodityList() {var _this2 = this;
+      (0, _MyInfor.getIncompleteCommodityCodigoList)({
+        unionId: this.unionId }).
+      then(function (res) {
+        console.log(res);
+        if (res.re === 1) {
+          _this2.commodityList = res.data;
+          for (var i = 0; i < _this2.index; i++) {
+            _this2.list[i] = _this2.commodityList[i];}
+        }
+      }).catch(function (err) {
+        uni.showModal({
+          title: "提示",
+          content: err,
+          showCancel: false });
+
+      });
+    },
+    navigateGoodUpdate: function navigateGoodUpdate(codigo, commodityId) {var _this3 = this;
+      var merchantId = getApp().globalData.merchantId;
+      (0, _change.getSupnuevoCommodityTaxInfoListMobile)({
+        merchantId: merchantId }).
+      then(function (res1) {
+        console.log(res1);
+        var errorMsg = res1.errorMsg;
+        if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+          uni.showModal({
+            title: "提示",
+            content: errorMsg,
+            showCancel: false });
+
+        } else {
+          var merchantId = getApp().globalData.merchantId;
+          (0, _change.getSupnuevoBuyerPriceFormByCodigoMobile)({
+            codigo: codigo,
+            supnuevoMerchantId: merchantId }).
+          then(function (res) {
+            if (res.re == -2) {
+              uni.navigateTo({
+                url: '../index/index' });
+
+            }
+
+            if (res.errMessage !== null && res.errMessage !== undefined) {
+              var errMsg = res.errMessage.toString();
+              uni.showModal({
+                title: "提示",
+                content: errMsg,
+                showCancel: false });
+
+              return;
+            } else {
+              console.log(res);
+              var goodInfo = res.object;
+              if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null &&
+              goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
+                goodInfo.goodName = goodInfo.nombre + ',' +
+                goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
+              } else
+              {
+                goodInfo.goodName = goodInfo.nombre;
+              }
+
+              if (goodInfo.priceShow == 0) {
+                goodInfo.priceShow = "";
+              }
+              _this3.selectedCodeInfo = goodInfo;
+              _this3.commodityId = goodInfo.commodityId;
+              _this3.attachDataUrl1 = goodInfo.attachDataUrl1;
+              _this3.attachDataUrl2 = goodInfo.attachDataUrl2;
+              _this3.attachDataUrl3 = goodInfo.attachDataUrl3;
+              _this3.attachDataUrl4 = goodInfo.attachDataUrl4;
+              _this3.attachDataUrl = goodInfo.attachDataUrl;
+              console.log(_this3.commodityId);
+              for (var i = 0; i < res1.taxArr.length; i++) {
+                var o = { 'value': '', 'label': '' };
+                o.label = res1.taxArr[i].label;
+                o.value = res1.taxArr[i].value;
+                _this3.taxArr.push(o);
+              }
+              if (res1.sizeArr === undefined)
+              res1.sizeArr = [];
+              for (var i = 0; i < res1.sizeArr.length; i++) {
+                var o = { 'value': '', 'label': '' };
+                o.label = res1.sizeArr[i].label;
+                o.value = res1.sizeArr[i].value;
+                _this3.sizeArr.push(o);
+              }
+              var form = {
+                merchantId: merchantId,
+                selectedCodeInfo: _this3.selectedCodeInfo,
+                taxArr: _this3.taxArr,
+                sizeArr: _this3.sizeArr,
+                commodityId: _this3.commodityId,
+                attachDataUrl: _this3.attachDataUrl,
+                attachDataUrl1: _this3.attachDataUrl1,
+                attachDataUrl2: _this3.attachDataUrl2,
+                attachDataUrl3: _this3.attachDataUrl3,
+                attachDataUrl4: _this3.attachDataUrl4 };
+
+              console.log(form);
+              uni.navigateTo({
+                url: '../price/MaintainCommInfo?form=' + encodeURIComponent(JSON.stringify(form)) });
+
+            }
+          });
+
+        }
+      });
+    },
+    touchstart: function touchstart(e) {
+      this.$refs.sibList.refreshStart(e);
+    },
+    touchmove: function touchmove(e) {
+      this.$refs.sibList.refreshMove(e);
+    },
+    touchend: function touchend(e) {
+      this.$refs.sibList.refreshEnd(e);
+    },
+    isRefresh: function isRefresh() {var _this4 = this;
+      var _this = this;
+      setTimeout(function () {
+        uni.showToast({
+          icon: 'success',
+          title: '刷新成功,数据恢复初始值' });
+
+        for (var i = 0; i < 20; i++) {
+          _this.list[i] = _this.commodityList[i];}
+        // 刷新结束调用
+        _this4.$refs.sibList.endAfter();
+      }, 1000);
+    },
+    scrolltolowerFn: function scrolltolowerFn() {var _this5 = this;
+      if (this.index == this.commodityList.length)
+      return;
+      uni.showLoading({
+        title: '加载中...',
+        mask: true });
+
+      // 模拟请求
+      var _this = this;
+      setTimeout(function () {
+        // 请求成功
+        var newData = [];
+        for (var i = 0; i <= 20; i++) {
+          newData[i] = _this5.commodityList[_this5.index++];
+          if (_this5.index == _this5.commodityList.length)
+          return;
+        }
+        _this.list = _this.list.concat(newData);
+        uni.hideLoading();
+      }, 1000);
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

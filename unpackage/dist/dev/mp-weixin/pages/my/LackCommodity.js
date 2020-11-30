@@ -92,7 +92,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 234))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 241))
+  },
+  sibList: function() {
+    return __webpack_require__.e(/*! import() | components/sib-list/sib-list */ "components/sib-list/sib-list").then(__webpack_require__.bind(null, /*! @/components/sib-list/sib-list.vue */ 262))
   }
 }
 var render = function() {
@@ -152,37 +155,49 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 234));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { unionId: '', merchantId: '', commodityList: [] };}, components: { wybLoading: wybLoading }, onShow: function onShow() {this.$refs.loading.showLoading();this.unionId = getApp().globalData.unionId;this.merchantId = getApp().globalData.merchantId;this.getSupnuevoLackCommodityList();
+
+
+
+
+
+
+
+var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);var sibList = function sibList() {__webpack_require__.e(/*! require.ensure | components/sib-list/sib-list */ "components/sib-list/sib-list").then((function () {return resolve(__webpack_require__(/*! @/components/sib-list/sib-list.vue */ 262));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 241));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+{
+  data: function data() {
+    return {
+      unionId: '',
+      merchantId: '',
+      commodityList: [],
+      list: [],
+      index: 20 };
+
+  },
+  components: {
+    wybLoading: wybLoading,
+    sibList: sibList },
+
+  onShow: function onShow() {
+    this.$refs.loading.showLoading();
+    this.unionId = getApp().globalData.unionId;
+    this.merchantId = getApp().globalData.merchantId;
+    this.getSupnuevoLackCommodityList();
     this.$refs.loading.hideLoading(); // 隐藏
   },
   methods: {
-    getSupnuevoLackCommodityList: function getSupnuevoLackCommodityList() {var _this = this;
+    getSupnuevoLackCommodityList: function getSupnuevoLackCommodityList() {var _this2 = this;
       (0, _MyInfor.getHashNotUnionCommodityListOfMerchant)({
         unionId: this.unionId,
         merchantId: this.merchantId }).
       then(function (res) {
         console.log(res);
         if (res.re === 1) {
-          _this.commodityList = res.data;
+          _this2.commodityList = res.data;
+          for (var i = 0; i < _this2.index; i++) {
+            _this2.list[i] = _this2.commodityList[i];}
         }
       }).catch(function (err) {
         uni.showModal({
@@ -191,6 +206,50 @@ var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure
           showCancel: false });
 
       });
+    },
+    touchstart: function touchstart(e) {
+      this.$refs.sibList.refreshStart(e);
+    },
+    touchmove: function touchmove(e) {
+      this.$refs.sibList.refreshMove(e);
+    },
+    touchend: function touchend(e) {
+      this.$refs.sibList.refreshEnd(e);
+    },
+    isRefresh: function isRefresh() {var _this3 = this;
+      var _this = this;
+      setTimeout(function () {
+        uni.showToast({
+          icon: 'success',
+          title: '刷新成功,数据恢复初始值' });
+
+        for (var i = 0; i < 20; i++) {
+          _this.list[i] = _this.commodityList[i];}
+        // 刷新结束调用
+        _this3.$refs.sibList.endAfter();
+      }, 1000);
+    },
+    scrolltolowerFn: function scrolltolowerFn() {var _this4 = this;
+      if (this.index == this.commodityList.length)
+      return;
+      uni.showLoading({
+        title: '加载中...',
+        mask: true });
+
+      // 模拟请求
+      var _this = this;
+      setTimeout(function () {
+        // 请求成功
+        var newData = [];
+        for (var i = 0; i <= 20; i++) {
+          newData[i] = _this4.commodityList[_this4.index++];
+          if (_this4.index == _this4.commodityList.length)
+          return;
+        }
+
+        _this.list = _this.list.concat(newData);
+        uni.hideLoading();
+      }, 1000);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

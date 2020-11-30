@@ -17,7 +17,7 @@
 			</view>
 		</view>
 		
-		<view class="" v-if="unionMemberType === 2">
+		<view class="" v-if="unionMemberType == 2">
 			<view class="discount">
 				<view class="">
 					<text style="font-size: 18px;margin-right: 10px;">折扣编码</text>
@@ -36,7 +36,7 @@
 			</view>
 		</view>
 		
-		<view class="" v-if="unionMemberType !== 2" style="margin-bottom: 20px;">
+		<view class="" v-if="unionMemberType != 2" style="margin-bottom: 20px;">
 			<view class="discount">
 				<view class="">
 					<text style="font-size: 18px;margin-right: 10px;">折扣编码</text>
@@ -55,7 +55,7 @@
 			</view>
 		</view>
 		
-		<view class="" v-if="unionMemberType === 2" style="margin-bottom: 20px;">
+		<view class="" v-if="unionMemberType == 2" style="margin-bottom: 20px;">
 			<button type="primary" @click="updateSupnuevoBuyerUnionPriceDiscountInfo" style="width: 200px;border-radius: 10px;height: 35px;margin-top: 30px;vertical-align: middle;text-align: center;line-height: 35px;">保存折扣</button>
 		</view>
 		
@@ -76,7 +76,7 @@
 				</view>
 			</view>
 			
-			<view class="" style="flex: 1;" v-if="unionMemberType === 2" @click="deleteSupnuevoBuyerUnionCommodityDiscount(item.priceId,item.discountPrompt)">
+			<view class="" style="flex: 1;" v-if="unionMemberType == 2" @click="deleteSupnuevoBuyerUnionCommodityDiscount(item.priceId,item.discountPrompt)">
 				<icon type="cancel" size="26"/>
 			</view>
 		</view>

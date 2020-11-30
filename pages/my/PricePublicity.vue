@@ -1,14 +1,14 @@
 <template>
 	<view class="">
-		<view class="" v-for="(item,index) in advertisements" :key="index" v-if="unionMemberType === 2">
+		<view class="" v-for="(item,index) in advertisements" :key="index" v-if="unionMemberType == 2">
 			<view class="" style="background-color: #1CBBB4;">
 				<text style="margin-right: 0px;">{{item.advertisementNum}}</text>
 			</view>
 			<view class="" style="display: flex;flex-direction: row;margin-top: 10px;margin-bottom: 10px;">
-				<view class="" style="display: flex;flex: 8;justify-content: center;align-items: center;" v-if="item.urlAddress !== null && item.urlAddress !=='' && item.urlAddress !== undefined" @click="uploadFoodImg(item.advertisementId,item.advertisementNum)">
+				<view class="" style="display: flex;flex: 8;justify-content: center;align-items: center;" v-if="item.urlAddress != null && item.urlAddress !='' && item.urlAddress != undefined" @click="uploadFoodImg(item.advertisementId,item.advertisementNum)">
 					<image :src="head+item.urlAddress" mode="" style="height: 100px;width: 100px;"></image>
 				</view>
-				<view class="feedback-body feedback-uploader" v-if="item.urlAddress === null || item.urlAddress ==='' || item.urlAddress === undefined" style="display: flex;flex: 8;justify-content: center;align-items: center;">
+				<view class="feedback-body feedback-uploader" v-if="item.urlAddress == null || item.urlAddress =='' || item.urlAddress == undefined" style="display: flex;flex: 8;justify-content: center;align-items: center;">
 					<view class="uni-uploader">
 						<view class="uni-uploader-body">
 							<view class="uni-uploader__files">
@@ -19,21 +19,21 @@
 						</view>
 					</view>
 				</view>
-				<view class="" v-if="item.attachId !== null && item.attachId !=='' && item.attachId !== undefined" style="flex: 1;display: flex;justify-content: center;align-items: center;"  @click="deleteAdvertisement(item.advertisementId)">
+				<view class="" v-if="item.attachId != null && item.attachId !='' && item.attachId != undefined" style="flex: 1;display: flex;justify-content: center;align-items: center;"  @click="deleteAdvertisement(item.advertisementId)">
 					<icon type="cancel" size="26"/>
 				</view> 
 			</view>
 		</view>
 		
-		<view class="" v-for="(item,index) in advertisements" :key="index" v-if="unionMemberType !== 2">
+		<view class="" v-for="(item,index) in advertisements" :key="index" v-if="unionMemberType != 2">
 			<view class="" style="background-color: #1CBBB4;">
 				<text style="margin-right: 0px;">{{item.advertisementNum}}</text>
 			</view>
 			<view class="" style="display: flex;flex-direction: row;margin-top: 10px;margin-bottom: 10px;">
-				<view class="" style="display: flex;flex: 8;justify-content: center;align-items: center;" v-if="item.urlAddress !== null && item.urlAddress !=='' && item.urlAddress !== undefined">
+				<view class="" style="display: flex;flex: 8;justify-content: center;align-items: center;" v-if="item.urlAddress != null && item.urlAddress !='' && item.urlAddress != undefined">
 					<image :src="head+item.urlAddress" mode="" style="height: 100px;width: 100px;"></image>
 				</view>
-				<view class="" style="display: flex;flex: 8;justify-content: center;align-items: center;" v-if="item.urlAddress === null || item.urlAddress ==='' || item.urlAddress === undefined">
+				<view class="" style="display: flex;flex: 8;justify-content: center;align-items: center;" v-if="item.urlAddress == null || item.urlAddress =='' || item.urlAddress == undefined">
 					<image src="../../static/image/images/timg.jpg" mode="" style="height: 100px;width: 100px;"></image>
 				</view>
 			</view>
@@ -56,6 +56,7 @@
 		data() {
 			return {
 				unionMemberType: '',
+				unionId: '',
 				advertisements: [],
 				head:"https://supnuevo.s3.sa-east-1.amazonaws.com/",
 			}

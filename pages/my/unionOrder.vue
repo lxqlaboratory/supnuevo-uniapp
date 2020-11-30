@@ -3,34 +3,34 @@
 		<wyb-loading ref="loading"/>
 		<view class="">
 			<view class="" style="display: flex;flex-direction: row;">
-				<view class="styleselect" v-if="select === 1" style="background-color: #39B54A;color: #CCE6FF;" @click="getOrderRobList">
+				<view class="styleselect" v-if="select == 1" style="background-color: #39B54A;color: #CCE6FF;" @click="getOrderRobList">
 					<text>可抢订单</text>
 				</view>
-				<view class="styleselect" @click="changeselect(1)" v-if="select !== 1">
+				<view class="styleselect" @click="changeselect(1)" v-if="select != 1">
 					<text>可抢订单</text>
 				</view>
-				<view class="styleselect" v-if="select === 2" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(null,0,1)">
+				<view class="styleselect" v-if="select == 2" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(null,0,1)">
 					<text>未确认订单</text>
 				</view>
-				<view class="styleselect" @click="changeselect(2)" v-if="select !== 2" style="border-left: 2px solid #3D4145;">
+				<view class="styleselect" @click="changeselect(2)" v-if="select != 2" style="border-left: 2px solid #3D4145;">
 					<text>未确认订单</text>
 				</view>
-				<view class="styleselect" v-if="select === 3" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(null,1,2)">
+				<view class="styleselect" v-if="select == 3" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(null,1,2)">
 					<text>已确认订单</text>
 				</view>
-				<view class="styleselect" @click="changeselect(3)" v-if="select !== 3" style="border-left: 2px solid #3D4145;">
+				<view class="styleselect" @click="changeselect(3)" v-if="select != 3" style="border-left: 2px solid #3D4145;">
 					<text>已确认订单</text>
 				</view>
-				<view class="styleselect" v-if="select === 4" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(this.orderDate,2,3)">
+				<view class="styleselect" v-if="select == 4" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(this.orderDate,2,3)">
 					<text>已完成订单</text>
 				</view>
-				<view class="styleselect" @click="changeselect(4)" v-if="select !== 4" style="border-left: 2px solid #3D4145;">
+				<view class="styleselect" @click="changeselect(4)" v-if="select != 4" style="border-left: 2px solid #3D4145;">
 					<text>已完成订单</text>
 				</view>
 			</view>
 			
-			<view class="" v-if="select === 1">
-				<view class="" v-if="robList.length === 0" style="margin-top: 15px;font-size: 18px;font-weight: bold;text-align: center;">
+			<view class="" v-if="select == 1">
+				<view class="" v-if="robList.length == 0" style="margin-top: 15px;font-size: 18px;font-weight: bold;text-align: center;">
 					<text>暂无相关订单</text>
 				</view>
 				<view class="" v-else v-for="(item,index) in robList" :key="index">
@@ -49,15 +49,15 @@
 				</view>
 			</view>
 			
-			<view class="" v-if="select === 2" style="margin-top: 5px;">
+			<view class="" v-if="select == 2" style="margin-top: 5px;">
 				<view class="" style="margin: auto;width: 350px;display: flex;flex-direction: row;border: 2px solid #5E00FF;border-radius: 50px;height: 45px;">
-					<view class="noorder" v-if="deliver === 0" @click="getOrderListOfDate(null,0,1)">
+					<view class="noorder" v-if="deliver == 0" @click="getOrderListOfDate(null,0,1)">
 						<text>自提订单</text>
 					</view>
 					<view class="noorderno" @click="changedeliver(0)" v-else>
 						<text>自提订单</text>
 					</view>
-					<view class="noorder" v-if="deliver === 1" @click="getOrderListOfDate(null,0,1)">
+					<view class="noorder" v-if="deliver == 1" @click="getOrderListOfDate(null,0,1)">
 						<text>配送订单</text>
 					</view>
 					<view class="noorderno" @click="changedeliver(1)" v-else>
@@ -65,11 +65,11 @@
 					</view>
 				</view>
 				
-				<view class="" v-if="notDealList.length === 0" style="margin-top: 15px;font-size: 18px;font-weight: bold;text-align: center;">
+				<view class="" v-if="notDealList.length == 0" style="margin-top: 15px;font-size: 18px;font-weight: bold;text-align: center;">
 					<text>暂无相关订单</text>
 				</view>
 				
-				<view class="" v-for="(item,index) in notDealList" :key="index" v-if="deliver === 0">
+				<view class="" v-for="(item,index) in notDealList" :key="index" v-if="deliver == 0">
 					<view class="" v-if="item.order.deliveryType == 1">
 						<view class="" style="padding: 5px;background-color: #18B4ED;margin-top: 5px;">
 							<text>订单编号:&nbsp;&nbsp;{{item.order.orderNum}}</text>
@@ -86,7 +86,7 @@
 					</view>
 				</view>
 				
-				<view class="" v-for="(item,index) in notDealList" :key="index" v-if="deliver === 1">
+				<view class="" v-for="(item,index) in notDealList" :key="index" v-if="deliver == 1">
 					<view class="" v-if="item.order.deliveryType == 0">
 						<view class="" style="padding: 5px;background-color: #18B4ED;margin-top: 5px;">
 							<text>订单编号:&nbsp;&nbsp;{{item.order.orderNum}}</text>
@@ -104,8 +104,8 @@
 				</view>
 			</view>
 			
-			<view class="" v-if="select === 3">
-				<view class="" v-if="dealList.length === 0" style="margin-top: 15px;font-size: 18px;font-weight: bold;text-align: center;">
+			<view class="" v-if="select == 3">
+				<view class="" v-if="dealList.length == 0" style="margin-top: 15px;font-size: 18px;font-weight: bold;text-align: center;">
 					<text>暂无相关订单</text>
 				</view>
 				<view class="" v-for="(item,index) in dealList" :key="index" v-else>
@@ -261,14 +261,14 @@
 				</view>
 			</view>
 			
-			<view class="" v-if="select === 4">
+			<view class="" v-if="select == 4">
 				<view class="calendar-content" v-if="showCalendar">
 					<view class="noorderno" @click="open">
 						<image src="../../static/image/images/calendar.jpg" mode="" style="height: 50px;width: 50px;"></image>
 					</view>
 					<uni-calendar ref="calendar" :clear-date="true" :date="info.date" :insert="info.insert" :lunar="info.lunar" :startDate="info.startDate" :endDate="info.endDate" :range="info.range" @confirm="confirm" @close="close" />
 				</view>
-				<view class="" v-if="finishedList.length === 0" style="margin-top: 15px;font-size: 18px;font-weight: bold;text-align: center;">
+				<view class="" v-if="finishedList.length == 0" style="margin-top: 15px;font-size: 18px;font-weight: bold;text-align: center;">
 					<text>暂无相关订单</text>
 				</view>
 				

@@ -94,10 +94,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 234))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 241))
   },
   taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 241))
+    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 248))
+  },
+  sibList: function() {
+    return __webpack_require__.e(/*! import() | components/sib-list/sib-list */ "components/sib-list/sib-list").then(__webpack_require__.bind(null, /*! @/components/sib-list/sib-list.vue */ 262))
   }
 }
 var render = function() {
@@ -229,7 +232,57 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 234));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var sibList = function sibList() {__webpack_require__.e(/*! require.ensure | components/sib-list/sib-list1 */ "components/sib-list/sib-list1").then((function () {return resolve(__webpack_require__(/*! @/components/sib-list/sib-list1.vue */ 269));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 241));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -266,11 +319,14 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
 
     []), _defineProperty(_ref, "codigo",
     ''), _defineProperty(_ref, "flag",
-    ''), _ref;
+    ''), _defineProperty(_ref, "index",
+    50), _defineProperty(_ref, "list",
+    []), _ref;
 
   },
   components: {
-    wybLoading: wybLoading },
+    wybLoading: wybLoading,
+    sibList: sibList },
 
   onShow: function onShow() {
     this.unionId = getApp().globalData.unionId;
@@ -289,38 +345,11 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
         this.setCommodityIsAlive(commodityId, 1);
       }
     },
-    setCommodityIsAlive: function setCommodityIsAlive(commodityId, AliveState) {var _this = this;
+    setCommodityIsAlive: function setCommodityIsAlive(commodityId, AliveState) {var _this2 = this;
       (0, _MyInfor.setSupnuevoBuyerUnionCommodityIsAlive)({
         unionId: this.unionId,
         commodityId: commodityId,
         isAlive: AliveState }).
-      then(function (res) {
-        var errorMsg = res.errorMsg;
-        if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-          uni.showModal({
-            title: "提示",
-            content: errorMsg,
-            showCancel: false });
-
-        } else {
-          uni.showModal({
-            title: "提示",
-            content: "设置成功",
-            showCancel: false });
-
-          _this.getSupnuevoBuyerUnionPriceListByPriceCount(_this.selectedIdx);
-        }
-      }).catch(function (err) {
-        uni.showModal({
-          title: "提示",
-          content: err,
-          showCancel: false });
-
-      });
-    },
-    setAllCommodityIsAlive: function setAllCommodityIsAlive() {var _this2 = this;
-      (0, _MyInfor.setAllCommodityIsAlive)({
-        unionId: this.unionId }).
       then(function (res) {
         var errorMsg = res.errorMsg;
         if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
@@ -345,25 +374,25 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
 
       });
     },
-    checkSelect: function checkSelect() {
-      for (var i = 0; i < this.priceClassList.length; i++) {
-        if (this.priceClassList[i].select === 1) {
-          this.selectedIdx = this.priceClassList[i].priceCount;
-          this.getSupnuevoBuyerUnionPriceListByPriceCount(this.selectedIdx);
-        }
-      }
-    },
-    getSupnuevoBuyerUnionPriceListByPriceCount: function getSupnuevoBuyerUnionPriceListByPriceCount(priceCount) {var _this3 = this;
-      this.$refs.loading.showLoading();
-      (0, _MyInfor.getSupnuevoBuyerUnionPriceListByPriceCount)({
-        unionId: this.unionId,
-        priceCount: priceCount }).
+    setAllCommodityIsAlive: function setAllCommodityIsAlive() {var _this3 = this;
+      (0, _MyInfor.setAllCommodityIsAlive)({
+        unionId: this.unionId }).
       then(function (res) {
-        console.log(res);
-        if (res.re === 1) {
-          _this3.goodsList = res.data;
+        var errorMsg = res.errorMsg;
+        if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+          uni.showModal({
+            title: "提示",
+            content: errorMsg,
+            showCancel: false });
+
+        } else {
+          uni.showModal({
+            title: "提示",
+            content: "设置成功",
+            showCancel: false });
+
+          _this3.getSupnuevoBuyerUnionPriceListByPriceCount(_this3.selectedIdx);
         }
-        _this3.$refs.loading.hideLoading(); // 隐藏
       }).catch(function (err) {
         uni.showModal({
           title: "提示",
@@ -372,16 +401,45 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
 
       });
     },
-    getSupnuevoBuyerUnionPriceClassList: function getSupnuevoBuyerUnionPriceClassList() {var _this4 = this;
+    checkSelect: function checkSelect() {
+      for (var i = 0; i < this.priceClassList.length; i++) {
+        if (this.priceClassList[i].select === 1) {
+          this.selectedIdx = this.priceClassList[i].priceCount;
+          this.getSupnuevoBuyerUnionPriceListByPriceCount(this.selectedIdx);
+        }
+      }
+    },
+    getSupnuevoBuyerUnionPriceListByPriceCount: function getSupnuevoBuyerUnionPriceListByPriceCount(priceCount) {var _this4 = this;
+      this.$refs.loading.showLoading();
+      (0, _MyInfor.getSupnuevoBuyerUnionPriceListByPriceCount)({
+        unionId: this.unionId,
+        priceCount: priceCount }).
+      then(function (res) {
+        console.log(res);
+        if (res.re === 1) {
+          _this4.goodsList = res.data;
+          for (var i = 0; i < _this4.index; i++) {
+            _this4.list[i] = _this4.goodsList[i];}
+        }
+        _this4.$refs.loading.hideLoading(); // 隐藏
+      }).catch(function (err) {
+        uni.showModal({
+          title: "提示",
+          content: err,
+          showCancel: false });
+
+      });
+    },
+    getSupnuevoBuyerUnionPriceClassList: function getSupnuevoBuyerUnionPriceClassList() {var _this5 = this;
       (0, _MyInfor.getSupnuevoBuyerUnionPriceClassList)({
         unionId: this.unionId }).
       then(function (res) {
         console.log(res);
         if (res.re === 1) {
-          _this4.priceClassList = res.data;
+          _this5.priceClassList = res.data;
         }
-        if (_this4.priceClassList.length > 0) {
-          _this4.checkSelect();
+        if (_this5.priceClassList.length > 0) {
+          _this5.checkSelect();
         }
       }).catch(function (err) {
         uni.showModal({
@@ -432,7 +490,7 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
       if (codeNum.length >= 4)
       this.queryGoodsCode(codeNum.toString());
     },
-    onCodigoSelect: function onCodigoSelect(key, item) {var _this5 = this;
+    onCodigoSelect: function onCodigoSelect(key, item) {var _this6 = this;
       console.log(item.commodityId);
       var merchantId = getApp().globalData.merchantId;
       var codigo = item.value;
@@ -448,22 +506,32 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
 
         }
         if (res.re === 1) {
-          for (var i = 0; i < _this5.goodsList.length; i++) {
-            if (_this5.goodsList[i].codigo === codigo) {
-              _this5.$nextTick(function () {
-                _this5.flag = "text" + i;
-                console.log(_this5.flag);
-              });
-              _this5.flag = ''; //不清空再次跳到锚点位置会不起作用
-              return;
-            }}
-          console.log("没有找到");
+          if (_this6.goodsList.length < 1900) {
+            for (var i = 0; i < _this6.goodsList.length; i++) {
+              if (_this6.goodsList[i].codigo === codigo) {
+                _this6.$nextTick(function () {
+                  _this6.flag = "text" + i;
+                  console.log(_this6.flag);
+                });
+                _this6.flag = ''; //不清空再次跳到锚点位置会不起作用
+                return;
+              }}
+            console.log("没有找到");
+          } else {
+            for (var i = 0; i < _this6.goodsList.length; i++) {
+              if (_this6.goodsList[i].codigo == codigo) {
+                var goodsList = [];
+                goodsList[0] = _this6.goodsList[i];
+                _this6.goodsList = goodsList;
+              }
+            }
+          }
         } else
         return;
       }).catch(function (err) {
       });
     },
-    queryGoodsCode: function queryGoodsCode(codeNum) {var _this6 = this;
+    queryGoodsCode: function queryGoodsCode(codeNum) {var _this7 = this;
       if (codeNum.length >= 4) {
         this.$refs.loading.showLoading();
         var merchantId = getApp().globalData.merchantId;
@@ -493,7 +561,7 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
                 searchItem.key = i;
                 searchItem.value = res.array[i].codigo;
                 searchItem.commodityId = res.array[i].commodityId;
-                _this6.searchListFinal.push(searchItem);
+                _this7.searchListFinal.push(searchItem);
               }
             } else
             if (res.array.length === 1) {
@@ -501,8 +569,9 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
               (0, _MyInfor.getSupnuevoBuyerUnionPriceByCommodityId)({
                 codigo: res.array[0].codigo,
                 commodityId: res.array[0].commodityId,
-                unionId: _this6.unionId }).
+                unionId: _this7.unionId }).
               then(function (res) {
+                var codigo = res.data.codigo;
                 console.log(res);
                 if (res.re == -2) {
                   uni.navigateTo({
@@ -510,15 +579,26 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
 
                 }
                 if (res.re === 1) {
-                  for (var i = 0; i < _this6.goodsList.length; i++) {
-                    if (_this6.goodsList[i].codigo === res.data.codigo) {
-                      _this6.$nextTick(function () {
-                        _this6.flag = "text" + i;
-                        console.log(_this6.flag);
-                      });
-                      _this6.flag = ''; //不清空再次跳到锚点位置会不起作用
-                      break;
-                    }}
+                  if (_this7.goodsList.length < 1900) {
+                    for (var i = 0; i < _this7.goodsList.length; i++) {
+                      if (_this7.goodsList[i].codigo === codigo) {
+                        _this7.$nextTick(function () {
+                          _this7.flag = "text" + i;
+                          console.log(_this7.flag);
+                        });
+                        _this7.flag = ''; //不清空再次跳到锚点位置会不起作用
+                        return;
+                      }}
+                    console.log("没有找到");
+                  } else {
+                    for (var i = 0; i < _this7.goodsList.length; i++) {
+                      if (_this7.goodsList[i].codigo == codigo) {
+                        var goodsList = [];
+                        goodsList[0] = _this7.goodsList[i];
+                        _this7.goodsList = goodsList;
+                      }
+                    }
+                  }
                 } else
                 return;
               }).catch(function (err) {
@@ -574,6 +654,50 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 99);function _defineP
 
         } });
 
+    },
+    touchstart: function touchstart(e) {
+      this.$refs.sibList.refreshStart(e);
+    },
+    touchmove: function touchmove(e) {
+      this.$refs.sibList.refreshMove(e);
+    },
+    touchend: function touchend(e) {
+      this.$refs.sibList.refreshEnd(e);
+    },
+    isRefresh: function isRefresh() {var _this8 = this;
+      var _this = this;
+      setTimeout(function () {
+        uni.showToast({
+          icon: 'success',
+          title: '刷新成功,数据恢复初始值' });
+
+        for (var i = 0; i < 50; i++) {
+          _this.list[i] = _this.goodsList[i];}
+        // 刷新结束调用
+        _this8.$refs.sibList.endAfter();
+      }, 1000);
+    },
+    scrolltolowerFn: function scrolltolowerFn() {var _this9 = this;
+      if (this.index == this.goodsList.length)
+      return;
+      uni.showLoading({
+        title: '加载中...',
+        mask: true });
+
+      // 模拟请求
+      var _this = this;
+      setTimeout(function () {
+        // 请求成功
+        var newData = [];
+        for (var i = 0; i <= 50; i++) {
+          newData[i] = _this9.goodsList[_this9.index++];
+          if (_this9.index == _this9.goodsList.length)
+          return;
+        }
+
+        _this.list = _this.list.concat(newData);
+        uni.hideLoading();
+      }, 1000);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

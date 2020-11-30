@@ -6,6 +6,7 @@
 			unionMemberType:'',
 			vueSessionId: '',
 			unionId:'',
+			unionNum:'',
 			userType: '',
 			personId: '',
 			canAchievement: '',

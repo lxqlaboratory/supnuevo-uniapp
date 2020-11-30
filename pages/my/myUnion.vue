@@ -27,10 +27,10 @@
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateLackCommodity">
 						<view>缺货商品</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd" v-if="unionMemberType === 2" @click="navigateIncompleteCommodity">
+					<label class="uni-list-cell uni-list-cell-pd" v-if="unionMemberType == 2" @click="navigateIncompleteCommodity">
 						<view>信息不完整商品</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd" v-if="unionMemberType === 2" @click="navigateCodigoRelation">
+					<label class="uni-list-cell uni-list-cell-pd" v-if="unionMemberType == 2" @click="navigateCodigoRelation">
 						<view>条码级联</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd"  v-if="root" @click="navigateModifyTime">

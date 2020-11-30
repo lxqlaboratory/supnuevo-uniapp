@@ -5,7 +5,7 @@
 		</view>
 		
 		<view class="uni-padding-wrap">
-		<view v-if="unionMemberType === 2">
+		<view v-if="unionMemberType == 2">
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll">
 				<view class="" v-for="(item,index) in allClass" :key="index"  style="display: flex;flex-direction: row; justify-content: center;align-items: center;margin-top: 15px;height: 40px;padding-bottom: 10px;border-bottom: 1px solid #1CBBB4;">
 					<view class="" style="display: flex;flex: 5;" @click="navigatorCommodity(item.taxId,item.taxName,item.ratio)">
@@ -24,7 +24,7 @@
 			</scroll-view>
 		</view>
 		
-		<view v-else-if="unionMemberType !== 2">
+		<view v-else-if="unionMemberType != 2">
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll">
 				<view class="" v-for="(item,index) in allClass" :key="index" @click="navigatorCommodity(item.taxId,item.taxName,item.ratio)" style="display: flex;flex-direction: row; justify-content: center;align-items: center;margin-top: 15px;height: 40px;padding-bottom: 10px;border-bottom: 1px solid #1CBBB4;">
 					<view class="" style="display: flex;flex: 5;">
