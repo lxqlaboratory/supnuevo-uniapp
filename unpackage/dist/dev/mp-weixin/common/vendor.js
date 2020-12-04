@@ -1935,6 +1935,290 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ 106:
+/*!*********************************************!*\
+  !*** D:/vue/supnuevo-uniapp/api/MyInfor.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;exports.getSupnuevoBuyerUnionOrderDiscountForm = getSupnuevoBuyerUnionOrderDiscountForm;exports.updateSupnuevoBuyerUnionOrderDiscount = updateSupnuevoBuyerUnionOrderDiscount;exports.getSupnuevoBuyerUnionAdvertisementFormList = getSupnuevoBuyerUnionAdvertisementFormList;exports.deleteSupnuevoBuyerUnionAdvertisement = deleteSupnuevoBuyerUnionAdvertisement;exports.createSupnuevoBuyerUnionAdvertisement = createSupnuevoBuyerUnionAdvertisement;exports.getSupnuevoBuyerUnionMemberFormList = getSupnuevoBuyerUnionMemberFormList;exports.getSupnuevoCustomerOrderListOfDateByUnion = getSupnuevoCustomerOrderListOfDateByUnion;exports.getSupnuevoCustomerOrderListOfUnionCanGrab = getSupnuevoCustomerOrderListOfUnionCanGrab;exports.affirmCustomerOrder = affirmCustomerOrder;exports.finishCustomerOrder = finishCustomerOrder;exports.getHashNotUnionCommodityListOfMerchant = getHashNotUnionCommodityListOfMerchant;exports.getIncompleteCommodityCodigoList = getIncompleteCommodityCodigoList;exports.getSupnuevoCommodityCodigoMapCodigoList = getSupnuevoCommodityCodigoMapCodigoList;exports.deleteSupnuevoCommodityCodigoMap = deleteSupnuevoCommodityCodigoMap;exports.addSupnuevoCommodityCodigoMap = addSupnuevoCommodityCodigoMap;exports.addSupnuevoCommodityCodigoMapSub = addSupnuevoCommodityCodigoMapSub;exports.deleteSupnuevoCommodityCodigoMapSub = deleteSupnuevoCommodityCodigoMapSub;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function updateSupnuevoBuyerUnionAllPriceInfo(data) {
+  return _request.default.request({
+    url: '/union/updateSupnuevoBuyerUnionAllPriceInfo',
+    method: 'POST',
+    data: data });
+
+}
+
+function uploadAttachData(data) {
+  return _request.default.request({
+    url: '/comm/uploadAttachData',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionRegulationInfo(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionRegulationInfo',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerUnion(data) {
+  return _request.default.request({
+    url: '/union/updateSupnuevoBuyerUnion',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceTaxFormList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceTaxFormList',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerUnionPriceRatio(data) {
+  return _request.default.request({
+    url: '/union/updateSupnuevoBuyerUnionPriceRatio',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceFormListByTaxId(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceFormListByTaxId',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerUnionPriceRatio1(data) {
+  return _request.default.request({
+    url: '/union/updateSupnuevoBuyerUnionPriceRatio1',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceClassList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceClassList',
+    method: 'POST',
+    data: data });
+
+}
+
+function setUnionCurrentMerchantCount(data) {
+  return _request.default.request({
+    url: '/union/setUnionCurrentMerchantCount',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceListByPriceCount(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceListByPriceCount',
+    method: 'POST',
+    data: data });
+
+}
+
+function setAllCommodityIsAlive(data) {
+  return _request.default.request({
+    url: '/union/setAllCommodityIsAlive',
+    method: 'POST',
+    data: data });
+
+}
+
+function setSupnuevoBuyerUnionCommodityIsAlive(data) {
+  return _request.default.request({
+    url: '/union/setSupnuevoBuyerUnionCommodityIsAlive',
+    method: 'POST',
+    data: data });
+
+}
+
+function getUnionQueryDataListByInputString(data) {
+  return _request.default.request({
+    url: '/union/getUnionQueryDataListByInputString',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceByCommodityId(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceByCommodityId',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionPriceDiscountInfoList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionPriceDiscountInfoList',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerUnionPriceDiscountInfo(data) {
+  return _request.default.request({
+    url: '/union/updateSupnuevoBuyerUnionPriceDiscountInfo',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionOrderDiscountForm(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionOrderDiscountForm',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerUnionOrderDiscount(data) {
+  return _request.default.request({
+    url: '/union/updateSupnuevoBuyerUnionOrderDiscount',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionAdvertisementFormList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionAdvertisementFormList',
+    method: 'POST',
+    data: data });
+
+}
+
+function deleteSupnuevoBuyerUnionAdvertisement(data) {
+  return _request.default.request({
+    url: '/union/deleteSupnuevoBuyerUnionAdvertisement',
+    method: 'POST',
+    data: data });
+
+}
+
+function createSupnuevoBuyerUnionAdvertisement(data) {
+  return _request.default.request({
+    url: '/union/createSupnuevoBuyerUnionAdvertisement',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerUnionMemberFormList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionMemberFormList',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoCustomerOrderListOfDateByUnion(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoCustomerOrderListOfDateByUnion',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoCustomerOrderListOfUnionCanGrab(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoCustomerOrderListOfUnionCanGrab',
+    method: 'POST',
+    data: data });
+
+}
+
+function affirmCustomerOrder(data) {
+  return _request.default.request({
+    url: '/customer/affirmCustomerOrder',
+    method: 'POST',
+    data: data });
+
+}
+
+function finishCustomerOrder(data) {
+  return _request.default.request({
+    url: '/customer/finishCustomerOrder',
+    method: 'POST',
+    data: data });
+
+}
+
+function getHashNotUnionCommodityListOfMerchant(data) {
+  return _request.default.request({
+    url: '/union/getHashNotUnionCommodityListOfMerchant',
+    method: 'POST',
+    data: data });
+
+}
+
+function getIncompleteCommodityCodigoList(data) {
+  return _request.default.request({
+    url: '/union/getIncompleteCommodityCodigoList',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoCommodityCodigoMapCodigoList(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoCommodityCodigoMapCodigoList',
+    method: 'POST',
+    data: data });
+
+}
+
+function deleteSupnuevoCommodityCodigoMap(data) {
+  return _request.default.request({
+    url: '/commodity/deleteSupnuevoCommodityCodigoMap',
+    method: 'POST',
+    data: data });
+
+}
+
+function addSupnuevoCommodityCodigoMap(data) {
+  return _request.default.request({
+    url: '/commodity/addSupnuevoCommodityCodigoMap',
+    method: 'POST',
+    data: data });
+
+}
+
+function addSupnuevoCommodityCodigoMapSub(data) {
+  return _request.default.request({
+    url: '/commodity/addSupnuevoCommodityCodigoMapSub',
+    method: 'POST',
+    data: data });
+
+}
+
+function deleteSupnuevoCommodityCodigoMapSub(data) {
+  return _request.default.request({
+    url: '/commodity/deleteSupnuevoCommodityCodigoMapSub',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
 /***/ 17:
 /*!*******************************************!*\
   !*** D:/vue/supnuevo-uniapp/api/login.js ***!
@@ -8980,26 +9264,6 @@ Request = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 224:
-/*!*******************************************!*\
-  !*** D:/vue/supnuevo-uniapp/api/stock.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getSupnuevoBuyerUnionList = getSupnuevoBuyerUnionList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-function getSupnuevoBuyerUnionList(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionList',
-    method: 'POST',
-    data: data });
-
-}
-
-/***/ }),
-
 /***/ 23:
 /*!************************************************!*\
   !*** D:/vue/supnuevo-uniapp/request/common.js ***!
@@ -9076,7 +9340,27 @@ function _isPromise(obj) {
 
 /***/ }),
 
-/***/ 230:
+/***/ 231:
+/*!*******************************************!*\
+  !*** D:/vue/supnuevo-uniapp/api/stock.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.getSupnuevoBuyerUnionList = getSupnuevoBuyerUnionList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function getSupnuevoBuyerUnionList(data) {
+  return _request.default.request({
+    url: '/union/getSupnuevoBuyerUnionList',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
+/***/ 237:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
   \************************************************************/
@@ -9084,7 +9368,7 @@ function _isPromise(obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 231));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 238));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -9111,7 +9395,7 @@ var config = {
 
 /***/ }),
 
-/***/ 231:
+/***/ 238:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
   \**************************************************************/
@@ -9142,7 +9426,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 281:
+/***/ 288:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-calendar/util.js ***!
   \**************************************************************/
@@ -9150,7 +9434,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 282));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 289));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
 
 Calendar = /*#__PURE__*/function () {
   function Calendar()
@@ -9505,7 +9789,7 @@ Calendar;exports.default = _default;
 
 /***/ }),
 
-/***/ 282:
+/***/ 289:
 /*!******************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-calendar/calendar.js ***!
   \******************************************************************/
@@ -10093,7 +10377,122 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 304:
+/***/ 32:
+/*!********************************************!*\
+  !*** D:/vue/supnuevo-uniapp/api/change.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.getSupnuevoBuyerCommodityPriceFormListOfGroupMobile = getSupnuevoBuyerCommodityPriceFormListOfGroupMobile;exports.updateSupnuevoBuyerCommodityPriceGroupMobile = updateSupnuevoBuyerCommodityPriceGroupMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;exports.changeSupnuevoCommonCommodityImage = changeSupnuevoCommonCommodityImage;exports.deleteSupnuevoCommonCommodityImage = deleteSupnuevoCommonCommodityImage;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function getQueryDataListByInputStringMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getQueryDataListByInputStringMobile',
+    method: 'POST',
+    data: data });
+
+}
+function getSupnuevoBuyerPriceFormByCodigoMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoBuyerPriceFormByCodigoMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function saveOrUpdateSupnuevoBuyerCommodityPriceMobile(data) {
+  return _request.default.request({
+    url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerCommodityPriceFormListOfGroupMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoBuyerCommodityPriceFormListOfGroupMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerCommodityPriceGroupMobile(data) {
+  return _request.default.request({
+    url: '/commodity/updateSupnuevoBuyerCommodityPriceGroupMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile(data) {
+  return _request.default.request({
+    url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoCommodityTaxInfoListMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoCommodityTaxInfoListMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function setCalculationStorageMobile(data) {
+  return _request.default.request({
+    url: '/commodity/setCalculationStorageMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoScaleInfoListMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoScaleInfoListMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
+  return _request.default.request({
+    url: '/commodity/saveOrUpdateSupnuevoCommonCommodityMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function uploadAttachData(data) {
+  return _request.default.request({
+    url: '/comm/uploadAttachData',
+    method: 'POST',
+    data: data });
+
+}
+
+function changeSupnuevoCommonCommodityImage(data) {
+  return _request.default.request({
+    url: '/commodity/changeSupnuevoCommonCommodityImage',
+    method: 'POST',
+    data: data });
+
+}
+
+function deleteSupnuevoCommonCommodityImage(data) {
+  return _request.default.request({
+    url: '/commodity/deleteSupnuevoCommonCommodityImage',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
+/***/ 332:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
   \************************************************************/
@@ -10235,121 +10634,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 32:
-/*!********************************************!*\
-  !*** D:/vue/supnuevo-uniapp/api/change.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.getSupnuevoBuyerCommodityPriceFormListOfGroupMobile = getSupnuevoBuyerCommodityPriceFormListOfGroupMobile;exports.updateSupnuevoBuyerCommodityPriceGroupMobile = updateSupnuevoBuyerCommodityPriceGroupMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;exports.changeSupnuevoCommonCommodityImage = changeSupnuevoCommonCommodityImage;exports.deleteSupnuevoCommonCommodityImage = deleteSupnuevoCommonCommodityImage;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-function getQueryDataListByInputStringMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getQueryDataListByInputStringMobile',
-    method: 'POST',
-    data: data });
-
-}
-function getSupnuevoBuyerPriceFormByCodigoMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getSupnuevoBuyerPriceFormByCodigoMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function saveOrUpdateSupnuevoBuyerCommodityPriceMobile(data) {
-  return _request.default.request({
-    url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerCommodityPriceFormListOfGroupMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getSupnuevoBuyerCommodityPriceFormListOfGroupMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function updateSupnuevoBuyerCommodityPriceGroupMobile(data) {
-  return _request.default.request({
-    url: '/commodity/updateSupnuevoBuyerCommodityPriceGroupMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile(data) {
-  return _request.default.request({
-    url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoCommodityTaxInfoListMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getSupnuevoCommodityTaxInfoListMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function setCalculationStorageMobile(data) {
-  return _request.default.request({
-    url: '/commodity/setCalculationStorageMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoScaleInfoListMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getSupnuevoScaleInfoListMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
-  return _request.default.request({
-    url: '/commodity/saveOrUpdateSupnuevoCommonCommodityMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function uploadAttachData(data) {
-  return _request.default.request({
-    url: '/comm/uploadAttachData',
-    method: 'POST',
-    data: data });
-
-}
-
-function changeSupnuevoCommonCommodityImage(data) {
-  return _request.default.request({
-    url: '/commodity/changeSupnuevoCommonCommodityImage',
-    method: 'POST',
-    data: data });
-
-}
-
-function deleteSupnuevoCommonCommodityImage(data) {
-  return _request.default.request({
-    url: '/commodity/deleteSupnuevoCommonCommodityImage',
-    method: 'POST',
-    data: data });
-
-}
-
-/***/ }),
-
 /***/ 4:
 /*!*****************************************!*\
   !*** D:/vue/supnuevo-uniapp/pages.json ***!
@@ -10358,250 +10642,6 @@ function deleteSupnuevoCommonCommodityImage(data) {
 /***/ (function(module, exports) {
 
 
-
-/***/ }),
-
-/***/ 99:
-/*!*********************************************!*\
-  !*** D:/vue/supnuevo-uniapp/api/MyInfor.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.updateSupnuevoBuyerUnionAllPriceInfo = updateSupnuevoBuyerUnionAllPriceInfo;exports.uploadAttachData = uploadAttachData;exports.getSupnuevoBuyerUnionRegulationInfo = getSupnuevoBuyerUnionRegulationInfo;exports.updateSupnuevoBuyerUnion = updateSupnuevoBuyerUnion;exports.getSupnuevoBuyerUnionPriceTaxFormList = getSupnuevoBuyerUnionPriceTaxFormList;exports.updateSupnuevoBuyerUnionPriceRatio = updateSupnuevoBuyerUnionPriceRatio;exports.getSupnuevoBuyerUnionPriceFormListByTaxId = getSupnuevoBuyerUnionPriceFormListByTaxId;exports.updateSupnuevoBuyerUnionPriceRatio1 = updateSupnuevoBuyerUnionPriceRatio1;exports.getSupnuevoBuyerUnionPriceClassList = getSupnuevoBuyerUnionPriceClassList;exports.setUnionCurrentMerchantCount = setUnionCurrentMerchantCount;exports.getSupnuevoBuyerUnionPriceListByPriceCount = getSupnuevoBuyerUnionPriceListByPriceCount;exports.setAllCommodityIsAlive = setAllCommodityIsAlive;exports.setSupnuevoBuyerUnionCommodityIsAlive = setSupnuevoBuyerUnionCommodityIsAlive;exports.getUnionQueryDataListByInputString = getUnionQueryDataListByInputString;exports.getSupnuevoBuyerUnionPriceByCommodityId = getSupnuevoBuyerUnionPriceByCommodityId;exports.getSupnuevoBuyerUnionPriceDiscountInfoList = getSupnuevoBuyerUnionPriceDiscountInfoList;exports.updateSupnuevoBuyerUnionPriceDiscountInfo = updateSupnuevoBuyerUnionPriceDiscountInfo;exports.getSupnuevoBuyerUnionOrderDiscountForm = getSupnuevoBuyerUnionOrderDiscountForm;exports.updateSupnuevoBuyerUnionOrderDiscount = updateSupnuevoBuyerUnionOrderDiscount;exports.getSupnuevoBuyerUnionAdvertisementFormList = getSupnuevoBuyerUnionAdvertisementFormList;exports.deleteSupnuevoBuyerUnionAdvertisement = deleteSupnuevoBuyerUnionAdvertisement;exports.createSupnuevoBuyerUnionAdvertisement = createSupnuevoBuyerUnionAdvertisement;exports.getSupnuevoBuyerUnionMemberFormList = getSupnuevoBuyerUnionMemberFormList;exports.getSupnuevoCustomerOrderListOfDateByUnion = getSupnuevoCustomerOrderListOfDateByUnion;exports.getSupnuevoCustomerOrderListOfUnionCanGrab = getSupnuevoCustomerOrderListOfUnionCanGrab;exports.affirmCustomerOrder = affirmCustomerOrder;exports.finishCustomerOrder = finishCustomerOrder;exports.getHashNotUnionCommodityListOfMerchant = getHashNotUnionCommodityListOfMerchant;exports.getIncompleteCommodityCodigoList = getIncompleteCommodityCodigoList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-function updateSupnuevoBuyerUnionAllPriceInfo(data) {
-  return _request.default.request({
-    url: '/union/updateSupnuevoBuyerUnionAllPriceInfo',
-    method: 'POST',
-    data: data });
-
-}
-
-function uploadAttachData(data) {
-  return _request.default.request({
-    url: '/comm/uploadAttachData',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionRegulationInfo(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionRegulationInfo',
-    method: 'POST',
-    data: data });
-
-}
-
-function updateSupnuevoBuyerUnion(data) {
-  return _request.default.request({
-    url: '/union/updateSupnuevoBuyerUnion',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionPriceTaxFormList(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionPriceTaxFormList',
-    method: 'POST',
-    data: data });
-
-}
-
-function updateSupnuevoBuyerUnionPriceRatio(data) {
-  return _request.default.request({
-    url: '/union/updateSupnuevoBuyerUnionPriceRatio',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionPriceFormListByTaxId(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionPriceFormListByTaxId',
-    method: 'POST',
-    data: data });
-
-}
-
-function updateSupnuevoBuyerUnionPriceRatio1(data) {
-  return _request.default.request({
-    url: '/union/updateSupnuevoBuyerUnionPriceRatio1',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionPriceClassList(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionPriceClassList',
-    method: 'POST',
-    data: data });
-
-}
-
-function setUnionCurrentMerchantCount(data) {
-  return _request.default.request({
-    url: '/union/setUnionCurrentMerchantCount',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionPriceListByPriceCount(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionPriceListByPriceCount',
-    method: 'POST',
-    data: data });
-
-}
-
-function setAllCommodityIsAlive(data) {
-  return _request.default.request({
-    url: '/union/setAllCommodityIsAlive',
-    method: 'POST',
-    data: data });
-
-}
-
-function setSupnuevoBuyerUnionCommodityIsAlive(data) {
-  return _request.default.request({
-    url: '/union/setSupnuevoBuyerUnionCommodityIsAlive',
-    method: 'POST',
-    data: data });
-
-}
-
-function getUnionQueryDataListByInputString(data) {
-  return _request.default.request({
-    url: '/union/getUnionQueryDataListByInputString',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionPriceByCommodityId(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionPriceByCommodityId',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionPriceDiscountInfoList(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionPriceDiscountInfoList',
-    method: 'POST',
-    data: data });
-
-}
-
-function updateSupnuevoBuyerUnionPriceDiscountInfo(data) {
-  return _request.default.request({
-    url: '/union/updateSupnuevoBuyerUnionPriceDiscountInfo',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionOrderDiscountForm(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionOrderDiscountForm',
-    method: 'POST',
-    data: data });
-
-}
-
-function updateSupnuevoBuyerUnionOrderDiscount(data) {
-  return _request.default.request({
-    url: '/union/updateSupnuevoBuyerUnionOrderDiscount',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionAdvertisementFormList(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionAdvertisementFormList',
-    method: 'POST',
-    data: data });
-
-}
-
-function deleteSupnuevoBuyerUnionAdvertisement(data) {
-  return _request.default.request({
-    url: '/union/deleteSupnuevoBuyerUnionAdvertisement',
-    method: 'POST',
-    data: data });
-
-}
-
-function createSupnuevoBuyerUnionAdvertisement(data) {
-  return _request.default.request({
-    url: '/union/createSupnuevoBuyerUnionAdvertisement',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerUnionMemberFormList(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoBuyerUnionMemberFormList',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoCustomerOrderListOfDateByUnion(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoCustomerOrderListOfDateByUnion',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoCustomerOrderListOfUnionCanGrab(data) {
-  return _request.default.request({
-    url: '/union/getSupnuevoCustomerOrderListOfUnionCanGrab',
-    method: 'POST',
-    data: data });
-
-}
-
-function affirmCustomerOrder(data) {
-  return _request.default.request({
-    url: '/customer/affirmCustomerOrder',
-    method: 'POST',
-    data: data });
-
-}
-
-function finishCustomerOrder(data) {
-  return _request.default.request({
-    url: '/customer/finishCustomerOrder',
-    method: 'POST',
-    data: data });
-
-}
-
-function getHashNotUnionCommodityListOfMerchant(data) {
-  return _request.default.request({
-    url: '/union/getHashNotUnionCommodityListOfMerchant',
-    method: 'POST',
-    data: data });
-
-}
-
-function getIncompleteCommodityCodigoList(data) {
-  return _request.default.request({
-    url: '/union/getIncompleteCommodityCodigoList',
-    method: 'POST',
-    data: data });
-
-}
 
 /***/ })
 

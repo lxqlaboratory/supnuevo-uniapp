@@ -22,7 +22,7 @@
 				<view class="">
 					<text style="font-size: 18px;margin-right: 10px;">折扣编码</text>
 				</view>
-				<view class="">
+				<view style="z-index: -1;">
 					<input type="text" v-model="discountCode" style="border: 2px solid #1CBBB4;border-radius: 10px;height: 35px;"/>
 				</view>
 			</view>
@@ -30,7 +30,7 @@
 				<view class="">
 					<text style="font-size: 18px;margin-right: 10px;">折扣描述</text>
 				</view>
-				<view class="discountInput">
+				<view style="z-index: -1;">
 					<input type="text" v-model="discountPrompt" style="border: 2px solid #1CBBB4;border-radius: 10px;height: 35px;"/>
 				</view>
 			</view>
@@ -94,7 +94,8 @@
 	import {
 		getSupnuevoBuyerUnionPriceDiscountInfoList,
 		getSupnuevoBuyerUnionPriceByCommodityId,
-		updateSupnuevoBuyerUnionPriceDiscountInfo
+		updateSupnuevoBuyerUnionPriceDiscountInfo,
+		getUnionQueryDataListByInputString
 	} from '@/api/MyInfor.js'
 	import taogewanComboxRemote from '@/components/taogewan-combox-remote/taogewan-combox-remote.vue'
 	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
@@ -320,9 +321,10 @@
 					this.$refs.loading.showLoading()
 					var merchantId = getApp().globalData.merchantId;
 					this.searchListFinal = [];
-			        getQueryDataListByInputStringMobile({
+			        getUnionQueryDataListByInputString({
 						codigo: codeNum,
-						merchantId: merchantId
+						merchantId: merchantId,
+						unionId: this.unionId
 					}).then(res => {
 						console.log(res)
 			            if(res.re == -2){

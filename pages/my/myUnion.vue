@@ -1,5 +1,6 @@
 <template>
 	<view class="">
+		<wyb-loading ref="loading"/>
 		<view class="uni-common-mt" v-if="unionMemberType == 2 || unionMemberType == 1">
 			<view class="uni-form-item uni-column">
 				<checkbox-group class="uni-list" >
@@ -36,7 +37,7 @@
 					<label class="uni-list-cell uni-list-cell-pd"  v-if="root" @click="navigateModifyTime">
 						<view>商品改价时间</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd" v-if="unionMemberType === 2" @click="updatePriceList">
+					<label class="uni-list-cell uni-list-cell-pd" v-if="unionMemberType == 2" @click="updatePriceList">
 						<view>更新价格表</view>
 					</label>
 				</checkbox-group>
@@ -45,6 +46,7 @@
 	</view>
 </template>
 <script>
+	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	import {
 		updateSupnuevoBuyerUnionAllPriceInfo
 	} from '@/api/MyInfor.js'
@@ -119,9 +121,11 @@
 				})
 			},
 			updatePriceList(){
+				this.$refs.loading.showLoading()
 				updateSupnuevoBuyerUnionAllPriceInfo({
 					unionId: this.unionId
 				}).then(res => {
+					this.$refs.loading.hideLoading() // 隐藏
 					if (res.re == 1)
 						uni.showModal({
 							title: "提示",

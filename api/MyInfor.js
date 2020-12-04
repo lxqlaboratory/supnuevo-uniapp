@@ -231,3 +231,43 @@ export function getIncompleteCommodityCodigoList(data) {
 		data: data
 	})
 }
+
+export function getSupnuevoCommodityCodigoMapCodigoList(data) {
+	return request.request({
+		url: '/commodity/getSupnuevoCommodityCodigoMapCodigoList',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function deleteSupnuevoCommodityCodigoMap(data) {
+	return request.request({
+		url: '/commodity/deleteSupnuevoCommodityCodigoMap',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function addSupnuevoCommodityCodigoMap(data) {
+	return request.request({
+		url: '/commodity/addSupnuevoCommodityCodigoMap',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function addSupnuevoCommodityCodigoMapSub(data) {
+	return request.request({
+		url: '/commodity/addSupnuevoCommodityCodigoMapSub',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function deleteSupnuevoCommodityCodigoMapSub(data) {
+	return request.request({
+		url: '/commodity/deleteSupnuevoCommodityCodigoMapSub',
+		method: 'POST',
+		data: data
+	})
+}

@@ -60,8 +60,10 @@
 						</view>
 						<view class="InGood2image">
 							<picker @change="sizeUnitButtonsChange" :value="index1" :range="sizeUnitButtons">
-								<view class="" style="display: flex;">
-									<view class="uni-input" style="flex: 1;">{{selectedCodeInfo.sizeUnit}}</view>
+								<view class="" style="display: flex;justify-content: center;flex-direction: row;align-items: center;height: 43px;width: 209px;">
+									<view class="" style="flex: 8;text-align: center;">
+										<text>{{selectedCodeInfo.sizeUnit}}</text>
+									</view>
 									<view class="" style="flex: 1;">
 										<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
 									</view>
@@ -77,16 +79,20 @@
 						</view>
 						<view class="InGood2image">
 							<view v-if="scaleUnitButtons.length<=0" @click="scaleclick">
-								<view class="" style="display: flex;">
-									<view class="uni-input">{{selectedCodeInfo.scaleUnit}}</view>
+								<view class="" style="display: flex;justify-content: center;flex-direction: row;align-items: center;height: 43px;width: 209px;">
+									<view class="" style="flex: 8;text-align: center;">
+										<text>{{selectedCodeInfo.scaleUnit}}</text>
+									</view>
 									<view class="" style="flex: 1;">
 										<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
 									</view>
 								</view>
 							</view>
 							<picker @change="scaleUnitButtonsChange" v-if="scaleUnitButtons.length>0" :value="index2" :range="scaleUnitButtons">
-								<view class="" style="display: flex;">
-									<view class="uni-input" style="flex: 1;">{{selectedCodeInfo.scaleUnit}}</view>
+								<view class="" style="display: flex;justify-content: center;flex-direction: row;align-items: center;height: 43px;width: 209px;">
+									<view class="" style="flex: 8;text-align: center;">
+										<text>{{selectedCodeInfo.scaleUnit}}</text>
+									</view>
 									<view class="" style="flex: 1;">
 										<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
 									</view>
@@ -103,8 +109,10 @@
 						</view>
 						<view class="InGood2">
 							<picker @change="taxButtonsChange" :value="index3" :range="taxButtons">
-								<view class="" style="display: flex;">
-									<view class="uni-input" style="flex: 9;">{{selectTax}}</view>
+								<view class="" style="display: flex;justify-content: center;flex-direction: row;align-items: center;height: 43px;width: 209px;">
+									<view class="" style="flex: 9;text-align: center;">
+										<text>{{selectTax}}</text>
+									</view>
 									<view class="" style="flex: 1;">
 										<image src="../../static/image/images/under.png" mode="widthFix" class="icon-right"></image>
 									</view>
@@ -126,7 +134,7 @@
 						<view class="" style="padding-top: 10px;text-align: center;">
 							<text style="font-size: 20px;">商品图像</text>
 						</view>
-						<image src="../../static/image/images/timg.jpg" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
+						<image src="../../static/image/images/timg.png" mode="aspectFit" style="height: 200px;width: 100%;margin-top: 10px;"></image>
 					</view>
 
 					<view class="" style="background-color: #CCE6FF; border: 1px solid #AAAAAA ;background-color: #CCE6FF;height: 280px;"
@@ -632,7 +640,6 @@
 		align-items: center;
 		display: flex;
 		flex: 5.5;
-		vertical-align: middle;
 	}
 
 	.uni-input {
@@ -643,10 +650,6 @@
 	}
 
 	.icon-right {
-		display: flex;
-		flex: 1;
-		align-items: center;
-		justify-content: center;
 		width: 27px;
 		height: 27px;
 	}

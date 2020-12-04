@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 241))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 99))
   }
 }
 var render = function() {
@@ -135,6 +135,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
 
 
 
@@ -437,16 +445,16 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32); //
 //
 //
 //
-var that = null;var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 241));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { username: '', root: '', taxArr: [], sizeArr: [], scaleArr: [], photoArr: [], photoArrCapacity: 4, head: "https://supnuevo.s3.sa-east-1.amazonaws.com/", picUrl1: '', picUrl2: '', picUrl3: '', picUrl4: '', merchantId: '', sizeUnitButtons: [], scaleUnitButtons: [], taxButtons: [], form: {}, newGoodInfo: { codigo: '', nombre: '', commodityName: '', setSizeValue: '', sizeUnit: '', scaleUnit: '', selectTax: '', taxId: null }, index1: 0, index2: 0, index3: 0, commodityId: null };}, components: { wybLoading: wybLoading }, onLoad: function onLoad(option) {this.$refs.loading.showLoading();that = this;this.picUrl1 = null;this.root = getApp().globalData.root;this.form = JSON.parse(decodeURIComponent(option.form));this.taxArr = this.form.taxArr;this.sizeArr = this.form.sizeArr;this.merchantId = this.form.merchantId;for (var i = 0; i < this.sizeArr.length; i++) {this.sizeUnitButtons.push(this.sizeArr[i].label);}for (var i = 0; i < this.taxArr.length; i++) {this.taxButtons.push(this.taxArr[i].label);if (this.taxArr[i].value == this.form.selectedCodeInfo.taxId) {this.selectTax = this.form.taxArr[i].label;}}this.username = getApp().globalData.username;uni.setNavigationBarTitle({ title: 'supnuevo-' + this.username });this.$refs.loading.hideLoading(); // 隐藏
-  }, methods: { scaleclick: function scaleclick() {if (this.scaleUnitButtons.length <= 0) {uni.showModal({ title: "提示", content: "请先选择含量单位", showCancel: false });}}, scaleUnitButtonsChange: function scaleUnitButtonsChange(e) {this.index2 = e.target.value;this.newGoodInfo.scaleUnit = this.scaleUnitButtons[this.index2];}, startCamera: function startCamera() {var that = this;uni.scanCode({ success: function success(res) {that.newGoodInfo.codigo = res.result;console.log('条码内容：' + that.newGoodInfo.codigo);uni.showModal({ title: "提示", content: "扫码成功！！", showCancel: false });}, fail: function fail(res) {uni.showModal({ title: "提示", content: "扫码失败！！", showCancel: false });} });}, sizeUnitButtonsChange: function sizeUnitButtonsChange(e) {var _this = this;this.index1 = e.target.value;this.newGoodInfo.sizeUnit = this.sizeUnitButtons[this.index1];var sizeUnit = this.newGoodInfo.sizeUnit;(0, _change.getSupnuevoScaleInfoListMobile)({ sizeUnit: this.newGoodInfo.sizeUnit, merchantId: this.merchantId }).then(function (res) {for (var i = 0; i < res.scaleArr.length; i++) {_this.scaleArr.push(res.scaleArr[i]);}for (var i = 0; i < _this.scaleArr.length; i++) {_this.scaleUnitButtons.push(_this.scaleArr[i].label);}});}, taxButtonsChange: function taxButtonsChange(e) {this.index3 = e.target.value;this.newGoodInfo.selectTax = this.taxButtons[this.index3];}, deletePhoto: function deletePhoto(index) {var _this2 = this;this.$refs.loading.showLoading();var flag = 0;(0, _change.getSupnuevoBuyerPriceFormByCodigoMobile)({ codigo: this.selectedCodeInfo.codigo, supnuevoMerchantId: this.merchantId }).then(function (res) {var goods = res.object;if (_this2.head + goods.attachDataUrl1 === _this2.photoArr[index]) flag = 1;else if (_this2.head + goods.attachDataUrl2 === _this2.photoArr[index]) flag = 2;else if (_this2.head + goods.attachDataUrl3 === _this2.photoArr[index]) flag = 3;else if (_this2.head + goods.attachDataUrl4 === _this2.photoArr[index]) flag = 4;(0, _change.deleteSupnuevoCommonCommodityImage)({ merchantId: _this2.merchantId, commodityId: _this2.commodityId, index: flag,
-          isAdmin: "" }).
-        then(function (res) {
-          console.log(res);
-          var errorMsg = res.errorMsg;
-          if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
-            uni.showModal({
-              title: "提示",
-              content: errorMsg,
+//
+//
+//
+//
+//
+//
+//
+//
+var that = null;var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 99));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { username: '', root: '', taxArr: [], sizeArr: [], scaleArr: [], photoArr: [], photoArrCapacity: 4, head: "https://supnuevo.s3.sa-east-1.amazonaws.com/", picUrl1: '', picUrl2: '', picUrl3: '', picUrl4: '', merchantId: '', sizeUnitButtons: [], scaleUnitButtons: [], taxButtons: [], form: {}, newGoodInfo: { codigo: '', nombre: '', commodityName: '', setSizeValue: '', sizeUnit: '', scaleUnit: '', selectTax: '', taxId: null }, index1: 0, index2: 0, index3: 0, commodityId: null };}, components: { wybLoading: wybLoading }, onLoad: function onLoad(option) {this.$refs.loading.showLoading();that = this;this.picUrl1 = null;this.root = getApp().globalData.root;this.form = JSON.parse(decodeURIComponent(option.form));this.taxArr = this.form.taxArr;this.sizeArr = this.form.sizeArr;this.merchantId = this.form.merchantId;for (var i = 0; i < this.sizeArr.length; i++) {this.sizeUnitButtons.push(this.sizeArr[i].label);}for (var i = 0; i < this.taxArr.length; i++) {this.taxButtons.push(this.taxArr[i].label);if (this.taxArr[i].value == this.form.selectedCodeInfo.taxId) {this.selectTax = this.form.taxArr[i].label;}}this.username = getApp().globalData.username;uni.setNavigationBarTitle({ title: 'supnuevo-' + this.username });this.$refs.loading.hideLoading(); // 隐藏
+  }, methods: { scaleclick: function scaleclick() {if (this.scaleUnitButtons.length <= 0) {uni.showModal({ title: "提示", content: "请先选择含量单位", showCancel: false });}}, scaleUnitButtonsChange: function scaleUnitButtonsChange(e) {this.index2 = e.target.value;this.newGoodInfo.scaleUnit = this.scaleUnitButtons[this.index2];}, startCamera: function startCamera() {var that = this;uni.scanCode({ success: function success(res) {that.newGoodInfo.codigo = res.result;console.log('条码内容：' + that.newGoodInfo.codigo);uni.showModal({ title: "提示", content: "扫码成功！！", showCancel: false });}, fail: function fail(res) {uni.showModal({ title: "提示", content: "扫码失败！！", showCancel: false });} });}, sizeUnitButtonsChange: function sizeUnitButtonsChange(e) {var _this = this;this.index1 = e.target.value;this.newGoodInfo.sizeUnit = this.sizeUnitButtons[this.index1];var sizeUnit = this.newGoodInfo.sizeUnit;(0, _change.getSupnuevoScaleInfoListMobile)({ sizeUnit: this.newGoodInfo.sizeUnit, merchantId: this.merchantId }).then(function (res) {for (var i = 0; i < res.scaleArr.length; i++) {_this.scaleArr.push(res.scaleArr[i]);}for (var i = 0; i < _this.scaleArr.length; i++) {_this.scaleUnitButtons.push(_this.scaleArr[i].label);}});}, taxButtonsChange: function taxButtonsChange(e) {this.index3 = e.target.value;this.newGoodInfo.selectTax = this.taxButtons[this.index3];}, deletePhoto: function deletePhoto(index) {var _this2 = this;this.$refs.loading.showLoading();var flag = 0;(0, _change.getSupnuevoBuyerPriceFormByCodigoMobile)({ codigo: this.selectedCodeInfo.codigo, supnuevoMerchantId: this.merchantId }).then(function (res) {var goods = res.object;if (_this2.head + goods.attachDataUrl1 === _this2.photoArr[index]) flag = 1;else if (_this2.head + goods.attachDataUrl2 === _this2.photoArr[index]) flag = 2;else if (_this2.head + goods.attachDataUrl3 === _this2.photoArr[index]) flag = 3;else if (_this2.head + goods.attachDataUrl4 === _this2.photoArr[index]) flag = 4;(0, _change.deleteSupnuevoCommonCommodityImage)({ merchantId: _this2.merchantId, commodityId: _this2.commodityId, index: flag, isAdmin: "" }).then(function (res) {console.log(res);var errorMsg = res.errorMsg;if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {uni.showModal({ title: "提示", content: errorMsg,
               showCancel: false });
 
           } else {
@@ -498,16 +506,26 @@ var that = null;var wybLoading = function wybLoading() {__webpack_require__.e(/*
         count: that.photoArrCapacity - that.photoArr.length,
         success: function success(res) {
           console.log(res.tempFilePaths[0]);
-          uni.request({
-            url: res.tempFilePaths[0],
-            method: 'GET',
-            responseType: 'arraybuffer',
-            success: function success(ress) {
-              console.log(ress.data);
-              base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
-              // base64 = 'data:image/jpeg;base64,' + base64; 
-              //不加上这串字符，在页面无法显示的哦
-              that.uploadImg(base64);
+          // uni.request({
+          // 	url: res.tempFilePaths[0],
+          // 	method: 'GET',
+          // 	responseType: 'arraybuffer',
+          // 	success: ress => {
+          // 		console.log(ress.data)
+          // 		base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
+          // 		// base64 = 'data:image/jpeg;base64,' + base64; 
+          // 		//不加上这串字符，在页面无法显示的哦
+          // 		that.uploadImg(base64)
+          // 	}
+          // })
+          uni.getFileSystemManager().readFile({
+            filePath: res.tempFilePaths[0], //选择图片返回的相对路径
+            encoding: 'base64', //编码格式
+            success: function success(res) {//成功的回调
+              console.log(res);
+              that.uploadImg(res.data);
+            }, fail: function fail(e) {
+              console.log("图片转换失败");
             } });
 
           // res.tempFilePaths.forEach(item => {

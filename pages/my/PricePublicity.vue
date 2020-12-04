@@ -34,7 +34,7 @@
 					<image :src="head+item.urlAddress" mode="" style="height: 100px;width: 100px;"></image>
 				</view>
 				<view class="" style="display: flex;flex: 8;justify-content: center;align-items: center;" v-if="item.urlAddress == null || item.urlAddress =='' || item.urlAddress == undefined">
-					<image src="../../static/image/images/timg.jpg" mode="" style="height: 100px;width: 100px;"></image>
+					<image src="../../static/image/images/timg.png" mode="" style="height: 100px;width: 100px;"></image>
 				</view>
 			</view>
 		</view>
@@ -77,19 +77,32 @@
 				uni.chooseImage({
 					success(res) {
 						console.log(res.tempFilePaths[0]);
-						uni.request({
-							url: res.tempFilePaths[0],
-							method: 'GET',
-							responseType: 'arraybuffer',
-							success: ress => {
-								console.log(ress.data)
-								base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
-								// base64 = 'data:image/jpeg;base64,' + base64; 
-								//不加上这串字符，在页面无法显示的哦
+						// uni.request({
+						// 	url: res.tempFilePaths[0],
+						// 	method: 'GET',
+						// 	responseType: 'arraybuffer',
+						// 	success: ress => {
+						// 		console.log(ress.data)
+						// 		base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
+						// 		// base64 = 'data:image/jpeg;base64,' + base64; 
+						// 		//不加上这串字符，在页面无法显示的哦
+								// if (advertisementId!==null && advertisementId!==undefined && advertisementId!=='')
+								// 	that.uploadImg(base64,advertisementId,advertisementNum)
+								// else 
+								// 	that.uploadImg1(base64,advertisementNum)
+						// 	}
+						// })
+						uni.getFileSystemManager().readFile({
+							filePath: res.tempFilePaths[0], //选择图片返回的相对路径
+							encoding: 'base64', //编码格式
+							success: res => { //成功的回调
+							console.log(res);
 								if (advertisementId!==null && advertisementId!==undefined && advertisementId!=='')
-									that.uploadImg(base64,advertisementId,advertisementNum)
+									that.uploadImg(res.data,advertisementId,advertisementNum)
 								else 
-									that.uploadImg1(base64,advertisementNum)
+									that.uploadImg1(res.data,advertisementNum)
+							},fail: (e) => {
+								console.log("图片转换失败");
 							}
 						})
 						// res.tempFilePaths.forEach(item => {

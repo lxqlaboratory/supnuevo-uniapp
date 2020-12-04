@@ -7,7 +7,7 @@
 			
 			<view class="page-title">
 			    <view class="page-title__wrapper">
-					<input type="text" :value="orderMinLimit" class="page-title__text"/>
+					<input type="text" v-model="orderMinLimit" class="page-title__text"/>
 			    </view>
 				<text style="font-weight: bold;font-size: 20px;">peso</text>
 			</view>
@@ -20,7 +20,7 @@
 			
 			<view class="page-title">
 			    <view class="page-title__wrapper">
-					<input type="text" :value="discountScale" class="page-title__text"/>
+					<input type="text" v-model="discountScale" class="page-title__text"/>
 			    </view>
 				<text style="font-weight: bold;font-size: 20px;">%</text>
 			</view>
@@ -108,16 +108,30 @@
 				uni.chooseImage({
 					success(res) {
 						console.log(res.tempFilePaths[0]);
-						uni.request({
-							url: res.tempFilePaths[0],
-							method: 'GET',
-							responseType: 'arraybuffer',
-							success: ress => {
-								console.log(ress.data)
-								base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
-								// base64 = 'data:image/jpeg;base64,' + base64; 
-								//不加上这串字符，在页面无法显示的哦
-								that.uploadImg(base64)
+						// uni.request({
+						// 	url: res.tempFilePaths[0],
+						// 	method: 'GET',
+						// 	responseType: 'arraybuffer',
+						// 	success: (ress) => {
+						// 		console.log(ress.data)
+						// 		base64 = wx.arrayBufferToBase64(ress.data); //把arraybuffer转成base64 
+						// 		// base64 = 'data:image/jpeg;base64,' + base64; 
+						// 		//不加上这串字符，在页面无法显示的哦
+						// 		console.log(1234)
+						// 		console.log(base64)
+						// 		// that.uploadImg(base64)
+						// 	}
+						// })
+						
+						
+						 uni.getFileSystemManager().readFile({
+							filePath: res.tempFilePaths[0], //选择图片返回的相对路径
+							encoding: 'base64', //编码格式
+							success: res => { //成功的回调
+							console.log(res);
+								that.uploadImg(res.data)
+							},fail: (e) => {
+								console.log("图片转换失败");
 							}
 						})
 						// res.tempFilePaths.forEach(item => {
@@ -234,7 +248,7 @@
 	    font-size: 20px;
 	    height: 48px;
 	    line-height: 48px;
-	    color: #BEBEBE;
+	    color: #428BCA;
 		width: 80px;
 	}
 </style>

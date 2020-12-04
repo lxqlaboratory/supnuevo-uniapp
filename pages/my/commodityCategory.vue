@@ -16,8 +16,8 @@
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll" v-if="unionMemberType == 2">
 				<view class="Inrow" v-for="(item,index) in priceClassList" :key="index" @click="setUnionCurrentMerchantCount(item.priceCount)">
 					<view class="" style="display: flex;flex: 3;justify-content: center;align-items: center;">
-						  <icon type="success" size="26" v-if="item.select == 1"/>
-						  <icon type="cancel" size="26" v-if="item.select != 1"/>
+						  <image src="../../static/image/images/yes.png" mode="" v-if="item.select == 1" style="height: 26px;width: 26px;"></image>
+						  <image src="../../static/image/images/no.png" mode="" v-if="item.select != 1" style="height: 26px;width: 26px;"></image>
 					</view>
 					<view class="" style="display: flex;flex: 3;justify-content: center;align-items: center;">
 						 <text>{{item.priceCount}}</text>
@@ -30,8 +30,8 @@
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll" v-if="unionMemberType != 2">
 				<view class="Inrow" v-for="(item,index) in priceClassList" :key="index">
 					<view class="" style="display: flex;flex: 3;justify-content: center;align-items: center;">
-						  <icon type="success" size="26" v-if="item.select == 1"/>
-						  <icon type="cancel" size="26" v-if="item.select != 1"/>
+						 <image src="../../static/image/images/yes.png" mode="" v-if="item.select == 1" style="height: 26px;width: 26px;"></image>
+						 <image src="../../static/image/images/no.png" mode="" v-if="item.select != 1" style="height: 26px;width: 26px;"></image>
 					</view>
 					<view class="" style="display: flex;flex: 3;justify-content: center;align-items: center;">
 						 <text>{{item.priceCount}}</text>
@@ -67,8 +67,8 @@
 								</view>
 							</view>
 							<view class="" style="flex: 1;">
-								<icon type="success" size="26" v-if="item.isAlive == 1"/>
-								<icon type="cancel" size="26" v-if="item.isAlive != 1"/>
+								<image src="../../static/image/images/yes.png" mode="" v-if="item.isAlive == 1" style="height: 26px;width: 26px;"></image>
+								<image src="../../static/image/images/no.png" mode="" v-if="item.isAlive != 1" style="height: 26px;width: 26px;"></image>
 							</view>
 						</view>
 					<!-- </scroll-view> -->
@@ -88,8 +88,8 @@
 					</view>
 				</view>
 				<view class="" style="flex: 1;">
-					<icon type="success" size="26" v-if="item.isAlive == 1"/>
-					<icon type="cancel" size="26" v-if="item.isAlive != 1"/>
+					<image src="../../static/image/images/yes.png" mode="" v-if="item.isAlive == 1" style="height: 26px;width: 26px;"></image>
+					<image src="../../static/image/images/no.png" mode="" v-if="item.isAlive != 1" style="height: 26px;width: 26px;"></image>
 				</view>
 			</view>
 		</scroll-view>
@@ -107,8 +107,8 @@
 					</view>
 				</view>
 				<view class="" style="flex: 1;">
-					<icon type="success" size="26" v-if="item.isAlive == 1"/>
-					<icon type="cancel" size="26" v-if="item.isAlive != 1"/>
+					<image src="../../static/image/images/yes.png" mode="" v-if="item.isAlive == 1" style="height: 26px;width: 26px;"></image>
+					<image src="../../static/image/images/no.png" mode="" v-if="item.isAlive != 1" style="height: 26px;width: 26px;"></image>
 				</view>
 			</view>
 		</scroll-view>
@@ -127,8 +127,8 @@
 								</view>
 							</view>
 							<view class="" style="flex: 1;">
-								<icon type="success" size="26" v-if="item.isAlive == 1"/>
-								<icon type="cancel" size="26" v-if="item.isAlive != 1"/>
+								<image src="../../static/image/images/yes.png" mode="" v-if="item.isAlive == 1" style="height: 26px;width: 26px;"></image>
+								<image src="../../static/image/images/no.png" mode="" v-if="item.isAlive != 1" style="height: 26px;width: 26px;"></image>
 							</view>
 						</view>
 					<!-- </scroll-view> -->
@@ -398,6 +398,7 @@
 						codigo: codeNum,
 						merchantId: merchantId,
 						merchantCount:this.selectedIdx,
+						unionId: this.unionId
 					}).then(res => {
 						console.log(res)
 			            if(res.re == -2){
