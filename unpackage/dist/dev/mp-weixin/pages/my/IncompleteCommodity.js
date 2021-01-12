@@ -95,7 +95,7 @@ var components = {
     return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 99))
   },
   sibList: function() {
-    return __webpack_require__.e(/*! import() | components/sib-list/sib-list */ "components/sib-list/sib-list").then(__webpack_require__.bind(null, /*! @/components/sib-list/sib-list.vue */ 269))
+    return __webpack_require__.e(/*! import() | components/sib-list/sib-list */ "components/sib-list/sib-list").then(__webpack_require__.bind(null, /*! @/components/sib-list/sib-list.vue */ 271))
   }
 }
 var render = function() {
@@ -158,7 +158,7 @@ __webpack_require__.r(__webpack_exports__);
 var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 106);
 
 
-var _change = __webpack_require__(/*! @/api/change.js */ 32);var sibList = function sibList() {__webpack_require__.e(/*! require.ensure | components/sib-list/sib-list */ "components/sib-list/sib-list").then((function () {return resolve(__webpack_require__(/*! @/components/sib-list/sib-list.vue */ 269));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 99));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _change = __webpack_require__(/*! @/api/change.js */ 32);var sibList = function sibList() {__webpack_require__.e(/*! require.ensure | components/sib-list/sib-list */ "components/sib-list/sib-list").then((function () {return resolve(__webpack_require__(/*! @/components/sib-list/sib-list.vue */ 271));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 99));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
