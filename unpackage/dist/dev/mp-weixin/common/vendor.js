@@ -9340,7 +9340,7 @@ function _isPromise(obj) {
 
 /***/ }),
 
-/***/ 233:
+/***/ 240:
 /*!*******************************************!*\
   !*** D:/vue/supnuevo-uniapp/api/stock.js ***!
   \*******************************************/
@@ -9360,7 +9360,7 @@ function getSupnuevoBuyerUnionList(data) {
 
 /***/ }),
 
-/***/ 239:
+/***/ 246:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
   \************************************************************/
@@ -9368,7 +9368,7 @@ function getSupnuevoBuyerUnionList(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 240));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 247));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -9395,7 +9395,7 @@ var config = {
 
 /***/ }),
 
-/***/ 240:
+/***/ 247:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
   \**************************************************************/

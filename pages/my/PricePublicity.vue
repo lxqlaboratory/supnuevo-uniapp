@@ -19,7 +19,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="" v-if="item.attachId != null && item.attachId !='' && item.attachId != undefined" style="flex: 1;display: flex;justify-content: center;align-items: center;"  @click="deleteAdvertisement(item.advertisementId)">
+				<view class="" v-if="item.urlAddress != null && item.urlAddress !='' && item.urlAddress != undefined" style="flex: 1;display: flex;justify-content: center;align-items: center;"  @click="deleteAdvertisement(item.advertisementId)">
 					<icon type="cancel" size="26"/>
 				</view> 
 			</view>

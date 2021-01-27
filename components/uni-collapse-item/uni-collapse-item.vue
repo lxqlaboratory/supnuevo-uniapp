@@ -150,7 +150,7 @@
 				    success: function (res) {
 				        if (res.confirm) {
 				           deleteSupnuevoCommodityCodigoMap({
-				           	codigo: title,
+				           	codigo: codigo,
 				           	mapId: mapId
 				           }).then(res => {
 				           	console.log(res)

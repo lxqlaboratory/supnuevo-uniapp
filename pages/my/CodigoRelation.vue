@@ -13,8 +13,11 @@
 			</uni-collapse>
 		</view>
 		<view class="countcomm">
-			<image src="../../static/image/images/up.png" mode="" style="width: 64px;height: 64px;" class="countcomm"></image>
+			<image src="../../static/image/images/up.png" mode="" style="width: 64px;height: 64px;" class="countcomm" @click="confirmDialog"></image>
 		</view>
+		<uni-popup ref="dialogInput" type="dialog">
+			<uni-popup-dialog mode="input" title="请输入条码"  placeholder="请输入条码" @confirm="dialogInputConfirm"></uni-popup-dialog>
+		</uni-popup>
 	</view>
 </template>
 
@@ -24,8 +27,10 @@
 	import uniCollapseItem from '@/components/uni-collapse-item/uni-collapse-item.vue'
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue' 
+	import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
 	import {
-		getSupnuevoCommodityCodigoMapCodigoList
+		getSupnuevoCommodityCodigoMapCodigoList,
+		addSupnuevoCommodityCodigoMap
 	} from '@/api/MyInfor.js'
 	export default {
 		data() {
@@ -62,7 +67,47 @@
 					showCancel: false,
 				})
 				});	
-			}
+			},
+			confirmDialog(){
+				this.$refs.dialogInput.open()
+			},
+			dialogInputConfirm(done, val) {
+				console.log(val);
+				var that = this;
+				var codigo = val;
+				if (codigo !== '' && codigo !== null){
+					addSupnuevoCommodityCodigoMap({
+						codigo: codigo
+					}).then(res => {
+						uni.hideLoading()
+						done()
+						if (res.re === 1){
+							uni.showModal({
+								title: "提示",
+								content: "添加成功",
+								showCancel: false,
+								success:function(res){
+									if (res.confirm){
+										that.getSupnuevoCodigoList()
+									}
+								}
+							})
+						}else {
+							uni.showModal({
+								title: "提示",
+								content: res.data,
+								showCancel: false,
+							})
+						}
+					}).catch((err) => {
+				           uni.showModal({
+				           	title: "提示",
+				           	content: err,
+				           	showCancel: false,
+				           })
+				           });	
+				}
+			},
 		},
 	}
 </script>
