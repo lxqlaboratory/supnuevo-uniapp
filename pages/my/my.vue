@@ -1,21 +1,36 @@
 <template>
 	<view class="">
+		<luPopupWrapper ref="luPopupWrapper" 
+			:type="type"
+			:transition="transition"
+			:backgroundColor="backgroundColor"
+			:active="active"
+			:height="height"
+			:width="width"
+			:popupId="popupId"
+			:maskShow="maskShow"
+			:maskClick="maskClick"
+			:closeCallback="closeCallback"
+			>
+			<view class="mycontent">
+				<ayQrcode ref="qrcode" :modal="modal_qr" :url="url" @hideQrcode="hideQrcode" />
+			</view>
+		</luPopupWrapper>
 		<view class="">
 			<view class="">
 				<image src="../../static/image/cart.png" mode="aspectFit" style="width: 100%"></image>
 			</view>	
 		</view>
-		
 		<view class="uni-common-mt" v-if="unionMemberType == 2 || unionMemberType == 1">
 			<view class="uni-form-item uni-column">
 				<checkbox-group class="uni-list" >
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigatemyinfo">
 						<view>我的信息</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @tap="fade()">
 						<view>我的二维码</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="startCamera">
 						<view>扫一扫商家二维码</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd">
@@ -36,13 +51,13 @@
 		<view class="uni-common-mt" v-else>
 			<view class="uni-form-item uni-column">
 				<checkbox-group class="uni-list" >
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="navigatemyinfo">
 						<view>我的信息</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @tap="fade()">
 						<view>我的二维码</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="startCamera">
 						<view>扫一扫商家二维码</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd">
@@ -64,27 +79,131 @@
 </template>
 
 <script>
+	import {
+		setMerchantVisibleEachOtherMobile
+	} from '@/api/login.js'
+	import ayQrcode from "@/components/ay-qrcode/ay-qrcode.vue"
+	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
 	export default {
+		components: {
+			ayQrcode,
+			luPopupWrapper
+		},
 		data() {
 			return {
 				unionMemberType:'',
+				type:"bottom",// left right top bottom center
+				transition:"slider",//none slider fade
+				backgroundColor:'#FFF',
+				active:false,
+				height:"100%",
+				width:"100%",
+				popupId:1,
+				maskShow:true,
+				maskClick:true,
+				modal_qr: false,
+				url: '', // 要生成的二维码值
+				scanId: '',
 			};
 		},
 		onLoad() {
 			this.unionMemberType = getApp().globalData.unionMemberType;
+			this.merchantId = getApp().globalData.merchantId
+			this.url = this.merchantId
 		},
 		methods:{
 			navigateMyUnion(){
 				uni.navigateTo({
 					url: './myUnion'
 				})
-			}
-			
+			},
+			navigatemyinfo(){
+				uni.navigateTo({
+					url: './Myinfo'
+				})
+			},
+			fade: function() {
+				this.width ="100%";
+				this.height ="80%";
+				this.transition = "fade";
+				this.type = "bottom";
+				this.show();
+				let that = this;
+				that.showQrcode();//一加载生成二维码
+			},
+			show: function() {
+				this.$refs.luPopupWrapper.show();
+			},
+			close: function() {
+				this.$refs.luPopupWrapper.close();
+			},
+			closeCallback:function() {
+				console.log("关闭后回调");
+			},
+			showQrcode() {
+				let _this = this;
+				this.modal_qr = true;
+				// uni.showLoading()
+				setTimeout(function() {
+					// uni.hideLoading()
+					_this.$refs.qrcode.crtQrCode()
+				}, 50)
+			},
+			//传入组件的方法
+			hideQrcode() {
+				this.modal_qr = false;
+			},
+			startCamera(){
+				var that = this;
+				uni.scanCode({
+					success:function(res){
+						console.log('条码内容：' + res.result);
+						that.scanId = parseInt(res.result);
+						setMerchantVisibleEachOtherMobile({
+							scanId: that.scanId,
+						}).then(res => {
+							var errMessage = res.errMessage;
+							    if (errMessage !== null && errMessage !== undefined && errMessage !== "") {
+									uni.showModal({
+										title: "提示",
+										content: errMessage,
+										showCancel: false,
+									})
+								}else{
+									uni.showModal({
+										title: "提示",
+										content: "已设置成功",
+										showCancel: false,
+									})
+								}
+						})
+						
+						
+						
+					},
+					fail:function(res){
+						uni.showModal({
+							title: "提示",
+							content: "扫码失败！！",
+							showCancel: false,
+						})
+					},
+				})
+			},
 		}
 	}
 </script>
 	
 <style>
+	.mycontent{
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		overflow: scroll;
+	}
 	 .p-list {
 		background-color: rgba(9, 9, 9, 0.3);
 		bottom: 0rpx;

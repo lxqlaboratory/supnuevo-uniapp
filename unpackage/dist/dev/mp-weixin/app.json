@@ -11,6 +11,7 @@
     "pages/price/AddCommInfo",
     "pages/price/Group",
     "pages/my/myUnion",
+    "pages/my/Myinfo",
     "pages/my/unionRule",
     "pages/my/commodityCategory",
     "pages/my/commodityPrice",
@@ -27,7 +28,8 @@
     "pages/my/OrderDiscount",
     "pages/my/FreeDiscount",
     "pages/my/OrderDetail",
-    "pages/stock/Unionlist"
+    "pages/stock/Unionlist",
+    "pages/my/MySuggestion"
   ],
   "subPackages": [],
   "window": {
@@ -77,6 +79,5 @@
   "usingComponents": {
     "uni-popup": "/components/uni-popup/uni-popup",
     "uni-popup-dialog": "/components/uni-popup/uni-popup-dialog"
-  },
-  "sitemapLocation": "sitemap83.json"
+  }
 }

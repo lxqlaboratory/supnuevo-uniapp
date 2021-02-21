@@ -1,4 +1,22 @@
 
+.mycontent{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-flow: row nowrap;
+	        flex-flow: row nowrap;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+}
 .p-list {
 	background-color: rgba(9, 9, 9, 0.3);
 	bottom: 0rpx;

@@ -98,6 +98,15 @@
 			}
 		}
 		,{
+		    "path" : "pages/my/Myinfo",
+		    "style" : {
+				"navigationBarTitleText": "我的信息",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3a6eff",
+				"backgroundColor": "#3a6eff"
+			}
+		}
+		,{
 		    "path" : "pages/my/unionRule",
 		    "style" : {
 				"navigationBarTitleText": "本联盟规定",
@@ -242,9 +251,7 @@
 				"backgroundColor": "#3a6eff"
 			}
 		},
-		
 		{
-			
 			"path" : "pages/stock/Unionlist",
 			"style" : {
 				"navigationBarTitleText": "选择联盟",
@@ -253,9 +260,15 @@
 				"backgroundColor": "#3a6eff"
 			}
 		}
-		
-		
-		
+        ,{
+            "path" : "pages/my/MySuggestion",
+            "style" : {
+            	"navigationBarTitleText": "我的建议",
+            	"navigationBarTextStyle": "white",
+            	"navigationBarBackgroundColor": "#3a6eff",
+            	"backgroundColor": "#3a6eff"
+            }
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

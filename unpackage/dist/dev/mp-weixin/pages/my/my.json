@@ -3,5 +3,8 @@
   "navigationBarTextStyle": "white",
   "navigationBarBackgroundColor": "#3a6eff",
   "backgroundColor": "#3a6eff",
-  "usingComponents": {}
+  "usingComponents": {
+    "ay-qrcode": "/components/ay-qrcode/ay-qrcode",
+    "lu-popup-wrapper": "/components/lu-popup-wrapper/lu-popup-wrapper"
+  }
 }

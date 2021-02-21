@@ -1,0 +1,1 @@
+<view class="{{['data-v-1db347e8',modal?'show':'hide']}}"><view style="{{'margin-left:'+(marginLeft+'px')+';'}}" class="data-v-1db347e8"><canvas class="canvas data-v-1db347e8" style="width:550rpx;height:550rpx;" canvas-id="{{qrcode_id}}"></canvas></view></view>

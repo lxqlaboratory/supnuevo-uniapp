@@ -64,6 +64,9 @@
 			this.root = getApp().globalData.root;
 			this.unionId = getApp().globalData.unionId;
 		},
+		components: {
+				wybLoading,
+		},
 		methods:{
 			navigatemyinfo(){
 				uni.navigateTo({
@@ -125,8 +128,9 @@
 				updateSupnuevoBuyerUnionAllPriceInfo({
 					unionId: this.unionId
 				}).then(res => {
+					console.log(1234)
 					this.$refs.loading.hideLoading() // 隐藏
-					if (res.re == 1)
+					if (res.re === 1)
 						uni.showModal({
 							title: "提示",
 							content: "更新成功",

@@ -271,3 +271,19 @@ export function deleteSupnuevoCommodityCodigoMapSub(data) {
 		data: data
 	})
 }
+
+export function getQueryDataListByInputStringMobile(data) {
+	return request.request({
+		url: '/commodity/getQueryDataListByInputStringMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getSupnuevoBuyerPriceModifyList(data) {
+	return request.request({
+		url: '/union/getSupnuevoBuyerPriceModifyList',
+		method: 'POST',
+		data: data
+	})
+}

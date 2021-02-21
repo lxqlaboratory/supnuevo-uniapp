@@ -1,5 +1,6 @@
 <template>
 	<view class="">
+		<wyb-loading ref="loading"/>
 		<view class="" v-for="(item,index) in advertisements" :key="index" v-if="unionMemberType == 2">
 			<view class="" style="background-color: #1CBBB4;">
 				<text style="margin-right: 0px;">{{item.advertisementNum}}</text>
@@ -45,11 +46,9 @@
 	import {
 		getSupnuevoBuyerUnionAdvertisementFormList,
 		deleteSupnuevoBuyerUnionAdvertisement,
-		createSupnuevoBuyerUnionAdvertisement
-	} from '@/api/MyInfor.js'
-	import {
+		createSupnuevoBuyerUnionAdvertisement,
 		uploadAttachData
-	} from '@/api/change.js'
+	} from '@/api/MyInfor.js'
 	import taogewanComboxRemote from '@/components/taogewan-combox-remote/taogewan-combox-remote.vue'
 	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	export default {
@@ -92,6 +91,7 @@
 								// 	that.uploadImg1(base64,advertisementNum)
 						// 	}
 						// })
+						that.$refs.loading.showLoading()
 						uni.getFileSystemManager().readFile({
 							filePath: res.tempFilePaths[0], //选择图片返回的相对路径
 							encoding: 'base64', //编码格式
@@ -105,14 +105,14 @@
 								console.log("图片转换失败");
 							}
 						})
-						// res.tempFilePaths.forEach(item => {
-						// 	// 正式环境下调用此方法上传图片
-						// 	// that.uploadImg(item).then(result => {
-						// 	// 	that.photoArr.push(result.data);
-						// 	// });
-						// 	that.photoArr.push(item);
+			// 			res.tempFilePaths.forEach(item => {
+			// 				// 正式环境下调用此方法上传图片
+			// 				// that.uploadImg(item).then(result => {
+			// 				// 	that.photoArr.push(result.data);
+			// 				// });
+			// 				that.photoArr.push(item);
 			
-						// });
+			// 			});
 					}
 				});
 			},
@@ -153,6 +153,7 @@
 							showCancel: false,
 						})
 						this.getSupnuevoBuyerUnionAdvertisementFormList();
+						this.$refs.loading.hideLoading() // 隐藏
 					}
 				}).catch((err) => {
 					uni.showModal({

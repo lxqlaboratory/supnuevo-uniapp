@@ -15,3 +15,27 @@ export function getMerchantInitInfoMobile(data) {
 		data: data
 	})
 }
+
+export function getSupnuevoMerchantInfoMobile(data) {
+	return request.request({
+		url: '/merchant/getSupnuevoMerchantInfoMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function updateMerchantShopNameMobile(data) {
+	return request.request({
+		url: '/merchant/updateMerchantShopNameMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function setMerchantVisibleEachOtherMobile(data) {
+	return request.request({
+		url: '/merchant/setMerchantVisibleEachOtherMobile',
+		method: 'POST',
+		data: data
+	})
+}
