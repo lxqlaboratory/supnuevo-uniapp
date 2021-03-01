@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uniPopup: function() {
-    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 251))
+    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 282))
   }
 }
 var render = function() {
@@ -164,7 +164,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _login = __webpack_require__(/*! @/api/login.js */ 17); //
 //
 //
@@ -189,9 +188,9 @@ var _login = __webpack_require__(/*! @/api/login.js */ 17); //
 //
 //
 //
-//
 var _default = { data: function data() {return { loginName: '', password: '', errorContent: '' };}, mounted: function mounted() {var that = this; //页面加载完成，获取本地存储的用户名及密码
-    var userName = uni.getStorageSync('userName');var userPsw = uni.getStorageSync('userPsw');console.log(userName);if (userName && userPsw) {that.loginName = userName;that.password = userPsw;} else {that.loginName = "";that.password = "";}
+    var userName = uni.getStorageSync('userName');var userPsw = uni.getStorageSync('userPsw');console.log(userName);if (userName && userPsw) {that.loginName = userName;that.password = userPsw;} else {that.loginName = "";that.password = "";
+    }
   },
   methods: {
     confirm: function confirm() {
@@ -406,10 +405,6 @@ var _default = { data: function data() {return { loginName: '', password: '', er
           _this.errorContent = '登录验证错误';
           _this.$refs.popup.open();
         });
-
-
-
-
       }).catch(function (err) {
         _this.errorContent = '登录验证错误';
         _this.$refs.popup.open();

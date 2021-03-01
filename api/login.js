@@ -39,3 +39,35 @@ export function setMerchantVisibleEachOtherMobile(data) {
 		data: data
 	})
 }
+
+export function submitSupnuevoMerchantQuestionInfoMobile(data) {
+	return request.request({
+		url: '/merchant/submitSupnuevoMerchantQuestionInfoMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function addSupnuevoMerchantPriceOperRel(data) {
+	return request.request({
+		url: '/merchant/addSupnuevoMerchantPriceOperRel',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getRelMerchantListOfMerchantMobile(data) {
+	return request.request({
+		url: '/merchant/getRelMerchantListOfMerchantMobile',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function updateSupnuevoMerchantPriceOperRel(data) {
+	return request.request({
+		url: '/merchant/updateSupnuevoMerchantPriceOperRel',
+		method: 'POST',
+		data: data
+	})
+}

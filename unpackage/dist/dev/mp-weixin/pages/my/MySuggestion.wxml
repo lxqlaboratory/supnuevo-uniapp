@@ -1,1 +1,1 @@
-<view></view>
+<view><view class="Suggestion"><textarea class="SuggestionTex" placeholder="如果您想要得到回复，请留下QQ" data-event-opts="{{[['input',[['__set_model',['','placeholder','$event',[]]]]]]}}" value="{{placeholder}}" bindinput="__e"></textarea></view><view style="margin-top:10px;justify-content:center;align-items:center;display:flex;"><button style="border-radius:4px;background-color:#CAE1FF;width:70px;font-size:15px;color:black;" type="primary" data-event-opts="{{[['tap',[['subsuggestion',['$event']]]]]}}" bindtap="__e">提交</button></view></view>

@@ -252,7 +252,7 @@
 			}
 		},
 		{
-			"path" : "pages/stock/Unionlist",
+			"path" : "pages/stock/VentasInfoModal",
 			"style" : {
 				"navigationBarTitleText": "选择联盟",
 				"navigationBarTextStyle": "white",
@@ -268,6 +268,33 @@
             	"navigationBarBackgroundColor": "#3a6eff",
             	"backgroundColor": "#3a6eff"
             }
+        }
+        ,{
+            "path" : "pages/my/MyShop",
+            "style" : {
+            	"navigationBarTitleText": "我的建议",
+            	"navigationBarTextStyle": "white",
+            	"navigationBarBackgroundColor": "#3a6eff",
+            	"backgroundColor": "#3a6eff"
+            }
+        }
+        ,{
+            "path" : "pages/stock/Unionlist",
+            "style" : {
+            	"navigationBarTitleText": "联盟列表",
+            	"navigationBarTextStyle": "white",
+            	"navigationBarBackgroundColor": "#3a6eff",
+            	"backgroundColor": "#3a6eff"
+            }
+        }
+        ,{
+            "path" : "pages/sale/PriceModal",
+           "style" : {
+           	"navigationBarTitleText": "分类",
+           	"navigationBarTextStyle": "white",
+           	"navigationBarBackgroundColor": "#3a6eff",
+           	"backgroundColor": "#3a6eff"
+           }
         }
     ],
 	"globalStyle": {

@@ -28,8 +28,11 @@
     "pages/my/OrderDiscount",
     "pages/my/FreeDiscount",
     "pages/my/OrderDetail",
+    "pages/stock/VentasInfoModal",
+    "pages/my/MySuggestion",
+    "pages/my/MyShop",
     "pages/stock/Unionlist",
-    "pages/my/MySuggestion"
+    "pages/sale/PriceModal"
   ],
   "subPackages": [],
   "window": {

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "我的建议",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#3a6eff",
+  "backgroundColor": "#3a6eff",
+  "usingComponents": {
+    "uni-swipe-action": "/components/uni-swipe-action/uni-swipe-action",
+    "uni-swipe-action-item": "/components/uni-swipe-action-item/uni-swipe-action-item",
+    "lu-popup-wrapper": "/components/lu-popup-wrapper/lu-popup-wrapper",
+    "wkiwi-swipe-action": "/components/wkiwi-swipe-action"
+  }
+}

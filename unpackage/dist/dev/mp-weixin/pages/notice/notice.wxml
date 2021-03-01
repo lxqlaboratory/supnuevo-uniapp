@@ -1,1 +1,1 @@
-<view>公告</view>
+<view><view style="padding:10px;text-align:center;"><text>{{announcement}}</text></view></view>

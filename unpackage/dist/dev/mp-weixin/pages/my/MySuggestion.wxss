@@ -1,0 +1,17 @@
+
+.Suggestion{
+	margin-top: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+.SuggestionTex{
+	margin: auto;
+	height: 150px;
+	font-size: 20px;
+	border: #aaa 1px solid;
+}
+

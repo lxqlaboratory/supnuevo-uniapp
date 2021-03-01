@@ -33,10 +33,10 @@
 					<label class="uni-list-cell uni-list-cell-pd" @click="startCamera">
 						<view>扫一扫商家二维码</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMySuggestion">
 						<view>我的建议</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMyShop">
 						<view>我替他们改价</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd">
@@ -60,13 +60,10 @@
 					<label class="uni-list-cell uni-list-cell-pd" @click="startCamera">
 						<view>扫一扫商家二维码</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMySuggestion">
 						<view>我的建议</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
-						<view>我的二维码</view>
-					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMyShop">
 						<view>我替他们改价</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd">
@@ -120,6 +117,16 @@
 			navigatemyinfo(){
 				uni.navigateTo({
 					url: './Myinfo'
+				})
+			},
+			navigateMySuggestion(){
+				uni.navigateTo({
+					url: './MySuggestion'
+				})
+			},
+			navigateMyShop(){
+				uni.navigateTo({
+					url: './MyShop'
 				})
 			},
 			fade: function() {

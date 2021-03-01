@@ -5,11 +5,9 @@
 			 @confirm="confirm"></uni-popup-dialog>
 		</uni-popup>
 		<view class="login-img">
-			<image style="sduImg" mode='center' src="http://wxgradms.sdu.edu.cn/images/shanda.jpg"></image>
-
+			<image style="height: 170px;width: 200px;" src="../../static/image/cart.png" mode="aspectFit"></image>
 		</view>
 		<view class="login-form">
-
 			<view>
 				<view class="form-input">
 					<input v-model='loginName' type="text" placeholder="用户名" />
@@ -17,8 +15,9 @@
 				<view class="form-input">
 					<input v-model='password' placeholder="密码" password="true" />
 				</view>
-				<button type="warn" size="default" form-type="submit" @click="formSubmit">登录</button>
-				<button class="bind-button" type="warn" size="default" @click="formBind">绑定账号登录</button>
+				<view style="margin-top: 30px;">
+					<button style="background-color: #387ef5;font-size: 20px;color: #fff;border-radius: 6px;" size="default" form-type="submit" @click="formSubmit">登录</button> 
+				</view>
 			</view>
 		</view>
 	</view>
@@ -265,10 +264,6 @@
 					this.errorContent = '登录验证错误'
 					this.$refs.popup.open()
 					})
-						
-					
-
-
 				}).catch(err => {
 					this.errorContent = '登录验证错误'
 					this.$refs.popup.open()
@@ -310,23 +305,15 @@
 		margin: 20px 0;
 		padding: 0 10px;
 	}
-
-	.sduImg {
-		height: 300rpx;
-		width: 300rpx;
-		background-color: transparent !important;
-	}
-
 	.login-img {
 		display: flex;
+		margin: 0 auto;
+		padding: 15px;
 		justify-content: center;
 		align-items: center;
-		height: 400rpx;
-		width: 100%;
-		opacity: 0.8;
-		/* opacity: 0.1; */
-		/* margin-top: 50rpx; */
-		/* border: 1px solid #007AFF; */
+		height: 200px;
+		width: 355px;
+		border-radius: 3px;
 	}
 
 	.owl-login {

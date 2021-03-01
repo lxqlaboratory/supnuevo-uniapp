@@ -73,7 +73,7 @@
 			<view class="Inshop">
 				<text>商品名称:</text>
 			</view>
-			<view class="Inshop1">
+			<view class="Inshop1" style="background-color: #007AFF;">
 				<text>{{selectedCodeInfo.goodName}}</text>
 			</view>
 		</view>
@@ -87,31 +87,31 @@
 		</view>
 		
 		<view class="discount">
-			<view class="Indiscount" v-if="printType.type1 == 1" style="background-color: #007AFF;" @click="changetype1">
+			<view class="Indiscount" v-if="printType.type1 == 1" style="background-color: #007AFF;color: white;border-radius: 5px 0 0 5px;" @click="changetype1">
 				<text>标签</text>
 			</view>
-			<view class="Indiscount" v-else-if="printType.type1 == 0" @click="changetype1">
+			<view class="Indiscount" v-else-if="printType.type1 == 0" style="background-color: #eee;border-radius: 5px 0 0 5px;" @click="changetype1">
 				<text>标签</text>
 			</view>
 			
-			<view class="Indiscount" v-if="printType.type2 == 1" @click="changetype2" style="border-left: solid 1px white ;border-right: solid 1px white;background-color: #007AFF;">
+			<view class="Indiscount" v-if="printType.type2 == 1" @click="changetype2" style="border-left: solid 1px white ;border-right: solid 1px white;background-color: #007AFF;color: white;">
 				<text>大折扣</text>
 			</view>
-			<view class="Indiscount"  v-else-if="printType.type2 == 0" @click="changetype2" style="border-left: solid 1px white ;border-right: solid 1px white;">
+			<view class="Indiscount"  v-else-if="printType.type2 == 0" @click="changetype2" style="background-color: #eee;border-left: solid 1px white ;border-right: solid 1px white;">
 				<text>大折扣</text>
 			</view>
 			
-			<view class="Indiscount" v-if="printType.type3 == 1" @click="changetype3" style="border-right: solid 1px white;background-color: #007AFF">
+			<view class="Indiscount" v-if="printType.type3 == 1" @click="changetype3" style="border-right: solid 1px white;background-color: #007AFF;color: white;">
 				<text>中折扣</text>
 			</view>
-			<view class="Indiscount" v-else-if="printType.type3 == 0" @click="changetype3" style="border-right: solid 1px white;">
+			<view class="Indiscount" v-else-if="printType.type3 == 0" @click="changetype3" style="background-color: #eee;border-right: solid 1px white;">
 				<text>中折扣</text>
 			</view>
 			
-			<view class="Indiscount" v-if="printType.type4 == 1" @click="changetype4" style="background-color: #007AFF;">
+			<view class="Indiscount" v-if="printType.type4 == 1" @click="changetype4" style="border-radius: 0 5px 5px 0;background-color: #007AFF;color: white;">
 				<text>小折扣</text>
 			</view>
-			<view class="Indiscount" v-else-if="printType.type4 == 0" @click="changetype4">
+			<view class="Indiscount" style="background-color: #eee;border-radius: 0 5px 5px 0;" v-else-if="printType.type4 == 0" @click="changetype4">
 				<text>小折扣</text>
 			</view>
 		</view>
@@ -977,12 +977,12 @@
 	}
 	
 	.container {
-		position: fixed;
 		height: 100%;
 		bottom: 0;
-		width: 100%;
 		background-size: cover;
 		background-position: center;
+		margin-right: 8px;
+		margin-left: 8px;
 	}
 	.change-price {
 		display: flex;
@@ -1024,6 +1024,7 @@
 		border-radius: 8px;
 		border: solid 1px;
 		background-color: #007AFF;
+		margin-bottom: 10px;
 	}
 	.unmeanprice {
 		display: flex;
@@ -1035,22 +1036,20 @@
 		display: flex;
 		flex-direction: row;
 		height: 45px;
-		margin-top: 3px;
-		border: solid 0.5px #4CD964;
+		border: solid 1px #aaa;
 	}
 	.Inshop {
 		display: flex;
 		flex: 4;
 		justify-content: center;
 		align-items: center;
-		background-color: #C0C0C0;
-		height: 45px;
+		// background-color: #eee;
 	}
 	.Inshop1 {
 		display: flex;
 		flex: 6;
 		align-items: center;
-		height: 45px;
+		background-color: white;
 	}
 	.discount {
 		margin-top: 15px;
@@ -1059,7 +1058,6 @@
 		justify-content: center;
 		height: 50px;
 		border-radius: 8px;
-		border: solid 1px;
 	}
 	.Indiscount {
 		display: flex;
