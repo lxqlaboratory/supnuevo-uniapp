@@ -1,1 +1,1 @@
-<view>1111111111</view>
+<view><wyb-loading class="vue-ref" vue-id="26099c50-1" data-ref="loading" bind:__l="__l"></wyb-loading><hans-tabber style="position:fixed;bottom:0;width:100%;left:0;right:0;" vue-id="26099c50-2" list="{{list}}" data-event-opts="{{[['^tabChange',[['tabChange']]]]}}" bind:tabChange="__e" bind:__l="__l"></hans-tabber></view>

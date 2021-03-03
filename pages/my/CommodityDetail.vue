@@ -25,7 +25,7 @@
 			<view class="fontstyle">
 				<text>商品比例:&nbsp;&nbsp;{{form.ratio}}</text>
 			</view>
-			<view class="" v-if="unionMemberType == 2" style="display: flex;flex-direction: row; justify-content: center;align-items: center;margin-top: 15px;">
+			<view class="" v-if="unionMemberType == 2" style="display: flex;flex-direction: row; align-items: center;margin-top: 15px;">
 				<view style="display: flex;" class="fontstyle">
 					<text>比例1：</text>
 				</view>

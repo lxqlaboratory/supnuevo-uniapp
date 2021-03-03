@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uniSwipeAction: function() {
-    return __webpack_require__.e(/*! import() | components/uni-swipe-action/uni-swipe-action */ "components/uni-swipe-action/uni-swipe-action").then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action/uni-swipe-action.vue */ 305))
+    return __webpack_require__.e(/*! import() | components/uni-swipe-action/uni-swipe-action */ "components/uni-swipe-action/uni-swipe-action").then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action/uni-swipe-action.vue */ 313))
   },
   uniSwipeActionItem: function() {
-    return Promise.all(/*! import() | components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-swipe-action-item/uni-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action-item/uni-swipe-action-item.vue */ 310))
+    return Promise.all(/*! import() | components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-swipe-action-item/uni-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action-item/uni-swipe-action-item.vue */ 318))
   }
 }
 var render = function() {
@@ -138,14 +138,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
-
-
 
 
 
@@ -322,32 +314,60 @@ var _login = __webpack_require__(/*! @/api/login.js */ 17); //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-var wkiwiSwipeAction = function wkiwiSwipeAction() {__webpack_require__.e(/*! require.ensure | components/wkiwi-swipe-action */ "components/wkiwi-swipe-action").then((function () {return resolve(__webpack_require__(/*! ../../components/wkiwi-swipe-action.vue */ 387));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var luPopupWrapper = function luPopupWrapper() {__webpack_require__.e(/*! require.ensure | components/lu-popup-wrapper/lu-popup-wrapper */ "components/lu-popup-wrapper/lu-popup-wrapper").then((function () {return resolve(__webpack_require__(/*! @/components/lu-popup-wrapper/lu-popup-wrapper.vue */ 329));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { onShow: function onShow() {this.getRelMerchant();console.log(this.merdate);}, components: { luPopupWrapper: luPopupWrapper, wkiwiSwipeAction: wkiwiSwipeAction }, data: function data() {return { type: "bottom", // left right top bottom center
+var wkiwiSwipeAction = function wkiwiSwipeAction() {__webpack_require__.e(/*! require.ensure | components/wkiwi-swipe-action */ "components/wkiwi-swipe-action").then((function () {return resolve(__webpack_require__(/*! ../../components/wkiwi-swipe-action.vue */ 402));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var luPopupWrapper = function luPopupWrapper() {__webpack_require__.e(/*! require.ensure | components/lu-popup-wrapper/lu-popup-wrapper */ "components/lu-popup-wrapper/lu-popup-wrapper").then((function () {return resolve(__webpack_require__(/*! @/components/lu-popup-wrapper/lu-popup-wrapper.vue */ 337));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { onShow: function onShow() {this.getRelMerchant();}, components: { luPopupWrapper: luPopupWrapper, wkiwiSwipeAction: wkiwiSwipeAction }, data: function data() {return { type: "bottom", // left right top bottom center
       transition: "slider", //none slider fade
-      backgroundColor: '#FFF', active: false, height: "100%", width: "100%", popupId: 1, maskShow: true, maskClick: true, modal_qr: false, merdate: [{}], username: '', password: '', wait: false, note: '' };}, methods: { fade: function fade() {this.width = "100%";this.height = "80%";this.transition = "fade";this.type = "bottom";this.show();var that = this;}, show: function show() {this.$refs.luPopupWrapper.show();}, close: function close() {this.$refs.luPopupWrapper.close();}, closeCallback: function closeCallback() {console.log("关闭后回调");}, addRelMerchant: function addRelMerchant() {var _this = this;if (this.username === '') {uni.showModal({ title: "提示", content: "请填写账号密码", showCancel: false });} else {(0, _login.addSupnuevoMerchantPriceOperRel)({ nickName: this.username, type: 0, note: this.note }).then(function (res) {var that = _this;console.log("第一个");console.log(res);var errMessage = res.errMassage;if (errMessage !== null && errMessage !== undefined && errMessage !== "") {uni.showModal({ title: "提示", content: errMessage, showCancel: false, success: function success(res) {if (res.confirm) {that.close();that.username = '';that.note = '';}} });} else {that.getRelMerchant();that.close();that.username = '';that.note = '';}});}}, getRelMerchant: function getRelMerchant() {var _this2 = this;(0, _login.getRelMerchantListOfMerchantMobile)({ type: 0 }).then(function (res) {var that = _this2;console.log("第二个");
+      backgroundColor: '#FFF', active: false, height: "100%", width: "100%", popupId: 1, maskShow: true, maskClick: true, modal_qr: false, merdate: [{}], username: '', password: '', wait: false, note: '', options: [{ text: '删除', style: { backgroundColor: '#dd524d' } }, { text: '联通', style: { backgroundColor: '#007aff' } }, { text: '断开', style: { backgroundColor: '#444' } }] };}, methods: { bindClick: function bindClick(index, e) {if (e.content.text == "联通") {this.updateMerchant(this.merdate[index].relId, 1);} else if (e.content.text == "断开") {this.updateMerchant(this.merdate[index].relId, 2);} else {this.updateMerchant(this.merdate[index].relId, 0);}}, fade: function fade() {this.width = "100%";this.height = "80%";this.transition = "fade";this.type = "bottom";this.show();var that = this;}, show: function show() {this.$refs.luPopupWrapper.show();}, close: function close() {this.$refs.luPopupWrapper.close();}, closeCallback: function closeCallback() {console.log("关闭后回调");}, addRelMerchant: function addRelMerchant() {var _this = this;if (this.username === '') {uni.showModal({ title: "提示", content: "请填写账号密码", showCancel: false });} else {(0, _login.addSupnuevoMerchantPriceOperRel)({ nickName: this.username,
+          type: 0,
+          note: this.note }).
+        then(function (res) {
+          var that = _this;
+          console.log("第一个");
+          console.log(res);
+          var errMessage = res.errMassage;
+          if (errMessage !== null && errMessage !== undefined && errMessage !== "") {
+            uni.showModal({
+              title: "提示",
+              content: errMessage,
+              showCancel: false,
+              success: function success(res) {
+                if (res.confirm) {
+                  that.close();
+                  that.username = '';
+                  that.note = '';
+                }
+              } });
+
+          } else
+          {
+            that.getRelMerchant();
+            that.close();
+            that.username = '';
+            that.note = '';
+          }
+        });
+      }
+    },
+    getRelMerchant: function getRelMerchant() {var _this2 = this;
+      (0, _login.getRelMerchantListOfMerchantMobile)({
+        type: 0 }).
+      then(function (res) {
+        var that = _this2;
+        console.log("第二个");
         console.log(res);
         var errMessage = res.errMassage;
         if (errMessage !== null && errMessage !== undefined && errMessage !== "")
         uni.showModal({
           title: "提示",
           content: errMessage,
-          showCancel: false
-          // success: function (res) {
-          //        if (res.confirm) {
-          //            that.close();
-          // 		that.username = '';
-          // 		that.note = '';
-          //        }
-          //    }
-        });else
+          showCancel: false,
+          success: function success(res) {
+            if (res.confirm) {
+              that.close();
+              that.username = '';
+              that.note = '';
+            }
+          } });else
+
         {
           if (res.ArrayList.length !== 0) {
             that.merdate = [{}];
@@ -363,28 +383,52 @@ var wkiwiSwipeAction = function wkiwiSwipeAction() {__webpack_require__.e(/*! re
               } else that.merdate[i].state = 1;
             }
             console.log(that.merdate);
-            // that.close();
-            // that.username = '';
-            // that.note = '';
+            that.close();
+            that.username = '';
+            that.note = '';
           } else
           {
             that.merdate = [{}];
             that.maskShow = false;
-            // that.close();
-            // that.username = '';
-            // that.note = '';
+            that.close();
+            that.username = '';
+            that.note = '';
             uni.showModal({
               title: "提示",
               content: "商户的相关商户为空",
-              showCancel: false
-              // success: function (res) {
-              //        if (res.confirm) {
-              //            that.close();
-              // 		that.username = '';
-              // 		that.note = '';
-              //        }
-              //    }
-            });
+              showCancel: false,
+              success: function success(res) {
+                if (res.confirm) {
+                  that.close();
+                  that.username = '';
+                  that.note = '';
+                }
+              } });
+
+          }
+        }
+        for (var i = 0; i < that.merdate.length; i++) {
+          that.merdate[i].options = [];
+          that.merdate[i].options[0] = {
+            text: '删除',
+            style: {
+              backgroundColor: '#dd524d' } };
+
+
+          if (that.merdate[i].merchantAgreeMark == 0) {
+            that.merdate[i].options[1] = {
+              text: '联通',
+              style: {
+                backgroundColor: '#007aff' } };
+
+
+          } else {
+            that.merdate[i].options[1] = {
+              text: '断开',
+              style: {
+                backgroundColor: '#444' } };
+
+
           }
         }
       });
@@ -405,67 +449,7 @@ var wkiwiSwipeAction = function wkiwiSwipeAction() {__webpack_require__.e(/*! re
 
         } else {
           console.log(123456);
-          (0, _login.getRelMerchantListOfMerchantMobile)({
-            type: 0 }).
-          then(function (res) {
-            var that = _this3;
-            console.log("第二个");
-            console.log(res);
-            var errMessage = res.errMassage;
-            if (errMessage !== null && errMessage !== undefined && errMessage !== "")
-            uni.showModal({
-              title: "提示",
-              content: errMessage,
-              showCancel: false
-              // success: function (res) {
-              //        if (res.confirm) {
-              //            that.close();
-              // 		that.username = '';
-              // 		that.note = '';
-              //        }
-              //    }
-            });else
-            {
-              if (res.ArrayList.length !== 0) {
-                that.merdate = [{}];
-                that.maskShow = true;
-                that.merdate = res.ArrayList;
-                for (var i = 0; i < that.merdate.length; i++) {
-                  that.merdate[i].state = 0;
-                  that.merdate[i].disabled = false;
-                  if (that.merdate[i].priceMerchantAgreeMark == 0)
-                  that.merdate[i].state = 0;else
-                  if (that.merdate[i].merchantAgreeMark == 0) {
-                    that.merdate[i].state = 0;
-                  } else that.merdate[i].state = 1;
-                }
-                console.log(that.merdate);
-                console.log(88);
-                // that.close();
-                // that.username = '';
-                // that.note = '';
-              } else
-              {
-                that.merdate = [{}];
-                that.maskShow = false;
-                // that.close();
-                // that.username = '';
-                // that.note = '';
-                uni.showModal({
-                  title: "提示",
-                  content: "商户的相关商户为空",
-                  showCancel: false
-                  // success: function (res) {
-                  //        if (res.confirm) {
-                  //            that.close();
-                  // 		that.username = '';
-                  // 		that.note = '';
-                  //        }
-                  //    }
-                });
-              }
-            }
-          });
+          _this3.getRelMerchant();
         }
       }).catch(function (err) {
         uni.showModal({

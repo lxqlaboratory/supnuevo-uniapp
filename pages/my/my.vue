@@ -39,7 +39,7 @@
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMyShop">
 						<view>我替他们改价</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="navigateRelMyShop">
 						<view>他们替我改价</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMyUnion">
@@ -66,7 +66,7 @@
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMyShop">
 						<view>我替他们改价</view>
 					</label>
-					<label class="uni-list-cell uni-list-cell-pd">
+					<label class="uni-list-cell uni-list-cell-pd" @click="navigateRelMyShop">
 						<view>他们替我改价</view>
 					</label>
 				</checkbox-group>
@@ -127,6 +127,11 @@
 			navigateMyShop(){
 				uni.navigateTo({
 					url: './MyShop'
+				})
+			},
+			navigateRelMyShop(){
+				uni.navigateTo({
+					url: './relMyShop'
 				})
 			},
 			fade: function() {

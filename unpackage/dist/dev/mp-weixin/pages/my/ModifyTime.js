@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 291))
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 299))
   },
   taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 298))
+    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306))
   }
 }
 var render = function() {
@@ -206,7 +206,7 @@ var _sibList = _interopRequireDefault(__webpack_require__(/*! @/components/sib-l
 //
 //
 //
-var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 291));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { goods: { codeNum: '请输入商品条码尾数' }, searchListFinal: [], modifyList: [] };}, components: { wybLoading: wybLoading }, onShow: function onShow() {this.unionId = getApp().globalData.unionId;this.unionMemberType = getApp().globalData.unionMemberType;}, methods: { changecode: function changecode(keyword) {var codeNum = keyword;this.goods.codeNum = codeNum;if (codeNum.length >= 4) this.queryGoodsCode(codeNum.toString());}, getSupnuevoBuyerUnionModifyPriceList: function getSupnuevoBuyerUnionModifyPriceList(commodityId) {var _this = this;(0, _MyInfor.getSupnuevoBuyerPriceModifyList)({ unionId: this.unionId, commodityId: commodityId }).then(function (res) {console.log(res);
+var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { goods: { codeNum: '请输入商品条码尾数' }, searchListFinal: [], modifyList: [] };}, components: { wybLoading: wybLoading }, onShow: function onShow() {this.unionId = getApp().globalData.unionId;this.unionMemberType = getApp().globalData.unionMemberType;}, methods: { changecode: function changecode(keyword) {var codeNum = keyword;this.goods.codeNum = codeNum;if (codeNum.length >= 4) this.queryGoodsCode(codeNum.toString());}, getSupnuevoBuyerUnionModifyPriceList: function getSupnuevoBuyerUnionModifyPriceList(commodityId) {var _this = this;(0, _MyInfor.getSupnuevoBuyerPriceModifyList)({ unionId: this.unionId, commodityId: commodityId }).then(function (res) {console.log(res);
         if (res.re === 1) {
           _this.modifyList = res.data;
           for (var i = 0; i < _this.modifyList.length; i++) {

@@ -133,6 +133,7 @@
 					getMerchantInitInfoMobile ().then(res => {
 						console.log(res)
 						getApp().globalData.root = res.data.root
+						 getApp().globalData.password = this.password
 						getApp().globalData.merchantId = res.data.merchantId
 						var errorMsg = res.message;
 						 if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
@@ -261,11 +262,11 @@
 						this.$refs.popup.open()
 					}					
 					}).catch(err => {
-					this.errorContent = '登录验证错误'
+					this.errorContent = '用户名或密码错误'
 					this.$refs.popup.open()
 					})
 				}).catch(err => {
-					this.errorContent = '登录验证错误'
+					this.errorContent = '用户名或密码错误'
 					this.$refs.popup.open()
 				})
 			}

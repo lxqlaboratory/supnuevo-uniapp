@@ -45,8 +45,8 @@
 			<view style="margin-top: 10px;width: 100%;display: flex;justify-content: center;align-items: center;">
 				<choose :imgList="imgList" v-if="imgList[0] === null || imgList[0] === undefined || imgList[0] === ''"></choose>
 			</view>
-			<view class="" style="border-top: solid #BEBEBE;margin-top: 10px;margin-bottom: 10px;">
-				<button type="primary" @click="updateSupnuevoBuyerUnion" style="margin-top: 10px;">保存修改</button>
+			<view  style="justify-content: center;align-items: center;margin-top: 10px;display: flex;margin-bottom: 10px;width: 100%;height: 60px;border-top: 2px solid #BEBEBE;">
+				<button  @click="updateSupnuevoBuyerUnion" style="height: 40px;width: 120px;line-height: 40px;background-color: white;color: #999;font-size: 16px;">保存修改</button>
 			</view>
 		</view>
 		

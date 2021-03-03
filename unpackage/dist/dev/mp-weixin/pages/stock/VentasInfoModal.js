@@ -90,7 +90,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  wybLoading: function() {
+    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 299))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -136,18 +140,71 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _stock = __webpack_require__(/*! @/api/stock.js */ 50); //
-//
-//
-//
-//
-//
-//
-var _default = { data: function data() {return { unionList: [] };
+
+
+var _stock = __webpack_require__(/*! @/api/stock.js */ 50);var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var hansTabber = function hansTabber() {__webpack_require__.e(/*! require.ensure | components/hans-tabbar/hans-tabbar */ "components/hans-tabbar/hans-tabbar").then((function () {return resolve(__webpack_require__(/*! ../../components/hans-tabbar/hans-tabbar.vue */ 395));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+{
+  data: function data() {
+    return {
+      unionList: [],
+      list: [{
+        "pagePath": "../pages/price/modifyPrice",
+        "iconPath": "../../static/image/tabBar/tab-cate.png",
+        "selectedIconPath": "../../static/image/tabBar/tab-cate-current.png",
+        "text": "改价" },
+
+      {
+        "pagePath": "../pages/sale/sale",
+        "iconPath": "../../static/image/tabBar/news.png",
+        "selectedIconPath": "../../static/image/tabBar/newsactive.png",
+        "text": "收银" },
+
+      {
+        "pagePath": "../pages/stock/stock",
+        "iconPath": "../../static/image/tabBar/news.png",
+        "selectedIconPath": "../../static/image/tabBar/newsactive.png",
+        "text": "进货" },
+
+      {
+        "pagePath": "../pages/my/my",
+        "iconPath": "../../static/image/tabBar/me.png",
+        "selectedIconPath": "../../static/image/tabBar/meactive.png",
+        "text": "我的" },
+
+      {
+        "pagePath": "../pages/notice/notice",
+        "iconPath": "../../static/image/tabBar/me.png",
+        "selectedIconPath": "../../static/image/tabBar/meactive.png",
+        "text": "公告" }] };
+
+
+
   },
+  components: {
+    hansTabber: hansTabber,
+    wybLoading: wybLoading },
+
   onShow: function onShow() {
     uni.setNavigationBarTitle({
       title: "已登录的供应商" });
+
+    var sessionId = getApp().globalData.vueSessionId;
+    var password = getApp().globalData.password;
+    var username = getApp().globalData.username;
+    (0, _stock.loginAfterOtherServerAuthed)({
+      loginName: username,
+      password: password,
+      motherServerSessionId: sessionId }).
+    then(function (res) {
+      console.log(res);
+      (0, _stock.getAllVentasInfoFormNew)().then(function (res) {
+        console.log(res);
+      });
+    });
 
 
   },

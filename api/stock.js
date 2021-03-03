@@ -7,3 +7,19 @@ export function getSupnuevoBuyerUnionList(data) {
 		data: data
 	})
 }
+
+export function loginAfterOtherServerAuthed(data) {
+	return request.request({
+		url: '/auth/loginAfterOtherServerAuthed',
+		method: 'POST',
+		data: data
+	})
+}
+
+export function getAllVentasInfoFormNew(data) {
+	return request.request({
+		url: '/sale/getAllVentasInfoFormNew',
+		method: 'POST',
+		data: data
+	})
+}

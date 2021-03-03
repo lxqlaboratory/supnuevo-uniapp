@@ -45,15 +45,15 @@
 		<view class="priceinput">
 			<taogewan-combox-remote class="input1" :placeholder="goods.codeNum"  emptyTips=" " :candidates="searchListFinal" @input="changecode" @select="onCodigoSelect"/>
 			<!-- <input class="input1" type="text" :value="goods.codeNum" placeholder="请输入商品条码尾数" placeholder-style="color:#aaa;" @change="changecode"/> -->
-			<button type="primary" class="priceButton" @click="startCamera" style="background-color: #3D4145;border-radius: 8px;">扫码</button>
 			<button type="primary" class="priceButton" @click="selectNum" style="background-color: #3D4145;border-radius: 8px;">查询</button>
+			<button type="primary" class="priceButton" @click="startCamera" style="background-color: #3D4145;border-radius: 8px;">扫码</button>
 		</view>
 		
 		<view class="" style="margin-top: 10px;justify-content: center;align-items: center;display:flex;" v-if="unionMemberType == 2">
 			<button type="primary" size="mini" style="border-radius: 10px;background-color: #007AFF;" @click="setAllCommodityIsAlive">全部置为可用</button>
 		</view>
 		
-		<view class="list" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" v-if="unionMemberType == 2&&goodsList.length>=1900" style="margin-top: 10px;">
+		<view class="list" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" v-if="unionMemberType == 2&&goodsList.length>=1900" style="margin-top: 10px;border-top: 1px solid #ddd;">
 			<sib-list ref="sibList" @isRefresh='isRefresh' @scrolltolowerFn="scrolltolowerFn">
 				<block class="" slot="sibScrollList">
 					<!-- <scroll-view scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll"  > -->
@@ -77,7 +77,7 @@
 		</view>
 		
 		
-		<scroll-view scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll"  v-if="unionMemberType == 2&&goodsList.length<1900" :scroll-into-view="flag">
+		<scroll-view scroll-y="true" style="height: 435px;border-top: 1px solid #ddd;margin-top: 10px;" @scroll="scroll"  v-if="unionMemberType == 2&&goodsList.length<1900" :scroll-into-view="flag">
 			<view class="Inrow1" v-for="(item,index) in goodsList" :key="index" @click="checkAlive(item.isAlive,item.commodityId)"  :id='"text"+index'>
 				<view class="" style="flex: 8;">
 					<view class="" style="margin-left: 10px;">
@@ -96,7 +96,7 @@
 				
 		
 		
-		<scroll-view  scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType != 2&&goodsList.length<1900" :scroll-into-view="flag">
+		<scroll-view  scroll-y="true" style="height: 435px;border-top: 1px solid #ddd;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType != 2&&goodsList.length<1900" :scroll-into-view="flag">
 			<view class="Inrow1" v-for="(item,index) in goodsList" :key="index" :id='"text"+index'>
 				<view class="" style="flex: 8;">
 					<view class="" style="margin-left: 10px;">
@@ -113,7 +113,7 @@
 			</view>
 		</scroll-view>
 		
-		<view class="list" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" v-if="unionMemberType != 2&&goodsList.length>=1900" style="margin-top: 10px;">
+		<view class="list" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" v-if="unionMemberType != 2&&goodsList.length>=1900" style="margin-top: 10px;border-top: 1px solid #ddd;">
 			<sib-list ref="sibList" @isRefresh='isRefresh' @scrolltolowerFn="scrolltolowerFn">
 				<block class="" slot="sibScrollList">
 					<!-- <scroll-view  scroll-y="true" style="height: 435px;border-top: 1px solid #1CBBB4;margin-top: 10px;" @scroll="scroll" v-if="unionMemberType != 2&&goodsList.length<1900" :scroll-into-view="flag"> -->
@@ -577,7 +577,7 @@
 		flex-direction: row; 
 		align-items: center;
 		height: 70px;
-		border-bottom: 1px solid #333333;
+		border-bottom: 1px solid #ddd;
 	}
 	.scroll-Y{
 		height: 155px;

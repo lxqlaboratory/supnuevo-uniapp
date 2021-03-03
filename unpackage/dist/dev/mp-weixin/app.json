@@ -32,7 +32,8 @@
     "pages/my/MySuggestion",
     "pages/my/MyShop",
     "pages/stock/Unionlist",
-    "pages/sale/PriceModal"
+    "pages/sale/PriceModal",
+    "pages/my/relMyShop"
   ],
   "subPackages": [],
   "window": {

@@ -285,14 +285,19 @@ var _login = __webpack_require__(/*! @/api/login.js */ 17); //
 //
 //
 //
-var ayQrcode = function ayQrcode() {Promise.all(/*! require.ensure | components/ay-qrcode/ay-qrcode */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/ay-qrcode/ay-qrcode")]).then((function () {return resolve(__webpack_require__(/*! @/components/ay-qrcode/ay-qrcode.vue */ 320));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var luPopupWrapper = function luPopupWrapper() {__webpack_require__.e(/*! require.ensure | components/lu-popup-wrapper/lu-popup-wrapper */ "components/lu-popup-wrapper/lu-popup-wrapper").then((function () {return resolve(__webpack_require__(/*! @/components/lu-popup-wrapper/lu-popup-wrapper.vue */ 329));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { ayQrcode: ayQrcode, luPopupWrapper: luPopupWrapper }, data: function data() {return { unionMemberType: '', type: "bottom", // left right top bottom center
+var ayQrcode = function ayQrcode() {Promise.all(/*! require.ensure | components/ay-qrcode/ay-qrcode */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/ay-qrcode/ay-qrcode")]).then((function () {return resolve(__webpack_require__(/*! @/components/ay-qrcode/ay-qrcode.vue */ 328));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var luPopupWrapper = function luPopupWrapper() {__webpack_require__.e(/*! require.ensure | components/lu-popup-wrapper/lu-popup-wrapper */ "components/lu-popup-wrapper/lu-popup-wrapper").then((function () {return resolve(__webpack_require__(/*! @/components/lu-popup-wrapper/lu-popup-wrapper.vue */ 337));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { ayQrcode: ayQrcode, luPopupWrapper: luPopupWrapper }, data: function data() {return { unionMemberType: '', type: "bottom", // left right top bottom center
       transition: "slider", //none slider fade
       backgroundColor: '#FFF', active: false, height: "100%", width: "100%", popupId: 1, maskShow: true, maskClick: true, modal_qr: false, url: '', // 要生成的二维码值
-      scanId: '' };}, onLoad: function onLoad() {this.unionMemberType = getApp().globalData.unionMemberType;this.merchantId = getApp().globalData.merchantId;this.url = this.merchantId;}, methods: { navigateMyUnion: function navigateMyUnion() {uni.navigateTo({ url: './myUnion' });}, navigatemyinfo: function navigatemyinfo() {uni.navigateTo({ url: './Myinfo' });}, navigateMySuggestion: function navigateMySuggestion() {uni.navigateTo({ url: './MySuggestion' });}, navigateMyShop: function navigateMyShop() {uni.navigateTo({ url: './MyShop' });}, fade: function fade() {this.width = "100%";this.height = "80%";this.transition = "fade";this.type = "bottom";this.show();var that = this;that.showQrcode(); //一加载生成二维码
+      scanId: '' };}, onLoad: function onLoad() {this.unionMemberType = getApp().globalData.unionMemberType;this.merchantId = getApp().globalData.merchantId;this.url = this.merchantId;}, methods: { navigateMyUnion: function navigateMyUnion() {uni.navigateTo({ url: './myUnion' });}, navigatemyinfo: function navigatemyinfo() {uni.navigateTo({ url: './Myinfo' });}, navigateMySuggestion: function navigateMySuggestion() {uni.navigateTo({ url: './MySuggestion' });}, navigateMyShop: function navigateMyShop() {uni.navigateTo({ url: './MyShop' });}, navigateRelMyShop: function navigateRelMyShop() {uni.navigateTo({ url: './relMyShop' });}, fade: function fade() {this.width = "100%";this.height = "80%";this.transition = "fade";this.type = "bottom";this.show();var that = this;that.showQrcode(); //一加载生成二维码
     }, show: function show() {this.$refs.luPopupWrapper.show();}, close: function close() {this.$refs.luPopupWrapper.close();}, closeCallback: function closeCallback() {console.log("关闭后回调");}, showQrcode: function showQrcode() {var _this = this;this.modal_qr = true; // uni.showLoading()
       setTimeout(function () {// uni.hideLoading()
-        _this.$refs.qrcode.crtQrCode();}, 50);}, //传入组件的方法
-    hideQrcode: function hideQrcode() {this.modal_qr = false;}, startCamera: function startCamera() {
+        _this.$refs.qrcode.crtQrCode();}, 50);
+    },
+    //传入组件的方法
+    hideQrcode: function hideQrcode() {
+      this.modal_qr = false;
+    },
+    startCamera: function startCamera() {
       var that = this;
       uni.scanCode({
         success: function success(res) {

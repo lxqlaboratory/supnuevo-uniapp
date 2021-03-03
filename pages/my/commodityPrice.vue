@@ -14,7 +14,7 @@
 					<view class="" style="display: flex;" @click="navigatorCommodity(item.taxId,item.taxName,item.ratio)">
 						<text>建议价 - </text>
 					</view>
-					<view class="" style="display: flex;">
+					<view class="" style="display: flex;margin-left: 5px;">
 						<input type="text" v-model="item.ratio" style="width: 27px;"/>%
 					</view>
 					<view class="" style="display: flex;margin-left: 5px;">

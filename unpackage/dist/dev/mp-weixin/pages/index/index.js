@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uniPopup: function() {
-    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 282))
+    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 290))
   }
 }
 var render = function() {
@@ -274,6 +274,7 @@ var _default = { data: function data() {return { loginName: '', password: '', er
         (0, _login.getMerchantInitInfoMobile)().then(function (res) {
           console.log(res);
           getApp().globalData.root = res.data.root;
+          getApp().globalData.password = _this.password;
           getApp().globalData.merchantId = res.data.merchantId;
           var errorMsg = res.message;
           if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
@@ -402,11 +403,11 @@ var _default = { data: function data() {return { loginName: '', password: '', er
             _this.$refs.popup.open();
           }
         }).catch(function (err) {
-          _this.errorContent = '登录验证错误';
+          _this.errorContent = '用户名或密码错误';
           _this.$refs.popup.open();
         });
       }).catch(function (err) {
-        _this.errorContent = '登录验证错误';
+        _this.errorContent = '用户名或密码错误';
         _this.$refs.popup.open();
       });
     } } };exports.default = _default;

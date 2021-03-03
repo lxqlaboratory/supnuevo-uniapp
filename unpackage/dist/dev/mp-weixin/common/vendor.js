@@ -904,7 +904,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7905,7 +7905,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7926,14 +7926,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8018,7 +8018,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9412,7 +9412,7 @@ function _isPromise(obj) {
 
 /***/ }),
 
-/***/ 287:
+/***/ 295:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/popup.js ***!
   \************************************************************/
@@ -9420,7 +9420,7 @@ function _isPromise(obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 288));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 296));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -9447,7 +9447,7 @@ var config = {
 
 /***/ }),
 
-/***/ 288:
+/***/ 296:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-popup/message.js ***!
   \**************************************************************/
@@ -9509,7 +9509,122 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 315:
+/***/ 32:
+/*!********************************************!*\
+  !*** D:/vue/supnuevo-uniapp/api/change.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.getSupnuevoBuyerCommodityPriceFormListOfGroupMobile = getSupnuevoBuyerCommodityPriceFormListOfGroupMobile;exports.updateSupnuevoBuyerCommodityPriceGroupMobile = updateSupnuevoBuyerCommodityPriceGroupMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;exports.changeSupnuevoCommonCommodityImage = changeSupnuevoCommonCommodityImage;exports.deleteSupnuevoCommonCommodityImage = deleteSupnuevoCommonCommodityImage;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+function getQueryDataListByInputStringMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getQueryDataListByInputStringMobile',
+    method: 'POST',
+    data: data });
+
+}
+function getSupnuevoBuyerPriceFormByCodigoMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoBuyerPriceFormByCodigoMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function saveOrUpdateSupnuevoBuyerCommodityPriceMobile(data) {
+  return _request.default.request({
+    url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoBuyerCommodityPriceFormListOfGroupMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoBuyerCommodityPriceFormListOfGroupMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function updateSupnuevoBuyerCommodityPriceGroupMobile(data) {
+  return _request.default.request({
+    url: '/commodity/updateSupnuevoBuyerCommodityPriceGroupMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile(data) {
+  return _request.default.request({
+    url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoCommodityTaxInfoListMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoCommodityTaxInfoListMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function setCalculationStorageMobile(data) {
+  return _request.default.request({
+    url: '/commodity/setCalculationStorageMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function getSupnuevoScaleInfoListMobile(data) {
+  return _request.default.request({
+    url: '/commodity/getSupnuevoScaleInfoListMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
+  return _request.default.request({
+    url: '/commodity/saveOrUpdateSupnuevoCommonCommodityMobile',
+    method: 'POST',
+    data: data });
+
+}
+
+function uploadAttachData(data) {
+  return _request.default.request({
+    url: '/comm/uploadAttachData',
+    method: 'POST',
+    data: data });
+
+}
+
+function changeSupnuevoCommonCommodityImage(data) {
+  return _request.default.request({
+    url: '/commodity/changeSupnuevoCommonCommodityImage',
+    method: 'POST',
+    data: data });
+
+}
+
+function deleteSupnuevoCommonCommodityImage(data) {
+  return _request.default.request({
+    url: '/commodity/deleteSupnuevoCommonCommodityImage',
+    method: 'POST',
+    data: data });
+
+}
+
+/***/ }),
+
+/***/ 323:
 /*!************************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-swipe-action-item/mpwxs.js ***!
   \************************************************************************/
@@ -9635,122 +9750,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 32:
-/*!********************************************!*\
-  !*** D:/vue/supnuevo-uniapp/api/change.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getQueryDataListByInputStringMobile = getQueryDataListByInputStringMobile;exports.getSupnuevoBuyerPriceFormByCodigoMobile = getSupnuevoBuyerPriceFormByCodigoMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceMobile = saveOrUpdateSupnuevoBuyerCommodityPriceMobile;exports.getSupnuevoBuyerCommodityPriceFormListOfGroupMobile = getSupnuevoBuyerCommodityPriceFormListOfGroupMobile;exports.updateSupnuevoBuyerCommodityPriceGroupMobile = updateSupnuevoBuyerCommodityPriceGroupMobile;exports.saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile = saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile;exports.getSupnuevoCommodityTaxInfoListMobile = getSupnuevoCommodityTaxInfoListMobile;exports.setCalculationStorageMobile = setCalculationStorageMobile;exports.getSupnuevoScaleInfoListMobile = getSupnuevoScaleInfoListMobile;exports.saveOrUpdateSupnuevoCommonCommodityMobile = saveOrUpdateSupnuevoCommonCommodityMobile;exports.uploadAttachData = uploadAttachData;exports.changeSupnuevoCommonCommodityImage = changeSupnuevoCommonCommodityImage;exports.deleteSupnuevoCommonCommodityImage = deleteSupnuevoCommonCommodityImage;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-function getQueryDataListByInputStringMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getQueryDataListByInputStringMobile',
-    method: 'POST',
-    data: data });
-
-}
-function getSupnuevoBuyerPriceFormByCodigoMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getSupnuevoBuyerPriceFormByCodigoMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function saveOrUpdateSupnuevoBuyerCommodityPriceMobile(data) {
-  return _request.default.request({
-    url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoBuyerCommodityPriceFormListOfGroupMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getSupnuevoBuyerCommodityPriceFormListOfGroupMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function updateSupnuevoBuyerCommodityPriceGroupMobile(data) {
-  return _request.default.request({
-    url: '/commodity/updateSupnuevoBuyerCommodityPriceGroupMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile(data) {
-  return _request.default.request({
-    url: '/commodity/saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoCommodityTaxInfoListMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getSupnuevoCommodityTaxInfoListMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function setCalculationStorageMobile(data) {
-  return _request.default.request({
-    url: '/commodity/setCalculationStorageMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function getSupnuevoScaleInfoListMobile(data) {
-  return _request.default.request({
-    url: '/commodity/getSupnuevoScaleInfoListMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function saveOrUpdateSupnuevoCommonCommodityMobile(data) {
-  return _request.default.request({
-    url: '/commodity/saveOrUpdateSupnuevoCommonCommodityMobile',
-    method: 'POST',
-    data: data });
-
-}
-
-function uploadAttachData(data) {
-  return _request.default.request({
-    url: '/comm/uploadAttachData',
-    method: 'POST',
-    data: data });
-
-}
-
-function changeSupnuevoCommonCommodityImage(data) {
-  return _request.default.request({
-    url: '/commodity/changeSupnuevoCommonCommodityImage',
-    method: 'POST',
-    data: data });
-
-}
-
-function deleteSupnuevoCommonCommodityImage(data) {
-  return _request.default.request({
-    url: '/commodity/deleteSupnuevoCommonCommodityImage',
-    method: 'POST',
-    data: data });
-
-}
-
-/***/ }),
-
-/***/ 325:
+/***/ 333:
 /*!****************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/ay-qrcode/qrcode_wx.js ***!
   \****************************************************************/
@@ -10562,7 +10562,7 @@ function deleteSupnuevoCommonCommodityImage(data) {
 
 /***/ }),
 
-/***/ 326:
+/***/ 334:
 /*!*******************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/ay-qrcode/weapp-qrcode.js ***!
   \*******************************************************************/
@@ -10996,7 +10996,7 @@ module.exports = QRCode;
 
 /***/ }),
 
-/***/ 355:
+/***/ 363:
 /*!**************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-calendar/util.js ***!
   \**************************************************************/
@@ -11004,7 +11004,7 @@ module.exports = QRCode;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 356));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 364));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
 
 Calendar = /*#__PURE__*/function () {
   function Calendar()
@@ -11359,7 +11359,7 @@ Calendar;exports.default = _default;
 
 /***/ }),
 
-/***/ 356:
+/***/ 364:
 /*!******************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-calendar/calendar.js ***!
   \******************************************************************/
@@ -11963,7 +11963,7 @@ function saveCommoditySaleMobile(data) {
 
 /***/ }),
 
-/***/ 413:
+/***/ 428:
 /*!************************************************************!*\
   !*** D:/vue/supnuevo-uniapp/components/uni-icons/icons.js ***!
   \************************************************************/
@@ -12113,11 +12113,27 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getSupnuevoBuyerUnionList = getSupnuevoBuyerUnionList;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getSupnuevoBuyerUnionList = getSupnuevoBuyerUnionList;exports.loginAfterOtherServerAuthed = loginAfterOtherServerAuthed;exports.getAllVentasInfoFormNew = getAllVentasInfoFormNew;var _request = _interopRequireDefault(__webpack_require__(/*! @/common/request.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 function getSupnuevoBuyerUnionList(data) {
   return _request.default.request({
     url: '/union/getSupnuevoBuyerUnionList',
+    method: 'POST',
+    data: data });
+
+}
+
+function loginAfterOtherServerAuthed(data) {
+  return _request.default.request({
+    url: '/auth/loginAfterOtherServerAuthed',
+    method: 'POST',
+    data: data });
+
+}
+
+function getAllVentasInfoFormNew(data) {
+  return _request.default.request({
+    url: '/sale/getAllVentasInfoFormNew',
     method: 'POST',
     data: data });
 

@@ -11,33 +11,25 @@
 		<!-- <view class="message-list" v-if="maskShow">
 		  <wkiwi-swipe-action :options="options" :messagesList="merdate" :key="merdate" :updateMerchant="updateMerchant" :getRelMerchantgetRelMerchant="getRelMerchant"></wkiwi-swipe-action>
 		</view> -->
-		<view>
+		<view v-if="maskShow">
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scrolltoupper="upper" @scrolltolower="lower"
 			@scroll="scroll">
 				<uni-swipe-action>
-					<uni-swipe-action-item v-for="(it, index) in merdate" :key="index">
-						<view class="item-middle">
-							<text class="title">用户名：{{it.nickName}}</text>
-							<text class="title">备注：{{it.note}}</text>
-						</view>
-						<view class="item-right">
-							<view class="mark" v-if="it.state == 1" style="color: green;">已联通</view>
-							<view class="mark" v-else style="color: red;">未联通</view>
-							<view class="time" v-if="it.priceMerchantDeleteMark == 1">对方已删除</view>
-							<view class="time" v-else-if="it.priceMerchantAgreeMark == 0">对方未联通</view>
-							<view class="time" v-else-if="it.merchantAgreeMark == 0">您未联通</view>
-							<view class="time" v-else ></view>
-						</view>
-						<template v-slot:right>
-							<view class="slot-button1">
-								<text class="slot-button-text" @click="goodcountsmin(index)">删除</text>
+					<uni-swipe-action-item v-for="(it, index) in merdate" :key="index" :right-options="it.options"  @click="bindClick(index,$event)">
+						<view style="flex-direction: row;display: flex;width: 100%;border-bottom: 1px solid #9999;">
+							<view class="item-middle">
+								<text class="title">用户名：{{it.nickName}}</text>
+								<text class="title">备注：{{it.note}}</text>
 							</view>
-						</template>
-						<template v-slot:right>
-							<view class="slot-button2">
-								<text class="slot-button-text" @click="goodcountsadd(index)">联通</text>
+							<view class="item-right">
+								<view class="mark" v-if="it.state == 1" style="color: green;">已联通</view>
+								<view class="mark" v-else style="color: red;">未联通</view>
+								<view class="time" v-if="it.priceMerchantDeleteMark == 1">对方已删除</view>
+								<view class="time" v-else-if="it.priceMerchantAgreeMark == 0">对方未联通</view>
+								<view class="time" v-else-if="it.merchantAgreeMark == 0">您未联通</view>
+								<view class="time" v-else ></view>
 							</view>
-						</template>
+						</view>
 					</uni-swipe-action-item>
 				</uni-swipe-action>
 			</scroll-view>
@@ -105,7 +97,6 @@
 	export default {
 		onShow() {
 			this.getRelMerchant();
-			console.log(this.merdate);
 		},
 		components: {
 			luPopupWrapper,
@@ -128,9 +119,38 @@
 				password: '',
 				wait: false,
 				note: '',
+				options: [
+					{
+						text: '删除',
+						style: {
+							backgroundColor: '#dd524d'
+						}
+					},
+					{
+						text: '联通',
+						style: {
+							backgroundColor: '#007aff'
+						}
+					},
+					{
+						text: '断开',
+						style: {
+							backgroundColor: '#444'
+						}
+					},
+				],
 			}
 		},
 		methods: {
+			bindClick(index,e) {
+				if (e.content.text == "联通"){
+					this.updateMerchant(this.merdate[index].relId,1);
+				}else if (e.content.text == "断开"){
+					this.updateMerchant(this.merdate[index].relId,2);
+				}else {
+					this.updateMerchant(this.merdate[index].relId,0);
+				}
+			},
 			fade: function() {
 				this.width ="100%";
 				this.height ="80%";
@@ -201,13 +221,13 @@
 							title: "提示",
 							content: errMessage,
 							showCancel: false,
-							 // success: function (res) {
-							 //        if (res.confirm) {
-							 //            that.close();
-								// 		that.username = '';
-								// 		that.note = '';
-							 //        }
-							 //    }
+							 success: function (res) {
+							        if (res.confirm) {
+							            that.close();
+										that.username = '';
+										that.note = '';
+							        }
+							    }
 						})
 					else {
 						if (res.ArrayList.length !== 0) {
@@ -224,29 +244,53 @@
 								} else that.merdate[i].state = 1;
 							}
 							console.log(that.merdate)
-							// that.close();
-							// that.username = '';
-							// that.note = '';
+							that.close();
+							that.username = '';
+							that.note = '';
 					}
 					else {
 						that.merdate = [{}];
 						that.maskShow = false;
-						// that.close();
-						// that.username = '';
-						// that.note = '';
+						that.close();
+						that.username = '';
+						that.note = '';
 						uni.showModal({
 							title: "提示",
 							content: "商户的相关商户为空",
 							showCancel: false,
-							 // success: function (res) {
-							 //        if (res.confirm) {
-							 //            that.close();
-								// 		that.username = '';
-								// 		that.note = '';
-							 //        }
-							 //    }
+							 success: function (res) {
+							        if (res.confirm) {
+							            that.close();
+										that.username = '';
+										that.note = '';
+							        }
+							    }
 						})
 					}
+					}
+					for(var i = 0; i < that.merdate.length; i++){
+						that.merdate[i].options = [];
+						that.merdate[i].options[0] = {
+								text: '删除',
+								style: {
+									backgroundColor: '#dd524d'
+								}
+							}
+						if (that.merdate[i].merchantAgreeMark == 0){
+							that.merdate[i].options[1] = {
+									text: '联通',
+									style: {
+										backgroundColor: '#007aff'
+									}
+								}
+						}else {
+							that.merdate[i].options[1] = {
+									text: '断开',
+									style: {
+										backgroundColor: '#444'
+									}
+								}
+						}
 					}
 				})
 			},
@@ -266,67 +310,7 @@
 						})
 					}else {
 						console.log(123456)
-						getRelMerchantListOfMerchantMobile({
-							type:0
-						}).then(res => {
-							var that = this;
-							console.log("第二个")
-							console.log(res)
-							var errMessage = res.errMassage;
-							if (errMessage !== null && errMessage !== undefined && errMessage !== "")
-								uni.showModal({
-									title: "提示",
-									content: errMessage,
-									showCancel: false,
-									 // success: function (res) {
-									 //        if (res.confirm) {
-									 //            that.close();
-										// 		that.username = '';
-										// 		that.note = '';
-									 //        }
-									 //    }
-								})
-							else {
-								if (res.ArrayList.length !== 0) {
-									that.merdate = [{}];
-									that.maskShow = true;
-									that.merdate = res.ArrayList;
-									for (var i = 0; i < that.merdate.length; i++){
-										that.merdate[i].state = 0;
-										that.merdate[i].disabled = false
-										if(that.merdate[i].priceMerchantAgreeMark == 0)
-											that.merdate[i].state = 0;
-										else if (that.merdate[i].merchantAgreeMark == 0){
-											that.merdate[i].state = 0;
-										} else that.merdate[i].state = 1;
-									}
-									console.log(that.merdate)
-									console.log(88)
-									// that.close();
-									// that.username = '';
-									// that.note = '';
-							}
-							else {
-								that.merdate = [{}];
-								that.maskShow = false;
-								// that.close();
-								// that.username = '';
-								// that.note = '';
-								uni.showModal({
-									title: "提示",
-									content: "商户的相关商户为空",
-									showCancel: false,
-									 // success: function (res) {
-									 //        if (res.confirm) {
-									 //            that.close();
-										// 		that.username = '';
-										// 		that.note = '';
-									 //        }
-									 //    }
-								})
-							}
-							}
-						})
+						this.getRelMerchant();
 					} 
 				}).catch(err => {
 						uni.showModal({
@@ -391,12 +375,12 @@
 	}
 	.item-middle {
 		display: flex;
-	  flex: 1;
+		flex: 1;
 		flex-wrap: wrap;
 		flex-direction: row;
 		justify-content: flex-start;
-	  margin-left: 15upx;
-	  overflow: hidden;
+		margin-left: 15upx;
+		overflow: hidden;
 	}
 	.title {
 			width: 100%;

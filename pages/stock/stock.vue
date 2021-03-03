@@ -24,7 +24,6 @@
 			if(this.unionId === '' || this.unionId === null || this.unionId === undefined){
 				this.getSupnuevoBuyerUnionList();
 			}
-			
 		},
 		methods:{
 			getSupnuevoBuyerUnionList(){

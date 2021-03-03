@@ -154,7 +154,6 @@ var _default = { data: function data() {return { unionId: '', unionList: [] };},
     if (this.unionId === '' || this.unionId === null || this.unionId === undefined) {
       this.getSupnuevoBuyerUnionList();
     }
-
   },
   methods: {
     getSupnuevoBuyerUnionList: function getSupnuevoBuyerUnionList() {var _this = this;
