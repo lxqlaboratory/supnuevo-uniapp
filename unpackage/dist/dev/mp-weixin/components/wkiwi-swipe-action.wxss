@@ -123,8 +123,7 @@
 .item .item-left .image {
   width: 100rpx;
   height: 100rpx;
-  -webkit-border-radius: 50rpx;
-          border-radius: 50rpx;
+  border-radius: 50rpx;
   background-color: #eee;
 }
 .item .item-left .avator {
@@ -133,8 +132,7 @@
   text-align: center;
   line-height: 100rpx;
   background: #4191ea;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   overflow: hidden;
 }
 .item .item-left .avator .iconfont {

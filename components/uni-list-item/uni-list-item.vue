@@ -1,32 +1,16 @@
 <template>
-	<!-- #ifdef APP-NVUE -->
-	<cell>
-	<!-- #endif -->
-	<view :class="disabled ? 'uni-list-item--disabled' : ''" :hover-class="disabled || showSwitch ? '' : 'uni-list-item--hover'"
+	<view 
 	 class="uni-list-item" @click="onClick">
-		<view class="uni-list-item__container" :class="{'uni-list-item--first':isFirstChild}">
-			<view v-if="thumb" class="uni-list-item__icon">
-				<image :src="thumb" class="uni-list-item__icon-img" />
-			</view>
-			<view v-else-if="showExtraIcon" class="uni-list-item__icon">
-				<uni-icons :color="extraIcon.color" :size="extraIcon.size" :type="extraIcon.type" class="uni-icon-wrapper" />
-			</view>
+		<view class="uni-list-item__container" :class="{'uni-list-item--first':false}">
 			<view class="uni-list-item__content">
-				<slot />
 				<text class="uni-list-item__content-title">{{ title }}</text>
-				<text v-if="note" class="uni-list-item__content-note">{{ note }}</text>
+				<!-- <text v-if="note" class="uni-list-item__content-note">{{ note }}</text> -->
 			</view>
-			<view v-if="showBadge || showArrow || showSwitch" class="uni-list-item__extra">
-				<uni-badge v-if="showBadge" :type="badgeType" :text="badgeText" />
-				<switch v-if="showSwitch" :disabled="disabled" :checked="switchChecked" @change="onSwitchChange" />
+			<view class="uni-list-item__extra">
 				<image src="../../static/image/images/delete.png" mode="" style="width: 26px;height: 26px;" @click="deleteSubCodigo(mapId)"></image>
-				<!-- <uni-icons v-if="showArrow" :size="20" class="uni-icon-wrapper" color="#bbb" type="arrowright" /> -->
 			</view>
 		</view>
 	</view>
-	<!-- #ifdef APP-NVUE -->
-	</cell>
-	<!-- #endif -->
 </template>
 
 <script>
@@ -168,39 +152,26 @@
 	}
 </script>
 
-<style lang="scss" scoped>
-	@import '~@/uni.scss';
-
-	$list-item-pd: $uni-spacing-col-lg $uni-spacing-row-lg;
+<style>
+	
 
 	.uni-list-item {
-		font-size: $uni-font-size-lg;
 		position: relative;
 		flex-direction: column;
 		justify-content: space-between;
-		padding-left: $uni-spacing-row-lg;
-	}
-
-	.uni-list-item--disabled {
-		opacity: 0.3;
-	}
-
-	.uni-list-item--hover {
-		background-color: $uni-bg-color-hover;
+		padding-left: 10px;
 	}
 
 	.uni-list-item__container {
-		/* #ifndef APP-NVUE */
 		display: flex;
-		/* #endif */
 		flex-direction: row;
-		padding: $list-item-pd;
+		padding: 10px;
 		padding-left: 0;
 		flex: 1;
 		position: relative;
 		justify-content: space-between;
 		align-items: center;
-		border-top-color: $uni-border-color;
+		border-top-color: #c8c7cc;
 		border-top-style: solid;
 		border-top-width: 1px;
 	}
@@ -210,9 +181,7 @@
 	}
 
 	.uni-list-item__content {
-		/* #ifndef APP-NVUE */
 		display: flex;
-		/* #endif */
 		flex: 1;
 		overflow: hidden;
 		flex-direction: column;
@@ -221,23 +190,15 @@
 	}
 
 	.uni-list-item__content-title {
-		font-size: $uni-font-size-base;
+		font-size: 28rpx;
 		color: #3b4144;
 		overflow: hidden;
 	}
 
-	.uni-list-item__content-note {
-		margin-top: 6rpx;
-		color: $uni-text-color-grey;
-		font-size: $uni-font-size-sm;
-		overflow: hidden;
-	}
 
 	.uni-list-item__extra {
-		// width: 25%;
-		/* #ifndef APP-NVUE */
+		width: 25%;
 		display: flex;
-		/* #endif */
 		flex-direction: row;
 		justify-content: flex-end;
 		align-items: center;
@@ -250,8 +211,4 @@
 		align-items: center;
 	}
 
-	.uni-list-item__icon-img {
-		height: $uni-img-size-base;
-		width: $uni-img-size-base;
-	}
 </style>

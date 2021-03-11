@@ -9,7 +9,7 @@
 					<image :src="imageuri" mode="" style="height: 100px;width: 100px;"></image>
 				</view>
 				<view class="noorderno" v-else>
-					<image src="../../static/image/images/timg.jpg" mode="" style="height: 100px;width: 100px;"></image>
+					<image src="../../static/image/images/timg.png" mode="" style="height: 100px;width: 100px;"></image>
 				</view>
 			</view>
 			<view class="Infororder1">

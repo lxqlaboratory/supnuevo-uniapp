@@ -19,8 +19,7 @@
 	        flex: 1;
 	border: solid 1px;
 	background-color: #007AFF;
-	-webkit-border-radius: 8px;
-	        border-radius: 8px;
+	border-radius: 8px;
 	margin-right: 10px;
 	margin-left: 10px;
 	-webkit-box-align: center;
@@ -42,8 +41,7 @@
 	font-size: 18px;
 	color: white;
 	margin-top: 30px;
-	-webkit-border-radius: 8px;
-	        border-radius: 8px;
+	border-radius: 8px;
 	background-color: #007AFF;
 	-webkit-box-align: center;
 	-webkit-align-items: center;

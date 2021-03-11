@@ -71,23 +71,19 @@
   padding: 10px;
 }
 .uni-combox__selector.data-v-17d56b78 {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: absolute;
   top: 42px;
   left: 0;
   width: 100%;
   background-color: #FFFFFF;
-  -webkit-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: #DDDDDD 4px 4px 8px, #DDDDDD -4px -4px 8px;
-          box-shadow: #DDDDDD 4px 4px 8px, #DDDDDD -4px -4px 8px;
+  border-radius: 6px;
+  box-shadow: #DDDDDD 4px 4px 8px, #DDDDDD -4px -4px 8px;
   z-index: 2;
 }
 .uni-combox__selector-scroll.data-v-17d56b78 {
   max-height: 200px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .uni-combox__selector.data-v-17d56b78::before {
   content: '';

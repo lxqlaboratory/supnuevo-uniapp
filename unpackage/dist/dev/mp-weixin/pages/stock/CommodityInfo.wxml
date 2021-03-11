@@ -1,0 +1,1 @@
+<view><view data-event-opts="{{[['tap',[['Lookimg',['$event']]]]]}}" style="align-items:center;justify-content:center;display:flex;" bindtap="__e"><image src="{{img}}" mode></image></view><view><text>商品条码：7792180001641</text></view><view><text>商品名称：ACEITE CANUELAS GIRASOL 900ML</text></view><view><text>商品价格：51.15</text></view></view>

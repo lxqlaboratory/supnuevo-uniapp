@@ -25,25 +25,34 @@
 			<view class="uni-form-item uni-column">
 				<checkbox-group class="uni-list" >
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigatemyinfo">
-						<view>我的信息</view>
+						<image src="../../static/image/images/myInfo.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>
+							&nbsp;|&nbsp;我的信息
+						</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @tap="fade()">
-						<view>我的二维码</view>
+						<image src="../../static/image/images/erweima.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;我的二维码</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="startCamera">
-						<view>扫一扫商家二维码</view>
+						<image src="../../static/image/images/saoyisao.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;扫一扫商家二维码</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMySuggestion">
-						<view>我的建议</view>
+						<image src="../../static/image/images/jianyi.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;我的建议</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMyShop">
-						<view>我替他们改价</view>
+						<image src="../../static/image/images/wogaijia.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;我替他们改价</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateRelMyShop">
-						<view>他们替我改价</view>
+						<image src="../../static/image/images/tagaijia.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;他们替我改价</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMyUnion">
-						<view>我的超市联盟</view>
+						<image src="../../static/image/images/lianmeng.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;我的超市联盟</view>
 					</label>
 				</checkbox-group>
 			</view>
@@ -52,22 +61,30 @@
 			<view class="uni-form-item uni-column">
 				<checkbox-group class="uni-list" >
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigatemyinfo">
-						<view>我的信息</view>
+						<image src="../../static/image/images/myInfo.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>
+							&nbsp;|&nbsp;我的信息
+						</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @tap="fade()">
-						<view>我的二维码</view>
+						<image src="../../static/image/images/erweima.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;我的二维码</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="startCamera">
-						<view>扫一扫商家二维码</view>
+						<image src="../../static/image/images/saoyisao.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;扫一扫商家二维码</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMySuggestion">
-						<view>我的建议</view>
+						<image src="../../static/image/images/jianyi.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;我的建议</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateMyShop">
-						<view>我替他们改价</view>
+						<image src="../../static/image/images/wogaijia.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;我替他们改价</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd" @click="navigateRelMyShop">
-						<view>他们替我改价</view>
+						<image src="../../static/image/images/tagaijia.png" mode="" style="width: 30px;height: 30px;"></image>
+						<view>&nbsp;|&nbsp;他们替我改价</view>
 					</label>
 				</checkbox-group>
 			</view>
@@ -246,8 +263,9 @@
 		position: relative;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
+		/* justify-content: space-between; */
 		align-items: center;
+		
 	}
 	
 	.uni-list .label-3 {
@@ -302,6 +320,7 @@
 	
 	.uni-list-cell-pd {
 		padding: 22rpx 30rpx;
+		font-size: 20px;
 	}
 	.uni-list-cell::after {
 		position: absolute;

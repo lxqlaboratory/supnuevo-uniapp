@@ -2,7 +2,7 @@
 	<view class="">
 		<wyb-loading ref="loading"/>
 		<view class="" v-for="(item,index) in advertisements" :key="index" v-if="unionMemberType == 2">
-			<view class="" style="background-color: #1CBBB4;">
+			<view class="" style="background-color: #ddd;">
 				<text style="margin-right: 0px;">{{item.advertisementNum}}</text>
 			</view>
 			<view class="" style="display: flex;flex-direction: row;margin-top: 10px;margin-bottom: 10px;">
@@ -21,7 +21,7 @@
 					</view>
 				</view>
 				<view class="" v-if="item.urlAddress != null && item.urlAddress !='' && item.urlAddress != undefined" style="flex: 1;display: flex;justify-content: center;align-items: center;"  @click="deleteAdvertisement(item.advertisementId)">
-					<icon type="cancel" size="26"/>
+					<image src="../../static/image/images/delete.png" style="width: 26px;height: 26px;"></image>
 				</view> 
 			</view>
 		</view>

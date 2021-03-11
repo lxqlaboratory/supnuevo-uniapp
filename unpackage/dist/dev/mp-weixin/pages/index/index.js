@@ -99,9 +99,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  uniPopup: function() {
-    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 290))
+var components
+try {
+  components = {
+    wybLoading: function() {
+      return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 339))
+    },
+    uniPopup: function() {
+      return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 330))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -164,6 +186,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _login = __webpack_require__(/*! @/api/login.js */ 17); //
 //
 //
@@ -188,8 +211,11 @@ var _login = __webpack_require__(/*! @/api/login.js */ 17); //
 //
 //
 //
-var _default = { data: function data() {return { loginName: '', password: '', errorContent: '' };}, mounted: function mounted() {var that = this; //页面加载完成，获取本地存储的用户名及密码
-    var userName = uni.getStorageSync('userName');var userPsw = uni.getStorageSync('userPsw');console.log(userName);if (userName && userPsw) {that.loginName = userName;that.password = userPsw;} else {that.loginName = "";that.password = "";
+//
+var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { loginName: '', password: '', errorContent: '' };}, components: { wybLoading: wybLoading }, mounted: function mounted() {var that = this; //页面加载完成，获取本地存储的用户名及密码
+    var userName = uni.getStorageSync('userName');var userPsw = uni.getStorageSync('userPsw');console.log(userName);if (userName && userPsw) {that.loginName = userName;that.password = userPsw;} else {
+      that.loginName = "";
+      that.password = "";
     }
   },
   methods: {
@@ -259,11 +285,13 @@ var _default = { data: function data() {return { loginName: '', password: '', er
       //        }
     },
     formSubmit: function formSubmit() {var _this = this;
+      this.$refs.loading.showLoading();
       var that = this;
       (0, _login.login)({
         loginName: this.loginName,
         password: this.password }).
       then(function (res) {
+        _this.$refs.loading.hideLoading(); // 隐藏
         var reCode = res.reCode;
         console.log(res);
         getApp().globalData.vueSessionId = res.sessionId;
@@ -360,6 +388,9 @@ var _default = { data: function data() {return { loginName: '', password: '', er
               getApp().globalData.username = res.data.username;
               getApp().globalData.unionMemberType = res.data.unionMemberType;
               getApp().globalData.unionId = res.data.unionId;
+              getApp().globalData.FlashFrequency = res.data.FlashFrequency;
+              getApp().globalData.commodityClassList = res.data.commodityClassList;
+
               // console.log(res.data.addPriceMap)
               //                               dispatch(setWeightService(res.data.weightService));
               //                               dispatch(getSession({
@@ -403,10 +434,12 @@ var _default = { data: function data() {return { loginName: '', password: '', er
             _this.$refs.popup.open();
           }
         }).catch(function (err) {
+          _this.$refs.loading.hideLoading(); // 隐藏
           _this.errorContent = '用户名或密码错误';
           _this.$refs.popup.open();
         });
       }).catch(function (err) {
+        _this.$refs.loading.hideLoading(); // 隐藏
         _this.errorContent = '用户名或密码错误';
         _this.$refs.popup.open();
       });

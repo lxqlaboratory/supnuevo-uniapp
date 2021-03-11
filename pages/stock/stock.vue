@@ -41,11 +41,12 @@
 				});	
 			},
 			navigateVentas(unionId,unionNum){
+				// uni.navigateTo({
+				// 	 url: '../chumen/chumen1'
+				// })
 				getApp().globalData.unionId = unionId;
 				getApp().globalData.unionNum = unionNum;
-				// uni.navigateBack({
-					
-				// })
+				
 				uni.navigateTo({
 				    url: './VentasInfoModal'
 				});

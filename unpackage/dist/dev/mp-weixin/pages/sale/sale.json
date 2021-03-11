@@ -7,6 +7,7 @@
     "wyb-loading": "/components/wyb-loading/wyb-loading",
     "taogewan-combox-remote": "/components/taogewan-combox-remote/taogewan-combox-remote",
     "uni-swipe-action": "/components/uni-swipe-action/uni-swipe-action",
-    "uni-swipe-action-item": "/components/uni-swipe-action-item/uni-swipe-action-item"
+    "uni-swipe-action-item": "/components/uni-swipe-action-item/uni-swipe-action-item",
+    "lu-popup-wrapper": "/components/lu-popup-wrapper/lu-popup-wrapper"
   }
 }

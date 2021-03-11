@@ -5,6 +5,7 @@ export default class Request {
 	constructor(config={}, reqInterceptor=null, resInterceptor=null, successHandler=null, failHandler=null, completeHandler=null) {
 		
 	    this.baseUrl = config.baseUrl
+		this.baseUrl2 = config.baseUrl2
 		if (config.header) {
 			
 			this.header = Object.assign({}, config.header) // JSON.parse(JSON.stringify(config.header))

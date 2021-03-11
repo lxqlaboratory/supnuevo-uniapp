@@ -1,0 +1,12 @@
+
+.Venview {
+	padding: 10px;
+}
+.Venmid {
+	margin: 10px;
+}
+.textInfo {
+	text-decoration:underline;
+	font-weight: bold;
+}
+

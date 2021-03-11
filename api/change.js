@@ -103,3 +103,11 @@ export function deleteSupnuevoCommonCommodityImage(data) {
 	})
 }
 
+export function setScanTimeWeb(data) {
+	return request.request({
+		url: '/commodity/setScanTimeWeb',
+		method: 'POST',
+		data: data
+	})
+}
+

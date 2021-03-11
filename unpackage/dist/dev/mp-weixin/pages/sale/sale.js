@@ -92,18 +92,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 299))
-  },
-  taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306))
-  },
-  uniSwipeAction: function() {
-    return __webpack_require__.e(/*! import() | components/uni-swipe-action/uni-swipe-action */ "components/uni-swipe-action/uni-swipe-action").then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action/uni-swipe-action.vue */ 313))
-  },
-  uniSwipeActionItem: function() {
-    return Promise.all(/*! import() | components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-swipe-action-item/uni-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action-item/uni-swipe-action-item.vue */ 318))
+var components
+try {
+  components = {
+    wybLoading: function() {
+      return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 339))
+    },
+    taogewanComboxRemote: function() {
+      return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 354))
+    },
+    uniSwipeAction: function() {
+      return __webpack_require__.e(/*! import() | components/uni-swipe-action/uni-swipe-action */ "components/uni-swipe-action/uni-swipe-action").then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action/uni-swipe-action.vue */ 368))
+    },
+    uniSwipeActionItem: function() {
+      return Promise.all(/*! import() | components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-swipe-action-item/uni-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/components/uni-swipe-action-item/uni-swipe-action-item.vue */ 373))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -212,7 +231,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _sale = __webpack_require__(/*! @/api/sale.js */ 41);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _sale = __webpack_require__(/*! @/api/sale.js */ 41);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var luPopupWrapper = function luPopupWrapper() {__webpack_require__.e(/*! require.ensure | components/lu-popup-wrapper/lu-popup-wrapper */ "components/lu-popup-wrapper/lu-popup-wrapper").then((function () {return resolve(__webpack_require__(/*! @/components/lu-popup-wrapper/lu-popup-wrapper.vue */ 361));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 354));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -220,16 +258,26 @@ var _sale = __webpack_require__(/*! @/api/sale.js */ 41);function _definePropert
 
 
 {
-  data: function data() {
-    return _defineProperty({
+  data: function data() {var _ref;
+    return _ref = {
       weightService: '',
       codeNum: '',
       codes: [],
       commodityList: [],
       usertextinput: '',
       price: '',
-      total: 0 }, "usertextinput",
-    "条码尾数或价格");
+      total: 0 }, _defineProperty(_ref, "usertextinput",
+    ""), _defineProperty(_ref, "type",
+    "bottom"), _defineProperty(_ref, "transition",
+    "slider"), _defineProperty(_ref, "backgroundColor",
+    '#FFF'), _defineProperty(_ref, "active",
+    false), _defineProperty(_ref, "height",
+    "100%"), _defineProperty(_ref, "width",
+    "100%"), _defineProperty(_ref, "popupId",
+    1), _defineProperty(_ref, "maskShow",
+    true), _defineProperty(_ref, "maskClick",
+    true), _defineProperty(_ref, "commodityList1",
+    []), _ref;
 
   },
   onShow: function onShow() {
@@ -239,9 +287,32 @@ var _sale = __webpack_require__(/*! @/api/sale.js */ 41);function _definePropert
   },
   components: {
     wybLoading: wybLoading,
-    taogewanComboxRemote: taogewanComboxRemote },
+    taogewanComboxRemote: taogewanComboxRemote,
+    luPopupWrapper: luPopupWrapper },
 
   methods: {
+    addcommdity: function addcommdity(index) {
+      var commodity = { codigo: '', sum: this.price, nombre: this.commodityList1[index], goodsCount: 1, price: this.price + "" };
+      var commodityList = this.commodityList;
+      this.price = '';
+      commodityList.push(commodity);
+      this.commodityList = commodityList;
+      console.log(this.commodityList);
+      this.close();
+      this.goodcountsadd(this.commodityList.length - 1);
+      this.commodityList[this.commodityList.length - 1].sum -= this.commodityList[this.commodityList.length - 1].price;
+      this.commodityList[this.commodityList.length - 1].goodsCount--;
+      // console.log(commodityList)
+    },
+    show: function show() {
+      this.$refs.luPopupWrapper.show();
+    },
+    close: function close() {
+      this.$refs.luPopupWrapper.close();
+    },
+    closeCallback: function closeCallback() {
+      console.log("关闭后回调");
+    },
     upper: function upper(e) {
       console.log(e);
     },
@@ -365,7 +436,7 @@ var _sale = __webpack_require__(/*! @/api/sale.js */ 41);function _definePropert
               commodityList.push(commodity);
             }
             _this2.commodityList = commodityList;
-            _this2.total = _this2.total + res.price;
+            _this2.total += res.price;
             // if (flag === 11) {
             // 	this.closeCameraThenBegin();
             // }
@@ -394,21 +465,23 @@ var _sale = __webpack_require__(/*! @/api/sale.js */ 41);function _definePropert
     },
     ClassSelect: function ClassSelect() {
       var userinput = this.usertextinput;
-      if (userinput === null || userinput === 0 || userinput === "") {
+      if (userinput === null || userinput === 0 || userinput === "" || userinput.length > 4) {
         uni.showModal({
           title: "提示",
           content: "请您先输入价格",
           showCancel: false });
 
       } else {
+        this.width = "100%";
+        this.height = "80%";
+        this.transition = "fade";
+        this.type = "bottom";
+        this.show();
+        var that = this;
         this.price = userinput;
-        this.usertextinput = '';
-        var commodityList = {
-          price: this.price,
-          goodsCount: 1 };
-
-        uni.navigateTo({
-          url: './AddCommInfo?commodityList=' + encodeURIComponent(JSON.stringify(commodityList)) });
+        this.commodityList1 = [];
+        this.commodityList1 = getApp().globalData.commodityClassList;
+        console.log(this.commodityList1);
 
       }
     },

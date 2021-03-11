@@ -92,12 +92,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 299))
-  },
-  taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306))
+var components
+try {
+  components = {
+    wybLoading: function() {
+      return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 339))
+    },
+    uniIcons: function() {
+      return Promise.all(/*! import() | components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/components/uni-icons/uni-icons.vue */ 346))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -346,7 +365,73 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _change = __webpack_require__(/*! @/api/change.js */ 32);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _change = __webpack_require__(/*! @/api/change.js */ 32);function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 354));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var luPopupWrapper = function luPopupWrapper() {__webpack_require__.e(/*! require.ensure | components/lu-popup-wrapper/lu-popup-wrapper */ "components/lu-popup-wrapper/lu-popup-wrapper").then((function () {return resolve(__webpack_require__(/*! @/components/lu-popup-wrapper/lu-popup-wrapper.vue */ 361));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
 
 
 
@@ -356,31 +441,49 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
 
 
 {
-  props: {
-    show: {
-      type: Boolean,
-      default: true } },
-
-
   components: {
     taogewanComboxRemote: taogewanComboxRemote,
-    wybLoading: wybLoading },
+    wybLoading: wybLoading,
+    luPopupWrapper: luPopupWrapper },
 
+  onNavigationBarButtonTap: function onNavigationBarButtonTap() {
+    if (this.dotShow == true) {
+      this.dotShow = false;
+      this.Show = false;
+    } else {
+      this.dotShow = true;
+      this.Show = true;
+    }
+
+  },
   data: function data() {var _ref;
     return _ref = {
+      type: "bottom", // left right top bottom center
+      transition: "slider", //none slider fade
+      backgroundColor: '#FFF',
+      active: false,
+      height: "100%",
+      width: "100%",
+      popupId: 1,
+      maskShow: true,
+      maskClick: true,
+      open: false,
+      Show: false,
+      dotShow: false,
       username: '',
       taxArr: [],
       sizeArr: [],
-      array: ['维护商品信息', '价格偏差表', '计算键设置', '扫码间隔时间'],
+      array: ['维护商品信息', '扫码间隔时间', '计算键设置'],
       index: 0,
+      FlashFrequency: '',
       goods: {
-        codeNum: '请输入商品条码尾数' },
+        codeNum: '' },
 
       selectedCodeInfo: {},
       codigo: '',
       codesModalVisible: false,
       referencePriceButton: true,
-      referencePrice: null, //参考价
+      referencePrice: '', //参考价
       attachDataUrl1: null,
       attachDataUrl2: null,
       attachDataUrl3: null,
@@ -388,13 +491,12 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
       attachDataUrl: null,
       hasCodigo: false,
       priceShow: null,
+      oldPrice: '',
       inputPrice: null,
       printType: { type1: '1', type2: '0', type3: '0', type4: '0' },
-      commodityId: null }, _defineProperty(_ref, "referencePrice",
-    null), _defineProperty(_ref, "gengxingaijiaInput",
-    ""), _defineProperty(_ref, "referencePriceButton",
-    true), _defineProperty(_ref, "Gsuggestlevel",
-    null), _defineProperty(_ref, "gengxingaijiaInput",
+      commodityId: null,
+      gengxingaijiaInput: "",
+      Gsuggestlevel: null }, _defineProperty(_ref, "gengxingaijiaInput",
     ''), _defineProperty(_ref, "scanTime",
     null), _defineProperty(_ref, "referencePriceList",
     []), _defineProperty(_ref, "appVersion",
@@ -431,8 +533,10 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
     this.pricedicount.profitprice2 = getApp().globalData.profitprice2;
     this.pricedicount.profitprice3 = getApp().globalData.profitprice3;
     this.pricedicount.profitprice4 = getApp().globalData.profitprice4;
+    this.FlashFrequency = getApp().globalData.FlashFrequency;
     uni.setNavigationBarTitle({
       title: 'supnuevo-' + this.username });
+
 
     if (this.codigo !== null && this.codigo !== undefined && this.codigo !== '') {
       var merchantId = getApp().globalData.merchantId;
@@ -456,6 +560,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
           return;
         } else {
           console.log(res);
+          _this.goods.codeNum = '';
           var goodInfo = res.object;
           if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null &&
           goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
@@ -478,22 +583,25 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
           var newPrintType = _this.printType;
           goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
 
-          _this.goods.codeNum = 0;
+
           var goods = _this.goods;
 
           if (goodInfo.priceShow == 0) {
             goodInfo.priceShow = "";
           }
           var referencePrice = goodInfo.minPrice;
-          if (referencePrice == null || referencePrice == 0.0)
-          _this.referencePriceButton = true;else
+          if (referencePrice == null || referencePrice == 0.0) {
+            _this.referencePriceButton = true;
+            _this.referencePrice = '';
+          } else
           if (referencePrice !== null && referencePrice !== undefined) {
-            _this.setStatereferencePrice = referencePrice, _this.referencePriceButton = false;
+            _this.referencePrice = referencePrice, _this.referencePriceButton = false;
           }
           _this.selectedCodeInfo = goodInfo;
           _this.codigo = goodInfo.codigo;
           _this.priceShow = goodInfo.priceShow,
           _this.printType = newPrintType,
+          _this.oldPrice = goodInfo.oldPrice;
           _this.goods = goods,
           _this.hasCodigo = true,
           _this.Gsuggestlevel = goodInfo.suggestLevel,
@@ -511,6 +619,52 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
 
   },
   methods: {
+    confirmScanTime: function confirmScanTime() {var _this2 = this;
+      var scanTime = this.FlashFrequency;
+      if (scanTime < 1 || scanTime > 10) {
+        uni.showModal({
+          title: "提示",
+          content: "请设置小于10秒的间隔时间。",
+          showCancel: false });
+
+        return;
+      } else {
+        (0, _change.setScanTimeWeb)({
+          scanTime: scanTime * 1 }).
+        then(function (res) {
+          var errorMsg = res.errorMsg;
+          if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
+            uni.showModal({
+              title: "提示",
+              content: errorMsg,
+              showCancel: false });
+
+          } else {
+            if (res.message === "OK") {
+              getApp().globalData.FlashFrequency = _this2.FlashFrequency;
+              uni.showModal({
+                title: "提示",
+                content: "设置成功",
+                showCancel: false });
+
+              _this2.popclose();
+            }
+          }
+        }).catch(function (err) {
+          uni.showModal({
+            title: "提示",
+            content: err,
+            showCancel: false });
+
+        });
+      }
+    },
+    popshow: function popshow() {
+      this.open = true;
+    },
+    popclose: function popclose() {
+      this.open = false;
+    },
     startCamera: function startCamera() {
       var that = this;
       uni.scanCode({
@@ -532,8 +686,10 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
         } });
 
     },
-    bindPickerChange: function bindPickerChange(e) {var _this2 = this;
-      this.index = e.target.value;
+    bindPickerChange: function bindPickerChange(index) {var _this3 = this;
+      this.index = index;
+      this.dotShow = false;
+      this.Show = false;
       if (this.index == 2) {
         uni.navigateTo({
           url: './compute' });
@@ -556,7 +712,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                 var o = { 'value': '', 'label': '' };
                 o.label = res.taxArr[i].label;
                 o.value = res.taxArr[i].value;
-                _this2.taxArr.push(o);
+                _this3.taxArr.push(o);
               }
               if (res.sizeArr === undefined)
               res.sizeArr = [];
@@ -564,14 +720,14 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                 var o = { 'value': '', 'label': '' };
                 o.label = res.sizeArr[i].label;
                 o.value = res.sizeArr[i].value;
-                _this2.sizeArr.push(o);
+                _this3.sizeArr.push(o);
               }
 
               var form = {
                 merchantId: merchantId,
-                selectedCodeInfo: _this2.selectedCodeInfo,
-                taxArr: _this2.taxArr,
-                sizeArr: _this2.sizeArr };
+                selectedCodeInfo: _this3.selectedCodeInfo,
+                taxArr: _this3.taxArr,
+                sizeArr: _this3.sizeArr };
 
               uni.navigateTo({
                 url: './AddCommInfo?form=' + encodeURIComponent(JSON.stringify(form)) });
@@ -598,30 +754,30 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                 var o = { 'value': '', 'label': '' };
                 o.label = res.taxArr[i].label;
                 o.value = res.taxArr[i].value;
-                _this2.taxArr.push(o);
+                _this3.taxArr.push(o);
               }
               for (var i = 0; i < res.sizeArr.length; i++) {
                 var o = { 'value': '', 'label': '' };
                 o.label = res.sizeArr[i].label;
                 o.value = res.sizeArr[i].value;
-                _this2.sizeArr.push(o);
+                _this3.sizeArr.push(o);
               }
-              if (_this2.selectedCodeInfo.codigo != undefined && _this2.selectedCodeInfo.codigo != null && _this2.selectedCodeInfo.codigo != '') {
+              if (_this3.selectedCodeInfo.codigo != undefined && _this3.selectedCodeInfo.codigo != null && _this3.selectedCodeInfo.codigo != '') {
 
                 var form = {
                   merchantId: merchantId,
-                  selectedCodeInfo: _this2.selectedCodeInfo,
-                  taxArr: _this2.taxArr,
-                  sizeArr: _this2.sizeArr,
+                  selectedCodeInfo: _this3.selectedCodeInfo,
+                  taxArr: _this3.taxArr,
+                  sizeArr: _this3.sizeArr,
                   // onCodigoSelect: this.onCodigoSelect.bind(this),
                   // setHasCodigo: this.setHasCodigo.bind(this),
                   // reset: this.reset.bind(this),
-                  commodityId: _this2.commodityId,
-                  attachDataUrl: _this2.attachDataUrl,
-                  attachDataUrl1: _this2.attachDataUrl1,
-                  attachDataUrl2: _this2.attachDataUrl2,
-                  attachDataUrl3: _this2.attachDataUrl3,
-                  attachDataUrl4: _this2.attachDataUrl4 };
+                  commodityId: _this3.commodityId,
+                  attachDataUrl: _this3.attachDataUrl,
+                  attachDataUrl1: _this3.attachDataUrl1,
+                  attachDataUrl2: _this3.attachDataUrl2,
+                  attachDataUrl3: _this3.attachDataUrl3,
+                  attachDataUrl4: _this3.attachDataUrl4 };
 
                 uni.navigateTo({
                   url: './MaintainCommInfo?form=' + encodeURIComponent(JSON.stringify(form)) });
@@ -631,6 +787,8 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
           });
 
         }
+      } else if (this.index == 1) {
+        this.popshow();
       }
     },
     changecode: function changecode(keyword) {
@@ -638,7 +796,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
       this.goods.codeNum = codeNum;
       this.queryGoodsCode(codeNum.toString());
     },
-    onCodigoSelect: function onCodigoSelect(key, item) {var _this3 = this;
+    onCodigoSelect: function onCodigoSelect(key, item) {var _this4 = this;
       console.log(item.value);
       var merchantId = getApp().globalData.merchantId;
       var codigo = item.value;
@@ -651,7 +809,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
             url: '../index/index' });
 
         }
-
+        _this4.close();
         if (res.errMessage !== null && res.errMessage !== undefined) {
           var errMsg = res.errMessage.toString();
           uni.showModal({
@@ -662,6 +820,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
           return;
         } else {
           console.log(res);
+          _this4.goods.codeNum = '';
           var goodInfo = res.object;
           if (goodInfo.setSizeValue != undefined && goodInfo.setSizeValue != null &&
           goodInfo.sizeUnit != undefined && goodInfo.sizeUnit != null) {
@@ -676,45 +835,63 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
           for (var i = 0; i < printType.length; i++) {
             var j = i + 1;
             var type = "type" + j;
-            _this3.printType[type] = printType.charAt(i);
+            _this4.printType[type] = printType.charAt(i);
             if (i === 0 && printType.charAt(i) !== 1) {
-              _this3.printType[type] = 1;
+              _this4.printType[type] = 1;
             }
           }
-          var newPrintType = _this3.printType;
+          var newPrintType = _this4.printType;
           goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
-
-          _this3.goods.codeNum = 0;
-          var goods = _this3.goods;
+          var goods = _this4.goods;
 
           if (goodInfo.priceShow == 0) {
             goodInfo.priceShow = "";
           }
           var referencePrice = goodInfo.minPrice;
-          if (referencePrice == null || referencePrice == 0.0)
-          _this3.referencePriceButton = true;else
+          if (referencePrice == null || referencePrice == 0.0) {
+            _this4.referencePriceButton = true;
+            _this4.referencePrice = '';
+          } else
           if (referencePrice !== null && referencePrice !== undefined) {
-            _this3.setStatereferencePrice = referencePrice, _this3.referencePriceButton = false;
+            _this4.referencePrice = referencePrice, _this4.referencePriceButton = false;
           }
-          _this3.selectedCodeInfo = goodInfo;
-          _this3.codigo = goodInfo.codigo;
-          _this3.priceShow = goodInfo.priceShow,
-          _this3.printType = newPrintType,
-          _this3.goods = goods,
-          _this3.hasCodigo = true,
-          _this3.Gsuggestlevel = goodInfo.suggestLevel,
-          _this3.gengxingaijiaInput = goodInfo.priceShow,
-          _this3.commodityId = goodInfo.commodityId,
-          _this3.attachDataUrl1 = goodInfo.attachDataUrl1,
-          _this3.attachDataUrl2 = goodInfo.attachDataUrl2,
-          _this3.attachDataUrl3 = goodInfo.attachDataUrl3,
-          _this3.attachDataUrl4 = goodInfo.attachDataUrl4,
-          _this3.attachDataUrl = goodInfo.attachDataUrl;
+          _this4.selectedCodeInfo = goodInfo;
+          _this4.codigo = goodInfo.codigo;
+          _this4.priceShow = goodInfo.priceShow,
+          _this4.printType = newPrintType,
+          _this4.goods = goods,
+          _this4.hasCodigo = true,
+          _this4.oldPrice = goodInfo.oldPrice;
+          _this4.Gsuggestlevel = goodInfo.suggestLevel,
+          _this4.gengxingaijiaInput = goodInfo.priceShow,
+          _this4.commodityId = goodInfo.commodityId,
+          _this4.attachDataUrl1 = goodInfo.attachDataUrl1,
+          _this4.attachDataUrl2 = goodInfo.attachDataUrl2,
+          _this4.attachDataUrl3 = goodInfo.attachDataUrl3,
+          _this4.attachDataUrl4 = goodInfo.attachDataUrl4,
+          _this4.attachDataUrl = goodInfo.attachDataUrl;
 
         }
       });
     },
-    queryGoodsCode: function queryGoodsCode(codeNum) {var _this4 = this;
+    fade: function fade() {
+      this.width = "100%";
+      this.height = "100%";
+      this.transition = "fade";
+      this.type = "bottom";
+      this.show();
+      var that = this;
+    },
+    show: function show() {
+      this.$refs.luPopupWrapper.show();
+    },
+    close: function close() {
+      this.$refs.luPopupWrapper.close();
+    },
+    closeCallback: function closeCallback() {
+      console.log("关闭后回调");
+    },
+    queryGoodsCode: function queryGoodsCode(codeNum) {var _this5 = this;
       if (codeNum.length >= 4) {
         this.$refs.loading.showLoading();
         var merchantId = getApp().globalData.merchantId;
@@ -730,7 +907,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
 
           }
           var errorMsg = res.message;
-          _this4.reset();
+          _this5.reset();
           if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
             console.log(742);
             uni.showModal({
@@ -744,11 +921,12 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                 var searchItem = { key: null, value: '' };
                 searchItem.key = i;
                 searchItem.value = res.array[i].codigo;
-                _this4.searchListFinal.push(searchItem);
+                _this5.searchListFinal.push(searchItem);
               }
-              _this4.codesModalVisible = true;
-              _this4.referencePrice = null;
-              _this4.referencePriceButton = true;
+              _this5.codesModalVisible = true;
+              _this5.referencePrice = null;
+              _this5.referencePriceButton = true;
+              _this5.fade();
             } else
             {
               var merchantId = getApp().globalData.merchantId;
@@ -786,41 +964,41 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                   for (var i = 0; i < printType.length; i++) {
                     var j = i + 1;
                     var type = "type" + j;
-                    _this4.printType[type] = printType.charAt(i);
+                    _this5.printType[type] = printType.charAt(i);
                     if (i === 0 && printType.charAt(i) !== 1) {
-                      _this4.printType[type] = 1;
+                      _this5.printType[type] = 1;
                     }
                   }
-                  var newPrintType = _this4.printType;
+                  var newPrintType = _this5.printType;
                   goodInfo.printType = newPrintType.type1 + newPrintType.type2 + newPrintType.type3 + newPrintType.type4;
 
-                  _this4.goods.codeNum = 0;
-                  var goods = _this4.goods;
+                  _this5.goods.codeNum = '';
+                  var goods = _this5.goods;
 
                   if (goodInfo.priceShow == 0) {
                     goodInfo.priceShow = "";
                   }
                   var referencePrice = goodInfo.minPrice;
                   if (referencePrice == null || referencePrice == 0.0)
-                  _this4.referencePriceButton = true;else
+                  _this5.referencePriceButton = true;else
                   if (referencePrice !== null && referencePrice !== undefined) {
-                    _this4.setStatereferencePrice = referencePrice, _this4.referencePriceButton = false;
+                    _this5.setStatereferencePrice = referencePrice, _this5.referencePriceButton = false;
                   }
-                  _this4.selectedCodeInfo = goodInfo;
-                  _this4.codigo = goodInfo.codigo;
-                  _this4.priceShow = goodInfo.priceShow,
-                  _this4.printType = newPrintType,
-                  _this4.goods = goods,
-                  _this4.hasCodigo = true,
-                  _this4.Gsuggestlevel = goodInfo.suggestLevel,
-                  _this4.gengxingaijiaInput = goodInfo.priceShow,
-                  _this4.commodityId = goodInfo.commodityId,
-                  _this4.attachDataUrl1 = goodInfo.attachDataUrl1,
-                  _this4.attachDataUrl2 = goodInfo.attachDataUrl2,
-                  _this4.attachDataUrl3 = goodInfo.attachDataUrl3,
-                  _this4.attachDataUrl4 = goodInfo.attachDataUrl4,
-                  _this4.attachDataUrl = goodInfo.attachDataUrl;
-
+                  _this5.selectedCodeInfo = goodInfo;
+                  _this5.codigo = goodInfo.codigo;
+                  _this5.priceShow = goodInfo.priceShow,
+                  _this5.printType = newPrintType,
+                  _this5.goods = goods,
+                  _this5.hasCodigo = true,
+                  _this5.Gsuggestlevel = goodInfo.suggestLevel,
+                  _this5.gengxingaijiaInput = goodInfo.priceShow,
+                  _this5.commodityId = goodInfo.commodityId,
+                  _this5.attachDataUrl1 = goodInfo.attachDataUrl1,
+                  _this5.attachDataUrl2 = goodInfo.attachDataUrl2,
+                  _this5.attachDataUrl3 = goodInfo.attachDataUrl3,
+                  _this5.attachDataUrl4 = goodInfo.attachDataUrl4,
+                  _this5.attachDataUrl = goodInfo.attachDataUrl;
+                  _this5.fade();
                 }
               });
 
@@ -894,10 +1072,14 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
       this.printType.type4 = 1;
       this.selectedCodeInfo.printType = this.printType.type1 + this.printType.type2 + this.printType.type3 + this.printType.type4;
     },
-    changeprice: function changeprice() {
-      console.log(this.priceShow);
+    changeprice: function changeprice(price) {
+      var goodInfo = this.selectedCodeInfo;
+      goodInfo.price = price;
+      goodInfo.price1 = price;
+      goodInfo.priceShow = price;
+      this.selectedCodeInfo = goodInfo;
+      this.priceShow = price;
       this.gengxingaijiaInput = this.priceShow,
-      this.inputPrice = this.priceShow,
       this.taxMark = 0,
       this.amount = 0;
     },
@@ -924,7 +1106,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
         return false;
       }
     },
-    savePrice: function savePrice() {var _this5 = this;
+    savePrice: function savePrice() {var _this6 = this;
       if (this.priceShow !== null && this.priceShow !== undefined) {
         if (this.codigo == null || this.codigo == undefined || this.codigo == '') {
           uni.showModal({
@@ -980,7 +1162,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
               content: message,
               showCancel: false });
 
-            _this5.reset();
+            _this6.reset();
           }
         });
       }
@@ -1033,7 +1215,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
       }
 
     },
-    saveRelPrice: function saveRelPrice() {var _this6 = this;
+    saveRelPrice: function saveRelPrice() {var _this7 = this;
       if (this.priceShow !== null && this.priceShow !== undefined) {
         var priceShow = this.priceShow.toString();
         var commodityId = this.selectedCodeInfo.commodityId;
@@ -1062,7 +1244,7 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);function _definePro
                 content: message,
                 showCancel: false });
 
-              _this6.reset();
+              _this7.reset();
             }
           });
         } else {

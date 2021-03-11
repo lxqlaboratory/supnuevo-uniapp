@@ -5,6 +5,8 @@
   "backgroundColor": "#3a6eff",
   "usingComponents": {
     "wyb-loading": "/components/wyb-loading/wyb-loading",
-    "taogewan-combox-remote": "/components/taogewan-combox-remote/taogewan-combox-remote"
+    "uni-icons": "/components/uni-icons/uni-icons",
+    "taogewan-combox-remote": "/components/taogewan-combox-remote/taogewan-combox-remote",
+    "lu-popup-wrapper": "/components/lu-popup-wrapper/lu-popup-wrapper"
   }
 }

@@ -90,12 +90,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 299))
-  },
-  sibList: function() {
-    return __webpack_require__.e(/*! import() | components/sib-list/sib-list */ "components/sib-list/sib-list").then(__webpack_require__.bind(null, /*! @/components/sib-list/sib-list.vue */ 351))
+var components
+try {
+  components = {
+    wybLoading: function() {
+      return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 339))
+    },
+    sibList: function() {
+      return __webpack_require__.e(/*! import() | components/sib-list/sib-list */ "components/sib-list/sib-list").then(__webpack_require__.bind(null, /*! @/components/sib-list/sib-list.vue */ 399))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -158,7 +177,7 @@ __webpack_require__.r(__webpack_exports__);
 var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 103);
 
 
-var _change = __webpack_require__(/*! @/api/change.js */ 32);var sibList = function sibList() {__webpack_require__.e(/*! require.ensure | components/sib-list/sib-list */ "components/sib-list/sib-list").then((function () {return resolve(__webpack_require__(/*! @/components/sib-list/sib-list.vue */ 351));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _change = __webpack_require__(/*! @/api/change.js */ 32);var sibList = function sibList() {__webpack_require__.e(/*! require.ensure | components/sib-list/sib-list */ "components/sib-list/sib-list").then((function () {return resolve(__webpack_require__(/*! @/components/sib-list/sib-list.vue */ 399));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -199,8 +218,12 @@ var _change = __webpack_require__(/*! @/api/change.js */ 32);var sibList = funct
         console.log(res);
         if (res.re === 1) {
           _this2.commodityList = res.data;
+          if (res.data.length >= 20)
           for (var i = 0; i < _this2.index; i++) {
-            _this2.list[i] = _this2.commodityList[i];}
+            _this2.list[i] = _this2.commodityList[i];} else
+          {
+            _this2.list = res.data;
+          }
         }
       }).catch(function (err) {
         uni.showModal({

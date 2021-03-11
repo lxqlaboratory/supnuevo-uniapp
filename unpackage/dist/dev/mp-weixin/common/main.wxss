@@ -38,6 +38,7 @@
 
 
 
+
 /*每个页面公共css */
 view,
 scroll-view,
@@ -76,16 +77,13 @@ canvas,
 open-data,
 web-view,
 ad {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 button {
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  border-radius: 0;
 }
 .box-sizing {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .clearfix:before,
 .clearfix:after {
@@ -148,8 +146,7 @@ button {
 }
 .weui-grid-inner {
   padding: 10px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .weui-grid__icon {
   width: 50px;
@@ -251,8 +248,7 @@ button {
   margin-right: auto;
   padding-left: 14px;
   padding-right: 14px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 18px;
   text-align: center;
   text-decoration: none;
@@ -274,10 +270,8 @@ button {
   transform: scale(0.5);
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  box-sizing: border-box;
+  border-radius: 0;
 }
 /*
 .btn-plus .icon {
@@ -360,8 +354,7 @@ button {
 }
 .buy_bar .weui-flex__item .placeholder {
   margin: 0;
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  border-radius: 0;
   height: 40px;
   line-height: 40px;
 }
@@ -407,8 +400,7 @@ button {
   width: 80px;
   height: 80px;
   overflow: hidden;
-  -webkit-border-radius: 5px;
-          border-radius: 5px;
+  border-radius: 5px;
   margin-right: 4%;
   margin-left: 3%;
   float: left;
@@ -627,8 +619,7 @@ button {
   background-color: #FF8247;
   color: white;
   font-size: 18px;
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  border-radius: 0;
   border: 0;
   cursor: pointer;
   width: 100px;
@@ -663,11 +654,9 @@ button {
   width: 25px;
   height: 100%;
   border: 1px solid transparent;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
+  border-radius: 4px;
   border-color: #ccc;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .quantity {
   display: inline-block;
@@ -675,11 +664,9 @@ button {
   width: 25px;
   height: 100%;
   border: 1px solid transparent;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
+  border-radius: 4px;
   border-color: #ccc;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-appearance: none;
   text-align: center;
   width: 34px;
@@ -690,10 +677,8 @@ button {
   min-height: 0;
 }
 .quantity-decrease {
-  -webkit-border-top-right-radius: 0;
-          border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
-          border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   margin-left: 0;
 }
 .quantity-decrease:before {
@@ -706,10 +691,8 @@ button {
   background-color: #ccc;
 }
 .quantity-increase {
-  -webkit-border-top-left-radius: 0;
-          border-top-left-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-          border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   margin-left: -1px;
 }
 .quantity-increase:before {
@@ -731,8 +714,7 @@ button {
   background-color: #ccc;
 }
 .quantity {
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  border-radius: 0;
   margin-left: -1px;
 }
 .reds {
@@ -1095,8 +1077,7 @@ weui-navbar {
 }
 .timeline-item-head,
 .timeline-item-head-first {
-  -webkit-border-radius: 99px;
-          border-radius: 99px;
+  border-radius: 99px;
   content: "";
   position: absolute;
   z-index: 99;
@@ -1185,8 +1166,7 @@ weui-navbar {
 .weui-media-box.weui-grid-25 {
   float: left;
   padding: 5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .weui-media-box_text.weui-grid-50 .weui-media-box__title,
 .weui-media-box_text.weui-grid-50 .weui-media-box__desc {
@@ -1223,8 +1203,7 @@ weui-navbar {
   width: 1px;
   content: '';
   position: absolute;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   right: 0;
   top: 0;
   -webkit-transform-origin: 0 0;
@@ -1428,8 +1407,7 @@ weui-navbar {
   width: 46px;
   height: 46px;
   text-align: center;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   overflow: hidden;
   margin-top: 6px;
   position: relative;
@@ -1672,8 +1650,7 @@ weui-navbar {
   margin-top: 0;
 }
 .weui-popup__container .weui-panel__ft .weui-btn {
-  -webkit-border-radius: 0px;
-          border-radius: 0px;
+  border-radius: 0px;
 }
 .weui-popup__container .weui-panel__title {
   border-bottom: 0px !important;
@@ -1689,8 +1666,7 @@ weui-navbar {
 .swiper-music .music-btn {
   width: 30px;
   height: 30px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   cursor: pointer;
   display: block;
   background-size: contain;
@@ -1735,8 +1711,7 @@ weui-navbar {
   width: 46px;
   height: 46px;
   text-align: center;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   overflow: hidden;
   margin-top: 6px;
   position: relative;
@@ -1795,7 +1770,6 @@ form .weui-cell .weui-form-item {
   float: left;
 }
 .weui-icon-radio {
-  -webkit-border-radius: 100%;
   border-radius: 100%;
   width: 20px;
   height: 20px;
@@ -1821,14 +1795,12 @@ form .weui-cell .weui-form-item {
 .weui-icon-radio.checked {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjA3QUE4OTlFQjJCODExRTVBRkM2RDBFMDhDRDA3MTJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjA3QUE4OTlGQjJCODExRTVBRkM2RDBFMDhDRDA3MTJFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDdBQTg5OUNCMkI4MTFFNUFGQzZEMEUwOENEMDcxMkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDdBQTg5OURCMkI4MTFFNUFGQzZEMEUwOENEMDcxMkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LqQGPAAAA7ElEQVR42uyXTQrCMBCFG+tKRY/gz0naXlFc2HqUKvQk4hEUVDCVcQIBu5HMTFK6MA8+KCWZeW2SV6oAIBlSo2RgRQPRQDQw9pg7Rdb2+ozcRVVMEDHJkBrR8JW29zJuPc7gFNmCW6UdG9zAHugqQxvIga88pIGjwEBNqa0IX0Oz269Iytzfb2ThOh2UHFgKmid2zipEELUeWaFdAyhLMEFuwiWYIw/fN2AKNIKnb1zNOUlYCE5BETqIKkbzQ19RvCM0r/qK4m4qmmBqO03N9Ymaftwg+qUZskFeyAV5Soqo+F8QDUQDf2/gI8AAIiHXffupwGIAAAAASUVORK5CYII=");
   background-size: 100%;
-  -webkit-border-radius: 100%;
-          border-radius: 100%;
+  border-radius: 100%;
   background-color: #04be02;
   border: 1px solid #04be02;
 }
 .weui-icon-checkbox {
   display: inline-block;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 18px;
   height: 18px;
@@ -1848,8 +1820,7 @@ form .weui-cell .weui-form-item {
 .weui-form-area {
   background-color: #fff;
   border: 1px solid #cdcdcd;
-  -webkit-border-radius: 1px;
-          border-radius: 1px;
+  border-radius: 1px;
   padding: 5px 2px;
   font-size: 16px;
   width: 100%;
@@ -1917,10 +1888,8 @@ form .weui-cell .weui-form-item {
   height: 1em;
   font-size: 20px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 1em;
-          border-radius: 1em;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  border-radius: 1em;
+  box-sizing: content-box;
   background-color: #fff;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
@@ -1929,15 +1898,13 @@ form .weui-cell .weui-form-item {
   top: 0;
   left: 0;
   position: absolute;
-  -webkit-border-radius: 100%;
-          border-radius: 100%;
+  border-radius: 100%;
   width: 1em;
   height: 1em;
   z-index: 1;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   background-color: #fff;
 }
 .weui-switch-checked {
@@ -1980,8 +1947,7 @@ form .weui-cell .weui-form-item {
 .weui-popup__modal {
   position: fixed;
   z-index: 100000000;
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  border-radius: 0;
   color: #3d4145;
   overflow-x: hidden;
   overflow-y: auto;
@@ -2006,8 +1972,7 @@ form .weui-cell .weui-form-item {
   height: 100%;
   padding-top: 2.2rem;
   overflow: auto;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .weui-popup__container--visible .weui-popup__overlay,
 .weui-popup__container--visible .weui-popup__modal {

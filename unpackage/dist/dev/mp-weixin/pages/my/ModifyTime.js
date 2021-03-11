@@ -92,12 +92,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 299))
-  },
-  taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306))
+var components
+try {
+  components = {
+    wybLoading: function() {
+      return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 339))
+    },
+    uniIcons: function() {
+      return Promise.all(/*! import() | components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/components/uni-icons/uni-icons.vue */ 346))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -169,6 +188,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 103);
 
 
@@ -206,22 +260,44 @@ var _sibList = _interopRequireDefault(__webpack_require__(/*! @/components/sib-l
 //
 //
 //
-var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { goods: { codeNum: '请输入商品条码尾数' }, searchListFinal: [], modifyList: [] };}, components: { wybLoading: wybLoading }, onShow: function onShow() {this.unionId = getApp().globalData.unionId;this.unionMemberType = getApp().globalData.unionMemberType;}, methods: { changecode: function changecode(keyword) {var codeNum = keyword;this.goods.codeNum = codeNum;if (codeNum.length >= 4) this.queryGoodsCode(codeNum.toString());}, getSupnuevoBuyerUnionModifyPriceList: function getSupnuevoBuyerUnionModifyPriceList(commodityId) {var _this = this;(0, _MyInfor.getSupnuevoBuyerPriceModifyList)({ unionId: this.unionId, commodityId: commodityId }).then(function (res) {console.log(res);
-        if (res.re === 1) {
-          _this.modifyList = res.data;
-          for (var i = 0; i < _this.modifyList.length; i++) {
-            if (_this.modifyList[i].shopName === undefined)
-            _this.modifyList[i].shopName = '';
-          }
-        }
-      }).catch(function (err) {
-        uni.showModal({
-          title: "提示",
-          content: err,
-          showCancel: false });
-
-      });
-    },
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var luPopupWrapper = function luPopupWrapper() {__webpack_require__.e(/*! require.ensure | components/lu-popup-wrapper/lu-popup-wrapper */ "components/lu-popup-wrapper/lu-popup-wrapper").then((function () {return resolve(__webpack_require__(/*! @/components/lu-popup-wrapper/lu-popup-wrapper.vue */ 361));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { goods: { codeNum: '' }, searchListFinal: [], modifyList: [], type: "bottom", // left right top bottom center
+      transition: "slider", //none slider fade
+      backgroundColor: '#FFF', active: false, height: "100%", width: "100%", popupId: 1, maskShow: true, maskClick: true };}, components: { wybLoading: wybLoading, luPopupWrapper: luPopupWrapper }, onShow: function onShow() {this.unionId = getApp().globalData.unionId;this.unionMemberType = getApp().globalData.unionMemberType;}, methods: { fade: function fade() {this.width = "100%";this.height = "100%";this.transition = "fade";this.type = "bottom";this.show();var that = this;}, show: function show() {this.$refs.luPopupWrapper.show();}, close: function close() {this.$refs.luPopupWrapper.close();}, closeCallback: function closeCallback() {console.log("关闭后回调");}, getSupnuevoBuyerUnionModifyPriceList: function getSupnuevoBuyerUnionModifyPriceList(commodityId) {var _this = this;(0, _MyInfor.getSupnuevoBuyerPriceModifyList)({ unionId: this.unionId, commodityId: commodityId }).then(function (res) {console.log(res);if (res.re === 1) {_this.modifyList = res.data;for (var i = 0; i < _this.modifyList.length; i++) {if (_this.modifyList[i].shopName === undefined) _this.modifyList[i].shopName = '';}}}).catch(function (err) {uni.showModal({ title: "提示", content: err, showCancel: false });});},
     //精确查询对应条码商品信息
     onCodigoSelect: function onCodigoSelect(key, item) {var _this2 = this;
       console.log(item.commodityId);
@@ -239,12 +315,14 @@ var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure
         }
         if (res.re === 1) {
           _this2.getSupnuevoBuyerUnionModifyPriceList(item.commodityId);
+          _this2.close();
         }
       }).catch(function (err) {
       });
     },
     //通过输入条码模糊查询
-    queryGoodsCode: function queryGoodsCode(codeNum) {var _this3 = this;
+    queryGoodsCode: function queryGoodsCode() {var _this3 = this;
+      var codeNum = this.goods.codeNum;
       if (codeNum.length >= 4) {
         this.$refs.loading.showLoading();
         var merchantId = getApp().globalData.merchantId;
@@ -267,7 +345,9 @@ var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure
               showCancel: false });
 
           } else {
+            _this3.searchListFinal = [];
             if (res.array !== undefined && res.array !== null && res.array.length > 1) {
+              console.log(123);
               for (var i = 0; i < res.array.length; i++) {
                 var searchItem = { key: null, value: '', commodityId: '' };
                 searchItem.key = i;
@@ -275,24 +355,17 @@ var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure
                 searchItem.commodityId = res.array[i].commodityId;
                 _this3.searchListFinal.push(searchItem);
               }
+              _this3.show();
             } else
-            if (res.array.length === 1) {
+            {
               //精确查询对应条码商品信息
               var merchantId = getApp().globalData.merchantId;
-              (0, _MyInfor.getSupnuevoBuyerUnionPriceByCommodityId)({
-                commodityId: res.array[0].commodityId,
-                unionId: _this3.unionId }).
-              then(function (res) {
-                console.log(res);
-                if (res.re == -2) {
-                  uni.navigateTo({
-                    url: '../index/index' });
-
-                }
-                if (res.re === 1) {
-                }
-              }).catch(function (err) {
-              });
+              var searchItem = { key: null, value: '', commodityId: '' };
+              searchItem.key = 0;
+              searchItem.value = res.object.codigo;
+              searchItem.commodityId = res.object.commodityId;
+              _this3.searchListFinal.push(searchItem);
+              _this3.show();
             }
           }
         }).catch(function (err) {

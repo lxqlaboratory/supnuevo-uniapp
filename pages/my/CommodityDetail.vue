@@ -30,7 +30,7 @@
 					<text>比例1：</text>
 				</view>
 				<view class="" style="display: flex;border-bottom: 1px solid;">
-					<input type="text" v-model="ratioOnly" style="width: 60px;text-align: center;"/>
+					<input type="number" v-model="ratioOnly" style="width: 60px;text-align: center;"/>
 				</view>
 				<view class="fontstyle" style="display: flex;margin-right: 25px;">
 					<text>%</text>

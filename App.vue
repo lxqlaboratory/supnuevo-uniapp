@@ -1,6 +1,7 @@
 <script>
 	export default {
 		globalData: {
+			FlashFrequency:'',
 			root:'',
 			username:'',
 			unionMemberType:'',

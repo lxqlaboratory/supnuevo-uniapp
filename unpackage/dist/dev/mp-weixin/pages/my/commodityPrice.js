@@ -231,10 +231,11 @@ var _default = { data: function data() {return { searchText: '', searchResult: [
     },
     updateSupnuevoBuyerUnionPriceRatio: function updateSupnuevoBuyerUnionPriceRatio(taxId, ratio) {var _this2 = this;
       console.log(ratio);
-      if (ratio === 0) {
+      var ratio = parseInt(ratio);
+      if (ratio == 0) {
         uni.showModal({
           title: "提示",
-          content: "请输入建议价",
+          content: "建议价不能为零",
           showCancel: false });
 
       } else {

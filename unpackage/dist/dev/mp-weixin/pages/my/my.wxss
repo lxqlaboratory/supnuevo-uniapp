@@ -56,9 +56,7 @@
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
 	        flex-direction: row;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
+	/* justify-content: space-between; */
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
@@ -125,6 +123,7 @@
 }
 .uni-list-cell-pd {
 	padding: 22rpx 30rpx;
+	font-size: 20px;
 }
 .uni-list-cell::after {
 	position: absolute;

@@ -5,10 +5,19 @@ export async function requestConfig(ins, options) {
 	
 	const header = Object.assign({}, (options.header || ins.header))
 	const baseUrl = options.baseUrl || ins.baseUrl
+	const baseUrl2 = options.baseUrl2 || ins.baseUrl2
 	// config
-	let config = {
-		url: baseUrl + options.url,
-		header: header
+	let config = {}
+	if (options.flag === 2){
+		config = {
+			url: baseUrl2 + options.url,
+			header: header
+		}
+	}else {
+		config = {
+			url: baseUrl + options.url,
+			header: header
+		}
 	}
 	let _cg = null
 	if (ins.requestInterceptor) {

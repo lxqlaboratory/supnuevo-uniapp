@@ -92,12 +92,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 299))
-  },
-  taogewanComboxRemote: function() {
-    return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306))
+var components
+try {
+  components = {
+    wybLoading: function() {
+      return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 339))
+    },
+    taogewanComboxRemote: function() {
+      return __webpack_require__.e(/*! import() | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then(__webpack_require__.bind(null, /*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 354))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -223,7 +242,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _change = __webpack_require__(/*! @/api/change.js */ 32);
+
 
 
 
@@ -315,8 +339,48 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 103); //
 //
 //
 //
-var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { goods: { codeNum: '请输入商品条码尾数' }, selectedCodeInfo: {}, codigo: '', referencePriceButton: true, referencePrice: null, //参考价
-      attachDataUrl1: null, attachDataUrl2: null, attachDataUrl3: null, attachDataUrl4: null, attachDataUrl: null, hasCodigo: false, priceShow: null, inputPrice: null, searchListFinal: [], printType: { type1: '1', type2: '0', type3: '0', type4: '0' }, Gsuggestlevel: null, gengxingaijiaInput: '', commodityId: null, unionId: '', unionMemberType: '', commodityDiscountList: [], goodsList: [], discountCode: "请输入折扣编码", discountPrompt: "请输入折扣描述", priceId: '', commodityName: '', price: '' };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {var _this = this;this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;if (this.unionMemberType !== 2) {this.discountCode = '';this.discountPrompt = '';}(0, _MyInfor.getSupnuevoBuyerUnionPriceDiscountInfoList)({ unionId: this.unionId }).then(function (res) {console.log(res);if (res.re === 1) {_this.commodityDiscountList = res.data;}}).catch(function (err) {uni.showModal({ title: "提示", content: err, showCancel: false });});}, methods: { onshowDiscount: function onshowDiscount(discountCode, discountPrompt, priceId, commodityName, price) {this.discountCode = discountCode;this.discountPrompt = discountPrompt;this.priceId = priceId;this.commodityName = commodityName;this.price = price;}, deleteSupnuevoBuyerUnionCommodityDiscount: function deleteSupnuevoBuyerUnionCommodityDiscount(priceId, discountPrompt) {var that = this;uni.showModal({ title: "提示", content: "是否删除该折扣", success: function success(res) {if (res.confirm) {if (priceId == that.priceId) {that.priceId = '';that.discountPrompt = '';
+//
+//
+//
+//
+var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 354));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { goods: { codeNum: '请输入商品条码尾数' }, selectedCodeInfo: {}, codigo: '', referencePriceButton: true, referencePrice: null, //参考价
+      attachDataUrl1: null, attachDataUrl2: null, attachDataUrl3: null, attachDataUrl4: null, attachDataUrl: null, hasCodigo: false, priceShow: null, inputPrice: null, searchListFinal: [], printType: { type1: '1', type2: '0', type3: '0', type4: '0' }, Gsuggestlevel: null, gengxingaijiaInput: '', commodityId: null, unionId: '', unionMemberType: '', commodityDiscountList: [], advertisements: [], goodsList: [], discountCode: "", discountPrompt: "", priceId: '', commodityName: '', price: '', discountPrice: '' };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {var _this = this;this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;if (this.unionMemberType !== 2) {this.discountCode = '';this.discountPrompt = '';}(0, _MyInfor.getSupnuevoBuyerUnionPriceDiscountInfoList)({ unionId: this.unionId }).then(function (res) {console.log(res);if (res.re === 1) {_this.commodityDiscountList = res.data;}}).catch(function (err) {uni.showModal({ title: "提示", content: err, showCancel: false });});this.getAdvertisementList();console.log(this.advertisements);}, methods: { navigatorToPicture: function navigatorToPicture() {if (this.discountCode == null || this.discountCode == undefined || this.discountCode == '') {uni.showModal({ title: "提示", content: "请先选择折扣!", showCancel: false });return;}var form = { goods: this.goodsList, discountCode: this.discountCode };uni.navigateTo({ url: './DiscountPic?form=' + encodeURIComponent(JSON.stringify(form)) });
+
+    },
+    getAdvertisementList: function getAdvertisementList() {var _this2 = this;
+      (0, _MyInfor.getSupnuevoBuyerUnionAdvertisementFormList)({
+        unionId: this.unionId }).
+      then(function (res) {
+        console.log(res);
+        if (res.re === 1) {
+          _this2.advertisements = res.data;
+        }
+      }).catch(function (err) {
+        uni.showModal({
+          title: "提示",
+          content: err,
+          showCancel: false });
+
+      });
+    },
+    onshowDiscount: function onshowDiscount(discountCode, discountPrompt, priceId, commodityName, price, item) {
+      this.goodsList = item;
+      this.discountCode = discountCode;
+      this.discountPrompt = discountPrompt;
+      this.priceId = priceId;
+      this.commodityName = commodityName;
+      this.price = price;
+    },
+    deleteSupnuevoBuyerUnionCommodityDiscount: function deleteSupnuevoBuyerUnionCommodityDiscount(priceId, discountPrompt) {
+      var that = this;
+      uni.showModal({
+        title: "提示",
+        content: "是否删除该折扣",
+        success: function success(res) {
+          if (res.confirm) {
+            if (priceId == that.priceId) {
+              that.priceId = '';
+              that.discountPrompt = '';
               that.discountCode = '';
             }
             (0, _MyInfor.updateSupnuevoBuyerUnionPriceDiscountInfo)({
@@ -364,7 +428,24 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
         } });
 
     },
-    updateSupnuevoBuyerUnionPriceDiscountInfo: function updateSupnuevoBuyerUnionPriceDiscountInfo() {var _this2 = this;
+    toDecimal2: function toDecimal2(x) {
+      var f = parseFloat(x);
+      if (isNaN(f)) {
+        return false;
+      }
+      var f = Math.round(x * 100) / 100;
+      var s = f.toString();
+      var rs = s.indexOf('.');
+      if (rs < 0) {
+        rs = s.length;
+        s += '.';
+      }
+      while (s.length <= rs + 2) {
+        s += '0';
+      }
+      return s;
+    },
+    updateSupnuevoBuyerUnionPriceDiscountInfo: function updateSupnuevoBuyerUnionPriceDiscountInfo(advertisementNum, advertisementId) {var _this3 = this;
       if (this.priceId === null || this.priceId === undefined || this.priceId === '') {
         uni.showModal({
           title: "提示",
@@ -373,12 +454,30 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
 
         return;
       }
-      console.log(this.discountPrompt);
+      var percentStr = this.discountCode.substring(6, 8);
+      if (percentStr.charAt(0) == 0) {
+        this.discountPrice = this.toDecimal2(this.goodsList.price * (100 - percentStr.charAt(1)) / 100);
+      } else
+      {
+        this.discountPrice = this.toDecimal2(this.goodsList.price * (100 - percentStr) / 100);
+      }
+      this.goodsList = Object.assign(this.goodsList, { discountCode: this.discountCode });
       (0, _MyInfor.updateSupnuevoBuyerUnionPriceDiscountInfo)({
         unionId: this.unionId,
         priceId: this.priceId,
         discountCode: this.discountCode,
-        discountPrompt: this.discountPrompt }).
+        discountPrompt: this.discountPrompt,
+        discountPrice: this.discountPrice.toString(),
+        ownerId: advertisementId,
+        fileData: null,
+        beanName: "supnuevoBuyerUnionAdvertisementProcessRmi",
+        folder: "supnuevo/union/advertisement",
+        fileName: this.unionId + '/' + advertisementNum + ".jpg",
+        remark: "supnuevo",
+        attachType: "97",
+        imageWidth: 440,
+        imageHeight: 680,
+        goods: this.goodsList }).
       then(function (res) {
         console.log(res);
         if (res.re === 1) {
@@ -388,11 +487,17 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
             showCancel: false });
 
           (0, _MyInfor.getSupnuevoBuyerUnionPriceDiscountInfoList)({
-            unionId: _this2.unionId }).
+            unionId: _this3.unionId }).
           then(function (res) {
             console.log(res);
             if (res.re === 1) {
-              _this2.commodityDiscountList = res.data;
+              _this3.commodityDiscountList = res.data;
+            } else {
+              uni.showModal({
+                title: "提示",
+                content: res.data,
+                showCancel: false });
+
             }
           }).catch(function (err) {
             uni.showModal({
@@ -416,12 +521,35 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
 
       });
     },
+    saveAdvertisement: function saveAdvertisement() {var _this4 = this;
+      var advertisementNum = this.discountCode.substring(0, 2);
+      var advertisementId = 0;
+      for (var i = 0; i < this.advertisements.length; ++i) {
+        if (advertisementNum == this.advertisements[i].advertisementNum) {
+          advertisementId = this.advertisements[i].advertisementId;
+          console.log('找到了' + i);
+        }
+      }
+      console.log(advertisementId);
+      if (advertisementId == null || advertisementId == undefined || advertisementId == '') {
+        (0, _MyInfor.createSupnuevoBuyerUnionAdvertisement)({
+          unionId: this.unionId,
+          advertisementNum: advertisementNum }).
+        then(function (res) {
+          var advertisementId = res.data.advertisementId;
+          _this4.updateSupnuevoBuyerUnionPriceDiscountInfo(advertisementNum, advertisementId);
+        });
+      } else {
+        this.updateSupnuevoBuyerUnionPriceDiscountInfo(advertisementNum, advertisementId);
+      }
+
+    },
     changecode: function changecode(keyword) {
       var codeNum = keyword;
       this.goods.codeNum = codeNum;
       this.queryGoodsCode(codeNum.toString());
     },
-    onCodigoSelect: function onCodigoSelect(key, item) {var _this3 = this;
+    onCodigoSelect: function onCodigoSelect(key, item) {var _this5 = this;
       console.log(item.value);
       var codigo = item.value;
       (0, _MyInfor.getSupnuevoBuyerUnionPriceByCommodityId)({
@@ -436,16 +564,16 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
             goodInfo.nombre = goodInfo.nombre + ',' + goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
           }
           goodInfo.codeNum = codigo;
-          _this3.goods = goodInfo;
-          _this3.codigo = codigo;
-          _this3.goodsList = goodInfo;
-          _this3.commodityId = item.commodityId,
-          _this3.discountCode = goodInfo.discountCode;
-          _this3.discountPrompt = goodInfo.discountPrompt;
-          _this3.priceId = goodInfo.priceId;
-          console.log(_this3.priceId);
-          _this3.commodityName = goodInfo.commodityName;
-          _this3.price = goodInfo.price;
+          _this5.goods = goodInfo;
+          _this5.codigo = codigo;
+          _this5.goodsList = goodInfo;
+          _this5.commodityId = item.commodityId,
+          _this5.discountCode = goodInfo.discountCode;
+          _this5.discountPrompt = goodInfo.discountPrompt;
+          _this5.priceId = goodInfo.priceId;
+          console.log(_this5.priceId);
+          _this5.commodityName = goodInfo.commodityName;
+          _this5.price = goodInfo.price;
         }
       }).catch(function (err) {
         uni.showModal({
@@ -455,7 +583,7 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
 
       });
     },
-    queryGoodsCode: function queryGoodsCode(codeNum) {var _this4 = this;
+    queryGoodsCode: function queryGoodsCode(codeNum) {var _this6 = this;
       if (codeNum.length >= 4) {
         this.$refs.loading.showLoading();
         var merchantId = getApp().globalData.merchantId;
@@ -472,7 +600,7 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
 
           }
           var errorMsg = res.message;
-          _this4.reset();
+          _this6.reset();
           if (errorMsg !== null && errorMsg !== undefined && errorMsg !== "") {
             uni.showModal({
               title: "提示",
@@ -486,20 +614,20 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
                 searchItem.key = i;
                 searchItem.value = res.array[i].codigo;
                 searchItem.commodityId = res.array[i].commodityId;
-                _this4.searchListFinal.push(searchItem);
+                _this6.searchListFinal.push(searchItem);
               }
-              _this4.referencePrice = null;
-              _this4.referencePriceButton = true;
+              _this6.referencePrice = null;
+              _this6.referencePriceButton = true;
             } else
             {
-              _this4.discountCode = null;
-              _this4.discountPrompt = null;
-              _this4.priceId = null;
-              _this4.commodityName = null;
-              _this4.price = null;
+              _this6.discountCode = null;
+              _this6.discountPrompt = null;
+              _this6.priceId = null;
+              _this6.commodityName = null;
+              _this6.price = null;
               (0, _MyInfor.getSupnuevoBuyerUnionPriceByCommodityId)({
                 commodityId: res.object.commodityId,
-                unionId: _this4.unionId }).
+                unionId: _this6.unionId }).
               then(function (res1) {
                 console.log(res1);
                 if (res1.re === 1) {
@@ -509,15 +637,15 @@ var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.
                     goodInfo.nombre = goodInfo.nombre + ',' + goodInfo.setSizeValue + ',' + goodInfo.sizeUnit;
                   }
                   goodInfo.codeNum = codeNum;
-                  _this4.goods = goodInfo;
-                  _this4.codigo = codeNum;
-                  _this4.goodsList = goodInfo;
-                  _this4.commodityId = res.commodityId;
-                  _this4.discountCode = goodInfo.discountCode;
-                  _this4.discountPrompt = goodInfo.discountPrompt;
-                  _this4.priceId = goodInfo.priceId;
-                  _this4.commodityName = goodInfo.commodityName;
-                  _this4.price = goodInfo.price;
+                  _this6.goods = goodInfo;
+                  _this6.codigo = codeNum;
+                  _this6.goodsList = goodInfo;
+                  _this6.commodityId = res.commodityId;
+                  _this6.discountCode = goodInfo.discountCode;
+                  _this6.discountPrompt = goodInfo.discountPrompt;
+                  _this6.priceId = goodInfo.priceId;
+                  _this6.commodityName = goodInfo.commodityName;
+                  _this6.price = goodInfo.price;
                 }
               }).catch(function (err) {
                 uni.showModal({

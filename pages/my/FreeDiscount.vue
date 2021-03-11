@@ -7,7 +7,7 @@
 			<button type="primary" class="priceButton" @click="startCamera" style="background-color: #3D4145;border-radius: 8px;">扫码</button>
 			<button type="primary" class="priceButton" @click="selectNum" style="background-color: #3D4145;border-radius: 8px;">查询</button>
 		</view>
-		<view class="" v-if="priceId !== null && priceId !== undefined && priceId !== ''" style="height: 80px;width: 80%;margin: auto; margin-top: 15px;border: 1px solid #1CBBB4;border-radius: 20px;">
+		<view class="" v-if="priceId !== null && priceId !== undefined && priceId !== ''" style="height: 110px;width: 80%;margin: auto; margin-top: 15px;border: 1px solid #1CBBB4;border-radius: 20px;">
 			<view class="" style="margin-top: 10px;margin-left: 10px;">
 				<text>{{commodityName}}</text>
 			</view>
@@ -22,16 +22,16 @@
 				<view class="">
 					<text style="font-size: 18px;margin-right: 10px;">折扣编码</text>
 				</view>
-				<view style="z-index: -1;">
-					<input type="text" v-model="discountCode" style="border: 2px solid #1CBBB4;border-radius: 10px;height: 35px;"/>
+				<view >
+					<input type="number" v-model="discountCode" placeholder="请输入折扣编码" style="border: 1px solid #000000;border-radius: 10px;height: 35px;padding: 5px;"/>
 				</view>
 			</view>
 			<view class="discount">
 				<view class="">
 					<text style="font-size: 18px;margin-right: 10px;">折扣描述</text>
 				</view>
-				<view style="z-index: -1;">
-					<input type="text" v-model="discountPrompt" style="border: 2px solid #1CBBB4;border-radius: 10px;height: 35px;"/>
+				<view>
+					<input type="text" v-model="discountPrompt" placeholder="请输入折扣描述" style="border: 1px solid #000000;border-radius: 10px;height: 35px;padding: 5px;"/>
 				</view>
 			</view>
 		</view>
@@ -41,7 +41,7 @@
 				<view class="">
 					<text style="font-size: 18px;margin-right: 10px;">折扣编码</text>
 				</view>
-				<view class="" style="border: 2px solid #1CBBB4;border-radius: 10px;height: 35px;width: 200px;display: flex;align-items: center;padding-left: 5px;">
+				<view class="" style="border: 1px solid #000000;border-radius: 10px;height: 35px;width: 200px;display: flex;align-items: center;padding-left: 5px;">
 					<text>{{discountCode}}</text>
 				</view>
 			</view>
@@ -50,16 +50,19 @@
 					<text style="font-size: 18px;margin-right: 10px;">折扣描述</text>
 				</view>
 				<view class="discountInput">
-					<text style="border: 2px solid #1CBBB4;border-radius: 10px;height: 35px;width: 200px;display: flex;align-items: center;padding-left: 5px;">{{discountPrompt}}</text>
+					<text style="border: 1px solid #000000;border-radius: 10px;height: 35px;width: 200px;display: flex;align-items: center;padding-left: 5px;">{{discountPrompt}}</text>
 				</view>
 			</view>
 		</view>
 		
 		<view class="" v-if="unionMemberType == 2" style="margin-bottom: 20px;">
-			<button type="primary" @click="updateSupnuevoBuyerUnionPriceDiscountInfo" style="width: 200px;border-radius: 10px;height: 35px;margin-top: 30px;vertical-align: middle;text-align: center;line-height: 35px;">保存折扣</button>
+			<button type="primary" @click="saveAdvertisement" style="width: 200px;border-radius: 10px;height: 35px;margin-top: 30px;vertical-align: middle;text-align: center;line-height: 35px;background-color: blue;">保存折扣</button>
 		</view>
+		<!-- <view class="" v-if="unionMemberType == 2" style="margin-bottom: 20px;">
+			<button type="primary" @click="navigatorToPicture" style="width: 200px;border-radius: 10px;height: 35px;margin-top: 30px;vertical-align: middle;text-align: center;line-height: 35px;background-color: blue;">预览折扣图片</button>
+		</view> -->
 		
-		<view class="" v-for="(item,index) in commodityDiscountList" :key="index" @click="onshowDiscount(item.discountCode,item.discountPrompt,item.priceId,item.commodityName,item.price)" style="color: #939393;display: flex;flex-direction: row; flex-direction: row; 
+		<view class="" v-for="(item,index) in commodityDiscountList" :key="index" @click="onshowDiscount(item.discountCode,item.discountPrompt,item.priceId,item.commodityName,item.price,item)" style="display: flex;flex-direction: row; flex-direction: row; 
 		align-items: center;border-top: 1px solid #939393;border-bottom: 1px solid #939393;">
 			<view class="" style="margin-left: 10px;flex: 8;margin-top: 10px;margin-bottom: 10px;">
 				<view class="">
@@ -77,7 +80,8 @@
 			</view>
 			
 			<view class="" style="flex: 1;" v-if="unionMemberType == 2" @click="deleteSupnuevoBuyerUnionCommodityDiscount(item.priceId,item.discountPrompt)">
-				<icon type="cancel" size="26"/>
+				<!-- <icon type="clear" size="26"/> -->
+				<image src="../../static/image/images/delete.png" style="width: 26px;height: 26px;"></image>
 			</view>
 		</view>
 	</view>
@@ -90,12 +94,15 @@
 		saveOrUpdateSupnuevoBuyerCommodityPriceMobile,
 		saveOrUpdateSupnuevoBuyerCommodityPriceAllRelMerchantMobile,
 		getSupnuevoCommodityTaxInfoListMobile,
+		
 	} from '@/api/change.js'
 	import {
 		getSupnuevoBuyerUnionPriceDiscountInfoList,
 		getSupnuevoBuyerUnionPriceByCommodityId,
 		updateSupnuevoBuyerUnionPriceDiscountInfo,
-		getUnionQueryDataListByInputString
+		getUnionQueryDataListByInputString,
+		createSupnuevoBuyerUnionAdvertisement,
+		getSupnuevoBuyerUnionAdvertisementFormList
 	} from '@/api/MyInfor.js'
 	import taogewanComboxRemote from '@/components/taogewan-combox-remote/taogewan-combox-remote.vue'
 	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
@@ -125,12 +132,14 @@
 				unionId: '',
 				unionMemberType: '',
 				commodityDiscountList: [],
+				advertisements: [],
 				goodsList: [],
-				discountCode:"请输入折扣编码",
-				discountPrompt:"请输入折扣描述",
+				discountCode:"",
+				discountPrompt:"",
 				priceId:'',
 				commodityName:'',
 				price:'',
+				discountPrice: '',
 			}
 		},
 		components: {
@@ -159,9 +168,45 @@
 					showCancel: false,
 				})
 				});	
+			this.getAdvertisementList();
+			console.log(this.advertisements)
 		},
 		methods: {
-			onshowDiscount(discountCode,discountPrompt,priceId,commodityName,price){
+			navigatorToPicture(){
+				 if(this.discountCode==null || this.discountCode==undefined || this.discountCode==''){
+					uni.showModal({
+						title: "提示",
+						content: "请先选择折扣!",
+						showCancel: false,
+					});	
+					return
+				}
+				let form = {
+					goods: this.goodsList,
+					 discountCode:this.discountCode
+				}
+				uni.navigateTo({
+					url:'./DiscountPic?form='+encodeURIComponent(JSON.stringify(form))
+				})
+			},
+			getAdvertisementList(){
+				getSupnuevoBuyerUnionAdvertisementFormList({
+					unionId: this.unionId
+				}).then(res =>{
+				console.log(res)
+					if(res.re === 1){
+						this.advertisements = res.data
+					}
+				}).catch((err) => {
+					uni.showModal({
+						title: "提示",
+						content: err,
+						showCancel: false,
+					})
+					});	
+			},
+			onshowDiscount(discountCode,discountPrompt,priceId,commodityName,price,item){
+				this.goodsList = item
 				this.discountCode = discountCode;
 				this.discountPrompt = discountPrompt;
 				this.priceId = priceId;
@@ -225,7 +270,24 @@
 					}
 				})
 			},
-			updateSupnuevoBuyerUnionPriceDiscountInfo(){
+			toDecimal2(x) {
+			        var f = parseFloat(x);
+			        if (isNaN(f)) {
+			            return false;
+			        }
+			        var f = Math.round(x*100)/100;
+			        var s = f.toString();
+			        var rs = s.indexOf('.');
+			        if (rs < 0) {
+			            rs = s.length;
+			            s += '.';
+			        }
+			        while (s.length <= rs + 2) {
+			            s += '0';
+			        }
+			        return s;
+			    },
+			updateSupnuevoBuyerUnionPriceDiscountInfo(advertisementNum,advertisementId){
 				if (this.priceId === null || this.priceId === undefined || this.priceId === ''){
 					uni.showModal({
 						title: "提示",
@@ -234,48 +296,95 @@
 					})
 					return;
 				}
-				console.log(this.discountPrompt)
-				updateSupnuevoBuyerUnionPriceDiscountInfo({
-					unionId: this.unionId,
-					priceId: this.priceId,
+				 var percentStr=this.discountCode.substring(6,8)
+			   if(percentStr.charAt(0)==0){
+					 this.discountPrice = this.toDecimal2(this.goodsList.price*(100-percentStr.charAt(1))/100)
+				 }
+				 else{
+					  this.discountPrice = this.toDecimal2(this.goodsList.price*(100-percentStr)/100)
+				 }
+				  this.goodsList = Object.assign(this.goodsList,{discountCode: this.discountCode})
+				  updateSupnuevoBuyerUnionPriceDiscountInfo({
+				  	 unionId: this.unionId,
+					priceId:this.priceId,
 					discountCode: this.discountCode,
-					discountPrompt:this.discountPrompt
-				}).then(res => {
-					console.log(res)
-					if(res.re === 1){
-						uni.showModal({
-						title: "提示",
-						content: "保存成功",
-						showCancel: false,
-						})
-						getSupnuevoBuyerUnionPriceDiscountInfoList({
-							unionId: this.unionId
-						}).then(res => {
-							console.log(res)
-							if(res.re === 1){
-								this.commodityDiscountList = res.data
+					discountPrompt: this.discountPrompt,
+					discountPrice:this.discountPrice.toString(),
+					ownerId: advertisementId,
+					fileData: null,
+					beanName:"supnuevoBuyerUnionAdvertisementProcessRmi",
+					folder:"supnuevo/union/advertisement",
+					fileName:this.unionId+'/'+advertisementNum+".jpg",
+					remark:"supnuevo",
+					attachType:"97",
+					imageWidth:440,
+					imageHeight:680,
+					goods:this.goodsList,
+				  }).then(res => {
+				  	console.log(res)
+				  	if(res.re === 1){
+				  		uni.showModal({
+				  		title: "提示",
+				  		content: "保存成功",
+				  		showCancel: false,
+				  		})
+				  		getSupnuevoBuyerUnionPriceDiscountInfoList({
+				  			unionId: this.unionId
+				  		}).then(res => {
+				  			console.log(res)
+				  			if(res.re === 1){
+				  				this.commodityDiscountList = res.data
+				  			}else {
+								uni.showModal({
+									title: "提示",
+									content: res.data,
+									showCancel: false,
+								})
 							}
-						}).catch((err) => {
-							uni.showModal({
-								title: "提示",
-								content: err,
-								showCancel: false,
-							})
-						});	
+				  		}).catch((err) => {
+				  			uni.showModal({
+				  				title: "提示",
+				  				content: err,
+				  				showCancel: false,
+				  			})
+				  		});	
+				  	}
+				  	else 
+				  	uni.showModal({
+				  	title: "提示",
+				  	content: res.data,
+				  	showCancel: false,
+				  	})
+				  }).catch((err) => {
+				  	uni.showModal({
+				  	title: "提示",
+				  	content: err,
+				  	showCancel: false,
+				  	})
+				  });	
+			},
+			saveAdvertisement(){
+				 var advertisementNum=this.discountCode.substring(0,2)
+				  var advertisementId=0
+				for(var i=0;i<this.advertisements.length;++i){
+					if(advertisementNum==this.advertisements[i].advertisementNum){
+						advertisementId=this.advertisements[i].advertisementId
+						console.log('找到了'+i)
 					}
-					else 
-					uni.showModal({
-					title: "提示",
-					content: res.data,
-					showCancel: false,
+				}
+				console.log(advertisementId)
+				if(advertisementId==null || advertisementId==undefined || advertisementId==''){
+					createSupnuevoBuyerUnionAdvertisement({
+						 unionId: this.unionId,
+						 advertisementNum:advertisementNum,
+					}).then(res => {
+						var advertisementId=res.data.advertisementId
+						 this.updateSupnuevoBuyerUnionPriceDiscountInfo(advertisementNum,advertisementId);
 					})
-				}).catch((err) => {
-					uni.showModal({
-					title: "提示",
-					content: err,
-					showCancel: false,
-					})
-				});	
+				}else {
+					 this.updateSupnuevoBuyerUnionPriceDiscountInfo(advertisementNum,advertisementId);
+				}
+				
 			},
 			changecode (keyword){
 				var codeNum = keyword

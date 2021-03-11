@@ -12,7 +12,7 @@
 				<image :src="head+item.urlAddress" mode="" style="width: 100px;height: 100px;"></image>
 			</view>
 			<view class="" v-else>
-				<image src="../../static/image/images/timg.jpg" mode="" style="width: 100px;height: 100px;"></image>
+				<image src="../../static/image/images/timg.png" mode="" style="width: 100px;height: 100px;"></image>
 			</view>
 			<view class="" style="flex: 8;margin-left: 10px;border-bottom: 1px solid #1CBBB4;">
 				<view class="" style="margin-top: 10px;">

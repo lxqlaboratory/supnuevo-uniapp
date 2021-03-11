@@ -10,7 +10,7 @@
 			accordion: {
 				// 是否开启手风琴效果
 				type: [Boolean, String],
-				default: false
+				default: true
 			}
 		},
 		data() {

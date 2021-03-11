@@ -1,5 +1,6 @@
 <template>
 	<view class="container">
+		<wyb-loading ref="loading"/>
 		<uni-popup ref="popup" type="dialog">
 			<uni-popup-dialog type="info" title="提示" :haveCancel="false" :singleType="false" :content=errorContent :duration="0"
 			 @confirm="confirm"></uni-popup-dialog>
@@ -27,7 +28,7 @@
 		login,
 		getMerchantInitInfoMobile
 	} from '@/api/login.js'
-
+	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	export default {
 
 		data() {
@@ -36,6 +37,9 @@
 				password: '',
 				errorContent: ''
 			}
+		},
+		components: {
+				wybLoading,
 		},
 		mounted () { 
 			let that = this;
@@ -118,11 +122,13 @@
 				 //        }
 			},
 			formSubmit() {
+				this.$refs.loading.showLoading()
 				var that = this;
 				login({
 					loginName: this.loginName,
 					password: this.password
 				}).then(res => {
+					this.$refs.loading.hideLoading() // 隐藏
 					var reCode = res.reCode;
 					console.log(res)
 					getApp().globalData.vueSessionId = res.sessionId
@@ -219,6 +225,9 @@
 									getApp().globalData.username = res.data.username
 									getApp().globalData.unionMemberType = res.data.unionMemberType
 									getApp().globalData.unionId = res.data.unionId
+									getApp().globalData.FlashFrequency = res.data.FlashFrequency
+									getApp().globalData.commodityClassList = res.data.commodityClassList
+									
 									// console.log(res.data.addPriceMap)
       //                               dispatch(setWeightService(res.data.weightService));
       //                               dispatch(getSession({
@@ -262,10 +271,12 @@
 						this.$refs.popup.open()
 					}					
 					}).catch(err => {
+					this.$refs.loading.hideLoading() // 隐藏
 					this.errorContent = '用户名或密码错误'
 					this.$refs.popup.open()
 					})
 				}).catch(err => {
+					this.$refs.loading.hideLoading() // 隐藏
 					this.errorContent = '用户名或密码错误'
 					this.$refs.popup.open()
 				})
@@ -282,7 +293,6 @@
 		width: 100%;
 		background-size: cover;
 		background-position: center;
-		background-image: url('http://wxgradms.sdu.edu.cn/images/sduBack.png');
 	}
 
 	.bind-button {

@@ -34,9 +34,9 @@
 				</uni-swipe-action>
 			</scroll-view>
 		</view>
-		<view class="countcomm">
+		<!-- <view class="countcomm">
 			<image src="../../static/image/images/up.png" mode="" class="countcomm" @tap="fade()"></image>
-		</view>
+		</view> -->
 		<luPopupWrapper ref="luPopupWrapper"
 			:type="type"
 			:transition="transition"
@@ -101,6 +101,9 @@
 		components: {
 			luPopupWrapper,
 			wkiwiSwipeAction
+		},
+		onNavigationBarButtonTap(){
+			 this.fade();
 		},
 		data() {
 			return {

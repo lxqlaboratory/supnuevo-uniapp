@@ -3,7 +3,7 @@
 		<wyb-loading ref="loading"/>
 		<view class="" style="display: flex;flex-direction: row;margin-top: 10px;margin-left: 5px;margin-right: 5px;">
 			<view class="saleinput">
-				<taogewan-combox-remote class="input1" v-model="usertextinput" :placeholder="usertextinput"  emptyTips=" " :candidates="codes" @input="changecode" @select="onCodigoSelect"/>
+				<taogewan-combox-remote class="input1" v-model="usertextinput" placeholder="条码尾数或价格"  emptyTips=" " :candidates="codes" @input="changecode" @select="onCodigoSelect"/>
 				<!-- <input class="input1" type="text" :value="goods.codeNum" placeholder="请输入商品条码尾数" placeholder-style="color:#aaa;" @change="changecode"/> -->
 			</view>	
 			<view class="">
@@ -26,12 +26,12 @@
 								<text class="slot-button-text" @click="goodcountsmin(index)">数量-1</text>
 							</view>
 						</template>
-						<view>
+						<view style="border-bottom: 1px solid #9999;width: 100%;">
 							<view>
 								<text style="margin-left: 10px;">{{item.goodsCount}}*{{item.price}}</text>
 								<text  style="margin-left: 20px;">{{item.codigo}}</text>
 							</view>
-							<view>
+							<view >
 								<text style="margin-left: 10px;">{{item.nombre}}</text>
 								<text style="margin-left: 100px;">{{item.sum}}</text>
 							</view>
@@ -61,8 +61,26 @@
 				<text style="">{{total}}</text>
 			</view>
 		</view>
-		
-		
+		<luPopupWrapper ref="luPopupWrapper"
+			:type="type"
+			:transition="transition"
+			:backgroundColor="backgroundColor"
+			:active="active"
+			:height="height"
+			:width="width"
+			:popupId="popupId"
+			:maskShow="maskShow"
+			:maskClick="maskClick"
+			:closeCallback="closeCallback"
+			>
+			<view class="mycontent" v-for="(item,index) in commodityList1" :key="index" @click="addcommdity(index)">
+				<view style="margin-top: 15px;margin-bottom: 15px;background-color: #fff;border-bottom: 1px solid #eee;width: 100%;height: 30px;">
+					<text style="font-size: 20px;color: #444;">
+						{{item}}
+					</text>
+				</view>
+			</view>
+		</luPopupWrapper>
 	</view>
 </template>
 
@@ -72,6 +90,7 @@
 		gerCommodityInfoByCodigoMobile,
 		saveCommoditySaleMobile
 	} from '@/api/sale.js'
+	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
 	import taogewanComboxRemote from '@/components/taogewan-combox-remote/taogewan-combox-remote.vue'
 	import wybLoading from '@/components/wyb-loading/wyb-loading.vue'
 	export default {
@@ -84,7 +103,17 @@
 				usertextinput: '',
 				price: '',
 				total: 0,
-				usertextinput: "条码尾数或价格",
+				usertextinput: "",
+				type:"bottom",// left right top bottom center
+				transition:"slider",//none slider fade
+				backgroundColor:'#FFF',
+				active:false,
+				height:"100%",
+				width:"100%",
+				popupId:1,
+				maskShow:true,
+				maskClick:true,
+				commodityList1: [],
 			}
 		},
 		onShow() {
@@ -94,9 +123,32 @@
 		},
 		components: {
 			wybLoading,
-			taogewanComboxRemote
+			taogewanComboxRemote,
+			luPopupWrapper
 		},
 		methods:{
+			addcommdity(index){
+				var commodity = {codigo: '',sum: this.price, nombre: this.commodityList1[index],goodsCount: 1,price: this.price + ""};
+				var commodityList = this.commodityList
+				this.price = '';
+				commodityList.push(commodity)
+				this.commodityList = commodityList
+				console.log(this.commodityList)
+				this.close();
+				this.goodcountsadd(this.commodityList.length-1);
+				this.commodityList[this.commodityList.length-1].sum -= this.commodityList[this.commodityList.length-1].price
+				this.commodityList[this.commodityList.length-1].goodsCount--;
+				// console.log(commodityList)
+			},
+			show: function() {
+				this.$refs.luPopupWrapper.show();
+			},
+			close: function() {
+				this.$refs.luPopupWrapper.close();
+			},
+			closeCallback:function() {
+				console.log("关闭后回调");
+			},
 			upper: function(e) {
 				console.log(e)
 			},
@@ -220,7 +272,7 @@
 									commodityList.push(commodity);
 								}
 								this.commodityList = commodityList;
-								this.total = this.total + res.price;
+								this.total +=  res.price;
 									// if (flag === 11) {
 									// 	this.closeCameraThenBegin();
 									// }
@@ -249,22 +301,24 @@
 				},
 				ClassSelect(){
 					 var userinput = this.usertextinput;
-					 if (userinput === null || userinput === 0 || userinput === "") {
+					 if (userinput === null || userinput === 0 || userinput === "" || userinput.length > 4) {
 						uni.showModal({
 						title: "提示",
 						content: "请您先输入价格",
 						showCancel: false,
 						})
 					}else {
+						this.width ="100%";
+						this.height ="80%";
+						this.transition = "fade";
+						this.type = "bottom";
+						this.show();
+						let that = this;
 						this.price = userinput;
-						this.usertextinput = '';
-						let commodityList = {
-							price: this.price,
-							goodsCount : 1,
-						}
-						uni.navigateTo({
-							url: './AddCommInfo?commodityList='+encodeURIComponent(JSON.stringify(commodityList))
-						})
+						this.commodityList1 = [];
+						this.commodityList1 = getApp().globalData.commodityClassList
+						console.log(this.commodityList1)
+						
 					}
 				},
 				goodcountsadd(index){
@@ -375,6 +429,10 @@
 </script>
 
 <style>
+	.mycontent{
+		height: 100%;
+		width: 100%;
+	}
 	.saleinput {
 		height: 40px;
 		display: flex;
@@ -382,7 +440,7 @@
 		justify-content: center;
 		align-items: center;
 		border-width: 3px;
-		border: 1px solid;
+		border: 1px solid #000000;
 		padding: 5px;
 		width: 200px;
 	}

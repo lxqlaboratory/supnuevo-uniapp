@@ -50,7 +50,7 @@
 							<text>商品含量：</text>
 						</view>
 						<view class="InGood2">
-							<input type="text" v-model="selectedCodeInfo.setSizeValue" style="background-color: white;height: 30px;" />
+							<input type="number" v-model="selectedCodeInfo.setSizeValue" style="background-color: white;height: 30px;" />
 						</view>
 
 					</view>
@@ -158,13 +158,13 @@
 							</cover-view>
 						</cover-view>
 						<view class="" style="margin-top: 10px;text-align:center">
-							<button type="primary" @click="uploadFoodImg" size="mini">上传备选图像</button>
+							<button type="primary" @click="uploadFoodImg" size="mini" style="border-radius: 10px;background-color: blue;">上传备选图像</button>
 						</view>
 					</view>
 
 					<view class="" style="margin-top: 10px;margin-bottom: 10px;">
 						<form @submit="MaintainSubmit">
-							<button type="primary" form-type="submit">确认</button>
+							<button type="primary" form-type="submit" style="background-color: blue;width: 200px;border-radius: 8px;">确认</button>
 						</form>
 					</view>
 				</scroll-view>

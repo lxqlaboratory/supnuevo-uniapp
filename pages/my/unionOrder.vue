@@ -3,28 +3,28 @@
 		<wyb-loading ref="loading"/>
 		<view class="">
 			<view class="" style="display: flex;flex-direction: row;">
-				<view class="styleselect" v-if="select == 1" style="background-color: #39B54A;color: #CCE6FF;" @click="getOrderRobList">
+				<view class="styleselect" v-if="select == 1" style="background-color: #39c7c8;color: #fff;" @click="getOrderRobList">
 					<text>可抢订单</text>
 				</view>
 				<view class="styleselect" @click="changeselect(1)" v-if="select != 1">
 					<text>可抢订单</text>
 				</view>
-				<view class="styleselect" v-if="select == 2" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(null,0,1)">
+				<view class="styleselect" v-if="select == 2" style="background-color: #39c7c8;color: #fff;border-left: 2px solid #9e9ca3;" @click="getOrderListOfDate(null,0,1)">
 					<text>未确认订单</text>
 				</view>
-				<view class="styleselect" @click="changeselect(2)" v-if="select != 2" style="border-left: 2px solid #3D4145;">
+				<view class="styleselect" @click="changeselect(2)" v-if="select != 2" style="border-left: 2px solid #9e9ca3;">
 					<text>未确认订单</text>
 				</view>
-				<view class="styleselect" v-if="select == 3" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(null,1,2)">
+				<view class="styleselect" v-if="select == 3" style="background-color: #39c7c8;color: #fff;border-left: 2px solid #9e9ca3;" @click="getOrderListOfDate(null,1,2)">
 					<text>已确认订单</text>
 				</view>
-				<view class="styleselect" @click="changeselect(3)" v-if="select != 3" style="border-left: 2px solid #3D4145;">
+				<view class="styleselect" @click="changeselect(3)" v-if="select != 3" style="border-left: 2px solid #9e9ca3;">
 					<text>已确认订单</text>
 				</view>
-				<view class="styleselect" v-if="select == 4" style="background-color: #39B54A;color: #CCE6FF;border-left: 2px solid #3D4145;" @click="getOrderListOfDate(this.orderDate,2,3)">
+				<view class="styleselect" v-if="select == 4" style="background-color: #39c7c8;color: #fff;border-left: 2px solid #9e9ca3;" @click="getOrderListOfDate(this.orderDate,2,3)">
 					<text>已完成订单</text>
 				</view>
-				<view class="styleselect" @click="changeselect(4)" v-if="select != 4" style="border-left: 2px solid #3D4145;">
+				<view class="styleselect" @click="changeselect(4)" v-if="select != 4" style="border-left: 2px solid #9e9ca3;">
 					<text>已完成订单</text>
 				</view>
 			</view>
@@ -658,8 +658,10 @@
 	 justify-content: center;
 	 align-items: center;
 	 height: 45px;
-	 border-bottom: 2px solid #3D4145;
-	 border-top: 2px solid #3D4145;
+	 border-bottom: 2px solid #9e9ca3;
+	 border-top: 2px solid #9e9ca3;
+	 font-size: 13px;
+	 color: #9e9ca3;
  }
  .noorder {
 	 flex: 1;

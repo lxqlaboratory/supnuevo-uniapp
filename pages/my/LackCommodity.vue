@@ -5,7 +5,7 @@
 				<sib-list ref="sibList" @isRefresh='isRefresh' @scrolltolowerFn="scrolltolowerFn">
 					<block class="" slot="sibScrollList">
 						<view class="" v-for="(item,index) in list" :key="index">
-							<view class="" style="padding: 10px;border-bottom: 2px solid #7C7C7C;width: 90%;margin: auto;color: #939393;">
+							<view class="" style="padding: 10px;border-bottom: 2px solid #9e9ca3;width: 90%;margin: auto;">
 								<view class="">
 									<text>|&nbsp;&nbsp;{{item.codigo}}</text>
 								</view>
@@ -59,8 +59,12 @@
 					console.log(res)
 					if (res.re === 1){
 						this.commodityList = res.data
+						if (res.data.length >=20 )
 						for(var i = 0; i < this.index ;i++)
 							this.list[i] = this.commodityList[i]
+						else {
+							this.list = res.data
+						}
 					}
 				}).catch((err) => {
 				uni.showModal({

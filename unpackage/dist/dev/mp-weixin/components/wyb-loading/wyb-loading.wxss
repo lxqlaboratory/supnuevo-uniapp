@@ -8,8 +8,7 @@
 }
 .loader-one,
 .loader-one:after {
-	-webkit-border-radius: 50%;
-	        border-radius: 50%;
+	border-radius: 50%;
 }
 @-webkit-keyframes loading-one {
 0% {
@@ -89,8 +88,7 @@
 	background-color: #fff;
 	width: 21rpx;
 	height: 21rpx;
-	-webkit-border-radius: 100%;
-	        border-radius: 100%;
+	border-radius: 100%;
 	margin: 2px;
 	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
@@ -137,8 +135,7 @@
 	background-color: #fff;
 	width: 6rpx;
 	height: 60rpx;
-	-webkit-border-radius: 2px;
-	        border-radius: 2px;
+	border-radius: 2px;
 	margin: 2px 4px;
 	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
@@ -240,8 +237,7 @@
 }
 .line-spin-fade-loader>view {
 	background-color: #fff;
-	-webkit-border-radius: 100px;
-	        border-radius: 100px;
+	border-radius: 100px;
 	margin: 2px;
 	-webkit-animation-fill-mode: both;
 	animation-fill-mode: both;
@@ -336,8 +332,7 @@
 }
 .wyb-loading-title-h {
 	padding-left: 40rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	-webkit-box-flex: 1.55;
 	-webkit-flex: 1.55;
 	        flex: 1.55;

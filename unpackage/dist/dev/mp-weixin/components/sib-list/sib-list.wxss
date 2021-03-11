@@ -59,8 +59,7 @@
 	font-size: 24rpx;
 	line-height: 26rpx;
 	text-align: center;
-	-webkit-border-radius: 26rpx;
-	        border-radius: 26rpx;
+	border-radius: 26rpx;
 }
 .refresh {
 	min-width: 50rpx;
@@ -75,16 +74,13 @@
 	        justify-content: center;
 	height: 50rpx;
 	background: #FFFFFF;
-	-webkit-box-shadow: 0 0 16rpx 0 rgba(0, 0, 0, 0.10);
-	        box-shadow: 0 0 16rpx 0 rgba(0, 0, 0, 0.10);
-	-webkit-border-radius: 50rpx;
-	        border-radius: 50rpx;
+	box-shadow: 0 0 16rpx 0 rgba(0, 0, 0, 0.10);
+	border-radius: 50rpx;
 }
 .refreshCirle {
 	width: 26rpx;
 	height: 26rpx;
-	-webkit-border-radius: 50%;
-	        border-radius: 50%;
+	border-radius: 50%;
 	display: inline-block;
 	position: relative;
 	border: 6rpx solid black;
@@ -145,10 +141,8 @@
 	-webkit-justify-content: center;
 	        justify-content: center;
 	color: #999999;
-	-webkit-box-shadow: 0 0 10rpx 0 rgba(0, 0, 0, 0.10);
-	        box-shadow: 0 0 10rpx 0 rgba(0, 0, 0, 0.10);
-	-webkit-border-radius: 10rpx;
-	        border-radius: 10rpx;
+	box-shadow: 0 0 10rpx 0 rgba(0, 0, 0, 0.10);
+	border-radius: 10rpx;
 }
 
 /* 回到顶部的按钮 */
@@ -160,8 +154,7 @@
 	bottom: 120rpx;
 	width: 72rpx;
 	height: 72rpx;
-	-webkit-border-radius: 50%;
-	        border-radius: 50%;
+	border-radius: 50%;
 	opacity: 1;
 }
 .fade-in {

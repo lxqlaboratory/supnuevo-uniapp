@@ -34,9 +34,9 @@
 				</uni-swipe-action>
 			</scroll-view>
 		</view>
-		<view class="countcomm">
+		<!-- <view class="countcomm">
 			<image src="../../static/image/images/up.png" mode="" class="countcomm" @tap="fade()"></image>
-		</view>
+		</view> -->
 		<luPopupWrapper ref="luPopupWrapper"
 			:type="type"
 			:transition="transition"
@@ -140,6 +140,9 @@
 					},
 				],
 			}
+		},
+		onNavigationBarButtonTap(){
+			 this.fade();
 		},
 		methods: {
 			bindClick(index,e) {
@@ -387,7 +390,7 @@
 		  font-family: "微软雅黑";
 		  font-weight: 400;
 		  font-size: 16px;
-			height: 50upx;
+			height: 55upx;
 		  line-height:60upx;
 		  overflow: hidden; /*自动隐藏文字*/
 		  text-overflow: ellipsis; /*文字隐藏后添加省略号*/

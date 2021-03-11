@@ -5,7 +5,7 @@
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll">
 				<view class="" v-for="(item,index) in allTaxCommodity" :key="index" 
 				@click="navigatorDetail(item.priceId,item.codigo,item.nombre,item.taxName,item.sizeValue,item.sizeUnit,item.scaleUnit,item.basePrice,item.ratio,item.ratio1)" 
-				style="margin-top: 10px;height: 130px;border-bottom: 1px solid #1CBBB4;">
+				style="margin-top: 10px;height: 140px;border-bottom: 1px solid #1CBBB4;">
 					<view class="fontstyle">
 						<text style="margin-right: 10px;">商品条码:</text>
 						<text>{{item.codigo}}</text>

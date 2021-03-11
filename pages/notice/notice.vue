@@ -13,6 +13,12 @@
 				announcement: {},
 			}
 		},
+		onNavigationBarButtonTap(){
+			getApp().globalData.vueSessionId = '';
+			uni.navigateTo({
+				url:'../index/index'
+			})
+		},
 		onShow() {
 			this.announcement = getApp().globalData.announcement;
 			console.log(this.announcement)

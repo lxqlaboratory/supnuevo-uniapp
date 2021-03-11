@@ -24,6 +24,65 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.mycontent {
+  height: 100%;
+  width: 100%;
+}
+.centers {
+  width: 100vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.product-window {
+  position: fixed;
+  background-color: #fff;
+  z-index: 77;
+  border-radius: 15rpx;
+  padding: 50rpx 30rpx;
+  transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+.center {
+  position: static;
+  -webkit-position: static;
+  transform: translate3d(-100vw, -100%, 0);
+  -webkit-transform: translate3d(-100vw, -100%, 0);
+}
+.product-window.on {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: .5;
+  z-index: 5;
+}
+.product-window .iconfont {
+  position: fixed;
+  right: 30rpx;
+  top: 20rpx;
+  font-size: 35rpx;
+  color: #8a8a8a;
+  width: 50rpx;
+  height: 50rpx;
+}
 .priceinput {
   margin-top: 5px;
   display: -webkit-box;
@@ -57,6 +116,7 @@
   padding-bottom: 6;
   background-color: #FFFFFF;
   color: #333333;
+  font-size: 20px;
 }
 .priceButton {
   margin-top: 4px;
@@ -86,12 +146,13 @@
   background-color: #EEEEEE;
   margin-top: 5px;
   margin-bottom: 5rpx;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
   border: solid 1px;
 }
 .change {
-  width: 33%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -141,25 +202,30 @@
   -webkit-justify-content: center;
           justify-content: center;
   height: 45px;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
-  border: solid 1px;
+  border-radius: 8px;
   background-color: #007AFF;
   margin-bottom: 10px;
 }
 .unmeanprice {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
           justify-content: center;
+  margin-right: 1rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-right: solid 1px white;
+  color: white;
 }
 .shopInfo {
   display: -webkit-box;
@@ -169,7 +235,7 @@
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
           flex-direction: row;
-  height: 45px;
+  height: 50px;
   border: solid 1px #aaa;
 }
 .Inshop {
@@ -211,8 +277,7 @@
   -webkit-justify-content: center;
           justify-content: center;
   height: 50px;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
 }
 .Indiscount {
   display: -webkit-box;
@@ -247,5 +312,146 @@
 }
 .text-white {
   color: #ffffff;
+}
+.compos {
+  position: relative;
+}
+.compos .modal {
+  margin-top: 5px;
+  background-color: #000000;
+  position: absolute;
+  border-radius: 1vw;
+  -webkit-transition: height ease-out 100ms;
+  transition: height ease-out 100ms;
+  z-index: 999;
+}
+.compos .modal .modal-item {
+  z-index: 99;
+  height: 7vw;
+  line-height: 7vw;
+  color: #fff;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.compos .modal .modal-item:last-child {
+  border-bottom: none;
+}
+.compos .modal .modal-ang {
+  background-color: #000000;
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: -3px;
+  border-radius: 3px;
+}
+.base-btn {
+  position: relative;
+  border: 0rpx;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  box-sizing: border-box;
+}
+.uni-form-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  padding: 10rpx 0;
+}
+.uni-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.uni-list {
+  background-color: #FFFFFF;
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.uni-list:after {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.uni-list::before {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.uni-list-cell-pd {
+  padding: 22rpx 30rpx;
+  font-size: 20px;
+}
+.uni-list-cell::after {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 30rpx;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.uni-list-cell {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  /* justify-content: space-between; */
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.uni-list .label-3 {
+  padding: 0;
+}
+.label-2-text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
 }
 

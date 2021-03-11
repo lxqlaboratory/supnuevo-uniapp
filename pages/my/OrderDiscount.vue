@@ -14,13 +14,13 @@
 		 
 		<view class="" v-if="unionMemberType == 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="total1" />
+				<input type="number" v-model="total1" />
 			</view>
 			<view style="flex: 1;display: flex;align-items: center;justify-content: center;">
 				<text>-</text>
 			</view>
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="scale1" />%
+				<input type="number" v-model="scale1" />%
 			</view>
 		</view>
 		<view class="" v-if="unionMemberType != 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
@@ -37,13 +37,13 @@
 		
 		<view class="" v-if="unionMemberType == 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="total2" />
+				<input type="number" v-model="total2" />
 			</view>
 			<view style="flex: 1;display: flex;align-items: center;justify-content: center;">
 				<text>-</text>
 			</view>
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="scale2" />%
+				<input type="number" v-model="scale2" />%
 			</view>
 		</view>
 		<view class="" v-if="unionMemberType != 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
@@ -60,13 +60,13 @@
 		
 		<view class="" v-if="unionMemberType == 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="total3" />
+				<input type="number" v-model="total3" />
 			</view>
 			<view style="flex: 1;display: flex;align-items: center;justify-content: center;">
 				<text>-</text>
 			</view>
 			<view style="flex: 2;display: flex;text-align: center;">
-				<input type="text" v-model="scale3" />%
+				<input type="number" v-model="scale3" />%
 			</view>
 		</view>
 		<view class="" v-if="unionMemberType != 2" style="display: flex;flex-direction: row;justify-content: center;align-items: center;margin-top: 30px;">

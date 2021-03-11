@@ -1,7 +1,7 @@
 <template>
 	<view class="weui-tabbar" :class="extClass">
 		<!-- 选中的时候往weui-tabbar__item加class:weui-bar__item_on -->
-		<view  @click="tabChange(index)" v-for="(item, index) in list" :key="index" class="weui-tabbar__item" :class="{'weui-bar__item_on':index === current}">
+		<view  @click="tabChange(item,index)" v-for="(item, index) in list" :key="index" class="weui-tabbar__item" :class="{'weui-bar__item_on':index === current}">
 			<view style="position: relative;display:inline-block;"><image :src="current === index ? item.selectedIconPath : item.iconPath" class="weui-tabbar__icon"></image></view>
 			<view class="weui-tabbar__label">{{ item.text }}</view>
 		</view>
@@ -21,16 +21,20 @@ export default {
 	data() {
 		return {
 			extClass: '',
-			current: 0
+			current: 2
 		};
 	},
 	methods: {
-		tabChange(index) {
+		tabChange(item,index) {
 			if (index === this.current) {
 				return;
 			}
 			this.current = index;
 			this.$emit('tabChange',index)
+			console.log(item.pagePath)
+			uni.switchTab({
+				url : item.pagePath,
+			})
 		}
 	}
 };

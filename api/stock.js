@@ -12,7 +12,8 @@ export function loginAfterOtherServerAuthed(data) {
 	return request.request({
 		url: '/auth/loginAfterOtherServerAuthed',
 		method: 'POST',
-		data: data
+		data: data,
+		flag: 2
 	})
 }
 
@@ -20,6 +21,7 @@ export function getAllVentasInfoFormNew(data) {
 	return request.request({
 		url: '/sale/getAllVentasInfoFormNew',
 		method: 'POST',
-		data: data
+		data: data,
+		flag: 2
 	})
 }

@@ -71,3 +71,4 @@ export function updateSupnuevoMerchantPriceOperRel(data) {
 		data: data
 	})
 }
+

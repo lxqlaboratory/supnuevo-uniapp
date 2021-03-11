@@ -7,9 +7,9 @@
 		<view class="uni-padding-wrap">
 		<view v-if="unionMemberType == 2">
 			<scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y" @scroll="scroll">
-				<view class="" v-for="(item,index) in allClass" :key="index"  style="display: flex;flex-direction: row; justify-content: center;align-items: center;margin-top: 15px;height: 40px;padding-bottom: 10px;border-bottom: 1px solid #1CBBB4;">
+				<view class="" v-for="(item,index) in allClass" :key="index"  style="display: flex;flex-direction: row; justify-content: center;align-items: center;margin-top: 15px;height: 50px;padding-bottom: 10px;border-bottom: 1px solid #1CBBB4;">
 					<view class="" style="display: flex;flex: 5;" @click="navigatorCommodity(item.taxId,item.taxName,item.ratio)">
-						<text>{{item.taxName}}</text>
+						<text style="font-size: 13px;">{{item.taxName}}</text>
 					</view>
 					<view class="" style="display: flex;" @click="navigatorCommodity(item.taxId,item.taxName,item.ratio)">
 						<text>建议价 - </text>
@@ -99,10 +99,11 @@
 			},
 			updateSupnuevoBuyerUnionPriceRatio(taxId,ratio){
 				console.log(ratio)
-				if (ratio === 0){
+				var ratio = parseInt(ratio)
+				if (ratio == 0){
 					uni.showModal({
 						title: "提示",
-						content: "请输入建议价",
+						content: "建议价不能为零",
 						showCancel: false,
 					})
 				}else{

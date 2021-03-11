@@ -15,7 +15,19 @@
 				"navigationBarTitleText": "supnuevo",
 				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor": "#3a6eff",
-				"backgroundColor": "#3a6eff"
+				"backgroundColor": "#3a6eff",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"text": "\ue60c",
+								"fontSrc": "/static/iconfont.ttf", 
+								"fontSize": "30px",
+								 "float": "right"
+							}
+					   ]
+					}
+				}
 			}
 		},
 		{
@@ -51,7 +63,19 @@
 				"navigationBarTitleText": "supnuevo",
 				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor": "#3a6eff",
-				"backgroundColor": "#3a6eff"
+				"backgroundColor": "#3a6eff",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"text": "\ue606",
+								"fontSrc": "/static/iconfont.ttf", 
+								"fontSize": "30px",
+								 "float": "left"
+							}
+					   ]
+					}
+				}
 			}
 		}
 	    ,{
@@ -193,7 +217,19 @@
 				"navigationBarTitleText": "条码级联",
 				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor": "#3a6eff",
-				"backgroundColor": "#3a6eff"
+				"backgroundColor": "#3a6eff",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"text": "\ue623",
+								"fontSrc": "/static/iconfont.ttf", 
+								"fontSize": "30px",
+								 "float": "right"
+							}
+					   ]
+					}
+				}
 			}
 		}
 		,{
@@ -275,7 +311,19 @@
             	"navigationBarTitleText": "我替他们改价",
             	"navigationBarTextStyle": "white",
             	"navigationBarBackgroundColor": "#3a6eff",
-            	"backgroundColor": "#3a6eff"
+            	"backgroundColor": "#3a6eff",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"text": "\ue623",
+								"fontSrc": "/static/iconfont.ttf", 
+								"fontSize": "30px",
+								 "float": "right"
+							}
+					   ]
+					}
+				}
             }
         }
         ,{
@@ -302,9 +350,75 @@
             	"navigationBarTitleText": "他们替我改价",
             	"navigationBarTextStyle": "white",
             	"navigationBarBackgroundColor": "#3a6eff",
+            	"backgroundColor": "#3a6eff",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"text": "\ue623",
+								"fontSrc": "/static/iconfont.ttf", 
+								"fontSize": "30px",
+								 "float": "right"
+							}
+					   ]
+					}
+				}
+            }
+        }
+        ,{
+            "path" : "pages/stock/VentasDetail",
+            "style" : {
+            	"navigationBarTitleText": "",
+            	"navigationBarTextStyle": "white",
+            	"navigationBarBackgroundColor": "#3a6eff",
             	"backgroundColor": "#3a6eff"
             }
         }
+        ,{
+            "path" : "pages/stock/CompanyInfo",
+            "style" : {
+            	"navigationBarTitleText": "供应商详情",
+            	"navigationBarTextStyle": "white",
+            	"navigationBarBackgroundColor": "#3a6eff",
+            	"backgroundColor": "#3a6eff"
+            }
+        }
+        ,{
+            "path" : "pages/stock/CommodityInfo",
+            "style" : {
+            	"navigationBarTitleText": "",
+            	"navigationBarTextStyle": "white",
+            	"navigationBarBackgroundColor": "#3a6eff",
+            	"backgroundColor": "#3a6eff"
+            }
+        }
+        ,{
+            "path" : "pages/my/DiscountPic",
+            "style" : {
+            	"navigationBarTitleText": "折扣图片",
+            	"navigationBarTextStyle": "white",
+            	"navigationBarBackgroundColor": "#3a6eff",
+            	"backgroundColor": "#3a6eff"
+            }
+        }
+        ,{
+            "path" : "pages/chumen/chumen",
+            "style" : {
+            	"navigationBarTitleText": "山大校园通",
+            	"navigationBarTextStyle": "white",
+            	"navigationBarBackgroundColor": "#3a6eff",
+            	"backgroundColor": "#3a6eff"
+            }
+        },
+		{
+		    "path" : "pages/chumen/chumen1",
+		    "style" : {
+		    	"navigationBarTitleText": "山大校园通",
+		    	"navigationBarTextStyle": "white",
+		    	"navigationBarBackgroundColor": "#3a6eff",
+		    	"backgroundColor": "#3a6eff"
+		    }
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -319,33 +433,33 @@
 		"backgroundColor": "#ffffff",
 		"list": [{
 				"pagePath": "pages/price/modifyPrice",
-				"iconPath": "static/image/tabBar/tab-cate.png",
-				"selectedIconPath": "static/image/tabBar/tab-cate-current.png",
+				"iconPath": "static/image/tabBar/chang1.png",
+				"selectedIconPath": "static/image/tabBar/chang2.png",
 				"text": "改价"
 			},
 			{
 				"pagePath": "pages/sale/sale",
-				"iconPath": "static/image/tabBar/news.png",
-				"selectedIconPath": "static/image/tabBar/newsactive.png",
+				"iconPath": "static/image/tabBar/price2.png",
+				"selectedIconPath": "static/image/tabBar/price1.png",
 				"text": "收银"
 			},
 			{
 				"pagePath": "pages/stock/stock",
-				"iconPath": "static/image/tabBar/news.png",
-				"selectedIconPath": "static/image/tabBar/newsactive.png",
+				"iconPath": "static/image/tabBar/stock1.png",
+				"selectedIconPath": "static/image/tabBar/stock2.png",
 				"text": "进货"
 			},
 			{
 				"pagePath": "pages/my/my",
-				"iconPath": "static/image/tabBar/me.png",
-				"selectedIconPath": "static/image/tabBar/meactive.png",
+				"iconPath": "static/image/tabBar/my1.png",
+				"selectedIconPath": "static/image/tabBar/my2.png",
 				"text": "我的"
 			},
 			{
 				"pagePath": "pages/notice/notice",
-				"iconPath": "static/image/tabBar/me.png",
-				"selectedIconPath": "static/image/tabBar/meactive.png",
-				"text": "公告"
+				"iconPath": "static/image/tabBar/notice1.png",
+				"selectedIconPath": "static/image/tabBar/notice2.png",
+				"text": "公告" 
 			}
 		]
 	}

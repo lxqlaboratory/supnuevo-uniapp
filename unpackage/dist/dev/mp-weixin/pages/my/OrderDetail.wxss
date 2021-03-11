@@ -12,8 +12,7 @@
 	 -webkit-box-align: center;
 	 -webkit-align-items: center;
 	         align-items: center;
-	 -webkit-border-radius: 50px;
-	         border-radius: 50px;
+	 border-radius: 50px;
 }
 .Infororder {
 	 display: -webkit-box;

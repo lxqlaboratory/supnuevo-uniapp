@@ -4,8 +4,11 @@ import App from './App'
 import uniPopup from '@/components/uni-popup/uni-popup.vue'
 import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
 
+
 Vue.component('uniPopup', uniPopup)
 Vue.component('uniPopupDialog', uniPopupDialog)
+
+
 
 Vue.config.productionTip = false
 

@@ -22,8 +22,7 @@
 }
 .wyb-popup-container {
 	position: relative;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .wyb-popup-slot {
 	width: 100%;

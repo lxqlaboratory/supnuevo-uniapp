@@ -4,7 +4,7 @@
 			<text>{{label}}</text>
 		</view>
 		<view class="uni-combox__input-box">
-			<input class="uni-combox__input" type="text" :placeholder="oldInputVal ? oldInputVal : placeholder" v-model="inputVal" @input="onInput"
+			<input class="uni-combox__input" type="number" :placeholder="oldInputVal ? oldInputVal : placeholder" v-model="inputVal" @input="onInput"
 			 @focus="onFocus" @blur="onBlur" />
 			<uni-icons v-if="!showSelector && !inputVal" class="uni-combox__input-arrow" type="arrowdown" size="14" @click="toggleSelector"></uni-icons>
 			<uni-icons v-if="inputVal" class="uni-combox__input-arrow" type="close" size="14" @click="clearSelector"></uni-icons>

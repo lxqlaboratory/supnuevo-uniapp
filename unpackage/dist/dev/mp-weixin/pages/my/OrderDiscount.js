@@ -92,9 +92,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  wybLoading: function() {
-    return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 299))
+var components
+try {
+  components = {
+    wybLoading: function() {
+      return __webpack_require__.e(/*! import() | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then(__webpack_require__.bind(null, /*! @/components/wyb-loading/wyb-loading.vue */ 339))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -313,7 +332,7 @@ var _MyInfor = __webpack_require__(/*! @/api/MyInfor.js */ 103); //
 //
 //
 //
-var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 306));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 299));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { discountName: '折扣名称', discountId: '', startDate: '', endData: '', total1: '', scale1: '', total2: '', scale2: '', total3: '', scale3: '', unionMemberType: '', unionId: '' };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;this.getSupnuevoBuyerUnionOrderDiscountOfUnion();}, methods: { saveSupnuevoBuyerUnionOrderDiscount: function saveSupnuevoBuyerUnionOrderDiscount() {var total1 = parseFloat(this.total1);var total2 = parseFloat(this.total2);var total3 = parseFloat(this.total3);var scale1 = parseFloat(this.scale1);var scale2 = parseFloat(this.scale2);var scale3 = parseFloat(this.scale3);if (total3 === 0) {if (total2 !== 0) {if (total1 <= total2) {uni.showModal({ title: "提示", content: "总价1须大于总价2", showCancel: false });return;}}} else {if (total2 <= total3) {uni.showModal({ title: "提示", content: "总价2须大于总价3", showCancel: false });return;} else {if (total2 !== 0) {if (total1 < total2) {uni.showModal({ title: "提示", content: "总价1须大于总价2", showCancel: false });return;}}}}if (scale1 <= scale2) {uni.showModal({ title: "提示", content: "折扣1须大于折扣2", showCancel: false });return;} else {if (scale2 <= scale3) {uni.showModal({ title: "提示", content: "折扣2须大于折扣3", showCancel: false });return;}}
+var taogewanComboxRemote = function taogewanComboxRemote() {__webpack_require__.e(/*! require.ensure | components/taogewan-combox-remote/taogewan-combox-remote */ "components/taogewan-combox-remote/taogewan-combox-remote").then((function () {return resolve(__webpack_require__(/*! @/components/taogewan-combox-remote/taogewan-combox-remote.vue */ 354));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var wybLoading = function wybLoading() {__webpack_require__.e(/*! require.ensure | components/wyb-loading/wyb-loading */ "components/wyb-loading/wyb-loading").then((function () {return resolve(__webpack_require__(/*! @/components/wyb-loading/wyb-loading.vue */ 339));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { data: function data() {return { discountName: '折扣名称', discountId: '', startDate: '', endData: '', total1: '', scale1: '', total2: '', scale2: '', total3: '', scale3: '', unionMemberType: '', unionId: '' };}, components: { taogewanComboxRemote: taogewanComboxRemote, wybLoading: wybLoading }, onShow: function onShow() {this.unionMemberType = getApp().globalData.unionMemberType;this.unionId = getApp().globalData.unionId;this.getSupnuevoBuyerUnionOrderDiscountOfUnion();}, methods: { saveSupnuevoBuyerUnionOrderDiscount: function saveSupnuevoBuyerUnionOrderDiscount() {var total1 = parseFloat(this.total1);var total2 = parseFloat(this.total2);var total3 = parseFloat(this.total3);var scale1 = parseFloat(this.scale1);var scale2 = parseFloat(this.scale2);var scale3 = parseFloat(this.scale3);if (total3 === 0) {if (total2 !== 0) {if (total1 <= total2) {uni.showModal({ title: "提示", content: "总价1须大于总价2", showCancel: false });return;}}} else {if (total2 <= total3) {uni.showModal({ title: "提示", content: "总价2须大于总价3", showCancel: false });return;} else {if (total2 !== 0) {if (total1 < total2) {uni.showModal({ title: "提示", content: "总价1须大于总价2", showCancel: false });return;}}}}if (scale1 <= scale2) {uni.showModal({ title: "提示", content: "折扣1须大于折扣2", showCancel: false });return;} else {if (scale2 <= scale3) {uni.showModal({ title: "提示", content: "折扣2须大于折扣3", showCancel: false });return;}}
       (0, _MyInfor.updateSupnuevoBuyerUnionOrderDiscount)({
         unionId: this.unionId,
         total1: total1,

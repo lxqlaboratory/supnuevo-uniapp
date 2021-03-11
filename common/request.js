@@ -3,10 +3,11 @@ import Request from '@/request/index.js'
 
 // 切换baseUrl 
 const config = {
-    // baseUrl: 'https://wxgradms.sdu.edu.cn/func',
-      baseUrl: 'http://localhost:8080/func',
+    // baseUrl: 'https://192.168.43.2:8080/func',
+      // baseUrl: 'http://localhost:8080/func',
+	  // baseUrl2: 'http://144.217.157.53/func',
 	  // baseUrl: 'http://192.168.1.102:8080/func',
-	  // baseUrl: 'http://union.supnuevo.com.ar/func',
+	  baseUrl: 'http://union.supnuevo.com.ar/func',
 	header: {"Content-Type": "application/json",
 	},
 	cancelReject: {
@@ -20,10 +21,10 @@ const config = {
 }
 
 const reqInterceptor = async (options) => {
-	 if(options.url != 'http://localhost:8080/func/auth/webLogin')
-	// if(options.url != 'https://wxgradms.sdu.edu.cn/func/auth/webLogin')
+	 // if(options.url != 'http://localhost:8080/func/auth/webLogin')
+	// if(options.url != 'https://192.168.43.2:8080/func/auth/webLogin')
 	// if(options.url != 'http://192.168.1.102:8080/func/auth/webLogin')
-	 // if(options.url != 'http://union.supnuevo.com.ar/func/auth/webLogin')
+	 if(options.url != 'http://union.supnuevo.com.ar/func/auth/webLogin')
 	{options.header= {"Content-Type": "application/json",
 	"Cookie":"JSESSIONID="+getApp().globalData.vueSessionId}}
 	return options

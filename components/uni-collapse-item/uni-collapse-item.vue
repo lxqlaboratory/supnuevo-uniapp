@@ -1,26 +1,18 @@
 <template>
-	<view :class="{ 'uni-collapse-cell--disabled': disabled,'uni-collapse-cell--notdisabled': !disabled, 'uni-collapse-cell--open': isOpen,'uni-collapse-cell--hide':!isOpen }"
+	<view :class="{  'uni-collapse-cell--open': isOpen,'uni-collapse-cell--hide':!isOpen }"
 	 class="uni-collapse-cell">
 		<view class="uni-collapse-cell__title">
-			<uni-icons :class="{ 'uni-collapse-cell__title-arrow-active': isOpen, 'uni-collapse-cell--animation': showAnimation === true }"
+			<uni-icons :class="{ 'uni-collapse-cell__title-arrow-active': isOpen, 'uni-collapse-cell--animation':  true }"
 			 class="uni-collapse-cell__title-arrow" color="#bbb" size="26" type="arrowdown"  @click="onClick"/>
 			<text class="uni-collapse-cell__title-text">{{ title }}</text>
-			<!-- #ifdef MP-ALIPAY -->
-			<view :class="{ 'uni-collapse-cell__title-arrow-active': isOpen, 'uni-collapse-cell--animation': showAnimation === true }"
-			 class="uni-collapse-cell__title-arrow">
-				<uni-icons color="#bbb" size="20" type="arrowdown" />
-			</view>
-			<!-- #endif -->
-			<!-- #ifndef MP-ALIPAY -->
 			<image src="../../static/image/images/up.png" mode="" style="width: 26px;height: 26px;" @click="confirmDialog"></image>
 			<image src="../../static/image/images/down.png" mode="" style="width: 26px;height: 26px;" @click="deletemethod(title,mapId)"></image>
-			<!-- #endif -->
 		</view>
 		<uni-popup ref="dialogInput" type="dialog">
 			<uni-popup-dialog mode="input" title="请输入条码"  placeholder="请输入条码" @confirm="dialogInputConfirm"></uni-popup-dialog>
 		</uni-popup>
 		<view :class="{'uni-collapse-cell__content--hide':!isOpen}" class="uni-collapse-cell__content">
-			<view :class="{ 'uni-collapse-cell--animation': showAnimation === true }" class="uni-collapse-cell__wrapper" :style="{'transform':isOpen?'translateY(0)':'translateY(-50%)','-webkit-transform':isOpen?'translateY(0)':'translateY(-50%)'}">
+			<view :class="{ 'uni-collapse-cell--animation': true }" class="uni-collapse-cell__wrapper" :style="{'transform':isOpen?'translateY(0)':'translateY(-50%)','-webkit-transform':isOpen?'translateY(0)':'translateY(-50%)'}">
 				<slot />
 			</view>
 		</view>
@@ -63,7 +55,7 @@
 			showAnimation: {
 				// 是否显示动画
 				type: Boolean,
-				default: false
+				default: true
 			},
 			open: {
 				// 是否展开

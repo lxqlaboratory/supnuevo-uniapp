@@ -171,11 +171,12 @@ var _default = { data: function data() {return { unionId: '', unionList: [] };},
       });
     },
     navigateVentas: function navigateVentas(unionId, unionNum) {
+      // uni.navigateTo({
+      // 	 url: '../chumen/chumen1'
+      // })
       getApp().globalData.unionId = unionId;
       getApp().globalData.unionNum = unionNum;
-      // uni.navigateBack({
 
-      // })
       uni.navigateTo({
         url: './VentasInfoModal' });
 

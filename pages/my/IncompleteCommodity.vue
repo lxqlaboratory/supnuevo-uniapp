@@ -62,8 +62,12 @@
 					console.log(res)
 					if (res.re === 1){
 						this.commodityList = res.data
+						if (res.data.length >=20 )
 						for(var i = 0; i < this.index ;i++)
 							this.list[i] = this.commodityList[i]
+						else {
+							this.list = res.data
+						}
 					}
 				}).catch((err) => {
 				uni.showModal({

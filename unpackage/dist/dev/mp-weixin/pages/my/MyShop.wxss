@@ -101,7 +101,7 @@
 	  font-family: "微软雅黑";
 	  font-weight: 400;
 	  font-size: 16px;
-		height: 50rpx;
+		height: 55rpx;
 	  line-height:60rpx;
 	  overflow: hidden; /*自动隐藏文字*/
 	  text-overflow: ellipsis; /*文字隐藏后添加省略号*/
